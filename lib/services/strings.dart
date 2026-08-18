@@ -40,7 +40,7 @@ class SvStrings extends Strings {
   @override
   String get itemCheatApartment => 'Fiffla till dig en lägenhet';
   @override
-  String get itemLowerTaxes => 'Sänk skatten';
+  String get itemLowerTaxes => 'Sänk skatten för de rika';
   @override
   String get itemPrivatizeSchools => 'Privatisera skolorna';
   @override
@@ -71,7 +71,7 @@ class EnStrings extends Strings {
   @override
   String get itemCheatApartment => 'Cheat yourself an apartment';
   @override
-  String get itemLowerTaxes => 'Lower the taxes';
+  String get itemLowerTaxes => 'Lower taxes for the rich';
   @override
   String get itemPrivatizeSchools => 'Privatize the schools';
   @override
