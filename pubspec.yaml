@@ -7,13 +7,58 @@ environment:
   sdk: ^3.13.0
 
 dependencies:
+  flame:
+    git:
+      url: https://github.com/flame-engine/flame.git
+      ref: perf/component-set-backing
+      path: packages/flame
   flutter:
     sdk: flutter
+  shared_preferences: ^2.5.0
 
 dev_dependencies:
+  flame_lint:
+    git:
+      url: https://github.com/flame-engine/flame.git
+      ref: main
+      path: packages/flame_lint
+  flame_test:
+    git:
+      url: https://github.com/flame-engine/flame.git
+      ref: perf/component-set-backing
+      path: packages/flame_test
   flutter_test:
     sdk: flutter
-  flutter_lints: ^6.0.0
+
+dependency_overrides:
+  flame:
+    git:
+      url: https://github.com/flame-engine/flame.git
+      ref: perf/component-set-backing
+      path: packages/flame
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/Icons/IconsDefault/128px/IconsDefault4_128px.png
+    - assets/images/Icons/IconsDefault/128px/IconsDefault12_128px.png
+    - assets/images/Icons/IconsDefault/128px/IconsDefault14_128px.png
+    - assets/images/Icons/IconsDefault/128px/IconsDefault21_128px.png
+    - assets/images/Icons/IconsDefault/128px/IconsDefault25_128px.png
+    - assets/images/Icons/IconsDefault/128px/IconsDefault26_128px.png
+    - assets/images/Icons/IconsDefault/128px/IconsDefault54_128px.png
+    - assets/images/Icons/IconsDefault/128px/IconsDefault58_128px.png
+    - assets/images/Buttons/Round/RoundButton2_green.png
+    - assets/images/Buttons/Round/RoundButton2_lime.png
+    - assets/images/Buttons/Round/RoundButton2_blue.png
+    - assets/images/Buttons/Round/RoundButton2_turquoise.png
+    - assets/images/Buttons/Round/RoundButton2_gray.png
+    - assets/images/Buttons/Round/RoundButton1_white.png
+    - assets/images/Buttons/Round/RoundButton1_gray.png
+    - assets/images/Labels/Label1.png
+    - assets/images/Headers/Header1.png
+    - assets/images/Containers/NotebookContainer/ContainerNotebook1.png
+    - assets/images/Inventory/InventoryModal.png
+    - assets/images/Inventory/ItemSlots/ItemSlotsDefault/ItemSlot1.png
+    - assets/images/Checkboxes/Radiobutton_checked.png
+    - assets/images/Checkboxes/Radiobutton_unchecked.png

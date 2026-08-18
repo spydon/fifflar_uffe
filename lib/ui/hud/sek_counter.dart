@@ -1,0 +1,48 @@
+import 'package:fifflar_uffe/game/assets.dart';
+import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
+import 'package:fifflar_uffe/ui/text_styles.dart';
+import 'package:fifflar_uffe/util/sek_format.dart';
+import 'package:flame/components.dart';
+import 'package:flame/input.dart';
+import 'package:flutter/widgets.dart' hide Route;
+
+class SekCounter extends HudMarginComponent
+    with HasGameReference<FifflarUffeGame> {
+  SekCounter() : super(margin: const EdgeInsets.only(top: 12, right: 12));
+
+  late final TextComponent _text;
+
+  @override
+  Future<void> onLoad() async {
+    size = Vector2(240, 56);
+    add(
+      SpriteComponent(
+        sprite: Sprite(game.images.fromCache(AssetPaths.labelPill)),
+        size: size,
+      ),
+    );
+    _text = TextComponent(
+      textRenderer: TextStyles.counter,
+      anchor: Anchor.center,
+      position: size / 2,
+    );
+    add(_text);
+  }
+
+  @override
+  void onMount() {
+    super.onMount();
+    _refresh();
+    game.economy.addListener(_refresh);
+  }
+
+  @override
+  void onRemove() {
+    game.economy.removeListener(_refresh);
+    super.onRemove();
+  }
+
+  void _refresh() {
+    _text.text = formatSek(game.economy.balance);
+  }
+}
