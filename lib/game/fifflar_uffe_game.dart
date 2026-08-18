@@ -1,3 +1,4 @@
+import 'package:fifflar_uffe/components/uffe_component.dart';
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/play_world.dart';
 import 'package:fifflar_uffe/model/economy.dart';
@@ -20,6 +21,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
   late final I18n i18n;
   late final PersistenceService persistence;
   late final RouterComponent router;
+  late final UffeComponent uffe;
 
   bool _dirty = false;
 
@@ -61,6 +63,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
         onPressed: () => router.pushNamed('shop'),
       ),
       router,
+      uffe = UffeComponent(priority: router.priority),
     ]);
 
     add(TimerComponent(period: 5, repeat: true, onTick: _autosave));
@@ -69,6 +72,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
   bool buyItem(ShopItemDef item) {
     final bought = economy.buy(item);
     if (bought) {
+      uffe.say(item.quip(i18n.strings));
       saveNow();
     }
     return bought;

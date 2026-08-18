@@ -14,6 +14,10 @@ abstract class Strings {
   String get itemLowerTaxes;
   String get itemPrivatizeSchools;
   String get itemPrivatizeHospitals;
+  String get quipCheatApartment;
+  String get quipLowerTaxes;
+  String get quipPrivatizeSchools;
+  String get quipPrivatizeHospitals;
 }
 
 class SvStrings extends Strings {
@@ -45,6 +49,14 @@ class SvStrings extends Strings {
   String get itemPrivatizeSchools => 'Privatisera skolorna';
   @override
   String get itemPrivatizeHospitals => 'Privatisera sjukhusen';
+  @override
+  String get quipCheatApartment => 'Bostadskön är till för andra!';
+  @override
+  String get quipLowerTaxes => 'Mina vänner blir så glada!';
+  @override
+  String get quipPrivatizeSchools => 'Marknaden fixar skolan!';
+  @override
+  String get quipPrivatizeHospitals => 'Vårdköer? Inte för mig!';
 }
 
 class EnStrings extends Strings {
@@ -76,4 +88,12 @@ class EnStrings extends Strings {
   String get itemPrivatizeSchools => 'Privatize the schools';
   @override
   String get itemPrivatizeHospitals => 'Privatize the hospitals';
+  @override
+  String get quipCheatApartment => 'Housing queues are for other people!';
+  @override
+  String get quipLowerTaxes => 'My friends will be so pleased!';
+  @override
+  String get quipPrivatizeSchools => 'The market will fix the schools!';
+  @override
+  String get quipPrivatizeHospitals => 'Care queues? Not for me!';
 }

@@ -45,6 +45,14 @@ class TextStyles {
     ),
   );
 
+  static final bubble = TextPaint(
+    style: const TextStyle(
+      fontSize: 17,
+      fontWeight: FontWeight.bold,
+      color: brown,
+    ),
+  );
+
   static final floating = TextPaint(
     style: const TextStyle(
       fontSize: 24,
