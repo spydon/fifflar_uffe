@@ -68,10 +68,21 @@ class GameOverPage extends ModalPage {
       GameButton(
         label: (strings) => strings.playAgain,
         size: Vector2(280, 92),
-        position: Vector2(designSize.x / 2, 460),
+        position: Vector2(designSize.x / 2 - 160, 460),
         anchor: Anchor.center,
         onPressed: () {
           game.restartRun();
+          close();
+        },
+      ),
+      GameButton(
+        label: (strings) => strings.continuePlaying,
+        color: GameButtonColor.blue,
+        size: Vector2(280, 92),
+        position: Vector2(designSize.x / 2 + 160, 460),
+        anchor: Anchor.center,
+        onPressed: () {
+          game.continueRun();
           close();
         },
       ),

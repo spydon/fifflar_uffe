@@ -47,7 +47,11 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
       totalEarned: save.totalEarned,
       owned: save.owned,
     );
-    timeline = Timeline(elapsedDays: save.elapsedDays);
+    timeline = Timeline(
+      elapsedDays: save.elapsedDays,
+      unbounded: save.continued,
+    );
+    _gameOver = save.continued;
     eventCatalog = EventCatalog.fromJsonString(
       await rootBundle.loadString('assets/data/events.json'),
     );
@@ -116,6 +120,11 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
     router.pushNamed('gameOver');
   }
 
+  void continueRun() {
+    timeline.continueBeyondEnd();
+    saveNow();
+  }
+
   void restartRun() {
     _gameOver = false;
     economy.reset();
@@ -132,6 +141,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
       totalEarned: economy.totalEarned,
       elapsedDays: timeline.elapsedDays,
       highScore: highScore,
+      continued: timeline.unbounded,
       owned: economy.owned,
     );
   }

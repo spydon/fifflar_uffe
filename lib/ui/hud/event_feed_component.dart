@@ -14,7 +14,7 @@ class EventFeedComponent extends HudMarginComponent
 
   @override
   Future<void> onLoad() async {
-    size = Vector2(320, 156);
+    size = Vector2(320, 140);
   }
 
   @override

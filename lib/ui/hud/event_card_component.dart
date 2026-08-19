@@ -10,7 +10,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class EventCardComponent extends PositionComponent
     with HasGameReference<FifflarUffeGame> {
-  EventCardComponent({required this.event}) : super(size: Vector2(320, 156));
+  EventCardComponent({required this.event}) : super(size: Vector2(320, 140));
 
   static const double _displayDuration = 15;
   static const double _padding = 20;
@@ -24,21 +24,21 @@ class EventCardComponent extends PositionComponent
   Future<void> onLoad() async {
     final textWidth = size.x - 2 * _padding;
     addAll([
-      PanelComponent(size: size),
+      PanelComponent(size: size * 2)..scale = Vector2.all(0.5),
       _title = TextBoxComponent(
         textRenderer: TextStyles.eventTitle,
         boxConfig: TextBoxConfig(maxWidth: textWidth),
-        position: Vector2(_padding, 10),
+        position: Vector2(_padding, 12),
       ),
       _body = TextBoxComponent(
         textRenderer: TextStyles.eventBody,
         boxConfig: TextBoxConfig(maxWidth: textWidth),
-        position: Vector2(_padding, 42),
+        position: Vector2(_padding, 44),
       ),
       _EventLink(
         text: event.source,
         url: event.url,
-        position: Vector2(_padding, size.y - 40),
+        position: Vector2(_padding, 96),
       ),
       TimerComponent(
         period: _displayDuration,

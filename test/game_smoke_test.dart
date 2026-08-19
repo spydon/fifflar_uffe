@@ -105,6 +105,67 @@ void main() {
   );
 
   testWithGame<FifflarUffeGame>(
+    'continuing after game over keeps the run going past election day',
+    () {
+      SharedPreferences.setMockInitialValues({
+        'fifflar_uffe.save.v1': jsonEncode({
+          'balance': 10.0,
+          'totalEarned': 25.0,
+          'elapsedDays': Timeline.totalDays - 0.5,
+          'owned': {'lower_taxes': 1},
+          'savedAt': '2026-08-19T00:00:00.000',
+        }),
+      });
+      return FifflarUffeGame();
+    },
+    (game) async {
+      game.update(0);
+      await game.ready();
+      game.update(1);
+      await game.ready();
+      expect(game.router.currentRoute, game.router.routes['gameOver']);
+      game.continueRun();
+      game.router.pop();
+      game.update(0);
+      await game.ready();
+      expect(game.world.updatePaused, isFalse);
+      game.update(5);
+      await game.ready();
+      expect(game.timeline.elapsedDays, greaterThan(Timeline.totalDays + 5));
+      expect(game.router.currentRoute, game.router.routes['home']);
+      expect(game.economy.owned, {'lower_taxes': 1});
+      expect(game.persistence.load().continued, isTrue);
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
+    'a continued save loads past election day without a game over',
+    () {
+      SharedPreferences.setMockInitialValues({
+        'fifflar_uffe.save.v1': jsonEncode({
+          'balance': 10.0,
+          'totalEarned': 25.0,
+          'elapsedDays': Timeline.totalDays + 50.0,
+          'highScore': 25.0,
+          'continued': true,
+          'owned': <String, int>{},
+          'savedAt': '2026-08-19T00:00:00.000',
+        }),
+      });
+      return FifflarUffeGame();
+    },
+    (game) async {
+      game.update(0);
+      await game.ready();
+      game.update(1);
+      await game.ready();
+      expect(game.router.currentRoute, game.router.routes['home']);
+      expect(game.world.updatePaused, isFalse);
+      expect(game.timeline.elapsedDays, greaterThan(Timeline.totalDays + 50));
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
     'an event card appears when its date is reached, not on load',
     () {
       SharedPreferences.setMockInitialValues({
