@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:fifflar_uffe/components/building_component.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/model/skill_catalog.dart';
+import 'package:fifflar_uffe/model/skill_id.dart';
 import 'package:fifflar_uffe/model/timeline.dart';
 import 'package:fifflar_uffe/ui/hud/event_card_component.dart';
 import 'package:fifflar_uffe/ui/hud/shop_hint_component.dart';
@@ -77,7 +78,9 @@ void main() {
       game.update(0);
       await game.ready();
       final buildings = game.world.children.whereType<BuildingComponent>();
-      expect(buildings.map((building) => building.skill.id), ['lower_taxes']);
+      expect(buildings.map((building) => building.skill.id), [
+        SkillId.lowerTaxes,
+      ]);
     },
   );
 
@@ -179,7 +182,7 @@ void main() {
       await game.ready();
       expect(game.timeline.elapsedDays, greaterThan(Timeline.totalDays + 5));
       expect(game.router.currentRoute, game.router.routes['home']);
-      expect(game.economy.owned, {'lower_taxes': 1});
+      expect(game.economy.owned, {SkillId.lowerTaxes: 1});
       expect(game.persistence.load().continued, isTrue);
     },
   );

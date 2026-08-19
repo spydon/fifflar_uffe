@@ -2,15 +2,16 @@ import 'dart:math';
 
 import 'package:fifflar_uffe/model/skill_catalog.dart';
 import 'package:fifflar_uffe/model/skill_def.dart';
+import 'package:fifflar_uffe/model/skill_id.dart';
 import 'package:flutter/foundation.dart';
 
 class Economy extends ChangeNotifier {
-  Economy({this._balance = 0, this._totalEarned = 0, Map<String, int>? owned})
+  Economy({this._balance = 0, this._totalEarned = 0, Map<SkillId, int>? owned})
     : _owned = Map.of(owned ?? {});
 
   double _balance;
   double _totalEarned;
-  final Map<String, int> _owned;
+  final Map<SkillId, int> _owned;
   double baseClickValue = 10;
 
   double get balance => _balance;
@@ -24,7 +25,7 @@ class Economy extends ChangeNotifier {
 
   double get clickValue => baseClickValue * clickMultiplier;
 
-  Map<String, int> get owned => Map.unmodifiable(_owned);
+  Map<SkillId, int> get owned => Map.unmodifiable(_owned);
 
   int ownedCount(SkillDef skill) => _owned[skill.id] ?? 0;
 

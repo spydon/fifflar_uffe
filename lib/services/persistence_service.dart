@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:fifflar_uffe/model/skill_id.dart';
 import 'package:fifflar_uffe/services/i18n.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -19,7 +20,7 @@ class SaveData {
   final double elapsedDays;
   final double highScore;
   final bool continued;
-  final Map<String, int> owned;
+  final Map<SkillId, int> owned;
   final AppLanguage language;
 }
 
@@ -44,13 +45,20 @@ class PersistenceService {
     try {
       final json = jsonDecode(raw) as Map<String, dynamic>;
       final ownedJson = json['owned'] as Map<String, dynamic>? ?? {};
+      final owned = <SkillId, int>{};
+      for (final entry in ownedJson.entries) {
+        final id = SkillId.fromStorageKey(entry.key);
+        if (id != null) {
+          owned[id] = entry.value as int;
+        }
+      }
       return SaveData(
         balance: (json['balance'] as num?)?.toDouble() ?? 0,
         totalEarned: (json['totalEarned'] as num?)?.toDouble() ?? 0,
         elapsedDays: (json['elapsedDays'] as num?)?.toDouble() ?? 0,
         highScore: (json['highScore'] as num?)?.toDouble() ?? 0,
         continued: json['continued'] as bool? ?? false,
-        owned: ownedJson.map((key, value) => MapEntry(key, value as int)),
+        owned: owned,
         language: language,
       );
     } on FormatException {
@@ -66,7 +74,7 @@ class PersistenceService {
     required double elapsedDays,
     required double highScore,
     required bool continued,
-    required Map<String, int> owned,
+    required Map<SkillId, int> owned,
   }) async {
     await _preferences.setString(
       _saveKey,
@@ -76,7 +84,9 @@ class PersistenceService {
         'elapsedDays': elapsedDays,
         'highScore': highScore,
         'continued': continued,
-        'owned': owned,
+        'owned': owned.map(
+          (id, count) => MapEntry(id.storageKey, count),
+        ),
         'savedAt': DateTime.now().toIso8601String(),
       }),
     );

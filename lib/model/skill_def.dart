@@ -1,3 +1,4 @@
+import 'package:fifflar_uffe/model/skill_id.dart';
 import 'package:fifflar_uffe/services/strings.dart';
 
 class SkillDef {
@@ -18,7 +19,7 @@ class SkillDef {
     this.growth = 1.15,
   });
 
-  final String id;
+  final SkillId id;
   final String iconPath;
   final String Function(Strings strings) name;
   final String Function(Strings strings) quip;
@@ -28,7 +29,7 @@ class SkillDef {
   final double basePrice;
   final int tier;
   final int branch;
-  final String? requires;
+  final SkillId? requires;
   final double incomePerSecond;
   final int clickBonus;
   final double growth;

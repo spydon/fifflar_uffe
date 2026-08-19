@@ -44,7 +44,7 @@ class GameOverPage extends ModalPage {
       ),
       LocalizedTextBoxComponent(
         selector: (strings) => strings.voteAppeal(
-          strings.formatDayMonth(Timeline.realElectionDate),
+          strings.formatDayMonth(Timeline.electionDate),
         ),
         textRenderer: TextStyles.paragraph,
         boxConfig: const TextBoxConfig(maxWidth: 580),
