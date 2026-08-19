@@ -24,6 +24,9 @@ class AssetPaths {
   static const iconBabyClothes =
       'Icons/IconsDefault/128px/IconsDefault27_128px.png';
   static const iconShoe = 'Icons/IconsDefault/128px/IconsDefault45_128px.png';
+  static const iconTrophy = 'Icons/IconsDefault/128px/IconsDefault57_128px.png';
+  static const iconCalendar =
+      'Icons/IconsDefault/128px/IconsDefault28_128px.png';
 
   static const buttonWideGreen = 'Buttons/Round/RoundButton2_green.png';
   static const buttonWideLime = 'Buttons/Round/RoundButton2_lime.png';
@@ -65,6 +68,8 @@ class AssetPaths {
     iconDiamond,
     iconBabyClothes,
     iconShoe,
+    iconTrophy,
+    iconCalendar,
     buttonWideGreen,
     buttonWideLime,
     buttonWideBlue,

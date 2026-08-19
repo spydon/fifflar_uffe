@@ -19,9 +19,11 @@ abstract class Strings {
   String get itemCheatApartment;
   String get itemTaxiRides;
   String get itemChinaTrips;
+  String get itemFurnishPalace;
   String get itemWriteBook;
   String get itemLowerTaxes;
   String get itemBreakPromise;
+  String get itemCutSickLeave;
   String get itemPrivatizeSchools;
   String get itemPrivatizeHospitals;
   String get itemSellPreschools;
@@ -30,9 +32,11 @@ abstract class Strings {
   String get quipCheatApartment;
   String get quipTaxiRides;
   String get quipChinaTrips;
+  String get quipFurnishPalace;
   String get quipWriteBook;
   String get quipLowerTaxes;
   String get quipBreakPromise;
+  String get quipCutSickLeave;
   String get quipPrivatizeSchools;
   String get quipPrivatizeHospitals;
   String get quipSellPreschools;
@@ -41,9 +45,11 @@ abstract class Strings {
   String get explainCheatApartment;
   String get explainTaxiRides;
   String get explainChinaTrips;
+  String get explainFurnishPalace;
   String get explainWriteBook;
   String get explainLowerTaxes;
   String get explainBreakPromise;
+  String get explainCutSickLeave;
   String get explainPrivatizeSchools;
   String get explainPrivatizeHospitals;
   String get explainSellPreschools;
@@ -102,11 +108,15 @@ class SvStrings extends Strings {
   @override
   String get itemChinaTrips => 'Studieresor till Kina';
   @override
+  String get itemFurnishPalace => 'Lyxrenovera Sagerska';
+  @override
   String get itemWriteBook => 'Skriv en stridsskrift';
   @override
   String get itemLowerTaxes => 'Sänk skatten för de rika';
   @override
   String get itemBreakPromise => 'Bryt löftet';
+  @override
+  String get itemCutSickLeave => 'Utförsäkra de sjuka';
   @override
   String get itemPrivatizeSchools => 'Privatisera skolorna';
   @override
@@ -124,11 +134,15 @@ class SvStrings extends Strings {
   @override
   String get quipChinaTrips => 'Studieresa! Typ.';
   @override
+  String get quipFurnishPalace => 'En trasmatta för 60 000? Fynd!';
+  @override
   String get quipWriteBook => 'Ord är gratis, åsikter är guld!';
   @override
   String get quipLowerTaxes => 'Mina vänner blir så glada!';
   @override
   String get quipBreakPromise => 'Aldrig, aldrig, aldrig... nåja.';
+  @override
+  String get quipCutSickLeave => 'Kalendern säger att ni är friska!';
   @override
   String get quipPrivatizeSchools => 'Marknaden fixar skolan!';
   @override
@@ -156,6 +170,12 @@ class SvStrings extends Strings {
       'för 128 000 kronor av skattebetalarnas pengar, utan tydlig koppling '
       'till uppdraget.';
   @override
+  String get explainFurnishPalace =>
+      'Efter regeringsskiftet 2022 möblerades statsministerns tjänstebostad '
+      'Sagerska huset för runt en halv miljon kronor av skattemedel, med '
+      'bland annat en specialbeställd trasmatta för 60 000 kronor och en '
+      'köksmatta som med konsultarvoden gick på 27 400 kronor.';
+  @override
   String get explainWriteBook =>
       'I boken Non-working generation från 1994 jämförde Kristersson den '
       'svenska modellen med apartheid, och i Generationskriget kallade han '
@@ -169,6 +189,12 @@ class SvStrings extends Strings {
       'Inför valet 2018 lovade Kristersson förintelseöverlevaren Hédi Fried '
       'att aldrig samarbeta med Sverigedemokraterna. Efter valet 2022 '
       'byggde han sin regering på Tidöavtalet med SD.';
+  @override
+  String get explainCutSickLeave =>
+      'Som socialförsäkringsminister försvarade Kristersson stupstocken i '
+      'sjukförsäkringen, tidsgränsen som gjorde att runt 100 000 '
+      'långtidssjuka blev utförsäkrade. De flesta blev snart sjukskrivna '
+      'igen enligt Inspektionen för socialförsäkringen.';
   @override
   String get explainPrivatizeSchools =>
       'Friskolereformen och skolpengen har gjort Sverige till ett av världens '
@@ -290,11 +316,15 @@ class EnStrings extends Strings {
   @override
   String get itemChinaTrips => 'Study trips to China';
   @override
+  String get itemFurnishPalace => 'Refurnish the palace';
+  @override
   String get itemWriteBook => 'Write a polemic';
   @override
   String get itemLowerTaxes => 'Lower taxes for the rich';
   @override
   String get itemBreakPromise => 'Break the promise';
+  @override
+  String get itemCutSickLeave => 'Cut off the sick';
   @override
   String get itemPrivatizeSchools => 'Privatize the schools';
   @override
@@ -312,11 +342,15 @@ class EnStrings extends Strings {
   @override
   String get quipChinaTrips => 'Study trip! Sort of.';
   @override
+  String get quipFurnishPalace => 'A rag rug for 60 000? A steal!';
+  @override
   String get quipWriteBook => 'Words are free, opinions are gold!';
   @override
   String get quipLowerTaxes => 'My friends will be so pleased!';
   @override
   String get quipBreakPromise => 'Never, never, never... oh well.';
+  @override
+  String get quipCutSickLeave => 'The calendar says you are healthy!';
   @override
   String get quipPrivatizeSchools => 'The market will fix the schools!';
   @override
@@ -345,6 +379,12 @@ class EnStrings extends Strings {
       'China in one year for 128 000 kronor of taxpayer money, without a '
       'clear connection to his duties.';
   @override
+  String get explainFurnishPalace =>
+      'After the 2022 change of government, the official residence Sager '
+      'House was furnished for about half a million kronor of taxpayer '
+      'money, including a custom rag rug for 60 000 kronor and a kitchen '
+      'mat that with consultant fees came to 27 400 kronor.';
+  @override
   String get explainWriteBook =>
       'In the 1994 book Non-working generation, Kristersson compared the '
       'Swedish model to apartheid, and in Generationskriget he called the '
@@ -359,6 +399,12 @@ class EnStrings extends Strings {
       'Hédi Fried never to cooperate with the Sweden Democrats. After the '
       '2022 election he built his government on the Tidö Agreement with '
       'that very party.';
+  @override
+  String get explainCutSickLeave =>
+      'As social insurance minister, Kristersson defended the hard time '
+      'limit in the sickness insurance that cut off around 100 000 '
+      'long-term sick people. Most of them were soon on sick leave again, '
+      'according to the Social Insurance Inspectorate.';
   @override
   String get explainPrivatizeSchools =>
       'The free school reform and voucher system have made Sweden one of '
