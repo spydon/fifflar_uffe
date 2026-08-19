@@ -29,7 +29,7 @@ class GameOverRoute extends Route with HasGameReference<FifflarUffeGame> {
 
 class GameOverPage extends ModalPage {
   GameOverPage()
-    : super(designSize: Vector2(700, 440), dismissOnScrimTap: false);
+    : super(designSize: Vector2(700, 480), dismissOnScrimTap: false);
 
   @override
   Future<void> onLoad() async {
@@ -57,25 +57,33 @@ class GameOverPage extends ModalPage {
             '${strings.finalScore}: ${formatSek(game.economy.totalEarned)}',
         textRenderer: TextStyles.body,
         anchor: Anchor.center,
-        position: Vector2(designSize.x / 2, 194),
+        position: Vector2(designSize.x / 2, 186),
       ),
       LocalizedTextComponent(
         selector: (strings) =>
             '${strings.highScoreLabel}: ${formatSek(game.highScore)}',
         textRenderer: TextStyles.info,
         anchor: Anchor.center,
-        position: Vector2(designSize.x / 2, 238),
+        position: Vector2(designSize.x / 2, 228),
+      ),
+      LocalizedTextBoxComponent(
+        selector: (strings) => strings.aboutSatire,
+        textRenderer: TextStyles.info,
+        boxConfig: const TextBoxConfig(maxWidth: 580),
+        align: Anchor.topCenter,
+        anchor: Anchor.topCenter,
+        position: Vector2(designSize.x / 2, 256),
       ),
       LocalizedLinkComponent(
         selector: (strings) => strings.references,
         url: 'references.html',
         anchor: Anchor.center,
-        position: Vector2(designSize.x / 2, 276),
+        position: Vector2(designSize.x / 2, 320),
       ),
       GameButton(
         label: (strings) => strings.playAgain,
         size: Vector2(280, 92),
-        position: Vector2(designSize.x / 2 - 160, 360),
+        position: Vector2(designSize.x / 2 - 160, 396),
         anchor: Anchor.center,
         onPressed: () {
           game.restartRun();
@@ -86,7 +94,7 @@ class GameOverPage extends ModalPage {
         label: (strings) => strings.continuePlaying,
         color: GameButtonColor.blue,
         size: Vector2(280, 92),
-        position: Vector2(designSize.x / 2 + 160, 360),
+        position: Vector2(designSize.x / 2 + 160, 396),
         anchor: Anchor.center,
         onPressed: () {
           game.continueRun();
