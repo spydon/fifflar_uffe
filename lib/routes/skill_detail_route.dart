@@ -37,6 +37,10 @@ class SkillDetailPage extends ModalPage {
   @override
   Future<void> onLoad() async {
     await super.onLoad();
+    if (isNarrowScreen) {
+      resizePanel(Vector2(460, designSize.y));
+    }
+    final valueX = isNarrowScreen ? 240.0 : _valueX;
     _labels = [
       for (final y in _rowYs)
         TextComponent(
@@ -48,14 +52,14 @@ class SkillDetailPage extends ModalPage {
       for (final y in _rowYs)
         TextComponent(
           textRenderer: TextStyles.statValue,
-          position: Vector2(_valueX, y),
+          position: Vector2(valueX, y),
         ),
     ];
     panel.addAll([
       _background = PanelComponent(size: designSize.clone()),
       PanelHeader(
         title: skill.name,
-        size: Vector2(450, 62),
+        size: Vector2(isNarrowScreen ? 380 : 450, 62),
         position: Vector2(designSize.x / 2, 0),
         anchor: Anchor.center,
       ),
@@ -80,7 +84,7 @@ class SkillDetailPage extends ModalPage {
       _explanation = LocalizedTextBoxComponent(
         selector: skill.explanation,
         textRenderer: TextStyles.paragraph,
-        boxConfig: const TextBoxConfig(maxWidth: 464),
+        boxConfig: TextBoxConfig(maxWidth: designSize.x - 96),
         position: Vector2(48, 172),
       ),
       _sourceLink = LocalizedLinkComponent(

@@ -15,15 +15,23 @@ class AboutRoute extends Route {
 class AboutPage extends ModalPage {
   AboutPage() : super(designSize: Vector2(700, 280));
 
+  late final SpriteComponent _background;
+  late final LocalizedTextBoxComponent _satire;
+  late final LocalizedLinkComponent _references;
+  late final LocalizedLinkComponent _imageCredits;
+
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    const textWidth = 560.0;
+    if (isNarrowScreen) {
+      resizePanel(Vector2(460, designSize.y));
+    }
+    final textWidth = designSize.x - 140;
     final left = (designSize.x - textWidth) / 2;
     panel.addAll([
-      SpriteComponent(
+      _background = SpriteComponent(
         sprite: Sprite(game.images.fromCache(AssetPaths.panelShop)),
-        size: designSize,
+        size: designSize.clone(),
       ),
       PanelHeader(
         title: (strings) => strings.about,
@@ -36,22 +44,34 @@ class AboutPage extends ModalPage {
         anchor: Anchor.center,
         onPressed: close,
       ),
-      LocalizedTextBoxComponent(
+      _satire = LocalizedTextBoxComponent(
         selector: (strings) => strings.aboutSatire,
         textRenderer: TextStyles.paragraph,
-        boxConfig: const TextBoxConfig(maxWidth: textWidth),
-        position: Vector2(left, 90),
+        boxConfig: TextBoxConfig(maxWidth: textWidth),
+        position: Vector2(left, 74),
       ),
-      LocalizedLinkComponent(
+      _references = LocalizedLinkComponent(
         selector: (strings) => strings.references,
         url: 'references.html',
         position: Vector2(left + 8, 160),
       ),
-      LocalizedLinkComponent(
+      _imageCredits = LocalizedLinkComponent(
         selector: (strings) => strings.aboutAttributions,
         url: 'attributions.html',
         position: Vector2(left + 8, 198),
       ),
     ]);
+    _satire.size.addListener(_layoutContent);
+    _layoutContent();
+  }
+
+  void _layoutContent() {
+    final left = (designSize.x - (designSize.x - 140)) / 2;
+    final satireBottom = _satire.position.y + _satire.size.y;
+    _references.position = Vector2(left + 8, satireBottom + 10);
+    _imageCredits.position = Vector2(left + 8, satireBottom + 48);
+    final height = satireBottom + 48 + 26 + 32;
+    _background.size = Vector2(designSize.x, height);
+    resizePanel(Vector2(designSize.x, height));
   }
 }

@@ -5,6 +5,7 @@ import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/model/skill_catalog.dart';
 import 'package:fifflar_uffe/model/skill_def.dart';
+import 'package:fifflar_uffe/ui/hud/hud_auto_scale.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:fifflar_uffe/util/sek_format.dart';
 import 'package:flame/components.dart';
@@ -53,7 +54,7 @@ class BuildingComponent extends PositionComponent
     scale = Vector2.zero();
     add(
       ScaleEffect.to(
-        Vector2.all(1),
+        Vector2.all(HudAutoScale.factorFor(game.size)),
         EffectController(duration: 0.3, curve: Curves.easeOutBack),
       ),
     );
@@ -101,21 +102,28 @@ class BuildingComponent extends PositionComponent
   }
 
   void _updatePosition(Vector2 gameSize) {
-    const gap = 24.0;
+    final factor = HudAutoScale.factorFor(gameSize);
+    final pop = children.whereType<ScaleEffect>().isEmpty;
+    if (pop) {
+      scale = Vector2.all(factor);
+    }
+    final gap = 24.0 * factor;
+    final tileWidth = size.x * factor;
+    final tileHeight = size.y * factor;
     final columns = max(
       1,
-      min(4, ((gameSize.x - 40) / (size.x + gap)).floor()),
+      min(4, ((gameSize.x - 40) / (tileWidth + gap)).floor()),
     );
     final rows = (skillCatalog.length / columns).ceil();
     final row = slotIndex ~/ columns;
     final column = slotIndex % columns;
-    final gridWidth = columns * size.x + (columns - 1) * gap;
-    final gridHeight = rows * size.y + (rows - 1) * gap;
+    final gridWidth = columns * tileWidth + (columns - 1) * gap;
+    final gridHeight = rows * tileHeight + (rows - 1) * gap;
     final left = (gameSize.x - gridWidth) / 2;
     final top = (gameSize.y - gridHeight) / 2;
     position = Vector2(
-      left + column * (size.x + gap) + size.x / 2,
-      top + row * (size.y + gap) + size.y / 2,
+      left + column * (tileWidth + gap) + tileWidth / 2,
+      top + row * (tileHeight + gap) + tileHeight / 2,
     );
   }
 

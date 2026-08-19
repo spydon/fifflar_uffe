@@ -21,13 +21,16 @@ class PauseRoute extends Route with HasGameReference<FifflarUffeGame> {
 }
 
 class PausePage extends ModalPage {
-  PausePage() : super(designSize: Vector2(560, 580), dismissOnScrimTap: false);
+  PausePage() : super(designSize: Vector2(560, 540), dismissOnScrimTap: false);
 
   @override
   Future<void> onLoad() async {
     await super.onLoad();
+    if (isNarrowScreen) {
+      resizePanel(Vector2(460, designSize.y));
+    }
     panel.addAll([
-      PanelComponent(size: designSize),
+      PanelComponent(size: designSize.clone()),
       PanelHeader(
         title: (strings) => strings.pauseTitle,
         size: Vector2(360, 68),
@@ -37,7 +40,7 @@ class PausePage extends ModalPage {
       GameButton(
         label: (strings) => strings.resume,
         size: Vector2(250, 92),
-        position: Vector2(designSize.x / 2, 150),
+        position: Vector2(designSize.x / 2, 110),
         anchor: Anchor.center,
         onPressed: close,
       ),
@@ -45,7 +48,7 @@ class PausePage extends ModalPage {
         label: (strings) => strings.restart,
         color: GameButtonColor.blue,
         size: Vector2(250, 92),
-        position: Vector2(designSize.x / 2, 260),
+        position: Vector2(designSize.x / 2, 220),
         anchor: Anchor.center,
         onPressed: () {
           game.restartRun();
@@ -56,7 +59,7 @@ class PausePage extends ModalPage {
         label: (strings) => strings.settings,
         color: GameButtonColor.blue,
         size: Vector2(250, 92),
-        position: Vector2(designSize.x / 2, 370),
+        position: Vector2(designSize.x / 2, 330),
         anchor: Anchor.center,
         onPressed: () => game.router.pushNamed('settings'),
       ),
@@ -64,7 +67,7 @@ class PausePage extends ModalPage {
         label: (strings) => strings.about,
         color: GameButtonColor.blue,
         size: Vector2(250, 92),
-        position: Vector2(designSize.x / 2, 480),
+        position: Vector2(designSize.x / 2, 440),
         anchor: Anchor.center,
         onPressed: () => game.router.pushNamed('about'),
       ),

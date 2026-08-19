@@ -1,5 +1,6 @@
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
+import 'package:fifflar_uffe/ui/hud/hud_auto_scale.dart';
 import 'package:fifflar_uffe/ui/speech_bubble_component.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
@@ -7,7 +8,7 @@ import 'package:flame/input.dart';
 import 'package:flutter/widgets.dart' hide Route;
 
 class UffeComponent extends HudMarginComponent
-    with HasGameReference<FifflarUffeGame> {
+    with HasGameReference<FifflarUffeGame>, HudAutoScale {
   UffeComponent()
     : super(margin: const EdgeInsets.only(left: 12), priority: restPriority);
 
