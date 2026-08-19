@@ -9,7 +9,7 @@ import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 
 class AboutRoute extends Route {
-  AboutRoute() : super(AboutPage.new, transparent: true);
+  AboutRoute() : super(AboutPage.new, transparent: true, maintainState: false);
 }
 
 class AboutPage extends ModalPage {
@@ -34,7 +34,7 @@ class AboutPage extends ModalPage {
       PanelCloseButton(
         position: Vector2(designSize.x - 16, 16),
         anchor: Anchor.center,
-        onPressed: () => game.router.pop(),
+        onPressed: close,
       ),
       LocalizedTextBoxComponent(
         selector: (strings) => strings.aboutSatire,

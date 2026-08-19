@@ -7,7 +7,7 @@ import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 
 class PauseRoute extends Route with HasGameReference<FifflarUffeGame> {
-  PauseRoute() : super(PausePage.new, transparent: true);
+  PauseRoute() : super(PausePage.new, transparent: true, maintainState: false);
 
   @override
   void onPush(Route? previousRoute) {
@@ -39,7 +39,7 @@ class PausePage extends ModalPage {
         size: Vector2(250, 92),
         position: Vector2(designSize.x / 2, 150),
         anchor: Anchor.center,
-        onPressed: () => game.router.pop(),
+        onPressed: close,
       ),
       GameButton(
         label: (strings) => strings.settings,

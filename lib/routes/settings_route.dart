@@ -11,7 +11,8 @@ import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 
 class SettingsRoute extends Route {
-  SettingsRoute() : super(SettingsPage.new, transparent: true);
+  SettingsRoute()
+    : super(SettingsPage.new, transparent: true, maintainState: false);
 }
 
 class SettingsPage extends ModalPage {
@@ -31,7 +32,7 @@ class SettingsPage extends ModalPage {
       PanelCloseButton(
         position: Vector2(designSize.x - 16, 16),
         anchor: Anchor.center,
-        onPressed: () => game.router.pop(),
+        onPressed: close,
       ),
       LanguageRadioRow(
         language: AppLanguage.sv,

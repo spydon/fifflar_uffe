@@ -14,7 +14,7 @@ import 'package:flame/experimental.dart';
 import 'package:flame/game.dart';
 
 class ShopRoute extends Route {
-  ShopRoute() : super(ShopPage.new, transparent: true);
+  ShopRoute() : super(ShopPage.new, transparent: true, maintainState: false);
 }
 
 class ShopPage extends ModalPage {
@@ -37,7 +37,7 @@ class ShopPage extends ModalPage {
       PanelCloseButton(
         position: Vector2(designSize.x - 16, 16),
         anchor: Anchor.center,
-        onPressed: () => game.router.pop(),
+        onPressed: close,
       ),
       ColumnComponent(
         gap: 12,
