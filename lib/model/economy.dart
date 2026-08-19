@@ -17,9 +17,10 @@ class Economy extends ChangeNotifier {
 
   double get totalEarned => _totalEarned;
 
-  int get clickMultiplier => skillCatalog
-      .where((skill) => skill.isClickMultiplier)
-      .fold(1, (multiplier, skill) => multiplier + ownedCount(skill));
+  int get clickMultiplier => skillCatalog.fold(
+    1,
+    (multiplier, skill) => multiplier + skill.clickBonus * ownedCount(skill),
+  );
 
   double get clickValue => baseClickValue * clickMultiplier;
 

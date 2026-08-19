@@ -108,7 +108,7 @@ class SkillDetailPage extends ModalPage {
     final strings = game.i18n.strings;
     final economy = game.economy;
     final effect = skill.isClickMultiplier
-        ? 'x${economy.ownedCount(skill) + 1}'
+        ? '+${skill.clickBonus}x'
         : '+${skill.incomePerSecond} ${strings.perSecond}';
     _info.text =
         '${formatSek(economy.priceOf(skill))}'

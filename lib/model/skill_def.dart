@@ -14,7 +14,7 @@ class SkillDef {
     required this.branch,
     this.requires,
     this.incomePerSecond = 0,
-    this.isClickMultiplier = false,
+    this.clickBonus = 0,
     this.growth = 1.15,
   });
 
@@ -30,6 +30,8 @@ class SkillDef {
   final int branch;
   final String? requires;
   final double incomePerSecond;
-  final bool isClickMultiplier;
+  final int clickBonus;
   final double growth;
+
+  bool get isClickMultiplier => clickBonus > 0;
 }

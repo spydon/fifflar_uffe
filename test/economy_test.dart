@@ -105,4 +105,18 @@ void main() {
     economy.earnClick();
     expect(economy.balance, 20);
   });
+
+  test('deeper multiplier skills give bigger click bonuses', () {
+    final economy = Economy(
+      owned: {
+        'write_book': 2,
+        'lower_taxes': 1,
+        'break_promise': 1,
+        'cut_sick_leave': 1,
+      },
+    );
+    expect(economy.clickMultiplier, 1 + 2 + 2 + 5 + 10);
+    economy.earnClick();
+    expect(economy.balance, 200);
+  });
 }
