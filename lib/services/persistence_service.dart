@@ -9,6 +9,7 @@ class SaveData {
     this.totalEarned = 0,
     this.elapsedDays = 0,
     this.highScore = 0,
+    this.continued = false,
     this.owned = const {},
     this.language = AppLanguage.sv,
   });
@@ -17,6 +18,7 @@ class SaveData {
   final double totalEarned;
   final double elapsedDays;
   final double highScore;
+  final bool continued;
   final Map<String, int> owned;
   final AppLanguage language;
 }
@@ -47,6 +49,7 @@ class PersistenceService {
         totalEarned: (json['totalEarned'] as num?)?.toDouble() ?? 0,
         elapsedDays: (json['elapsedDays'] as num?)?.toDouble() ?? 0,
         highScore: (json['highScore'] as num?)?.toDouble() ?? 0,
+        continued: json['continued'] as bool? ?? false,
         owned: ownedJson.map((key, value) => MapEntry(key, value as int)),
         language: language,
       );
@@ -62,6 +65,7 @@ class PersistenceService {
     required double totalEarned,
     required double elapsedDays,
     required double highScore,
+    required bool continued,
     required Map<String, int> owned,
   }) async {
     await _preferences.setString(
@@ -71,6 +75,7 @@ class PersistenceService {
         'totalEarned': totalEarned,
         'elapsedDays': elapsedDays,
         'highScore': highScore,
+        'continued': continued,
         'owned': owned,
         'savedAt': DateTime.now().toIso8601String(),
       }),

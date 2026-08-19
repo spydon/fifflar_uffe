@@ -34,10 +34,30 @@ void main() {
     expect(timeline.elapsedDays, Timeline.totalDays);
   });
 
-  test('reset returns to the start date', () {
-    final timeline = Timeline(elapsedDays: 200)..reset();
+  test('continues past election day when unbounded', () {
+    final timeline = Timeline()
+      ..advance(Timeline.totalDays.toDouble())
+      ..continueBeyondEnd()
+      ..advance(5);
+    expect(timeline.unbounded, isTrue);
+    expect(timeline.isOver, isTrue);
+    expect(timeline.elapsedDays, Timeline.totalDays + 10);
+    expect(timeline.currentDate, DateTime.utc(2002, 9, 25));
+  });
+
+  test('loads an unbounded save past election day without clamping', () {
+    final timeline = Timeline(
+      elapsedDays: Timeline.totalDays + 100,
+      unbounded: true,
+    );
+    expect(timeline.elapsedDays, Timeline.totalDays + 100);
+  });
+
+  test('reset returns to the start date and restores the bound', () {
+    final timeline = Timeline(elapsedDays: 200, unbounded: true)..reset();
     expect(timeline.elapsedDays, 0);
     expect(timeline.currentDate, DateTime.utc(2000));
     expect(timeline.isOver, isFalse);
+    expect(timeline.unbounded, isFalse);
   });
 }

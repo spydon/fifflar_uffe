@@ -21,6 +21,7 @@ void main() {
       totalEarned: 543.2,
       elapsedDays: 42.5,
       highScore: 999.9,
+      continued: true,
       owned: {'lower_taxes': 3},
     );
     await service.saveLanguage(AppLanguage.en);
@@ -29,6 +30,7 @@ void main() {
     expect(save.totalEarned, 543.2);
     expect(save.elapsedDays, 42.5);
     expect(save.highScore, 999.9);
+    expect(save.continued, isTrue);
     expect(save.owned, {'lower_taxes': 3});
     expect(save.language, AppLanguage.en);
   });
@@ -43,6 +45,7 @@ void main() {
     expect(save.totalEarned, 0);
     expect(save.elapsedDays, 0);
     expect(save.highScore, 0);
+    expect(save.continued, isFalse);
     expect(save.owned, {'lower_taxes': 1});
   });
 
