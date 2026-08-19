@@ -48,7 +48,7 @@ class UffeComponent extends HudMarginComponent
       _head,
     ]);
     _bubble = SpeechBubbleComponent(
-      position: Vector2(-12, 6),
+      position: Vector2(56, 6),
       anchor: Anchor.bottomLeft,
       onTalkingChanged: _setTalking,
     );

@@ -12,7 +12,7 @@ class SpeechBubbleComponent extends PositionComponent
     super.position,
     super.anchor,
     super.priority,
-  }) : super(size: Vector2(260, 120));
+  }) : super(size: Vector2(250, 164));
 
   static const double _displayDuration = 3;
 
@@ -31,10 +31,10 @@ class SpeechBubbleComponent extends PositionComponent
       ),
       _text = TextBoxComponent(
         textRenderer: TextStyles.bubble,
-        boxConfig: const TextBoxConfig(maxWidth: 220),
+        boxConfig: const TextBoxConfig(maxWidth: 190),
         align: Anchor.center,
         anchor: Anchor.center,
-        position: Vector2(size.x / 2, size.y / 2 - 10),
+        position: Vector2(size.x / 2 + 8, size.y / 2 - 16),
       ),
     ]);
   }

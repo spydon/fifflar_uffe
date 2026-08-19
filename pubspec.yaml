@@ -65,7 +65,7 @@ flutter:
     - assets/images/Inventory/ItemSlots/ItemSlotsDefault/ItemSlot1.png
     - assets/images/Checkboxes/Radiobutton_checked.png
     - assets/images/Checkboxes/Radiobutton_unchecked.png
-    - assets/images/Labels/DialogueLabel1.png
+    - assets/images/speech_bubble.png
     - assets/images/uffe_head.png
     - assets/images/uffe_body.png
     - assets/images/riksdag_bg.jpg
