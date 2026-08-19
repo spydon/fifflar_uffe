@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/images/uffe_head.png" alt="Uffe" width="240">
+  <img src="assets/images/uffe_head.png" alt="Uffe" width="400">
 </p>
 
 # Fifflar-Uffe
