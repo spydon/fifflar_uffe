@@ -8,7 +8,6 @@ import 'package:fifflar_uffe/model/timeline.dart';
 import 'package:fifflar_uffe/routes/about_route.dart';
 import 'package:fifflar_uffe/routes/game_over_route.dart';
 import 'package:fifflar_uffe/routes/pause_route.dart';
-import 'package:fifflar_uffe/routes/settings_route.dart';
 import 'package:fifflar_uffe/routes/skill_tree_route.dart';
 import 'package:fifflar_uffe/services/i18n.dart';
 import 'package:fifflar_uffe/services/persistence_service.dart';
@@ -83,7 +82,6 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
       routes: {
         'home': Route(Component.new, transparent: true),
         'pause': PauseRoute(),
-        'settings': SettingsRoute(),
         'about': AboutRoute(),
         'shop': SkillTreeRoute(),
         'gameOver': GameOverRoute(),

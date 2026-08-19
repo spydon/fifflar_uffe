@@ -45,6 +45,8 @@ class AssetPaths {
   static const radioChecked = 'Checkboxes/Radiobutton_checked.png';
   static const radioUnchecked = 'Checkboxes/Radiobutton_unchecked.png';
 
+  static const flagSwedish = 'flag_sv.png';
+  static const flagEnglish = 'flag_en.png';
   static const speechBubble = 'speech_bubble.png';
   static const uffeHead = 'uffe_head.png';
   static const uffeBody = 'uffe_body.png';
@@ -84,6 +86,8 @@ class AssetPaths {
     itemSlot,
     radioChecked,
     radioUnchecked,
+    flagSwedish,
+    flagEnglish,
     speechBubble,
     uffeHead,
     uffeBody,

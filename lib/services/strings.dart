@@ -4,8 +4,6 @@ abstract class Strings {
   String get pauseTitle;
   String get resume;
   String get restart;
-  String get settings;
-  String get settingsTitle;
   String get skillTreeTitle;
   String get buy;
   String get owned;
@@ -15,7 +13,6 @@ abstract class Strings {
   String get priceLabel;
   String get givesLabel;
   String get perClick;
-  String get language;
   String get about;
   String get aboutSatire;
   String get aboutAttributions;
@@ -80,10 +77,6 @@ class SvStrings extends Strings {
   @override
   String get restart => 'Börja om';
   @override
-  String get settings => 'Inställningar';
-  @override
-  String get settingsTitle => 'Inställningar';
-  @override
   String get skillTreeTitle => 'Fifflarträdet';
   @override
   String get buy => 'Köp';
@@ -101,8 +94,6 @@ class SvStrings extends Strings {
   String get givesLabel => 'Ger';
   @override
   String get perClick => 'per klick på mynt';
-  @override
-  String get language => 'Språk';
   @override
   String get about => 'Om';
   @override
@@ -296,10 +287,6 @@ class EnStrings extends Strings {
   @override
   String get restart => 'Start over';
   @override
-  String get settings => 'Settings';
-  @override
-  String get settingsTitle => 'Settings';
-  @override
   String get skillTreeTitle => 'The Fiddle Tree';
   @override
   String get buy => 'Buy';
@@ -317,8 +304,6 @@ class EnStrings extends Strings {
   String get givesLabel => 'Gives';
   @override
   String get perClick => 'per coin click';
-  @override
-  String get language => 'Language';
   @override
   String get about => 'About';
   @override
