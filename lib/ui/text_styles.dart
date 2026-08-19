@@ -57,6 +57,24 @@ class TextStyles {
     ),
   );
 
+  static final priceTag = TextPaint(
+    style: const TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
+      color: Color(0xFFFFF6E3),
+      shadows: [Shadow(color: Color(0x99000000), offset: Offset(0, 1))],
+    ),
+  );
+
+  static final priceTagDisabled = TextPaint(
+    style: const TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
+      color: Color(0x80FFF6E3),
+      shadows: [Shadow(color: Color(0x66000000), offset: Offset(0, 1))],
+    ),
+  );
+
   static final floating = TextPaint(
     style: const TextStyle(
       fontSize: 24,
