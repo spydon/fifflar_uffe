@@ -28,7 +28,7 @@ class GameOverRoute extends Route with HasGameReference<FifflarUffeGame> {
 
 class GameOverPage extends ModalPage {
   GameOverPage()
-    : super(designSize: Vector2(700, 560), dismissOnScrimTap: false);
+    : super(designSize: Vector2(700, 400), dismissOnScrimTap: false);
 
   @override
   Future<void> onLoad() async {
@@ -49,26 +49,26 @@ class GameOverPage extends ModalPage {
         boxConfig: const TextBoxConfig(maxWidth: 580),
         align: Anchor.topCenter,
         anchor: Anchor.topCenter,
-        position: Vector2(designSize.x / 2, 100),
+        position: Vector2(designSize.x / 2, 66),
       ),
       LocalizedTextComponent(
         selector: (strings) =>
             '${strings.finalScore}: ${formatSek(game.economy.totalEarned)}',
         textRenderer: TextStyles.body,
         anchor: Anchor.center,
-        position: Vector2(designSize.x / 2, 300),
+        position: Vector2(designSize.x / 2, 194),
       ),
       LocalizedTextComponent(
         selector: (strings) =>
             '${strings.highScoreLabel}: ${formatSek(game.highScore)}',
         textRenderer: TextStyles.info,
         anchor: Anchor.center,
-        position: Vector2(designSize.x / 2, 350),
+        position: Vector2(designSize.x / 2, 238),
       ),
       GameButton(
         label: (strings) => strings.playAgain,
         size: Vector2(280, 92),
-        position: Vector2(designSize.x / 2 - 160, 460),
+        position: Vector2(designSize.x / 2 - 160, 322),
         anchor: Anchor.center,
         onPressed: () {
           game.restartRun();
@@ -79,7 +79,7 @@ class GameOverPage extends ModalPage {
         label: (strings) => strings.continuePlaying,
         color: GameButtonColor.blue,
         size: Vector2(280, 92),
-        position: Vector2(designSize.x / 2 + 160, 460),
+        position: Vector2(designSize.x / 2 + 160, 322),
         anchor: Anchor.center,
         onPressed: () {
           game.continueRun();
