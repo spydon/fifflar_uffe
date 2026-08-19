@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:fifflar_uffe/model/economy.dart';
 import 'package:fifflar_uffe/model/skill_catalog.dart';
+import 'package:fifflar_uffe/model/skill_id.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -38,7 +39,7 @@ void main() {
   });
 
   test('locked skills cannot be bought until the requirement is owned', () {
-    final apartment = skillById('cheat_apartment');
+    final apartment = skillById(SkillId.cheatApartment);
     final economy = Economy(balance: 1000000);
     expect(economy.isUnlocked(cleaner), isTrue);
     expect(economy.isUnlocked(apartment), isFalse);
@@ -48,14 +49,20 @@ void main() {
     expect(economy.buy(apartment), isTrue);
   });
 
-  test('every skill except the root has an existing requirement', () {
+  test('every skill except the root has a requirement', () {
     for (final skill in skillCatalog) {
       if (skill.requires == null) {
         expect(skill.id, cleaner.id);
-      } else {
-        expect(skillById(skill.requires!), isNotNull);
       }
     }
+  });
+
+  test('the catalog defines every skill id exactly once', () {
+    expect(
+      skillCatalog.map((skill) => skill.id).toSet(),
+      SkillId.values.toSet(),
+    );
+    expect(skillCatalog.length, SkillId.values.length);
   });
 
   test('income aggregates over owned items', () {
@@ -98,7 +105,7 @@ void main() {
   });
 
   test('click multiplier scales with owned multiplier skills', () {
-    final book = skillById('write_book');
+    final book = skillById(SkillId.writeBook);
     final economy = Economy(owned: {book.id: 1});
     expect(economy.clickMultiplier, 2);
     expect(economy.incomePerSecond, 0);
@@ -109,10 +116,10 @@ void main() {
   test('deeper multiplier skills give bigger click bonuses', () {
     final economy = Economy(
       owned: {
-        'write_book': 2,
-        'lower_taxes': 1,
-        'break_promise': 1,
-        'cut_sick_leave': 1,
+        SkillId.writeBook: 2,
+        SkillId.lowerTaxes: 1,
+        SkillId.breakPromise: 1,
+        SkillId.cutSickLeave: 1,
       },
     );
     expect(economy.clickMultiplier, 1 + 2 + 2 + 5 + 10);

@@ -8,6 +8,7 @@ import 'package:fifflar_uffe/components/money_component.dart';
 import 'package:fifflar_uffe/components/timeline_component.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/model/skill_catalog.dart';
+import 'package:fifflar_uffe/model/skill_id.dart';
 import 'package:flame/components.dart';
 import 'package:flame/experimental.dart';
 
@@ -16,7 +17,7 @@ class PlayWorld extends World with HasGameReference<FifflarUffeGame> {
   static const double edgeInset = 20;
 
   SpawnComponent? _spawner;
-  final Map<String, BuildingComponent> _buildings = {};
+  final Map<SkillId, BuildingComponent> _buildings = {};
 
   Rect get playRect {
     final size = game.size;

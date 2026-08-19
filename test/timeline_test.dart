@@ -29,7 +29,7 @@ void main() {
     final timeline = Timeline()..advance(Timeline.totalDays + 5);
     expect(timeline.isOver, isTrue);
     expect(timeline.elapsedDays, Timeline.totalDays);
-    expect(timeline.currentDate, DateTime.utc(2002, 9, 15));
+    expect(timeline.currentDate, DateTime.utc(2026, 9, 13));
     timeline.advance(10);
     expect(timeline.elapsedDays, Timeline.totalDays);
   });
@@ -42,7 +42,7 @@ void main() {
     expect(timeline.unbounded, isTrue);
     expect(timeline.isOver, isTrue);
     expect(timeline.elapsedDays, Timeline.totalDays + 10);
-    expect(timeline.currentDate, DateTime.utc(2002, 9, 25));
+    expect(timeline.currentDate, DateTime.utc(2026, 9, 23));
   });
 
   test('loads an unbounded save past election day without clamping', () {

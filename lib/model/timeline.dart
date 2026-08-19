@@ -10,8 +10,7 @@ class Timeline extends ChangeNotifier {
           : elapsedDays.clamp(0, totalDays).toDouble();
 
   static final DateTime startDate = DateTime.utc(2000);
-  static final DateTime electionDate = DateTime.utc(2002, 9, 15);
-  static final DateTime realElectionDate = DateTime.utc(2026, 9, 13);
+  static final DateTime electionDate = DateTime.utc(2026, 9, 13);
   static const double daysPerSecond = 2;
   static final int totalDays = electionDate.difference(startDate).inDays;
 

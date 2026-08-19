@@ -1,9 +1,10 @@
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/model/skill_def.dart';
+import 'package:fifflar_uffe/model/skill_id.dart';
 
 final List<SkillDef> skillCatalog = [
   SkillDef(
-    id: 'hire_cleaner',
+    id: SkillId.hireCleaner,
     iconPath: AssetPaths.iconPeople,
     name: (strings) => strings.itemHireCleaner,
     quip: (strings) => strings.quipHireCleaner,
@@ -17,7 +18,7 @@ final List<SkillDef> skillCatalog = [
     branch: 1,
   ),
   SkillDef(
-    id: 'cheat_apartment',
+    id: SkillId.cheatApartment,
     iconPath: AssetPaths.iconHouse,
     name: (strings) => strings.itemCheatApartment,
     quip: (strings) => strings.quipCheatApartment,
@@ -28,10 +29,10 @@ final List<SkillDef> skillCatalog = [
     incomePerSecond: 5,
     tier: 1,
     branch: 0,
-    requires: 'hire_cleaner',
+    requires: SkillId.hireCleaner,
   ),
   SkillDef(
-    id: 'taxi_rides',
+    id: SkillId.taxiRides,
     iconPath: AssetPaths.iconStopwatch,
     name: (strings) => strings.itemTaxiRides,
     quip: (strings) => strings.quipTaxiRides,
@@ -42,10 +43,10 @@ final List<SkillDef> skillCatalog = [
     incomePerSecond: 30,
     tier: 2,
     branch: 0,
-    requires: 'cheat_apartment',
+    requires: SkillId.cheatApartment,
   ),
   SkillDef(
-    id: 'china_trips',
+    id: SkillId.chinaTrips,
     iconPath: AssetPaths.iconShoe,
     name: (strings) => strings.itemChinaTrips,
     quip: (strings) => strings.quipChinaTrips,
@@ -56,10 +57,10 @@ final List<SkillDef> skillCatalog = [
     incomePerSecond: 150,
     tier: 3,
     branch: 0,
-    requires: 'taxi_rides',
+    requires: SkillId.taxiRides,
   ),
   SkillDef(
-    id: 'furnish_palace',
+    id: SkillId.furnishPalace,
     iconPath: AssetPaths.iconTrophy,
     name: (strings) => strings.itemFurnishPalace,
     quip: (strings) => strings.quipFurnishPalace,
@@ -70,10 +71,10 @@ final List<SkillDef> skillCatalog = [
     incomePerSecond: 900,
     tier: 4,
     branch: 0,
-    requires: 'china_trips',
+    requires: SkillId.chinaTrips,
   ),
   SkillDef(
-    id: 'write_book',
+    id: SkillId.writeBook,
     iconPath: AssetPaths.iconBook,
     name: (strings) => strings.itemWriteBook,
     quip: (strings) => strings.quipWriteBook,
@@ -84,10 +85,10 @@ final List<SkillDef> skillCatalog = [
     clickBonus: 1,
     tier: 1,
     branch: 1,
-    requires: 'hire_cleaner',
+    requires: SkillId.hireCleaner,
   ),
   SkillDef(
-    id: 'lower_taxes',
+    id: SkillId.lowerTaxes,
     iconPath: AssetPaths.iconDiamond,
     name: (strings) => strings.itemLowerTaxes,
     quip: (strings) => strings.quipLowerTaxes,
@@ -99,10 +100,10 @@ final List<SkillDef> skillCatalog = [
     clickBonus: 2,
     tier: 2,
     branch: 1,
-    requires: 'write_book',
+    requires: SkillId.writeBook,
   ),
   SkillDef(
-    id: 'break_promise',
+    id: SkillId.breakPromise,
     iconPath: AssetPaths.iconBrokenHeart,
     name: (strings) => strings.itemBreakPromise,
     quip: (strings) => strings.quipBreakPromise,
@@ -113,10 +114,10 @@ final List<SkillDef> skillCatalog = [
     clickBonus: 5,
     tier: 3,
     branch: 1,
-    requires: 'lower_taxes',
+    requires: SkillId.lowerTaxes,
   ),
   SkillDef(
-    id: 'cut_sick_leave',
+    id: SkillId.cutSickLeave,
     iconPath: AssetPaths.iconCalendar,
     name: (strings) => strings.itemCutSickLeave,
     quip: (strings) => strings.quipCutSickLeave,
@@ -127,10 +128,10 @@ final List<SkillDef> skillCatalog = [
     clickBonus: 10,
     tier: 4,
     branch: 1,
-    requires: 'break_promise',
+    requires: SkillId.breakPromise,
   ),
   SkillDef(
-    id: 'privatize_schools',
+    id: SkillId.privatizeSchools,
     iconPath: AssetPaths.iconPencil,
     name: (strings) => strings.itemPrivatizeSchools,
     quip: (strings) => strings.quipPrivatizeSchools,
@@ -141,10 +142,10 @@ final List<SkillDef> skillCatalog = [
     incomePerSecond: 100,
     tier: 1,
     branch: 2,
-    requires: 'hire_cleaner',
+    requires: SkillId.hireCleaner,
   ),
   SkillDef(
-    id: 'privatize_hospitals',
+    id: SkillId.privatizeHospitals,
     iconPath: AssetPaths.iconPotion,
     name: (strings) => strings.itemPrivatizeHospitals,
     quip: (strings) => strings.quipPrivatizeHospitals,
@@ -155,10 +156,10 @@ final List<SkillDef> skillCatalog = [
     incomePerSecond: 450,
     tier: 2,
     branch: 2,
-    requires: 'privatize_schools',
+    requires: SkillId.privatizeSchools,
   ),
   SkillDef(
-    id: 'sell_preschools',
+    id: SkillId.sellPreschools,
     iconPath: AssetPaths.iconBabyClothes,
     name: (strings) => strings.itemSellPreschools,
     quip: (strings) => strings.quipSellPreschools,
@@ -169,10 +170,10 @@ final List<SkillDef> skillCatalog = [
     incomePerSecond: 2200,
     tier: 3,
     branch: 2,
-    requires: 'privatize_hospitals',
+    requires: SkillId.privatizeHospitals,
   ),
   SkillDef(
-    id: 'sell_public_housing',
+    id: SkillId.sellPublicHousing,
     iconPath: AssetPaths.iconEnvelope,
     name: (strings) => strings.itemSellPublicHousing,
     quip: (strings) => strings.quipSellPublicHousing,
@@ -183,9 +184,9 @@ final List<SkillDef> skillCatalog = [
     incomePerSecond: 11000,
     tier: 4,
     branch: 2,
-    requires: 'sell_preschools',
+    requires: SkillId.sellPreschools,
   ),
 ];
 
-SkillDef skillById(String id) =>
+SkillDef skillById(SkillId id) =>
     skillCatalog.firstWhere((skill) => skill.id == id);

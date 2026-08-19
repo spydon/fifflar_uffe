@@ -1,3 +1,4 @@
+import 'package:fifflar_uffe/model/skill_id.dart';
 import 'package:fifflar_uffe/services/i18n.dart';
 import 'package:fifflar_uffe/services/persistence_service.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -22,7 +23,7 @@ void main() {
       elapsedDays: 42.5,
       highScore: 999.9,
       continued: true,
-      owned: {'lower_taxes': 3},
+      owned: {SkillId.lowerTaxes: 3},
     );
     await service.saveLanguage(AppLanguage.en);
     final save = service.load();
@@ -31,7 +32,7 @@ void main() {
     expect(save.elapsedDays, 42.5);
     expect(save.highScore, 999.9);
     expect(save.continued, isTrue);
-    expect(save.owned, {'lower_taxes': 3});
+    expect(save.owned, {SkillId.lowerTaxes: 3});
     expect(save.language, AppLanguage.en);
   });
 
@@ -46,7 +47,7 @@ void main() {
     expect(save.elapsedDays, 0);
     expect(save.highScore, 0);
     expect(save.continued, isFalse);
-    expect(save.owned, {'lower_taxes': 1});
+    expect(save.owned, {SkillId.lowerTaxes: 1});
   });
 
   test('falls back to defaults on corrupt save data', () async {
