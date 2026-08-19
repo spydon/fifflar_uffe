@@ -31,6 +31,11 @@ abstract class Strings {
   String get quipPrivatizeHospitals;
   String get quipSellPreschools;
   String get quipSellPublicHousing;
+  String get gameOverTitle;
+  String get finalScore;
+  String get highScoreLabel;
+  String get playAgain;
+  String formatDate(DateTime date);
 }
 
 class SvStrings extends Strings {
@@ -104,6 +109,33 @@ class SvStrings extends Strings {
   String get quipSellPreschools => 'Såld! Långt under marknadspris.';
   @override
   String get quipSellPublicHousing => 'Tack för lägenheten!';
+  @override
+  String get gameOverTitle => 'Nu är det slutfifflat!';
+  @override
+  String get finalScore => 'Slutresultat';
+  @override
+  String get highScoreLabel => 'Rekord';
+  @override
+  String get playAgain => 'Fiffla igen';
+
+  static const _months = [
+    'jan',
+    'feb',
+    'mar',
+    'apr',
+    'maj',
+    'jun',
+    'jul',
+    'aug',
+    'sep',
+    'okt',
+    'nov',
+    'dec',
+  ];
+
+  @override
+  String formatDate(DateTime date) =>
+      '${date.day} ${_months[date.month - 1]} ${date.year}';
 }
 
 class EnStrings extends Strings {
@@ -177,4 +209,31 @@ class EnStrings extends Strings {
   String get quipSellPreschools => 'Sold! Well below market value.';
   @override
   String get quipSellPublicHousing => 'Thanks for the apartment!';
+  @override
+  String get gameOverTitle => 'The fiddling is over!';
+  @override
+  String get finalScore => 'Final score';
+  @override
+  String get highScoreLabel => 'High score';
+  @override
+  String get playAgain => 'Fiddle again';
+
+  static const _months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+
+  @override
+  String formatDate(DateTime date) =>
+      '${_months[date.month - 1]} ${date.day}, ${date.year}';
 }

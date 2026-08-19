@@ -5,14 +5,17 @@ import 'package:fifflar_uffe/model/shop_item.dart';
 import 'package:flutter/foundation.dart';
 
 class Economy extends ChangeNotifier {
-  Economy({this._balance = 0, Map<String, int>? owned})
+  Economy({this._balance = 0, this._totalEarned = 0, Map<String, int>? owned})
     : _owned = Map.of(owned ?? {});
 
   double _balance;
+  double _totalEarned;
   final Map<String, int> _owned;
   double baseClickValue = 1;
 
   double get balance => _balance;
+
+  double get totalEarned => _totalEarned;
 
   int get clickMultiplier => shopCatalog
       .where((item) => item.isClickMultiplier)
@@ -37,6 +40,7 @@ class Economy extends ChangeNotifier {
 
   void earnClick() {
     _balance += clickValue;
+    _totalEarned += clickValue;
     notifyListeners();
   }
 
@@ -44,8 +48,16 @@ class Economy extends ChangeNotifier {
     final income = incomePerSecond * seconds;
     if (income > 0) {
       _balance += income;
+      _totalEarned += income;
       notifyListeners();
     }
+  }
+
+  void reset() {
+    _balance = 0;
+    _totalEarned = 0;
+    _owned.clear();
+    notifyListeners();
   }
 
   bool buy(ShopItemDef item) {
