@@ -13,7 +13,7 @@ class AboutRoute extends Route {
 }
 
 class AboutPage extends ModalPage {
-  AboutPage() : super(designSize: Vector2(700, 280));
+  AboutPage() : super(designSize: Vector2(520, 280));
 
   late final SpriteComponent _background;
   late final LocalizedTextBoxComponent _satire;
