@@ -10,7 +10,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class EventCardComponent extends PositionComponent
     with HasGameReference<FifflarUffeGame> {
-  EventCardComponent({required this.event}) : super(size: Vector2(320, 140));
+  EventCardComponent({required this.event}) : super(size: Vector2(320, 172));
 
   static const double _displayDuration = 15;
   static const double _padding = 20;
@@ -38,7 +38,7 @@ class EventCardComponent extends PositionComponent
       _EventLink(
         text: event.source,
         url: event.url,
-        position: Vector2(_padding + 8, 96),
+        position: Vector2(_padding + 8, 132),
       ),
       TimerComponent(
         period: _displayDuration,

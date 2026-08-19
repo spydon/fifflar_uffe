@@ -3,6 +3,7 @@ abstract class Strings {
 
   String get pauseTitle;
   String get resume;
+  String get restart;
   String get settings;
   String get settingsTitle;
   String get skillTreeTitle;
@@ -73,6 +74,8 @@ class SvStrings extends Strings {
   String get pauseTitle => 'Pausat';
   @override
   String get resume => 'Fortsätt';
+  @override
+  String get restart => 'Börja om';
   @override
   String get settings => 'Inställningar';
   @override
@@ -281,6 +284,8 @@ class EnStrings extends Strings {
   String get pauseTitle => 'Paused';
   @override
   String get resume => 'Resume';
+  @override
+  String get restart => 'Start over';
   @override
   String get settings => 'Settings';
   @override
