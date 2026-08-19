@@ -57,6 +57,20 @@
       }
     },
     {
+      "id": "krogkvallen",
+      "date": "2007-10-29",
+      "source": "SVT Nyheter",
+      "url": "https://www.svt.se/nyheter/inrikes/ministrarna-som-avgick",
+      "title": {
+        "sv": "Krogkvällen",
+        "en": "The bar night"
+      },
+      "body": {
+        "sv": "Statsministerns statssekreterare avgår efter en våt krogkväll, mitt under sin beredskap för regeringens krishantering.",
+        "en": "The prime minister's state secretary resigns after a boozy bar night, while on duty for the government's crisis readiness."
+      }
+    },
+    {
       "id": "vin_och_sprit",
       "date": "2008-03-31",
       "source": "Wikipedia",
@@ -141,6 +155,20 @@
       }
     },
     {
+      "id": "saudiaffaren",
+      "date": "2012-03-29",
+      "source": "SVT Nyheter",
+      "url": "https://www.svt.se/nyheter/inrikes/forsvarsminister-sten-tolgfors-avgar-detta-har-hant-efter-ekots-avslojande",
+      "title": {
+        "sv": "Saudiaffären",
+        "en": "The Saudi affair"
+      },
+      "body": {
+        "sv": "Försvarsminister Tolgfors avgår efter Ekots avslöjande att Sverige i hemlighet planerat en vapenfabrik åt Saudiarabien.",
+        "en": "Defence minister Tolgfors resigns after Ekot reveals that Sweden secretly planned a weapons factory for Saudi Arabia."
+      }
+    },
+    {
       "id": "taxinotan",
       "date": "2017-09-15",
       "source": "Morgontidningen",
@@ -155,6 +183,20 @@
       }
     },
     {
+      "id": "mammaboendet",
+      "date": "2019-04-25",
+      "source": "SVT Nyheter",
+      "url": "https://www.svt.se/nyheter/inrikes/m-topp-skrev-sig-hos-sin-mamma-fick-158-000-i-ersattning",
+      "title": {
+        "sv": "Skriven hos mamma",
+        "en": "Registered at mom's"
+      },
+      "body": {
+        "sv": "Moderattoppen Erik Bengtzboe har skrivit sig hos sin mamma och fått 158 000 kronor i ersättning. Han lämnar riksdagen.",
+        "en": "Moderate top name Erik Bengtzboe registered at his mother's address and collected 158 000 kronor in allowances. He leaves parliament."
+      }
+    },
+    {
       "id": "tidoavtalet",
       "date": "2022-10-14",
       "source": "SVT Nyheter",
@@ -166,6 +208,20 @@
       "body": {
         "sv": "Uffe bildar regering på Tidöavtalet med SD, trots löftet till förintelseöverlevaren Hédi Fried.",
         "en": "Uffe forms a government on the Tidö Agreement with SD, despite his promise to Holocaust survivor Hédi Fried."
+      }
+    },
+    {
+      "id": "alfisket",
+      "date": "2023-01-26",
+      "source": "Sveriges Radio",
+      "url": "https://www.sverigesradio.se/artikel/pm-nilsson-avgar-som-statssekreterare-efter-olagliga-alfisket",
+      "title": {
+        "sv": "Ålfisket",
+        "en": "The eel fishing"
+      },
+      "body": {
+        "sv": "Uffes närmaste statssekreterare avgår efter att ha dömts för olagligt ålfiske i Blekinge skärgård.",
+        "en": "Uffe's closest state secretary resigns after being convicted of illegal eel fishing in the Blekinge archipelago."
       }
     },
     {
