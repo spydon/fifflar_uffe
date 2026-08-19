@@ -15,6 +15,8 @@ abstract class Strings {
   String get aboutAttributions;
   String get aboutPhotoCredit;
   String get aboutPhotoSource;
+  String get aboutBackgroundCredit;
+  String get aboutBackgroundSource;
   String get itemCheatApartment;
   String get itemLowerTaxes;
   String get itemPrivatizeSchools;
@@ -61,6 +63,13 @@ class SvStrings extends Strings {
       'CC BY 4.0 (bearbetat).';
   @override
   String get aboutPhotoSource => 'flickr.com/photos/170170135@N07/55170292775';
+  @override
+  String get aboutBackgroundCredit =>
+      'Bakgrund: "Inside Parliament of Sweden 10" av Suyash Dwivedi, '
+      'CC BY-SA 4.0 (bearbetad).';
+  @override
+  String get aboutBackgroundSource =>
+      'commons.wikimedia.org/wiki/File:Inside_Parliament_of_Sweden_10.jpg';
   @override
   String get itemCheatApartment => 'Fiffla till dig en lägenhet';
   @override
@@ -115,6 +124,13 @@ class EnStrings extends Strings {
       'CC BY 4.0 (modified).';
   @override
   String get aboutPhotoSource => 'flickr.com/photos/170170135@N07/55170292775';
+  @override
+  String get aboutBackgroundCredit =>
+      'Background: "Inside Parliament of Sweden 10" by Suyash Dwivedi, '
+      'CC BY-SA 4.0 (modified).';
+  @override
+  String get aboutBackgroundSource =>
+      'commons.wikimedia.org/wiki/File:Inside_Parliament_of_Sweden_10.jpg';
   @override
   String get itemCheatApartment => 'Cheat yourself an apartment';
   @override

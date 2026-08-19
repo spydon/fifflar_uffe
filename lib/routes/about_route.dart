@@ -13,7 +13,7 @@ class AboutRoute extends Route {
 }
 
 class AboutPage extends ModalPage {
-  AboutPage() : super(designSize: Vector2(700, 460));
+  AboutPage() : super(designSize: Vector2(700, 560));
 
   @override
   Future<void> onLoad() async {
@@ -45,18 +45,29 @@ class AboutPage extends ModalPage {
       LocalizedTextComponent(
         selector: (strings) => strings.aboutAttributions,
         textRenderer: TextStyles.body,
-        position: Vector2(left, 245),
+        position: Vector2(left, 235),
       ),
       LocalizedTextBoxComponent(
         selector: (strings) => strings.aboutPhotoCredit,
         textRenderer: TextStyles.paragraph,
         boxConfig: const TextBoxConfig(maxWidth: textWidth),
-        position: Vector2(left, 285),
+        position: Vector2(left, 272),
       ),
       LocalizedTextComponent(
         selector: (strings) => strings.aboutPhotoSource,
         textRenderer: TextStyles.info,
-        position: Vector2(left + 8, 380),
+        position: Vector2(left + 8, 348),
+      ),
+      LocalizedTextBoxComponent(
+        selector: (strings) => strings.aboutBackgroundCredit,
+        textRenderer: TextStyles.paragraph,
+        boxConfig: const TextBoxConfig(maxWidth: textWidth),
+        position: Vector2(left, 388),
+      ),
+      LocalizedTextComponent(
+        selector: (strings) => strings.aboutBackgroundSource,
+        textRenderer: TextStyles.info,
+        position: Vector2(left + 8, 470),
       ),
     ]);
   }

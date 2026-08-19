@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:fifflar_uffe/components/background_component.dart';
 import 'package:fifflar_uffe/components/building_component.dart';
 import 'package:fifflar_uffe/components/income_component.dart';
 import 'package:fifflar_uffe/components/money_component.dart';
@@ -34,7 +35,7 @@ class PlayWorld extends World with HasGameReference<FifflarUffeGame> {
       area: Rectangle.fromRect(playRect),
       spawnWhenLoaded: true,
     );
-    addAll([_spawner!, IncomeComponent()]);
+    addAll([BackgroundComponent(), _spawner!, IncomeComponent()]);
     _syncBuildings();
   }
 
