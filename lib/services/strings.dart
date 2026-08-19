@@ -232,7 +232,7 @@ class SvStrings extends Strings {
   @override
   String voteAppeal(String date) =>
       'Den $date är det val, se till att rösta på ett parti som jobbar '
-      'för att det ska bli bättre för folket, inte bara för sig själv '
+      'för att det ska bli bättre för folket, inte bara för sig själva '
       'och sina vänner.';
 
   static const _months = [
