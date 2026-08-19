@@ -25,7 +25,6 @@ class SkillDetailPage extends ModalPage {
 
   static const double _labelX = 158;
   static const double _valueX = 272;
-  static const List<double> _rowYs = [58, 88, 118, 148];
 
   late final PanelComponent _background;
   late final List<TextComponent> _labels;
@@ -33,27 +32,45 @@ class SkillDetailPage extends ModalPage {
   late final LocalizedTextBoxComponent _explanation;
   late final LocalizedLinkComponent _sourceLink;
   late final GameButton _buyButton;
+  late final TextPaint _valueStyle;
+  late final TextPaint _valueMutedStyle;
 
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    if (isNarrowScreen) {
+    final narrow = isNarrowScreen;
+    if (narrow) {
       resizePanel(Vector2(460, designSize.y));
     }
-    final valueX = isNarrowScreen ? 240.0 : _valueX;
+    final labelStyle = narrow
+        ? TextStyles.enlarged(TextStyles.statLabel, 1.2)
+        : TextStyles.statLabel;
+    _valueStyle = narrow
+        ? TextStyles.enlarged(TextStyles.statValue, 1.2)
+        : TextStyles.statValue;
+    _valueMutedStyle = narrow
+        ? TextStyles.enlarged(TextStyles.statValueMuted, 1.2)
+        : TextStyles.statValueMuted;
+    final valueX = narrow ? 230.0 : _valueX;
+    final labelPositions = [
+      Vector2(_labelX, 58),
+      Vector2(_labelX, narrow ? 92 : 88),
+      Vector2(_labelX, narrow ? 126 : 118),
+      if (narrow) Vector2(48, 164) else Vector2(_labelX, 148),
+    ];
+    final valuePositions = [
+      Vector2(valueX, 58),
+      Vector2(valueX, narrow ? 92 : 88),
+      Vector2(valueX, narrow ? 126 : 118),
+      if (narrow) Vector2(146, 164) else Vector2(_valueX, 148),
+    ];
     _labels = [
-      for (final y in _rowYs)
-        TextComponent(
-          textRenderer: TextStyles.statLabel,
-          position: Vector2(_labelX, y),
-        ),
+      for (final position in labelPositions)
+        TextComponent(textRenderer: labelStyle, position: position),
     ];
     _values = [
-      for (final y in _rowYs)
-        TextComponent(
-          textRenderer: TextStyles.statValue,
-          position: Vector2(valueX, y),
-        ),
+      for (final position in valuePositions)
+        TextComponent(textRenderer: _valueStyle, position: position),
     ];
     panel.addAll([
       _background = PanelComponent(size: designSize.clone()),
@@ -83,13 +100,18 @@ class SkillDetailPage extends ModalPage {
       ..._values,
       _explanation = LocalizedTextBoxComponent(
         selector: skill.explanation,
-        textRenderer: TextStyles.paragraph,
+        textRenderer: narrow
+            ? TextStyles.enlarged(TextStyles.paragraph, 1.25)
+            : TextStyles.paragraph,
         boxConfig: TextBoxConfig(maxWidth: designSize.x - 96),
-        position: Vector2(48, 172),
+        position: Vector2(48, narrow ? 204 : 172),
       ),
       _sourceLink = LocalizedLinkComponent(
         selector: (strings) => '${strings.sourceLabel}: ${skill.source}',
         url: skill.sourceUrl,
+        textRenderer: narrow
+            ? TextStyles.enlarged(TextStyles.eventLink, 1.3)
+            : TextStyles.eventLink,
         position: Vector2(56, 428),
       ),
       _buyButton = GameButton(
@@ -147,8 +169,8 @@ class SkillDetailPage extends ModalPage {
     _labels[0].text = strings.priceLabel;
     _values[0].text = formatSek(economy.priceOf(skill));
     _values[0].textRenderer = economy.canAfford(skill)
-        ? TextStyles.statValue
-        : TextStyles.statValueMuted;
+        ? _valueStyle
+        : _valueMutedStyle;
     _labels[1].text = strings.owned;
     _values[1].text = '${economy.ownedCount(skill)}';
     _labels[2].text = strings.givesLabel;

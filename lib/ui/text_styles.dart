@@ -4,6 +4,10 @@ import 'package:flutter/painting.dart';
 class TextStyles {
   TextStyles._();
 
+  static TextPaint enlarged(TextPaint base, double factor) => TextPaint(
+    style: base.style.copyWith(fontSize: base.style.fontSize! * factor),
+  );
+
   static const Color brown = Color(0xFF5B4632);
   static const Color lightBrown = Color(0xFF8A7156);
 

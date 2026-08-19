@@ -11,6 +11,7 @@ class LocalizedLinkComponent extends PositionComponent
   LocalizedLinkComponent({
     required this.selector,
     required this.url,
+    this.textRenderer,
     super.position,
     super.anchor,
     super.priority,
@@ -18,6 +19,7 @@ class LocalizedLinkComponent extends PositionComponent
 
   final String Function(Strings strings) selector;
   final String url;
+  final TextPaint? textRenderer;
 
   late final LocalizedTextComponent _text;
 
@@ -25,7 +27,7 @@ class LocalizedLinkComponent extends PositionComponent
   Future<void> onLoad() async {
     _text = LocalizedTextComponent(
       selector: selector,
-      textRenderer: TextStyles.eventLink,
+      textRenderer: textRenderer ?? TextStyles.eventLink,
     );
     _text.size.addListener(() => size.setFrom(_text.size));
     add(_text);

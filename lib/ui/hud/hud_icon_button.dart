@@ -1,5 +1,6 @@
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
+import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
 import 'package:flutter/widgets.dart' hide Route;
@@ -30,6 +31,11 @@ class HudIconButton extends HudMarginComponent
         defaultLabel: SpriteComponent(
           sprite: Sprite(game.images.fromCache(iconPath)),
           size: Vector2.all(34),
+          paint: Paint()
+            ..colorFilter = const ColorFilter.mode(
+              TextStyles.brown,
+              BlendMode.srcIn,
+            ),
         ),
         onPressed: onPressed,
       ),

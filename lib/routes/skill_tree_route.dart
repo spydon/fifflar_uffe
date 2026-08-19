@@ -153,6 +153,7 @@ class SkillNodeComponent extends PositionComponent
 
   void _refresh() {
     final economy = game.economy;
+    final narrow = game.size.x < 560;
     final unlocked = economy.isUnlocked(skill);
     _lock.opacity = unlocked ? 0 : 1;
     _icon.opacity = unlocked ? 1 : 0.3;
@@ -160,8 +161,11 @@ class SkillNodeComponent extends PositionComponent
         ? '${economy.ownedCount(skill)}'
         : '';
     _price.text = unlocked ? formatSek(economy.priceOf(skill)) : '';
-    _price.textRenderer = economy.canAfford(skill)
+    final priceStyle = economy.canAfford(skill)
         ? TextStyles.treePrice
         : TextStyles.treePriceDisabled;
+    _price.textRenderer = narrow
+        ? TextStyles.enlarged(priceStyle, 1.25)
+        : priceStyle;
   }
 }
