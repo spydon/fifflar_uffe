@@ -245,7 +245,7 @@ class SvStrings extends Strings {
   String voteAppeal(String date) =>
       'Den $date är det val, se till att rösta på ett parti som jobbar '
       'för att det ska bli bättre för folket, inte bara för sig själva '
-      'och sina vänner.';
+      'och sina vänner/kumpaner.';
 
   static const _months = [
     'jan',
@@ -465,7 +465,7 @@ class EnStrings extends Strings {
   String voteAppeal(String date) =>
       'On $date there is an election. Make sure to vote for a party '
       'that works to make things better for the people, not just for '
-      'itself and its friends.';
+      'itself and its friends/cronies.';
 
   static const _months = [
     'Jan',
