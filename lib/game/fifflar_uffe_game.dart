@@ -34,9 +34,19 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
   late final UffeComponent uffe;
   late final EventFeedComponent eventFeed;
 
+  static const double _maxDeltaTime = 5;
+
   double highScore = 0;
   bool _dirty = false;
   bool _gameOver = false;
+
+  @override
+  void update(double dt) {
+    if (dt > _maxDeltaTime) {
+      return;
+    }
+    super.update(dt);
+  }
 
   @override
   Future<void> onLoad() async {
