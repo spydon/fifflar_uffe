@@ -17,15 +17,15 @@
     {
       "id": "svart_stadhjalp",
       "date": "2001-06-01",
-      "source": "Dagens Arena",
-      "url": "https://www.dagensarena.se/innehall/ulf-kristersson-kritiserad-forr/",
+      "source": "SVT Nyheter",
+      "url": "https://www.svt.se/nyheter/inrikes/det-har-kanske-du-inte-visste-om-ulf-kristersson",
       "title": {
         "sv": "Svart städhjälp",
         "en": "Undeclared cleaning help"
       },
       "body": {
-        "sv": "Uffe betalar städhjälpen svart i sex månader.",
-        "en": "Uffe pays his cleaner under the table for six months."
+        "sv": "Uffe betalar städhjälpen svart.",
+        "en": "Uffe pays his cleaner under the table."
       }
     },
     {
@@ -45,8 +45,8 @@
     {
       "id": "minister_avgangar",
       "date": "2006-10-14",
-      "source": "Flamman",
-      "url": "https://www.flamman.se/skandalerna-som-skakat-m/",
+      "source": "SVT Nyheter",
+      "url": "https://www.svt.se/nyheter/inrikes/ministrarna-som-avgick",
       "title": {
         "sv": "Ministrarna faller",
         "en": "The ministers fall"
@@ -94,8 +94,8 @@
         "en": "The health center at scrap price"
       },
       "body": {
-        "sv": "Serafens vårdcentral säljs till sex läkare för 694 500 kronor och säljs vidare för runt 20 miljoner. Domstol fann att affären bröt mot kommunallagen.",
-        "en": "The Serafen health center is sold to six doctors for 694 500 kronor and resold for around 20 million. A court found the deal broke municipal law."
+        "sv": "Serafens vårdcentral säljs till sex läkare för 694 500 kronor (säljs vidare några år senare för runt 20 miljoner).",
+        "en": "The Serafen health center is sold to six doctors for 694 500 kronor (resold a few years later for around 20 million)."
       }
     },
     {
@@ -122,36 +122,50 @@
         "en": "The spin-offs"
       },
       "body": {
-        "sv": "Stockholm säljer förskolor och hemtjänst till personal långt under värdet. Vantörs hemtjänst går för 69 500 kronor.",
-        "en": "Stockholm sells preschools and home care to staff far below value. Vantör home care goes for 69 500 kronor."
+        "sv": "Stockholm säljer förskolor och hemtjänst till personal långt under värdet. Vantörs hemtjänst går för 69 500 kronor (köparna gör 9,4 miljoner i vinst på två år).",
+        "en": "Stockholm sells preschools and home care to staff far below value. Vantör home care goes for 69 500 kronor (the buyers make 9.4 million in profit in two years)."
       }
     },
     {
       "id": "allmannyttan_reas",
-      "date": "2008-09-01",
-      "source": "Dagens Arena",
-      "url": "https://www.dagensarena.se/essa/40-ar-av-privatiserad-allmannytta-stockholm/",
+      "date": "2008-03-18",
+      "source": "Sveriges Radio",
+      "url": "https://www.sverigesradio.se/artikel/1960541",
       "title": {
         "sv": "Allmännyttan reas ut",
         "en": "Public housing on sale"
       },
       "body": {
-        "sv": "Över tusen allmännyttiga lägenheter säljs till Einar Mattsson för 6 600 kronor per kvadratmeter.",
-        "en": "Over a thousand public housing apartments are sold to Einar Mattsson for 6 600 kronor per square meter."
+        "sv": "Svenska Bostäders 1 200 lägenheter i Hjulsta säljs till Einar Mattsson för 600 miljoner kronor (2025 köper staden tillbaka dem för 1,4 miljarder).",
+        "en": "Svenska Bostäder's 1 200 apartments in Hjulsta are sold to Einar Mattsson for 600 million kronor (in 2025 the city buys them back for 1.4 billion)."
       }
     },
     {
       "id": "kinaresorna",
-      "date": "2009-06-01",
-      "source": "Aktuellt Fokus",
-      "url": "https://aktuelltfokus.se/ulf-kristerssons-varsta-korruptions-skandaler/",
+      "date": "2007-08-01",
+      "source": "Dagens Arena",
+      "url": "https://www.dagensarena.se/innehall/ulf-kristersson-kritiserad-forr/",
       "title": {
         "sv": "Kinaresorna",
         "en": "The China trips"
       },
       "body": {
-        "sv": "Socialborgarrådet Uffe gör tre Kinaresor på ett år för 128 000 kronor av skattemedel.",
-        "en": "As social services commissioner, Uffe makes three China trips in one year for 128 000 kronor of taxpayer money."
+        "sv": "Socialborgarrådet Uffe reser till Kina var tredje månad, för 128 000 kronor av skattemedel.",
+        "en": "As social services commissioner, Uffe travels to China every third month, for 128 000 kronor of taxpayer money."
+      }
+    },
+    {
+      "id": "nuonaffaren",
+      "date": "2009-06-01",
+      "source": "SVT Nyheter",
+      "url": "https://www.svt.se/nyheter/inrikes/olofsson-varandes-for-nej-till-nuon",
+      "title": {
+        "sv": "Nuonaffären",
+        "en": "The Nuon deal"
+      },
+      "body": {
+        "sv": "Statliga Vattenfall köper holländska Nuon för 97 miljarder kronor, trots tjänstemännens varningar om att priset är runt 30 miljarder för högt (skrivs senare ned med över 30 miljarder).",
+        "en": "State-owned Vattenfall buys Dutch Nuon for 97 billion kronor, despite officials warning the price is around 30 billion too high (later written down by over 30 billion)."
       }
     },
     {
@@ -170,9 +184,9 @@
     },
     {
       "id": "graddfilslagenheten",
-      "date": "2010-03-01",
-      "source": "Aktuellt Fokus",
-      "url": "https://aktuelltfokus.se/ulf-kristerssons-varsta-korruptions-skandaler/",
+      "date": "2010-10-06",
+      "source": "SVT Nyheter",
+      "url": "https://www.svt.se/nyheter/inrikes/nya-ministern-fick-hyresratt-genom-kontakter",
       "title": {
         "sv": "Lägenhet i gräddfilen",
         "en": "An apartment past the queue"
@@ -185,15 +199,15 @@
     {
       "id": "stupstocken",
       "date": "2010-10-05",
-      "source": "Equal",
-      "url": "https://equalsthlm.se/artiklar/ulf-kristerssons-sjukpenningspolitik-misslyckades/",
+      "source": "SVT Nyheter",
+      "url": "https://www.svt.se/nyheter/inrikes/ministern-gransen-for-utforsakring-ska-bort",
       "title": {
         "sv": "Stupstocken",
         "en": "The sick leave cliff"
       },
       "body": {
-        "sv": "Runt 100 000 långtidssjuka utförsäkras. Socialförsäkringsminister Uffe försvarar tidsgränsen.",
-        "en": "Around 100 000 long-term sick people are cut off. Social insurance minister Uffe defends the time limit."
+        "sv": "Långtidssjuka börjar utförsäkras vid sjukförsäkringens bortre tidsgräns. Socialförsäkringsminister Uffe försvarar stupstocken.",
+        "en": "Long-term sick people start being cut off at the sickness insurance time limit. Social insurance minister Uffe defends the cliff."
       }
     },
     {
@@ -208,6 +222,20 @@
       "body": {
         "sv": "Vanvård avslöjas på privatdrivna äldreboenden: undernärda boende och nedskuren personal, medan vinsterna går till skatteparadis.",
         "en": "Neglect is exposed at privately run elderly homes: malnourished residents and slashed staffing, while the profits go to tax havens."
+      }
+    },
+    {
+      "id": "saab_konkurs",
+      "date": "2011-12-19",
+      "source": "SVT Nyheter",
+      "url": "https://www.svt.se/nyheter/granskning/ug/spelet-bakom-saabs-konkurs",
+      "title": {
+        "sv": "Saab går i konkurs",
+        "en": "Saab goes bankrupt"
+      },
+      "body": {
+        "sv": "Saab Automobile i Trollhättan försätts i konkurs och 3 500 anställda förlorar jobben, efter att regeringen vägrat statligt övertagande.",
+        "en": "Saab Automobile in Trollhättan is declared bankrupt and 3 500 employees lose their jobs, after the government refused a state takeover."
       }
     },
     {
@@ -240,9 +268,9 @@
     },
     {
       "id": "taxinotan",
-      "date": "2017-09-15",
-      "source": "Morgontidningen",
-      "url": "https://morgontidningen.se/2025/01/ulf-kristersson-skandaler/",
+      "date": "2017-09-29",
+      "source": "SVT Nyheter",
+      "url": "https://www.svt.se/nyheter/lokalt/sormland/manga-taxiresor-for-kristersson",
       "title": {
         "sv": "Taxinotan",
         "en": "The taxi bill"
@@ -281,6 +309,20 @@
       }
     },
     {
+      "id": "landerholm_utnamning",
+      "date": "2022-11-10",
+      "source": "Göteborgs-Posten",
+      "url": "https://www.gp.se/politik/turerna-kring-henrik-landerholm-detta-har-hant.ed7b0eeb-e955-4685-85bb-9a35c879170c",
+      "title": {
+        "sv": "Barndomsvännen får jobbet",
+        "en": "The childhood friend gets the job"
+      },
+      "body": {
+        "sv": "Uffe handplockar barndomsvännen Henrik Landerholm till Sveriges första nationella säkerhetsrådgivare, med 110 000 kronor i månadslön.",
+        "en": "Uffe handpicks his childhood friend Henrik Landerholm as Sweden's first national security advisor, at 110 000 kronor a month."
+      }
+    },
+    {
       "id": "alfisket",
       "date": "2023-01-26",
       "source": "Sveriges Radio",
@@ -295,6 +337,20 @@
       }
     },
     {
+      "id": "lofving_utredningen",
+      "date": "2023-02-22",
+      "source": "SVT Nyheter",
+      "url": "https://www.svt.se/nyheter/inrikes/harvan-skakade-polisledningen-nu-presenteras-utredningen",
+      "title": {
+        "sv": "Jäv i polistoppen",
+        "en": "Conflict of interest at the police top"
+      },
+      "body": {
+        "sv": "En oberoende utredning finner att vice rikspolischefen Mats Löfving var jävig i flera beslut som gynnade underrättelsechefen Linda Staaf, bland annat om hennes lön.",
+        "en": "An independent inquiry finds that Deputy National Police Commissioner Mats Löfving acted under conflict of interest in several decisions favoring intelligence chief Linda Staaf, including her salary."
+      }
+    },
+    {
       "id": "sagerska_notan",
       "date": "2023-06-01",
       "source": "Eskilstuna-Kuriren",
@@ -306,6 +362,90 @@
       "body": {
         "sv": "Statsministerns tjänstebostad möbleras för runt en halv miljon av skattemedel, med en trasmatta för 60 000 kronor.",
         "en": "The prime minister's residence is furnished for about half a million of taxpayer money, including a 60 000 kronor rag rug."
+      }
+    },
+    {
+      "id": "landerholm_avgang",
+      "date": "2025-01-27",
+      "source": "TV4 Nyheterna",
+      "url": "https://www.tv4.se/artikel/tt-250228-landerholm-bc0ebe97/landerholms-glomda-dokument-rorde-rikets-sakerhet",
+      "title": {
+        "sv": "Säkerhetsrådgivaren avgår",
+        "en": "The security advisor resigns"
+      },
+      "body": {
+        "sv": "Landerholm avgår efter att ha glömt mobilen på Ungerns ambassad, anteckningsboken på Sveriges Radio och hemliga dokument i ett olåst skåp på en kursgård.",
+        "en": "Landerholm resigns after forgetting his phone at Hungary's embassy, his notebook at Swedish Radio, and classified documents in an unlocked cabinet at a conference center."
+      }
+    },
+    {
+      "id": "ministeraktier",
+      "date": "2025-03-07",
+      "source": "Sveriges Radio",
+      "url": "https://www.sverigesradio.se/artikel/ministern-kopte-forsvarsaktier-nar-sverige-forhandlade-om-miljardaffar",
+      "title": {
+        "sv": "Ministerns aktieklipp",
+        "en": "The minister's stock move"
+      },
+      "body": {
+        "sv": "Ekot avslöjar att minister Maria Malmer Stenergard köpt aktier i försvarsbolaget Mildef och sedan deltagit i regeringsbeslut om stridsfordon, mitt under en affär värd 25 miljarder. Aktien tredubblas.",
+        "en": "Ekot reveals that minister Maria Malmer Stenergard bought shares in defense company Mildef and then took part in a government decision on combat vehicles, amid a 25 billion kronor deal. The stock triples."
+      }
+    },
+    {
+      "id": "aktieriktlinjer",
+      "date": "2025-12-09",
+      "source": "Sveriges Radio",
+      "url": "https://www.sverigesradio.se/artikel/efter-ekots-avslojanden-om-aktieaffarer-nya-riktlinjer-for-ministrar",
+      "title": {
+        "sv": "Nya aktieregler för ministrar",
+        "en": "New stock rules for ministers"
+      },
+      "body": {
+        "sv": "Efter ett år där fyra ministrar kritiserats och tre KU-anmälts för sina aktieaffärer skärper regeringen riktlinjerna. Experter: fortfarande inte tillräckligt.",
+        "en": "After a year in which four ministers were criticized and three reported to the Constitution Committee over their stock trades, the government tightens its guidelines. Experts: still not enough."
+      }
+    },
+    {
+      "id": "teach_for_sweden",
+      "date": "2026-04-09",
+      "source": "SVT Nyheter",
+      "url": "https://www.svt.se/nyheter/inrikes/miljoner-till-kristerssons-svagerskas-stiftelse-delikatessjav",
+      "title": {
+        "sv": "Svägerskans stiftelse",
+        "en": "The sister-in-law's foundation"
+      },
+      "body": {
+        "sv": "Regeringen, med Uffe i rummet, ger 12 extra miljoner till Teach for Sweden, där Uffes svägerska sitter i styrelsen. Professor i förvaltningsrätt: delikatessjäv.",
+        "en": "The government, with Uffe in the room, hands an extra 12 million to Teach for Sweden, where Uffe's sister-in-law sits on the board. A law professor calls it a textbook conflict of interest."
+      }
+    },
+    {
+      "id": "fallokna",
+      "date": "2026-06-09",
+      "source": "SVT Nyheter",
+      "url": "https://www.svt.se/nyheter/inrikes/fallokna-haller-pa-att-bli-en-belastning-for-kristersson",
+      "title": {
+        "sv": "Gratisjobbarna på Fållökna",
+        "en": "The free labor at Fållökna"
+      },
+      "body": {
+        "sv": "Volontärer, även höga statstjänstemän, jobbar gratis på statsministerparets herrgård Fållökna i utbyte mot utlovat nätverkande. Flera får sedan statliga toppjobb.",
+        "en": "Volunteers, including senior state officials, work for free at the prime minister couple's Fållökna manor in exchange for promised networking. Several then land top state jobs."
+      }
+    },
+    {
+      "id": "prastjobbet",
+      "date": "2026-07-06",
+      "source": "SVT Nyheter",
+      "url": "https://www.svt.se/nyheter/inrikes/birgitta-ed-fick-prastjobb-utan-oppen-rekrytering",
+      "title": {
+        "sv": "Skräddarsydd prästtjänst",
+        "en": "A tailor-made priest job"
+      },
+      "body": {
+        "sv": "Birgitta Ed får en prästtjänst i Strängnäs domkyrkoförsamling som skapats utan utannonsering. Antal sökande: en.",
+        "en": "Birgitta Ed gets a priest position at Strängnäs cathedral parish created without being advertised. Number of applicants: one."
       }
     }
   ]
