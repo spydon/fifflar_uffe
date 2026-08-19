@@ -225,6 +225,20 @@
       }
     },
     {
+      "id": "bilprovningen",
+      "date": "2012-11-05",
+      "source": "Wikipedia",
+      "url": "https://sv.wikipedia.org/wiki/Bilprovningen",
+      "title": {
+        "sv": "Bilprovningen styckas",
+        "en": "Bilprovningen is carved up"
+      },
+      "body": {
+        "sv": "Sjuttio av Bilprovningens stationer säljs till Opus, delägt via Cypern, för 375 miljoner kronor med säljarkredit.",
+        "en": "Seventy of Bilprovningen's inspection stations are sold to Opus, partly owned via Cyprus, for 375 million kronor on a seller's credit."
+      }
+    },
+    {
       "id": "taxinotan",
       "date": "2017-09-15",
       "source": "Morgontidningen",
