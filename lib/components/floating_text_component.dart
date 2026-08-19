@@ -11,19 +11,37 @@ class FloatingTextComponent extends TextComponent {
         textRenderer: TextStyles.floating,
       );
 
+  static const double _lifetime = 0.8;
+  static const double _fadeStart = 0.3;
+
+  double _age = 0;
+
   @override
   void onMount() {
     super.onMount();
-    paint.color = TextStyles.floatingGreen;
-    addAll([
+    add(
       MoveByEffect(
         Vector2(0, -60),
-        EffectController(duration: 0.8, curve: Curves.easeOut),
+        EffectController(duration: _lifetime, curve: Curves.easeOut),
       ),
-      OpacityEffect.fadeOut(
-        EffectController(duration: 0.5, startDelay: 0.3),
-        onComplete: removeFromParent,
-      ),
-    ]);
+    );
+  }
+
+  @override
+  void update(double dt) {
+    super.update(dt);
+    _age += dt;
+    if (_age >= _lifetime) {
+      removeFromParent();
+      return;
+    }
+    if (_age > _fadeStart) {
+      final progress = (_age - _fadeStart) / (_lifetime - _fadeStart);
+      textRenderer = TextPaint(
+        style: TextStyles.floatingStyle.copyWith(
+          color: TextStyles.floatingGreen.withValues(alpha: 1 - progress),
+        ),
+      );
+    }
   }
 }
