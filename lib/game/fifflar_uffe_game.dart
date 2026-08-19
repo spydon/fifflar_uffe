@@ -94,8 +94,8 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
         onPressed: () => router.pushNamed('shop'),
       ),
       ShopHintComponent(),
+      uffe = UffeComponent(),
       router,
-      uffe = UffeComponent(priority: router.priority),
     ]);
 
     add(TimerComponent(period: 5, repeat: true, onTick: _autosave));
@@ -119,6 +119,9 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
       highScore = economy.totalEarned;
     }
     saveNow();
+    while (router.currentRoute != router.routes['home']) {
+      router.pop();
+    }
     router.pushNamed('gameOver');
   }
 
