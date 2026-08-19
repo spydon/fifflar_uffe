@@ -41,6 +41,8 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/Icons/IconsDefault/128px/IconsDefault4_128px.png
+    - assets/images/Icons/IconsDefault/128px/IconsDefault9_128px.png
+    - assets/images/Icons/IconsDefault/128px/IconsDefault35_128px.png
     - assets/images/Icons/IconsDefault/128px/IconsDefault12_128px.png
     - assets/images/Icons/IconsDefault/128px/IconsDefault14_128px.png
     - assets/images/Icons/IconsDefault/128px/IconsDefault21_128px.png

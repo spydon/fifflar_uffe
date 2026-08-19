@@ -8,6 +8,10 @@ class AssetPaths {
   static const iconPause = 'Icons/IconsDefault/128px/IconsDefault21_128px.png';
   static const iconClose = 'Icons/IconsDefault/128px/IconsDefault25_128px.png';
   static const iconCoin = 'Icons/IconsDefault/128px/IconsDefault26_128px.png';
+  static const iconEnvelope =
+      'Icons/IconsDefault/128px/IconsDefault9_128px.png';
+  static const iconBrokenHeart =
+      'Icons/IconsDefault/128px/IconsDefault35_128px.png';
   static const iconPeople = 'Icons/IconsDefault/128px/IconsDefault43_128px.png';
   static const iconPotion = 'Icons/IconsDefault/128px/IconsDefault54_128px.png';
   static const iconBook = 'Icons/IconsDefault/128px/IconsDefault58_128px.png';
@@ -41,6 +45,8 @@ class AssetPaths {
     iconPause,
     iconClose,
     iconCoin,
+    iconEnvelope,
+    iconBrokenHeart,
     iconPeople,
     iconPotion,
     iconBook,

@@ -19,7 +19,7 @@ class ShopRoute extends Route {
 }
 
 class ShopPage extends ModalPage {
-  ShopPage() : super(designSize: Vector2(860, 600));
+  ShopPage() : super(designSize: Vector2(860, 800));
 
   @override
   Future<void> onLoad() async {

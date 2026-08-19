@@ -42,4 +42,20 @@ final List<ShopItemDef> shopCatalog = [
     basePrice: 6000,
     incomePerSecond: 45,
   ),
+  ShopItemDef(
+    id: 'sell_preschools',
+    iconPath: AssetPaths.iconBrokenHeart,
+    name: (strings) => strings.itemSellPreschools,
+    quip: (strings) => strings.quipSellPreschools,
+    basePrice: 35000,
+    incomePerSecond: 220,
+  ),
+  ShopItemDef(
+    id: 'sell_public_housing',
+    iconPath: AssetPaths.iconEnvelope,
+    name: (strings) => strings.itemSellPublicHousing,
+    quip: (strings) => strings.quipSellPublicHousing,
+    basePrice: 200000,
+    incomePerSecond: 1100,
+  ),
 ];

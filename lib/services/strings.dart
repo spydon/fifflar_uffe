@@ -22,11 +22,15 @@ abstract class Strings {
   String get itemLowerTaxes;
   String get itemPrivatizeSchools;
   String get itemPrivatizeHospitals;
+  String get itemSellPreschools;
+  String get itemSellPublicHousing;
   String get quipHireCleaner;
   String get quipCheatApartment;
   String get quipLowerTaxes;
   String get quipPrivatizeSchools;
   String get quipPrivatizeHospitals;
+  String get quipSellPreschools;
+  String get quipSellPublicHousing;
 }
 
 class SvStrings extends Strings {
@@ -83,6 +87,10 @@ class SvStrings extends Strings {
   @override
   String get itemPrivatizeHospitals => 'Privatisera sjukhusen';
   @override
+  String get itemSellPreschools => 'Rea ut förskolorna';
+  @override
+  String get itemSellPublicHousing => 'Sälj allmännyttan till kompispris';
+  @override
   String get quipHireCleaner => 'Kvitto? Vilket kvitto?';
   @override
   String get quipCheatApartment => 'Bostadskön är till för andra!';
@@ -92,6 +100,10 @@ class SvStrings extends Strings {
   String get quipPrivatizeSchools => 'Marknaden fixar skolan!';
   @override
   String get quipPrivatizeHospitals => 'Vårdköer? Inte för mig!';
+  @override
+  String get quipSellPreschools => 'Såld! Långt under marknadspris.';
+  @override
+  String get quipSellPublicHousing => 'Tack för lägenheten!';
 }
 
 class EnStrings extends Strings {
@@ -148,6 +160,10 @@ class EnStrings extends Strings {
   @override
   String get itemPrivatizeHospitals => 'Privatize the hospitals';
   @override
+  String get itemSellPreschools => 'Fire-sale the preschools';
+  @override
+  String get itemSellPublicHousing => 'Sell public housing to a pal';
+  @override
   String get quipHireCleaner => 'Receipt? What receipt?';
   @override
   String get quipCheatApartment => 'Housing queues are for other people!';
@@ -157,4 +173,8 @@ class EnStrings extends Strings {
   String get quipPrivatizeSchools => 'The market will fix the schools!';
   @override
   String get quipPrivatizeHospitals => 'Care queues? Not for me!';
+  @override
+  String get quipSellPreschools => 'Sold! Well below market value.';
+  @override
+  String get quipSellPublicHousing => 'Thanks for the apartment!';
 }
