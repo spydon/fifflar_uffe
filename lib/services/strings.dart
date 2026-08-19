@@ -156,8 +156,8 @@ class SvStrings extends Strings {
   String get quipSellPublicHousing => 'Tack för lägenheten!';
   @override
   String get explainHireCleaner =>
-      'Kristersson har erkänt att han anlitade svart städhjälp under sex '
-      'månader 2001, för 70 till 80 kronor i timmen.';
+      'Kristersson har erkänt att han anlitade svart städhjälp under en '
+      'period 2001.';
   @override
   String get explainCheatApartment =>
       'Som socialborgarråd fick Kristersson en attraktiv hyresrätt förbi '
@@ -169,9 +169,9 @@ class SvStrings extends Strings {
       'kronor av skattemedel på två år.';
   @override
   String get explainChinaTrips =>
-      'Som socialborgarråd gjorde Kristersson tre resor till Kina på ett år '
-      'för 128 000 kronor av skattebetalarnas pengar, utan tydlig koppling '
-      'till uppdraget.';
+      'Som socialborgarråd reste Kristersson till Kina var tredje månad '
+      'under 2007, för 128 000 kronor av skattebetalarnas pengar, utan '
+      'tydlig koppling till uppdraget.';
   @override
   String get explainFurnishPalace =>
       'Efter regeringsskiftet 2022 möblerades statsministerns tjänstebostad '
@@ -212,12 +212,15 @@ class SvStrings extends Strings {
   String get explainSellPreschools =>
       'Under avknoppningarna 2007 till 2008 sålde moderatledda Stockholm '
       'förskolor och hemtjänst till personal långt under marknadsvärdet. '
-      'Vantörs hemtjänst gick för 69 500 kronor, och köparna gjorde '
-      'miljonvinst inom ett år. Domstol fann att staden bröt mot lagen.';
+      'Vantörs hemtjänst gick för 69 500 kronor (köparna gjorde 9,4 '
+      'miljoner i vinst på två år). Regeringsrätten fann att staden bröt '
+      'mot kommunallagen.';
   @override
   String get explainSellPublicHousing =>
-      'Stockholm sålde över tusen allmännyttiga lägenheter till Einar '
-      'Mattsson för 6 600 kronor per kvadratmeter, långt under marknadspris.';
+      'Stockholm sålde Svenska Bostäders 1 200 allmännyttiga lägenheter i '
+      'Hjulsta till Einar Mattsson för 600 miljoner kronor 2008. Sjutton år '
+      'senare köpte staden tillbaka dem, tillsammans med Hjulsta centrum, '
+      'för 1,4 miljarder.';
   @override
   String get gameOverTitle => 'Nu är det slutfifflat, Uffe!';
   @override
@@ -367,7 +370,7 @@ class EnStrings extends Strings {
   @override
   String get explainHireCleaner =>
       'Kristersson has admitted that he paid for cleaning help under the '
-      'table for six months in 2001, at 70 to 80 kronor an hour.';
+      'table for a period in 2001.';
   @override
   String get explainCheatApartment =>
       'As social services commissioner, Kristersson received an attractive '
@@ -380,9 +383,9 @@ class EnStrings extends Strings {
       '113 000 kronor of taxpayer money over two years.';
   @override
   String get explainChinaTrips =>
-      'As social services commissioner, Kristersson made three trips to '
-      'China in one year for 128 000 kronor of taxpayer money, without a '
-      'clear connection to his duties.';
+      'As social services commissioner, Kristersson traveled to China every '
+      'third month during 2007, for 128 000 kronor of taxpayer money, '
+      'without a clear connection to his duties.';
   @override
   String get explainFurnishPalace =>
       'After the 2022 change of government, the official residence Sager '
@@ -426,12 +429,15 @@ class EnStrings extends Strings {
   String get explainSellPreschools =>
       'During the 2007 to 2008 spin-offs, Moderate-led Stockholm sold '
       'preschools and home care to staff far below market value. Vantör '
-      'home care went for 69 500 kronor, and the buyers made millions in '
-      'profit within a year. A court found the city broke the law.';
+      'home care went for 69 500 kronor (the buyers made 9.4 million in '
+      'profit in two years). The Supreme Administrative Court found the '
+      'city broke municipal law.';
   @override
   String get explainSellPublicHousing =>
-      'Stockholm sold over a thousand public housing apartments to Einar '
-      'Mattsson for 6 600 kronor per square meter, far below market price.';
+      "Stockholm sold Svenska Bostäder's 1 200 public housing apartments "
+      'in Hjulsta to Einar Mattsson for 600 million kronor in 2008. '
+      'Seventeen years later the city bought them back, together with the '
+      'Hjulsta center, for 1.4 billion.';
   @override
   String get gameOverTitle => 'The fiddling is over, Uffe!';
   @override
