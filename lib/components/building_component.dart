@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:fifflar_uffe/components/floating_text_component.dart';
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
@@ -99,8 +101,22 @@ class BuildingComponent extends PositionComponent
   }
 
   void _updatePosition(Vector2 gameSize) {
-    final xFraction = (slotIndex + 1) / (shopCatalog.length + 1);
-    position = Vector2(xFraction * gameSize.x, 0.72 * gameSize.y);
+    const gap = 24.0;
+    final columns = max(
+      1,
+      min(4, ((gameSize.x - 40) / (size.x + gap)).floor()),
+    );
+    final rows = (shopCatalog.length / columns).ceil();
+    final row = slotIndex ~/ columns;
+    final column = slotIndex % columns;
+    final gridWidth = columns * size.x + (columns - 1) * gap;
+    final gridHeight = rows * size.y + (rows - 1) * gap;
+    final left = (gameSize.x - gridWidth) / 2;
+    final top = (gameSize.y - gridHeight) / 2;
+    position = Vector2(
+      left + column * (size.x + gap) + size.x / 2,
+      top + row * (size.y + gap) + size.y / 2,
+    );
   }
 
   void _refresh() {
