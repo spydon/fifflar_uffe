@@ -8,10 +8,10 @@ void main() {
     expect(timeline.isOver, isFalse);
   });
 
-  test('advances two days per second', () {
+  test('advances eight days per second', () {
     final timeline = Timeline()..advance(1.5);
-    expect(timeline.elapsedDays, 3);
-    expect(timeline.currentDate, DateTime.utc(2000, 1, 4));
+    expect(timeline.elapsedDays, 12);
+    expect(timeline.currentDate, DateTime.utc(2000, 1, 13));
   });
 
   test('notifies only when the displayed day changes', () {
@@ -19,9 +19,9 @@ void main() {
     var notifications = 0;
     timeline
       ..addListener(() => notifications++)
-      ..advance(0.4);
+      ..advance(0.05);
     expect(notifications, 0);
-    timeline.advance(0.7);
+    timeline.advance(0.1);
     expect(notifications, 1);
   });
 
@@ -41,8 +41,8 @@ void main() {
       ..advance(5);
     expect(timeline.unbounded, isTrue);
     expect(timeline.isOver, isTrue);
-    expect(timeline.elapsedDays, Timeline.totalDays + 10);
-    expect(timeline.currentDate, DateTime.utc(2026, 9, 23));
+    expect(timeline.elapsedDays, Timeline.totalDays + 40);
+    expect(timeline.currentDate, DateTime.utc(2026, 10, 23));
   });
 
   test('loads an unbounded save past election day without clamping', () {
