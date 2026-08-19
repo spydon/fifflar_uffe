@@ -107,6 +107,22 @@ class TextStyles {
     ),
   );
 
+  static final treePrice = TextPaint(
+    style: const TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
+      color: brown,
+    ),
+  );
+
+  static final treePriceDisabled = TextPaint(
+    style: const TextStyle(
+      fontSize: 16,
+      fontWeight: FontWeight.bold,
+      color: Color(0x805B4632),
+    ),
+  );
+
   static final hint = TextPaint(
     style: const TextStyle(
       fontSize: 20,

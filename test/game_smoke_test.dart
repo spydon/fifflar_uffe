@@ -277,6 +277,32 @@ void main() {
   );
 
   testWithGame<FifflarUffeGame>(
+    'Uffe leans in front of open popups while talking',
+    FifflarUffeGame.new,
+    (game) async {
+      game.update(0);
+      await game.ready();
+      expect(game.uffe.priority, lessThan(game.router.priority));
+      game.router.pushNamed('shop');
+      game.update(0);
+      await game.ready();
+      final skill = skillCatalog.first;
+      for (var i = 0; i < skill.basePrice; i++) {
+        game.economy.earnClick();
+      }
+      expect(game.buyItem(skill), isTrue);
+      game.update(0.1);
+      await game.ready();
+      expect(game.uffe.priority, greaterThan(game.router.priority));
+      for (var i = 0; i < 5; i++) {
+        game.update(1);
+      }
+      await game.ready();
+      expect(game.uffe.priority, lessThan(game.router.priority));
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
     'pause route freezes the world',
     FifflarUffeGame.new,
     (game) async {
