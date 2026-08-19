@@ -11,7 +11,7 @@ class Economy extends ChangeNotifier {
   double _balance;
   double _totalEarned;
   final Map<String, int> _owned;
-  double baseClickValue = 1;
+  double baseClickValue = 10;
 
   double get balance => _balance;
 
