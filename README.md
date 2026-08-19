@@ -2,7 +2,7 @@
   <img src="assets/images/uffe_head.png" alt="Uffe" width="400">
 </p>
 
-# Fifflar-Uffe
+<h1 align="center">Fifflar-Uffe</h1>
 
 Fifflar-Uffe is a satirical cookie clicker about a certain Swedish prime
 minister maximizing his money. Click the coins bouncing around the chamber
