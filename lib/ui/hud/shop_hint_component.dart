@@ -1,4 +1,5 @@
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
+import 'package:fifflar_uffe/model/skill_catalog.dart';
 import 'package:fifflar_uffe/ui/localized_text_component.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:flame/components.dart';
@@ -11,7 +12,6 @@ class ShopHintComponent extends HudMarginComponent
   ShopHintComponent()
     : super(margin: const EdgeInsets.only(bottom: 37, right: 92));
 
-  static const double _threshold = 10;
   static const double _displayDuration = 6;
 
   late final PositionComponent _content;
@@ -43,7 +43,8 @@ class ShopHintComponent extends HudMarginComponent
   void update(double dt) {
     super.update(dt);
     if (!_shown) {
-      if (game.economy.balance >= _threshold && game.economy.owned.isEmpty) {
+      if (game.economy.balance >= skillCatalog.first.basePrice &&
+          game.economy.owned.isEmpty) {
         _show();
       }
       return;

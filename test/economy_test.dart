@@ -10,7 +10,7 @@ void main() {
   test('click earns the click value', () {
     final economy = Economy();
     economy.earnClick();
-    expect(economy.balance, 1);
+    expect(economy.balance, 10);
   });
 
   test('price scales with growth factor per purchase', () {
@@ -74,15 +74,15 @@ void main() {
 
   test('total earned accumulates and is not reduced by purchases', () {
     final economy = Economy();
-    for (var i = 0; i < cleaner.basePrice; i++) {
+    while (economy.balance < cleaner.basePrice) {
       economy.earnClick();
     }
     economy.tick(4);
-    final earned = cleaner.basePrice;
+    final earned = economy.balance;
     expect(economy.totalEarned, earned);
     expect(economy.buy(cleaner), isTrue);
     expect(economy.totalEarned, earned);
-    expect(economy.balance, 0);
+    expect(economy.balance, earned - cleaner.basePrice);
   });
 
   test('reset clears balance, total earned, and owned items', () {
@@ -103,6 +103,6 @@ void main() {
     expect(economy.clickMultiplier, 2);
     expect(economy.incomePerSecond, 0);
     economy.earnClick();
-    expect(economy.balance, 2);
+    expect(economy.balance, 20);
   });
 }
