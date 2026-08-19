@@ -1,6 +1,7 @@
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/model/timeline.dart';
 import 'package:fifflar_uffe/ui/game_button.dart';
+import 'package:fifflar_uffe/ui/localized_link_component.dart';
 import 'package:fifflar_uffe/ui/localized_text_box_component.dart';
 import 'package:fifflar_uffe/ui/localized_text_component.dart';
 import 'package:fifflar_uffe/ui/modal_page.dart';
@@ -28,7 +29,7 @@ class GameOverRoute extends Route with HasGameReference<FifflarUffeGame> {
 
 class GameOverPage extends ModalPage {
   GameOverPage()
-    : super(designSize: Vector2(700, 400), dismissOnScrimTap: false);
+    : super(designSize: Vector2(700, 440), dismissOnScrimTap: false);
 
   @override
   Future<void> onLoad() async {
@@ -65,10 +66,16 @@ class GameOverPage extends ModalPage {
         anchor: Anchor.center,
         position: Vector2(designSize.x / 2, 238),
       ),
+      LocalizedLinkComponent(
+        selector: (strings) => strings.references,
+        url: 'references.html',
+        anchor: Anchor.center,
+        position: Vector2(designSize.x / 2, 276),
+      ),
       GameButton(
         label: (strings) => strings.playAgain,
         size: Vector2(280, 92),
-        position: Vector2(designSize.x / 2 - 160, 322),
+        position: Vector2(designSize.x / 2 - 160, 360),
         anchor: Anchor.center,
         onPressed: () {
           game.restartRun();
@@ -79,7 +86,7 @@ class GameOverPage extends ModalPage {
         label: (strings) => strings.continuePlaying,
         color: GameButtonColor.blue,
         size: Vector2(280, 92),
-        position: Vector2(designSize.x / 2 + 160, 322),
+        position: Vector2(designSize.x / 2 + 160, 360),
         anchor: Anchor.center,
         onPressed: () {
           game.continueRun();

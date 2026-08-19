@@ -37,6 +37,7 @@ abstract class Strings {
   String get playAgain;
   String get continuePlaying;
   String get shopHint;
+  String get references;
   String voteAppeal(String date);
   String formatDate(DateTime date);
   String formatDayMonth(DateTime date);
@@ -125,6 +126,8 @@ class SvStrings extends Strings {
   String get continuePlaying => 'Fortsätt fiffla';
   @override
   String get shopHint => 'Fiffla mer effektivt!';
+  @override
+  String get references => 'Referenser';
   @override
   String voteAppeal(String date) =>
       'Den $date är det val, se till att rösta på ett parti som jobbar '
@@ -253,6 +256,8 @@ class EnStrings extends Strings {
   String get continuePlaying => 'Keep fiddling';
   @override
   String get shopHint => 'Fiddle more efficiently!';
+  @override
+  String get references => 'References';
   @override
   String voteAppeal(String date) =>
       'On $date there is an election. Make sure to vote for a party '

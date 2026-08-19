@@ -1,4 +1,5 @@
 import 'package:fifflar_uffe/game/assets.dart';
+import 'package:fifflar_uffe/ui/localized_link_component.dart';
 import 'package:fifflar_uffe/ui/localized_text_box_component.dart';
 import 'package:fifflar_uffe/ui/localized_text_component.dart';
 import 'package:fifflar_uffe/ui/modal_page.dart';
@@ -68,6 +69,11 @@ class AboutPage extends ModalPage {
         selector: (strings) => strings.aboutBackgroundSource,
         textRenderer: TextStyles.info,
         position: Vector2(left + 8, 470),
+      ),
+      LocalizedLinkComponent(
+        selector: (strings) => strings.references,
+        url: 'references.html',
+        position: Vector2(left, 505),
       ),
     ]);
   }

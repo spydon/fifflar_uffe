@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fifflar-Uffe – Referenser</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem 1rem 4rem;
+      background: #fff6e3;
+      color: #5b4632;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.5;
+    }
+    .page {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 2rem;
+      margin: 0 0 0.5rem;
+    }
+    .intro {
+      color: #8a7156;
+      margin: 0 0 2rem;
+    }
+    article {
+      background: #fffdf6;
+      border: 2px solid #e0cfae;
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+    }
+    article h2 {
+      font-size: 1.2rem;
+      margin: 0 0 0.4rem;
+    }
+    article p {
+      margin: 0 0 0.6rem;
+    }
+    article a {
+      color: #1b6ca8;
+      font-weight: bold;
+    }
+    .back {
+      display: inline-block;
+      margin-top: 2rem;
+      color: #1b6ca8;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Referenser</h1>
+    <p class="intro">
+      Spelet är satir, men händelserna i spelet bygger på verklig
+      nyhetsrapportering. Här är källorna.
+    </p>
+    <main id="events"></main>
+    <a class="back" href="./">Tillbaka till spelet</a>
+  </div>
+  <script>
+    fetch('assets/assets/data/events.json')
+      .then((response) => response.json())
+      .then((data) => {
+        const container = document.getElementById('events');
+        const events = [...data.events].sort(
+          (a, b) => a.date.localeCompare(b.date),
+        );
+        for (const event of events) {
+          const article = document.createElement('article');
+          const title = document.createElement('h2');
+          title.textContent = event.title.sv;
+          const body = document.createElement('p');
+          body.textContent = event.body.sv;
+          const link = document.createElement('a');
+          link.href = event.url;
+          link.textContent = event.source;
+          link.target = '_blank';
+          link.rel = 'noopener';
+          article.append(title, body, link);
+          container.append(article);
+        }
+      });
+  </script>
+</body>
+</html>
