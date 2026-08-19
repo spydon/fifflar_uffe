@@ -37,7 +37,7 @@ class BuildingComponent extends PositionComponent
         position: Vector2(size.x / 2, 50),
       ),
       _count = TextComponent(
-        textRenderer: TextStyles.body,
+        textRenderer: TextStyles.tileCount,
         anchor: Anchor.topRight,
         position: Vector2(size.x / 2 + 38, 8),
       ),

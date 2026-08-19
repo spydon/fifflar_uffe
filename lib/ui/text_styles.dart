@@ -57,6 +57,17 @@ class TextStyles {
     ),
   );
 
+  static final tileCount = TextPaint(
+    style: const TextStyle(
+      fontSize: 22,
+      fontWeight: FontWeight.bold,
+      color: Color(0xFFFFF6E3),
+      shadows: [
+        Shadow(color: Color(0xB3000000), offset: Offset(0, 1), blurRadius: 2),
+      ],
+    ),
+  );
+
   static final priceTag = TextPaint(
     style: const TextStyle(
       fontSize: 16,
