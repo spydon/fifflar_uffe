@@ -94,7 +94,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
       DateCounter(),
       eventFeed = EventFeedComponent(),
       HudIconButton(
-        iconPath: AssetPaths.iconPause,
+        iconPath: AssetPaths.iconGear,
         margin: const EdgeInsets.only(bottom: 100, right: 16),
         onPressed: () => router.pushNamed('pause'),
       ),
