@@ -7,10 +7,16 @@ import 'package:flutter/animation.dart';
 
 class SpeechBubbleComponent extends PositionComponent
     with HasGameReference<FifflarUffeGame>, HasVisibility {
-  SpeechBubbleComponent({super.position, super.anchor, super.priority})
-    : super(size: Vector2(260, 120));
+  SpeechBubbleComponent({
+    this.onTalkingChanged,
+    super.position,
+    super.anchor,
+    super.priority,
+  }) : super(size: Vector2(260, 120));
 
   static const double _displayDuration = 3;
+
+  final void Function({required bool talking})? onTalkingChanged;
 
   late final TextBoxComponent _text;
   TimerComponent? _hideTimer;
@@ -40,6 +46,7 @@ class SpeechBubbleComponent extends PositionComponent
     }
     _text.text = message;
     isVisible = true;
+    onTalkingChanged?.call(talking: true);
     scale = Vector2.zero();
     add(
       ScaleEffect.to(
@@ -60,7 +67,10 @@ class SpeechBubbleComponent extends PositionComponent
       ScaleEffect.to(
         Vector2.zero(),
         EffectController(duration: 0.25, curve: Curves.easeIn),
-        onComplete: () => isVisible = false,
+        onComplete: () {
+          isVisible = false;
+          onTalkingChanged?.call(talking: false);
+        },
       ),
     );
   }

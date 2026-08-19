@@ -30,7 +30,8 @@ class AssetPaths {
   static const radioUnchecked = 'Checkboxes/Radiobutton_unchecked.png';
 
   static const speechBubble = 'Labels/DialogueLabel1.png';
-  static const uffe = 'uffe.png';
+  static const uffeHead = 'uffe_head.png';
+  static const uffeBody = 'uffe_body.png';
 
   static const all = [
     iconHouse,
@@ -56,6 +57,7 @@ class AssetPaths {
     radioChecked,
     radioUnchecked,
     speechBubble,
-    uffe,
+    uffeHead,
+    uffeBody,
   ];
 }

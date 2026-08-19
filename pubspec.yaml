@@ -63,4 +63,5 @@ flutter:
     - assets/images/Checkboxes/Radiobutton_checked.png
     - assets/images/Checkboxes/Radiobutton_unchecked.png
     - assets/images/Labels/DialogueLabel1.png
-    - assets/images/uffe.png
+    - assets/images/uffe_head.png
+    - assets/images/uffe_body.png
