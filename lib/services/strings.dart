@@ -93,7 +93,7 @@ class SvStrings extends Strings {
   @override
   String get givesLabel => 'Ger';
   @override
-  String get perClick => 'per klick på mynt';
+  String get perClick => 'per klick';
   @override
   String get about => 'Om';
   @override
@@ -303,7 +303,7 @@ class EnStrings extends Strings {
   @override
   String get givesLabel => 'Gives';
   @override
-  String get perClick => 'per coin click';
+  String get perClick => 'per click';
   @override
   String get about => 'About';
   @override

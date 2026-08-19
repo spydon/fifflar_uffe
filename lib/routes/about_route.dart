@@ -46,18 +46,26 @@ class AboutPage extends ModalPage {
       ),
       _satire = LocalizedTextBoxComponent(
         selector: (strings) => strings.aboutSatire,
-        textRenderer: TextStyles.paragraph,
+        textRenderer: isNarrowScreen
+            ? TextStyles.enlarged(TextStyles.paragraph, 1.25)
+            : TextStyles.paragraph,
         boxConfig: TextBoxConfig(maxWidth: textWidth),
         position: Vector2(left, 74),
       ),
       _references = LocalizedLinkComponent(
         selector: (strings) => strings.references,
         url: 'references.html',
+        textRenderer: isNarrowScreen
+            ? TextStyles.enlarged(TextStyles.eventLink, 1.3)
+            : TextStyles.eventLink,
         position: Vector2(left + 8, 160),
       ),
       _imageCredits = LocalizedLinkComponent(
         selector: (strings) => strings.aboutAttributions,
         url: 'attributions.html',
+        textRenderer: isNarrowScreen
+            ? TextStyles.enlarged(TextStyles.eventLink, 1.3)
+            : TextStyles.eventLink,
         position: Vector2(left + 8, 198),
       ),
     ]);

@@ -1,17 +1,24 @@
+import 'dart:math';
+
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/model/game_event.dart';
 import 'package:fifflar_uffe/ui/hud/event_card_component.dart';
-import 'package:fifflar_uffe/ui/hud/hud_auto_scale.dart';
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
 import 'package:flutter/widgets.dart' hide Route;
 
 class EventFeedComponent extends HudMarginComponent
-    with HasGameReference<FifflarUffeGame>, HudAutoScale {
+    with HasGameReference<FifflarUffeGame> {
   EventFeedComponent()
     : super(margin: const EdgeInsets.only(top: 80, left: 12));
 
   final Set<String> _consumed = {};
+
+  @override
+  void onGameResize(Vector2 size) {
+    scale = Vector2.all(min(1, (size.x - 24) / 320));
+    super.onGameResize(size);
+  }
 
   @override
   Future<void> onLoad() async {
