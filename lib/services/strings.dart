@@ -12,6 +12,9 @@ abstract class Strings {
   String get perSecond;
   String get requiresLabel;
   String get sourceLabel;
+  String get priceLabel;
+  String get givesLabel;
+  String get perClick;
   String get language;
   String get about;
   String get aboutSatire;
@@ -92,6 +95,12 @@ class SvStrings extends Strings {
   String get requiresLabel => 'Kräver';
   @override
   String get sourceLabel => 'Källa';
+  @override
+  String get priceLabel => 'Pris';
+  @override
+  String get givesLabel => 'Ger';
+  @override
+  String get perClick => 'per klick på mynt';
   @override
   String get language => 'Språk';
   @override
@@ -302,6 +311,12 @@ class EnStrings extends Strings {
   String get requiresLabel => 'Requires';
   @override
   String get sourceLabel => 'Source';
+  @override
+  String get priceLabel => 'Price';
+  @override
+  String get givesLabel => 'Gives';
+  @override
+  String get perClick => 'per coin click';
   @override
   String get language => 'Language';
   @override

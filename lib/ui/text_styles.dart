@@ -107,6 +107,26 @@ class TextStyles {
     ),
   );
 
+  static final statLabel = TextPaint(
+    style: const TextStyle(fontSize: 17, color: lightBrown),
+  );
+
+  static final statValue = TextPaint(
+    style: const TextStyle(
+      fontSize: 17,
+      fontWeight: FontWeight.bold,
+      color: brown,
+    ),
+  );
+
+  static final statValueMuted = TextPaint(
+    style: const TextStyle(
+      fontSize: 17,
+      fontWeight: FontWeight.bold,
+      color: Color(0x805B4632),
+    ),
+  );
+
   static final treePrice = TextPaint(
     style: const TextStyle(
       fontSize: 16,
