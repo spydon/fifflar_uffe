@@ -8,10 +8,10 @@ void main() {
     expect(timeline.isOver, isFalse);
   });
 
-  test('advances one day per second', () {
+  test('advances two days per second', () {
     final timeline = Timeline()..advance(1.5);
-    expect(timeline.elapsedDays, 1.5);
-    expect(timeline.currentDate, DateTime.utc(2000, 1, 2));
+    expect(timeline.elapsedDays, 3);
+    expect(timeline.currentDate, DateTime.utc(2000, 1, 4));
   });
 
   test('notifies only when the displayed day changes', () {
