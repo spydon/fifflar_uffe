@@ -21,7 +21,7 @@ class PauseRoute extends Route with HasGameReference<FifflarUffeGame> {
 }
 
 class PausePage extends ModalPage {
-  PausePage() : super(designSize: Vector2(560, 470), dismissOnScrimTap: false);
+  PausePage() : super(designSize: Vector2(560, 580), dismissOnScrimTap: false);
 
   @override
   Future<void> onLoad() async {
@@ -42,10 +42,21 @@ class PausePage extends ModalPage {
         onPressed: close,
       ),
       GameButton(
-        label: (strings) => strings.settings,
+        label: (strings) => strings.restart,
         color: GameButtonColor.blue,
         size: Vector2(250, 92),
         position: Vector2(designSize.x / 2, 260),
+        anchor: Anchor.center,
+        onPressed: () {
+          game.restartRun();
+          close();
+        },
+      ),
+      GameButton(
+        label: (strings) => strings.settings,
+        color: GameButtonColor.blue,
+        size: Vector2(250, 92),
+        position: Vector2(designSize.x / 2, 370),
         anchor: Anchor.center,
         onPressed: () => game.router.pushNamed('settings'),
       ),
@@ -53,7 +64,7 @@ class PausePage extends ModalPage {
         label: (strings) => strings.about,
         color: GameButtonColor.blue,
         size: Vector2(250, 92),
-        position: Vector2(designSize.x / 2, 370),
+        position: Vector2(designSize.x / 2, 480),
         anchor: Anchor.center,
         onPressed: () => game.router.pushNamed('about'),
       ),
