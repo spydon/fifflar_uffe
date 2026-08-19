@@ -1,5 +1,6 @@
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
+import 'package:fifflar_uffe/ui/hud/hud_auto_scale.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:fifflar_uffe/util/sek_format.dart';
 import 'package:flame/components.dart';
@@ -7,7 +8,7 @@ import 'package:flame/input.dart';
 import 'package:flutter/widgets.dart' hide Route;
 
 class SekCounter extends HudMarginComponent
-    with HasGameReference<FifflarUffeGame> {
+    with HasGameReference<FifflarUffeGame>, HudAutoScale {
   SekCounter() : super(margin: const EdgeInsets.only(top: 12, right: 12));
 
   late final TextComponent _text;

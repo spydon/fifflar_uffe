@@ -1,12 +1,13 @@
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
+import 'package:fifflar_uffe/ui/hud/hud_auto_scale.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
 import 'package:flutter/widgets.dart' hide Route;
 
 class DateCounter extends HudMarginComponent
-    with HasGameReference<FifflarUffeGame> {
+    with HasGameReference<FifflarUffeGame>, HudAutoScale {
   DateCounter() : super(margin: const EdgeInsets.only(top: 12, left: 12));
 
   late final TextComponent _text;

@@ -21,8 +21,11 @@ class SettingsPage extends ModalPage {
   @override
   Future<void> onLoad() async {
     await super.onLoad();
+    if (isNarrowScreen) {
+      resizePanel(Vector2(460, designSize.y));
+    }
     panel.addAll([
-      PanelComponent(size: designSize),
+      PanelComponent(size: designSize.clone()),
       PanelHeader(
         title: (strings) => strings.settingsTitle,
         size: Vector2(360, 68),

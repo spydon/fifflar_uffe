@@ -55,6 +55,8 @@ abstract class ModalPage extends PositionComponent
     }
   }
 
+  bool get isNarrowScreen => game.size.x < 560;
+
   void resizePanel(Vector2 newSize) {
     designSize.setFrom(newSize);
     panel.size = designSize;

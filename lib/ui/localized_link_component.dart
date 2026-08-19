@@ -32,6 +32,15 @@ class LocalizedLinkComponent extends PositionComponent
   }
 
   @override
+  bool containsLocalPoint(Vector2 point) {
+    const slack = 12.0;
+    return point.x >= -slack &&
+        point.x <= size.x + slack &&
+        point.y >= -slack &&
+        point.y <= size.y + slack;
+  }
+
+  @override
   void onTapUp(TapUpEvent event) {
     launchUrl(Uri.base.resolve(url));
   }

@@ -34,12 +34,16 @@ class GameOverPage extends ModalPage {
   @override
   Future<void> onLoad() async {
     await super.onLoad();
+    final narrow = isNarrowScreen;
+    resizePanel(narrow ? Vector2(460, 640) : Vector2(700, 480));
+    final center = designSize.x / 2;
+    final textWidth = narrow ? 396.0 : 580.0;
     panel.addAll([
-      PanelComponent(size: designSize),
+      PanelComponent(size: designSize.clone()),
       PanelHeader(
         title: (strings) => strings.gameOverTitle,
-        size: Vector2(560, 68),
-        position: Vector2(designSize.x / 2, 0),
+        size: Vector2(narrow ? 400 : 560, 68),
+        position: Vector2(center, 0),
         anchor: Anchor.center,
       ),
       LocalizedTextBoxComponent(
@@ -47,43 +51,43 @@ class GameOverPage extends ModalPage {
           strings.formatDayMonth(Timeline.electionDate),
         ),
         textRenderer: TextStyles.paragraph,
-        boxConfig: const TextBoxConfig(maxWidth: 580),
+        boxConfig: TextBoxConfig(maxWidth: textWidth),
         align: Anchor.topCenter,
         anchor: Anchor.topCenter,
-        position: Vector2(designSize.x / 2, 66),
+        position: Vector2(center, 66),
       ),
       LocalizedTextComponent(
         selector: (strings) =>
             '${strings.finalScore}: ${formatSek(game.economy.totalEarned)}',
         textRenderer: TextStyles.body,
         anchor: Anchor.center,
-        position: Vector2(designSize.x / 2, 186),
+        position: Vector2(center, narrow ? 226 : 186),
       ),
       LocalizedTextComponent(
         selector: (strings) =>
             '${strings.highScoreLabel}: ${formatSek(game.highScore)}',
         textRenderer: TextStyles.info,
         anchor: Anchor.center,
-        position: Vector2(designSize.x / 2, 228),
+        position: Vector2(center, narrow ? 266 : 228),
       ),
       LocalizedTextBoxComponent(
         selector: (strings) => strings.aboutSatire,
         textRenderer: TextStyles.info,
-        boxConfig: const TextBoxConfig(maxWidth: 580),
+        boxConfig: TextBoxConfig(maxWidth: textWidth),
         align: Anchor.topCenter,
         anchor: Anchor.topCenter,
-        position: Vector2(designSize.x / 2, 256),
+        position: Vector2(center, narrow ? 294 : 256),
       ),
       LocalizedLinkComponent(
         selector: (strings) => strings.references,
         url: 'references.html',
         anchor: Anchor.center,
-        position: Vector2(designSize.x / 2, 320),
+        position: Vector2(center, narrow ? 378 : 320),
       ),
       GameButton(
         label: (strings) => strings.playAgain,
         size: Vector2(280, 92),
-        position: Vector2(designSize.x / 2 - 160, 396),
+        position: narrow ? Vector2(center, 442) : Vector2(center - 160, 396),
         anchor: Anchor.center,
         onPressed: () {
           game.restartRun();
@@ -94,7 +98,7 @@ class GameOverPage extends ModalPage {
         label: (strings) => strings.continuePlaying,
         color: GameButtonColor.blue,
         size: Vector2(280, 92),
-        position: Vector2(designSize.x / 2 + 160, 396),
+        position: narrow ? Vector2(center, 548) : Vector2(center + 160, 396),
         anchor: Anchor.center,
         onPressed: () {
           game.continueRun();

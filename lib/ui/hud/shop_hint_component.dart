@@ -1,5 +1,6 @@
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/model/skill_catalog.dart';
+import 'package:fifflar_uffe/ui/hud/hud_auto_scale.dart';
 import 'package:fifflar_uffe/ui/localized_text_component.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:flame/components.dart';
@@ -8,7 +9,7 @@ import 'package:flame/input.dart';
 import 'package:flutter/widgets.dart' hide Route;
 
 class ShopHintComponent extends HudMarginComponent
-    with HasGameReference<FifflarUffeGame>, HasVisibility {
+    with HasGameReference<FifflarUffeGame>, HasVisibility, HudAutoScale {
   ShopHintComponent()
     : super(margin: const EdgeInsets.only(bottom: 37, right: 92));
 
