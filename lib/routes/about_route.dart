@@ -1,7 +1,6 @@
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/ui/localized_link_component.dart';
 import 'package:fifflar_uffe/ui/localized_text_box_component.dart';
-import 'package:fifflar_uffe/ui/localized_text_component.dart';
 import 'package:fifflar_uffe/ui/modal_page.dart';
 import 'package:fifflar_uffe/ui/panel_close_button.dart';
 import 'package:fifflar_uffe/ui/panel_header.dart';
@@ -14,7 +13,7 @@ class AboutRoute extends Route {
 }
 
 class AboutPage extends ModalPage {
-  AboutPage() : super(designSize: Vector2(700, 560));
+  AboutPage() : super(designSize: Vector2(700, 280));
 
   @override
   Future<void> onLoad() async {
@@ -41,39 +40,17 @@ class AboutPage extends ModalPage {
         selector: (strings) => strings.aboutSatire,
         textRenderer: TextStyles.paragraph,
         boxConfig: const TextBoxConfig(maxWidth: textWidth),
-        position: Vector2(left, 95),
-      ),
-      LocalizedTextComponent(
-        selector: (strings) => strings.aboutAttributions,
-        textRenderer: TextStyles.body,
-        position: Vector2(left, 235),
-      ),
-      LocalizedTextBoxComponent(
-        selector: (strings) => strings.aboutPhotoCredit,
-        textRenderer: TextStyles.paragraph,
-        boxConfig: const TextBoxConfig(maxWidth: textWidth),
-        position: Vector2(left, 272),
-      ),
-      LocalizedTextComponent(
-        selector: (strings) => strings.aboutPhotoSource,
-        textRenderer: TextStyles.info,
-        position: Vector2(left + 8, 348),
-      ),
-      LocalizedTextBoxComponent(
-        selector: (strings) => strings.aboutBackgroundCredit,
-        textRenderer: TextStyles.paragraph,
-        boxConfig: const TextBoxConfig(maxWidth: textWidth),
-        position: Vector2(left, 388),
-      ),
-      LocalizedTextComponent(
-        selector: (strings) => strings.aboutBackgroundSource,
-        textRenderer: TextStyles.info,
-        position: Vector2(left + 8, 470),
+        position: Vector2(left, 90),
       ),
       LocalizedLinkComponent(
         selector: (strings) => strings.references,
         url: 'references.html',
-        position: Vector2(left, 505),
+        position: Vector2(left + 8, 160),
+      ),
+      LocalizedLinkComponent(
+        selector: (strings) => strings.aboutAttributions,
+        url: 'attributions.html',
+        position: Vector2(left + 8, 198),
       ),
     ]);
   }

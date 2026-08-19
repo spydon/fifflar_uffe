@@ -13,10 +13,6 @@ abstract class Strings {
   String get about;
   String get aboutSatire;
   String get aboutAttributions;
-  String get aboutPhotoCredit;
-  String get aboutPhotoSource;
-  String get aboutBackgroundCredit;
-  String get aboutBackgroundSource;
   String get itemHireCleaner;
   String get itemCheatApartment;
   String get itemLowerTaxes;
@@ -68,24 +64,10 @@ class SvStrings extends Strings {
   String get about => 'Om';
   @override
   String get aboutSatire =>
-      'Det här spelet är satir. Allt innehåll är påhittat och '
-      'ska inte tolkas som påståenden om verkliga personer '
-      'eller händelser.';
+      'Spelet är satir, men händelserna i spelet bygger på '
+      'verklig nyhetsrapportering.';
   @override
   String get aboutAttributions => 'Attributioner';
-  @override
-  String get aboutPhotoCredit =>
-      'Foto på Uffe: "3N8A3989" av Stenbocki maja, '
-      'CC BY 4.0 (bearbetat).';
-  @override
-  String get aboutPhotoSource => 'flickr.com/photos/170170135@N07/55170292775';
-  @override
-  String get aboutBackgroundCredit =>
-      'Bakgrund: "Inside Parliament of Sweden 10" av Suyash Dwivedi, '
-      'CC BY-SA 4.0 (bearbetad).';
-  @override
-  String get aboutBackgroundSource =>
-      'commons.wikimedia.org/wiki/File:Inside_Parliament_of_Sweden_10.jpg';
   @override
   String get itemHireCleaner => 'Anlita städhjälp (svart)';
   @override
@@ -198,24 +180,10 @@ class EnStrings extends Strings {
   String get about => 'About';
   @override
   String get aboutSatire =>
-      'This game is satire. All content is fictional and '
-      'should not be read as claims about real people '
-      'or events.';
+      'The game is satire, but the events in the game are based '
+      'on real news reporting.';
   @override
   String get aboutAttributions => 'Attributions';
-  @override
-  String get aboutPhotoCredit =>
-      'Photo of Uffe: "3N8A3989" by Stenbocki maja, '
-      'CC BY 4.0 (modified).';
-  @override
-  String get aboutPhotoSource => 'flickr.com/photos/170170135@N07/55170292775';
-  @override
-  String get aboutBackgroundCredit =>
-      'Background: "Inside Parliament of Sweden 10" by Suyash Dwivedi, '
-      'CC BY-SA 4.0 (modified).';
-  @override
-  String get aboutBackgroundSource =>
-      'commons.wikimedia.org/wiki/File:Inside_Parliament_of_Sweden_10.jpg';
   @override
   String get itemHireCleaner => 'Hire cleaning help (off the books)';
   @override
