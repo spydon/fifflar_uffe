@@ -45,6 +45,10 @@ class TextStyles {
     ),
   );
 
+  static final paragraph = TextPaint(
+    style: const TextStyle(fontSize: 19, color: brown),
+  );
+
   static final bubble = TextPaint(
     style: const TextStyle(
       fontSize: 17,

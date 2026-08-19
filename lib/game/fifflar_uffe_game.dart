@@ -3,6 +3,7 @@ import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/play_world.dart';
 import 'package:fifflar_uffe/model/economy.dart';
 import 'package:fifflar_uffe/model/shop_item.dart';
+import 'package:fifflar_uffe/routes/about_route.dart';
 import 'package:fifflar_uffe/routes/pause_route.dart';
 import 'package:fifflar_uffe/routes/settings_route.dart';
 import 'package:fifflar_uffe/routes/shop_route.dart';
@@ -47,6 +48,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
         'home': Route(Component.new, transparent: true),
         'pause': PauseRoute(),
         'settings': SettingsRoute(),
+        'about': AboutRoute(),
         'shop': ShopRoute(),
       },
     );

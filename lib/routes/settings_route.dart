@@ -1,6 +1,7 @@
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/services/i18n.dart';
+import 'package:fifflar_uffe/ui/game_button.dart';
 import 'package:fifflar_uffe/ui/modal_page.dart';
 import 'package:fifflar_uffe/ui/panel_close_button.dart';
 import 'package:fifflar_uffe/ui/panel_header.dart';
@@ -14,7 +15,7 @@ class SettingsRoute extends Route {
 }
 
 class SettingsPage extends ModalPage {
-  SettingsPage() : super(designSize: Vector2(560, 360));
+  SettingsPage() : super(designSize: Vector2(560, 430));
 
   @override
   Future<void> onLoad() async {
@@ -38,14 +39,22 @@ class SettingsPage extends ModalPage {
       LanguageRadioRow(
         language: AppLanguage.sv,
         label: 'Svenska',
-        position: Vector2(designSize.x / 2, 160),
+        position: Vector2(designSize.x / 2, 205),
         anchor: Anchor.center,
       ),
       LanguageRadioRow(
         language: AppLanguage.en,
         label: 'English',
-        position: Vector2(designSize.x / 2, 240),
+        position: Vector2(designSize.x / 2, 270),
         anchor: Anchor.center,
+      ),
+      GameButton(
+        label: (strings) => strings.about,
+        color: GameButtonColor.blue,
+        size: Vector2(220, 82),
+        position: Vector2(designSize.x / 2, 360),
+        anchor: Anchor.center,
+        onPressed: () => game.router.pushNamed('about'),
       ),
     ]);
   }

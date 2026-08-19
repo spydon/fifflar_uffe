@@ -10,6 +10,11 @@ abstract class Strings {
   String get owned;
   String get perSecond;
   String get language;
+  String get about;
+  String get aboutSatire;
+  String get aboutAttributions;
+  String get aboutPhotoCredit;
+  String get aboutPhotoSource;
   String get itemCheatApartment;
   String get itemLowerTaxes;
   String get itemPrivatizeSchools;
@@ -41,6 +46,21 @@ class SvStrings extends Strings {
   String get perSecond => 'kr/s';
   @override
   String get language => 'Språk';
+  @override
+  String get about => 'Om';
+  @override
+  String get aboutSatire =>
+      'Det här spelet är satir. Allt innehåll är påhittat och '
+      'ska inte tolkas som påståenden om verkliga personer '
+      'eller händelser.';
+  @override
+  String get aboutAttributions => 'Attributioner';
+  @override
+  String get aboutPhotoCredit =>
+      'Foto på Uffe: "3N8A3989" av Stenbocki maja, '
+      'CC BY 4.0 (bearbetat).';
+  @override
+  String get aboutPhotoSource => 'flickr.com/photos/170170135@N07/55170292775';
   @override
   String get itemCheatApartment => 'Fiffla till dig en lägenhet';
   @override
@@ -80,6 +100,21 @@ class EnStrings extends Strings {
   String get perSecond => 'kr/s';
   @override
   String get language => 'Language';
+  @override
+  String get about => 'About';
+  @override
+  String get aboutSatire =>
+      'This game is satire. All content is fictional and '
+      'should not be read as claims about real people '
+      'or events.';
+  @override
+  String get aboutAttributions => 'Attributions';
+  @override
+  String get aboutPhotoCredit =>
+      'Photo of Uffe: "3N8A3989" by Stenbocki maja, '
+      'CC BY 4.0 (modified).';
+  @override
+  String get aboutPhotoSource => 'flickr.com/photos/170170135@N07/55170292775';
   @override
   String get itemCheatApartment => 'Cheat yourself an apartment';
   @override
