@@ -4,6 +4,7 @@ import 'package:fifflar_uffe/components/building_component.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/model/shop_catalog.dart';
 import 'package:fifflar_uffe/model/timeline.dart';
+import 'package:fifflar_uffe/ui/hud/event_card_component.dart';
 import 'package:flame_test/flame_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -100,6 +101,61 @@ void main() {
       expect(game.timeline.elapsedDays, 0);
       expect(game.world.children.whereType<BuildingComponent>(), isEmpty);
       expect(game.highScore, 25.0);
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
+    'an event card appears when its date is reached, not on load',
+    () {
+      SharedPreferences.setMockInitialValues({
+        'fifflar_uffe.save.v1': jsonEncode({
+          'balance': 0.0,
+          'owned': <String, int>{},
+          'elapsedDays': 516.0,
+          'savedAt': '2026-08-19T00:00:00.000',
+        }),
+      });
+      return FifflarUffeGame();
+    },
+    (game) async {
+      game.update(0);
+      await game.ready();
+      Iterable<EventCardComponent> cards() =>
+          game.eventFeed.children.whereType<EventCardComponent>();
+      expect(cards(), isEmpty);
+      game.update(1);
+      await game.ready();
+      expect(cards(), hasLength(1));
+      expect(cards().single.event.id, 'svart_stadhjalp');
+      game.restartRun();
+      game.update(0);
+      await game.ready();
+      expect(cards(), isEmpty);
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
+    'events already in the past are not replayed on load',
+    () {
+      SharedPreferences.setMockInitialValues({
+        'fifflar_uffe.save.v1': jsonEncode({
+          'balance': 0.0,
+          'owned': <String, int>{},
+          'elapsedDays': 600.0,
+          'savedAt': '2026-08-19T00:00:00.000',
+        }),
+      });
+      return FifflarUffeGame();
+    },
+    (game) async {
+      game.update(0);
+      await game.ready();
+      game.update(1);
+      await game.ready();
+      expect(
+        game.eventFeed.children.whereType<EventCardComponent>(),
+        isEmpty,
+      );
     },
   );
 

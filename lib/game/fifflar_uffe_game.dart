@@ -2,6 +2,7 @@ import 'package:fifflar_uffe/components/uffe_component.dart';
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/play_world.dart';
 import 'package:fifflar_uffe/model/economy.dart';
+import 'package:fifflar_uffe/model/game_event.dart';
 import 'package:fifflar_uffe/model/shop_item.dart';
 import 'package:fifflar_uffe/model/timeline.dart';
 import 'package:fifflar_uffe/routes/about_route.dart';
@@ -12,10 +13,12 @@ import 'package:fifflar_uffe/routes/shop_route.dart';
 import 'package:fifflar_uffe/services/i18n.dart';
 import 'package:fifflar_uffe/services/persistence_service.dart';
 import 'package:fifflar_uffe/ui/hud/date_counter.dart';
+import 'package:fifflar_uffe/ui/hud/event_feed_component.dart';
 import 'package:fifflar_uffe/ui/hud/hud_icon_button.dart';
 import 'package:fifflar_uffe/ui/hud/sek_counter.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart' hide Route;
 
 class FifflarUffeGame extends FlameGame<PlayWorld> {
@@ -23,10 +26,12 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
 
   late final Economy economy;
   late final Timeline timeline;
+  late final EventCatalog eventCatalog;
   late final I18n i18n;
   late final PersistenceService persistence;
   late final RouterComponent router;
   late final UffeComponent uffe;
+  late final EventFeedComponent eventFeed;
 
   double highScore = 0;
   bool _dirty = false;
@@ -43,6 +48,9 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
       owned: save.owned,
     );
     timeline = Timeline(elapsedDays: save.elapsedDays);
+    eventCatalog = EventCatalog.fromJsonString(
+      await rootBundle.loadString('assets/data/events.json'),
+    );
     highScore = save.highScore;
     i18n = I18n(initialLanguage: save.language);
     economy.addListener(() => _dirty = true);
@@ -69,6 +77,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
     camera.viewport.addAll([
       SekCounter(),
       DateCounter(),
+      eventFeed = EventFeedComponent(),
       HudIconButton(
         iconPath: AssetPaths.iconPause,
         margin: const EdgeInsets.only(bottom: 100, right: 16),
@@ -110,6 +119,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
   void restartRun() {
     _gameOver = false;
     economy.reset();
+    eventFeed.resetRun();
     timeline.reset();
     world.resetRun();
     saveNow();

@@ -1,0 +1,18 @@
+{
+  "events": [
+    {
+      "id": "svart_stadhjalp",
+      "date": "2001-06-01",
+      "source": "Dagens Arena",
+      "url": "https://www.dagensarena.se/innehall/ulf-kristersson-kritiserad-forr/",
+      "title": {
+        "sv": "Svart städhjälp",
+        "en": "Undeclared cleaning help"
+      },
+      "body": {
+        "sv": "Uffe betalar städhjälpen svart i sex månader.",
+        "en": "Uffe pays his cleaner under the table for six months."
+      }
+    }
+  ]
+}

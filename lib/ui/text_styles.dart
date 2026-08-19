@@ -86,6 +86,27 @@ class TextStyles {
     ),
   );
 
+  static final eventTitle = TextPaint(
+    style: const TextStyle(
+      fontSize: 17,
+      fontWeight: FontWeight.bold,
+      color: brown,
+    ),
+  );
+
+  static final eventBody = TextPaint(
+    style: const TextStyle(fontSize: 15, color: brown),
+  );
+
+  static final eventLink = TextPaint(
+    style: const TextStyle(
+      fontSize: 15,
+      fontWeight: FontWeight.bold,
+      color: Color(0xFF1B6CA8),
+      decoration: TextDecoration.underline,
+    ),
+  );
+
   static const Color floatingGreen = Color(0xFF2E9940);
 
   static const floatingStyle = TextStyle(
