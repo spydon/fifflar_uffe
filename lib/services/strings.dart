@@ -17,10 +17,12 @@ abstract class Strings {
   String get aboutPhotoSource;
   String get aboutBackgroundCredit;
   String get aboutBackgroundSource;
+  String get itemHireCleaner;
   String get itemCheatApartment;
   String get itemLowerTaxes;
   String get itemPrivatizeSchools;
   String get itemPrivatizeHospitals;
+  String get quipHireCleaner;
   String get quipCheatApartment;
   String get quipLowerTaxes;
   String get quipPrivatizeSchools;
@@ -71,6 +73,8 @@ class SvStrings extends Strings {
   String get aboutBackgroundSource =>
       'commons.wikimedia.org/wiki/File:Inside_Parliament_of_Sweden_10.jpg';
   @override
+  String get itemHireCleaner => 'Anlita städhjälp (svart)';
+  @override
   String get itemCheatApartment => 'Fiffla till dig en lägenhet';
   @override
   String get itemLowerTaxes => 'Sänk skatten för de rika';
@@ -78,6 +82,8 @@ class SvStrings extends Strings {
   String get itemPrivatizeSchools => 'Privatisera skolorna';
   @override
   String get itemPrivatizeHospitals => 'Privatisera sjukhusen';
+  @override
+  String get quipHireCleaner => 'Kvitto? Vilket kvitto?';
   @override
   String get quipCheatApartment => 'Bostadskön är till för andra!';
   @override
@@ -132,6 +138,8 @@ class EnStrings extends Strings {
   String get aboutBackgroundSource =>
       'commons.wikimedia.org/wiki/File:Inside_Parliament_of_Sweden_10.jpg';
   @override
+  String get itemHireCleaner => 'Hire cleaning help (off the books)';
+  @override
   String get itemCheatApartment => 'Cheat yourself an apartment';
   @override
   String get itemLowerTaxes => 'Lower taxes for the rich';
@@ -139,6 +147,8 @@ class EnStrings extends Strings {
   String get itemPrivatizeSchools => 'Privatize the schools';
   @override
   String get itemPrivatizeHospitals => 'Privatize the hospitals';
+  @override
+  String get quipHireCleaner => 'Receipt? What receipt?';
   @override
   String get quipCheatApartment => 'Housing queues are for other people!';
   @override

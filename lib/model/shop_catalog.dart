@@ -3,6 +3,14 @@ import 'package:fifflar_uffe/model/shop_item.dart';
 
 final List<ShopItemDef> shopCatalog = [
   ShopItemDef(
+    id: 'hire_cleaner',
+    iconPath: AssetPaths.iconPeople,
+    name: (strings) => strings.itemHireCleaner,
+    quip: (strings) => strings.quipHireCleaner,
+    basePrice: 10,
+    incomePerSecond: 0.2,
+  ),
+  ShopItemDef(
     id: 'cheat_apartment',
     iconPath: AssetPaths.iconHouse,
     name: (strings) => strings.itemCheatApartment,
