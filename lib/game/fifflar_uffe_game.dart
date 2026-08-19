@@ -94,8 +94,8 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
         onPressed: () => router.pushNamed('shop'),
       ),
       ShopHintComponent(),
-      uffe = UffeComponent(),
       router,
+      uffe = UffeComponent(),
     ]);
 
     add(TimerComponent(period: 5, repeat: true, onTick: _autosave));

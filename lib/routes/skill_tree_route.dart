@@ -126,7 +126,7 @@ class SkillNodeComponent extends PositionComponent
         position: Vector2(size.x / 2 + 40, 4),
       ),
       _price = TextComponent(
-        textRenderer: TextStyles.priceTag,
+        textRenderer: TextStyles.treePrice,
         anchor: Anchor.topCenter,
         position: Vector2(size.x / 2, 106),
       ),
@@ -161,7 +161,7 @@ class SkillNodeComponent extends PositionComponent
         : '';
     _price.text = unlocked ? formatSek(economy.priceOf(skill)) : '';
     _price.textRenderer = economy.canAfford(skill)
-        ? TextStyles.priceTag
-        : TextStyles.priceTagDisabled;
+        ? TextStyles.treePrice
+        : TextStyles.treePriceDisabled;
   }
 }
