@@ -1,7 +1,7 @@
-import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/ui/game_button.dart';
 import 'package:fifflar_uffe/ui/modal_page.dart';
+import 'package:fifflar_uffe/ui/panel_component.dart';
 import 'package:fifflar_uffe/ui/panel_header.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
@@ -27,10 +27,7 @@ class PausePage extends ModalPage {
   Future<void> onLoad() async {
     await super.onLoad();
     panel.addAll([
-      SpriteComponent(
-        sprite: Sprite(game.images.fromCache(AssetPaths.panelNotebook)),
-        size: designSize,
-      ),
+      PanelComponent(size: designSize),
       PanelHeader(
         title: (strings) => strings.pauseTitle,
         size: Vector2(360, 68),

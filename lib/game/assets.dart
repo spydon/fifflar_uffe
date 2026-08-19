@@ -21,8 +21,7 @@ class AssetPaths {
 
   static const labelPill = 'Labels/Label1.png';
   static const headerRibbon = 'Headers/Header1.png';
-  static const panelNotebook =
-      'Containers/NotebookContainer/ContainerNotebook1.png';
+  static const panelFrame = 'Containers/Containers/Container2.png';
   static const panelShop = 'Inventory/InventoryModal.png';
   static const itemSlot = 'Inventory/ItemSlots/ItemSlotsDefault/ItemSlot1.png';
 
@@ -51,7 +50,7 @@ class AssetPaths {
     buttonCompactGray,
     labelPill,
     headerRibbon,
-    panelNotebook,
+    panelFrame,
     panelShop,
     itemSlot,
     radioChecked,

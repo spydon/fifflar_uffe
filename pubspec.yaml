@@ -57,7 +57,7 @@ flutter:
     - assets/images/Buttons/Round/RoundButton1_gray.png
     - assets/images/Labels/Label1.png
     - assets/images/Headers/Header1.png
-    - assets/images/Containers/NotebookContainer/ContainerNotebook1.png
+    - assets/images/Containers/Containers/Container2.png
     - assets/images/Inventory/InventoryModal.png
     - assets/images/Inventory/ItemSlots/ItemSlotsDefault/ItemSlot1.png
     - assets/images/Checkboxes/Radiobutton_checked.png

@@ -4,6 +4,7 @@ import 'package:fifflar_uffe/services/i18n.dart';
 import 'package:fifflar_uffe/ui/game_button.dart';
 import 'package:fifflar_uffe/ui/modal_page.dart';
 import 'package:fifflar_uffe/ui/panel_close_button.dart';
+import 'package:fifflar_uffe/ui/panel_component.dart';
 import 'package:fifflar_uffe/ui/panel_header.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:flame/components.dart';
@@ -21,10 +22,7 @@ class SettingsPage extends ModalPage {
   Future<void> onLoad() async {
     await super.onLoad();
     panel.addAll([
-      SpriteComponent(
-        sprite: Sprite(game.images.fromCache(AssetPaths.panelNotebook)),
-        size: designSize,
-      ),
+      PanelComponent(size: designSize),
       PanelHeader(
         title: (strings) => strings.settingsTitle,
         size: Vector2(360, 68),
@@ -39,20 +37,20 @@ class SettingsPage extends ModalPage {
       LanguageRadioRow(
         language: AppLanguage.sv,
         label: 'Svenska',
-        position: Vector2(designSize.x / 2, 205),
+        position: Vector2(designSize.x / 2, 150),
         anchor: Anchor.center,
       ),
       LanguageRadioRow(
         language: AppLanguage.en,
         label: 'English',
-        position: Vector2(designSize.x / 2, 270),
+        position: Vector2(designSize.x / 2, 220),
         anchor: Anchor.center,
       ),
       GameButton(
         label: (strings) => strings.about,
         color: GameButtonColor.blue,
         size: Vector2(220, 82),
-        position: Vector2(designSize.x / 2, 360),
+        position: Vector2(designSize.x / 2, 335),
         anchor: Anchor.center,
         onPressed: () => game.router.pushNamed('about'),
       ),
