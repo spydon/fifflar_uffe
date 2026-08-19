@@ -23,15 +23,18 @@ class SkillDetailPage extends ModalPage {
 
   final SkillDef skill;
 
+  late final PanelComponent _background;
   late final TextComponent _info;
   late final TextComponent _requires;
+  late final LocalizedTextBoxComponent _explanation;
+  late final LocalizedLinkComponent _sourceLink;
   late final GameButton _buyButton;
 
   @override
   Future<void> onLoad() async {
     await super.onLoad();
     panel.addAll([
-      PanelComponent(size: designSize),
+      _background = PanelComponent(size: designSize.clone()),
       PanelHeader(
         title: skill.name,
         size: Vector2(450, 62),
@@ -62,13 +65,13 @@ class SkillDetailPage extends ModalPage {
         textRenderer: TextStyles.info,
         position: Vector2(158, 156),
       ),
-      LocalizedTextBoxComponent(
+      _explanation = LocalizedTextBoxComponent(
         selector: skill.explanation,
         textRenderer: TextStyles.paragraph,
         boxConfig: const TextBoxConfig(maxWidth: 464),
         position: Vector2(48, 204),
       ),
-      LocalizedLinkComponent(
+      _sourceLink = LocalizedLinkComponent(
         selector: (strings) => '${strings.sourceLabel}: ${skill.source}',
         url: skill.sourceUrl,
         position: Vector2(56, 428),
@@ -81,6 +84,18 @@ class SkillDetailPage extends ModalPage {
         onPressed: _buy,
       ),
     ]);
+    _explanation.size.addListener(_layoutContent);
+    _layoutContent();
+  }
+
+  void _layoutContent() {
+    final explanationBottom = _explanation.position.y + _explanation.size.y;
+    _sourceLink.position = Vector2(56, explanationBottom + 6);
+    final buttonCenter = explanationBottom + 6 + 26 + 18 + 42;
+    _buyButton.position = Vector2(designSize.x / 2, buttonCenter);
+    final height = buttonCenter + 42 + 30;
+    _background.size = Vector2(designSize.x, height);
+    resizePanel(Vector2(designSize.x, height));
   }
 
   @override

@@ -55,6 +55,12 @@ abstract class ModalPage extends PositionComponent
     }
   }
 
+  void resizePanel(Vector2 newSize) {
+    designSize.setFrom(newSize);
+    panel.size = designSize;
+    _layout(game.size);
+  }
+
   void close() {
     if (_closing) {
       return;

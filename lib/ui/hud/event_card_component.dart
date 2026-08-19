@@ -17,14 +17,16 @@ class EventCardComponent extends PositionComponent
 
   final GameEvent event;
 
+  late final PanelComponent _panel;
   late final TextBoxComponent _title;
   late final TextBoxComponent _body;
+  late final _EventLink _link;
 
   @override
   Future<void> onLoad() async {
     final textWidth = size.x - 2 * _padding;
     addAll([
-      PanelComponent(size: size * 2)..scale = Vector2.all(0.5),
+      _panel = PanelComponent(size: size * 2)..scale = Vector2.all(0.5),
       _title = TextBoxComponent(
         textRenderer: TextStyles.eventTitle,
         boxConfig: TextBoxConfig(maxWidth: textWidth),
@@ -35,7 +37,7 @@ class EventCardComponent extends PositionComponent
         boxConfig: TextBoxConfig(maxWidth: textWidth),
         position: Vector2(_padding, 44),
       ),
-      _EventLink(
+      _link = _EventLink(
         text: event.source,
         url: event.url,
         position: Vector2(_padding + 8, 132),
@@ -46,6 +48,9 @@ class EventCardComponent extends PositionComponent
         onTick: _dismiss,
       ),
     ]);
+    _title.size.addListener(_layoutContent);
+    _body.size.addListener(_layoutContent);
+    _layoutContent();
     scale = Vector2.zero();
     add(
       ScaleEffect.to(
@@ -53,6 +58,19 @@ class EventCardComponent extends PositionComponent
         EffectController(duration: 0.3, curve: Curves.easeOutBack),
       ),
     );
+  }
+
+  void _layoutContent() {
+    _body.position = Vector2(
+      _padding,
+      _title.position.y + _title.size.y - 4,
+    );
+    _link.position = Vector2(
+      _padding + 8,
+      _body.position.y + _body.size.y + 2,
+    );
+    size = Vector2(size.x, _link.position.y + _link.size.y + 6);
+    _panel.size = size * 2;
   }
 
   @override
