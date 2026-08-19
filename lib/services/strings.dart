@@ -35,7 +35,9 @@ abstract class Strings {
   String get finalScore;
   String get highScoreLabel;
   String get playAgain;
+  String voteAppeal(String date);
   String formatDate(DateTime date);
+  String formatDayMonth(DateTime date);
 }
 
 class SvStrings extends Strings {
@@ -110,13 +112,18 @@ class SvStrings extends Strings {
   @override
   String get quipSellPublicHousing => 'Tack för lägenheten!';
   @override
-  String get gameOverTitle => 'Nu är det slutfifflat!';
+  String get gameOverTitle => 'Nu är det slutfifflat, Uffe!';
   @override
   String get finalScore => 'Slutresultat';
   @override
   String get highScoreLabel => 'Rekord';
   @override
   String get playAgain => 'Fiffla igen';
+  @override
+  String voteAppeal(String date) =>
+      'Den $date är det val, se till att rösta på ett parti som jobbar '
+      'för att det ska bli bättre för folket, inte bara för sig själv '
+      'och sina vänner.';
 
   static const _months = [
     'jan',
@@ -133,9 +140,28 @@ class SvStrings extends Strings {
     'dec',
   ];
 
+  static const _fullMonths = [
+    'januari',
+    'februari',
+    'mars',
+    'april',
+    'maj',
+    'juni',
+    'juli',
+    'augusti',
+    'september',
+    'oktober',
+    'november',
+    'december',
+  ];
+
   @override
   String formatDate(DateTime date) =>
       '${date.day} ${_months[date.month - 1]} ${date.year}';
+
+  @override
+  String formatDayMonth(DateTime date) =>
+      '${date.day} ${_fullMonths[date.month - 1]}';
 }
 
 class EnStrings extends Strings {
@@ -210,13 +236,18 @@ class EnStrings extends Strings {
   @override
   String get quipSellPublicHousing => 'Thanks for the apartment!';
   @override
-  String get gameOverTitle => 'The fiddling is over!';
+  String get gameOverTitle => 'The fiddling is over, Uffe!';
   @override
   String get finalScore => 'Final score';
   @override
   String get highScoreLabel => 'High score';
   @override
   String get playAgain => 'Fiddle again';
+  @override
+  String voteAppeal(String date) =>
+      'On $date there is an election. Make sure to vote for a party '
+      'that works to make things better for the people, not just for '
+      'itself and its friends.';
 
   static const _months = [
     'Jan',
@@ -233,7 +264,26 @@ class EnStrings extends Strings {
     'Dec',
   ];
 
+  static const _fullMonths = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+
   @override
   String formatDate(DateTime date) =>
       '${_months[date.month - 1]} ${date.day}, ${date.year}';
+
+  @override
+  String formatDayMonth(DateTime date) =>
+      '${_fullMonths[date.month - 1]} ${date.day}';
 }

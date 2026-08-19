@@ -1,5 +1,7 @@
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
+import 'package:fifflar_uffe/model/timeline.dart';
 import 'package:fifflar_uffe/ui/game_button.dart';
+import 'package:fifflar_uffe/ui/localized_text_box_component.dart';
 import 'package:fifflar_uffe/ui/localized_text_component.dart';
 import 'package:fifflar_uffe/ui/modal_page.dart';
 import 'package:fifflar_uffe/ui/panel_component.dart';
@@ -26,7 +28,7 @@ class GameOverRoute extends Route with HasGameReference<FifflarUffeGame> {
 
 class GameOverPage extends ModalPage {
   GameOverPage()
-    : super(designSize: Vector2(700, 440), dismissOnScrimTap: false);
+    : super(designSize: Vector2(700, 560), dismissOnScrimTap: false);
 
   @override
   Future<void> onLoad() async {
@@ -35,28 +37,38 @@ class GameOverPage extends ModalPage {
       PanelComponent(size: designSize),
       PanelHeader(
         title: (strings) => strings.gameOverTitle,
-        size: Vector2(520, 68),
+        size: Vector2(560, 68),
         position: Vector2(designSize.x / 2, 0),
         anchor: Anchor.center,
+      ),
+      LocalizedTextBoxComponent(
+        selector: (strings) => strings.voteAppeal(
+          strings.formatDayMonth(Timeline.realElectionDate),
+        ),
+        textRenderer: TextStyles.paragraph,
+        boxConfig: const TextBoxConfig(maxWidth: 580),
+        align: Anchor.topCenter,
+        anchor: Anchor.topCenter,
+        position: Vector2(designSize.x / 2, 100),
       ),
       LocalizedTextComponent(
         selector: (strings) =>
             '${strings.finalScore}: ${formatSek(game.economy.totalEarned)}',
         textRenderer: TextStyles.body,
         anchor: Anchor.center,
-        position: Vector2(designSize.x / 2, 160),
+        position: Vector2(designSize.x / 2, 300),
       ),
       LocalizedTextComponent(
         selector: (strings) =>
             '${strings.highScoreLabel}: ${formatSek(game.highScore)}',
         textRenderer: TextStyles.info,
         anchor: Anchor.center,
-        position: Vector2(designSize.x / 2, 210),
+        position: Vector2(designSize.x / 2, 350),
       ),
       GameButton(
         label: (strings) => strings.playAgain,
         size: Vector2(280, 92),
-        position: Vector2(designSize.x / 2, 330),
+        position: Vector2(designSize.x / 2, 460),
         anchor: Anchor.center,
         onPressed: () {
           game.restartRun();
