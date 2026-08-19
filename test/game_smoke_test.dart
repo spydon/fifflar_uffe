@@ -106,6 +106,37 @@ void main() {
   );
 
   testWithGame<FifflarUffeGame>(
+    'open popups are closed when the game over banner appears',
+    () {
+      SharedPreferences.setMockInitialValues({
+        'fifflar_uffe.save.v1': jsonEncode({
+          'balance': 10.0,
+          'totalEarned': 25.0,
+          'elapsedDays': Timeline.totalDays - 0.5,
+          'owned': <String, int>{},
+          'savedAt': '2026-08-19T00:00:00.000',
+        }),
+      });
+      return FifflarUffeGame();
+    },
+    (game) async {
+      game.update(0);
+      await game.ready();
+      game.router.pushNamed('shop');
+      game.update(0);
+      await game.ready();
+      expect(game.router.currentRoute, game.router.routes['shop']);
+      game.update(1);
+      await game.ready();
+      expect(game.router.currentRoute, game.router.routes['gameOver']);
+      game.router.pop();
+      game.update(0);
+      await game.ready();
+      expect(game.router.currentRoute, game.router.routes['home']);
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
     'continuing after game over keeps the run going past election day',
     () {
       SharedPreferences.setMockInitialValues({
