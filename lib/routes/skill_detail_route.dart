@@ -19,7 +19,7 @@ class SkillDetailRoute extends Route {
 }
 
 class SkillDetailPage extends ModalPage {
-  SkillDetailPage({required this.skill}) : super(designSize: Vector2(640, 580));
+  SkillDetailPage({required this.skill}) : super(designSize: Vector2(560, 600));
 
   final SkillDef skill;
 
@@ -34,7 +34,7 @@ class SkillDetailPage extends ModalPage {
       PanelComponent(size: designSize),
       PanelHeader(
         title: skill.name,
-        size: Vector2(500, 64),
+        size: Vector2(450, 62),
         position: Vector2(designSize.x / 2, 0),
         anchor: Anchor.center,
       ),
@@ -46,37 +46,37 @@ class SkillDetailPage extends ModalPage {
       SpriteComponent(
         sprite: Sprite(game.images.fromCache(AssetPaths.itemSlot)),
         size: Vector2(86, 94),
-        position: Vector2(70, 92),
+        position: Vector2(50, 90),
       ),
       SpriteComponent(
         sprite: Sprite(game.images.fromCache(skill.iconPath)),
         size: Vector2.all(52),
         anchor: Anchor.center,
-        position: Vector2(113, 137),
+        position: Vector2(93, 135),
       ),
       _info = TextComponent(
         textRenderer: TextStyles.info,
-        position: Vector2(180, 96),
+        position: Vector2(158, 96),
       ),
       _requires = TextComponent(
         textRenderer: TextStyles.info,
-        position: Vector2(180, 160),
+        position: Vector2(158, 156),
       ),
       LocalizedTextBoxComponent(
         selector: skill.explanation,
         textRenderer: TextStyles.paragraph,
-        boxConfig: const TextBoxConfig(maxWidth: 516),
-        position: Vector2(62, 208),
+        boxConfig: const TextBoxConfig(maxWidth: 464),
+        position: Vector2(48, 204),
       ),
       LocalizedLinkComponent(
         selector: (strings) => '${strings.sourceLabel}: ${skill.source}',
         url: skill.sourceUrl,
-        position: Vector2(70, 408),
+        position: Vector2(56, 428),
       ),
       _buyButton = GameButton(
         label: (strings) => strings.buy,
         size: Vector2(210, 84),
-        position: Vector2(designSize.x / 2, 500),
+        position: Vector2(designSize.x / 2, 520),
         anchor: Anchor.center,
         onPressed: _buy,
       ),

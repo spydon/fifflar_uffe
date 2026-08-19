@@ -20,10 +20,10 @@ class SkillTreeRoute extends Route {
 }
 
 class SkillTreePage extends ModalPage {
-  SkillTreePage() : super(designSize: Vector2(820, 790));
+  SkillTreePage() : super(designSize: Vector2(560, 880));
 
   static Vector2 nodePosition(SkillDef skill) =>
-      Vector2(145.0 + skill.branch * 265.0, 130.0 + skill.tier * 134.0);
+      Vector2(100.0 + skill.branch * 180.0, 118.0 + skill.tier * 160.0);
 
   @override
   Future<void> onLoad() async {
@@ -36,7 +36,7 @@ class SkillTreePage extends ModalPage {
       _SkillTreeEdges(),
       PanelHeader(
         title: (strings) => strings.skillTreeTitle,
-        size: Vector2(420, 70),
+        size: Vector2(380, 66),
         position: Vector2(designSize.x / 2, 0),
         anchor: Anchor.center,
       ),
@@ -55,9 +55,11 @@ class _SkillTreeEdges extends PositionComponent {
   _SkillTreeEdges() : super(priority: 1);
 
   static final Paint _paint = Paint()
-    ..color = const Color(0x668A7156)
-    ..strokeWidth = 6
-    ..strokeCap = StrokeCap.round;
+    ..color = const Color(0xB38A7156)
+    ..strokeWidth = 5
+    ..strokeCap = StrokeCap.round
+    ..strokeJoin = StrokeJoin.round
+    ..style = PaintingStyle.stroke;
 
   @override
   void render(Canvas canvas) {
@@ -68,11 +70,19 @@ class _SkillTreeEdges extends PositionComponent {
       }
       final parent = SkillTreePage.nodePosition(skillById(requirement));
       final child = SkillTreePage.nodePosition(skill);
-      canvas.drawLine(
-        Offset(parent.x, parent.y + 66),
-        Offset(child.x, child.y - 62),
-        _paint,
-      );
+      final start = Offset(parent.x, parent.y + 66);
+      final end = Offset(child.x, child.y - 62);
+      if (parent.x == child.x) {
+        canvas.drawLine(start, end, _paint);
+        continue;
+      }
+      final midY = (start.dy + end.dy) / 2;
+      final path = Path()
+        ..moveTo(start.dx, start.dy)
+        ..lineTo(start.dx, midY)
+        ..lineTo(end.dx, midY)
+        ..lineTo(end.dx, end.dy);
+      canvas.drawPath(path, _paint);
     }
   }
 }
