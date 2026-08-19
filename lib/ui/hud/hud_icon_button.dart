@@ -16,6 +16,9 @@ class HudIconButton extends HudMarginComponent
   final String iconPath;
   final void Function() onPressed;
 
+  static final Paint _outlinePaint = Paint()
+    ..colorFilter = const ColorFilter.mode(TextStyles.brown, BlendMode.srcIn);
+
   @override
   Future<void> onLoad() async {
     size = Vector2(64, 72);
@@ -28,17 +31,31 @@ class HudIconButton extends HudMarginComponent
         downSkin: SpriteComponent(
           sprite: Sprite(game.images.fromCache(AssetPaths.buttonCompactGray)),
         ),
-        defaultLabel: SpriteComponent(
+        defaultLabel: _OutlinedIcon(
           sprite: Sprite(game.images.fromCache(iconPath)),
-          size: Vector2.all(34),
-          paint: Paint()
-            ..colorFilter = const ColorFilter.mode(
-              TextStyles.brown,
-              BlendMode.srcIn,
-            ),
         ),
         onPressed: onPressed,
       ),
     );
+  }
+}
+
+class _OutlinedIcon extends PositionComponent {
+  _OutlinedIcon({required Sprite sprite}) : super(size: Vector2.all(40)) {
+    addAll([
+      SpriteComponent(
+        sprite: sprite,
+        size: Vector2.all(40),
+        anchor: Anchor.center,
+        position: size / 2,
+        paint: HudIconButton._outlinePaint,
+      ),
+      SpriteComponent(
+        sprite: sprite,
+        size: Vector2.all(32),
+        anchor: Anchor.center,
+        position: size / 2,
+      ),
+    ]);
   }
 }
