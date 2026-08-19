@@ -86,12 +86,13 @@ class TextStyles {
     ),
   );
 
+  static const Color floatingGreen = Color(0xFF2E9940);
+
   static final floating = TextPaint(
     style: const TextStyle(
       fontSize: 24,
       fontWeight: FontWeight.bold,
-      color: Color(0xFF2E9940),
-      shadows: [Shadow(color: Color(0x99FFFFFF), blurRadius: 4)],
+      color: floatingGreen,
     ),
   );
 }

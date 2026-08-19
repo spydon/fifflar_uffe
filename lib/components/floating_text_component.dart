@@ -14,6 +14,7 @@ class FloatingTextComponent extends TextComponent {
   @override
   void onMount() {
     super.onMount();
+    paint.color = TextStyles.floatingGreen;
     addAll([
       MoveByEffect(
         Vector2(0, -60),
