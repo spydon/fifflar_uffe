@@ -16,7 +16,7 @@ final List<ShopItemDef> shopCatalog = [
     name: (strings) => strings.itemLowerTaxes,
     quip: (strings) => strings.quipLowerTaxes,
     basePrice: 150,
-    incomePerSecond: 2,
+    isClickMultiplier: true,
   ),
   ShopItemDef(
     id: 'privatize_schools',

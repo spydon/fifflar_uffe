@@ -1,3 +1,4 @@
+import 'package:fifflar_uffe/components/floating_text_component.dart';
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/model/shop_catalog.dart';
@@ -69,7 +70,7 @@ class ShopItemRow extends PositionComponent
       size: Vector2(150, 66),
       position: Vector2(size.x, size.y / 2),
       anchor: Anchor.centerRight,
-      onPressed: () => game.buyItem(item),
+      onPressed: _buy,
     );
     addAll([
       SpriteComponent(
@@ -108,13 +109,27 @@ class ShopItemRow extends PositionComponent
     super.onRemove();
   }
 
+  void _buy() {
+    if (game.buyItem(item) && item.isClickMultiplier) {
+      add(
+        FloatingTextComponent(
+          text: 'x${game.economy.clickMultiplier}',
+          position: Vector2(size.x - 75, 10),
+        ),
+      );
+    }
+  }
+
   void _refresh() {
     final strings = game.i18n.strings;
     final economy = game.economy;
+    final effect = item.isClickMultiplier
+        ? 'x${economy.ownedCount(item) + 1}'
+        : '+${item.incomePerSecond} ${strings.perSecond}';
     _info.text =
         '${formatSek(economy.priceOf(item))}'
         ' | ${strings.owned}: ${economy.ownedCount(item)}'
-        ' | +${item.incomePerSecond} ${strings.perSecond}';
+        ' | $effect';
     _buyButton.isDisabled = !economy.canAfford(item);
   }
 }

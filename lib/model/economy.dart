@@ -10,9 +10,15 @@ class Economy extends ChangeNotifier {
 
   double _balance;
   final Map<String, int> _owned;
-  double clickValue = 1;
+  double baseClickValue = 1;
 
   double get balance => _balance;
+
+  int get clickMultiplier => shopCatalog
+      .where((item) => item.isClickMultiplier)
+      .fold(1, (multiplier, item) => multiplier + ownedCount(item));
+
+  double get clickValue => baseClickValue * clickMultiplier;
 
   Map<String, int> get owned => Map.unmodifiable(_owned);
 

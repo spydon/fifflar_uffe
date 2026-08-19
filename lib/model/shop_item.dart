@@ -7,7 +7,8 @@ class ShopItemDef {
     required this.name,
     required this.quip,
     required this.basePrice,
-    required this.incomePerSecond,
+    this.incomePerSecond = 0,
+    this.isClickMultiplier = false,
     this.growth = 1.15,
   });
 
@@ -17,5 +18,6 @@ class ShopItemDef {
   final String Function(Strings strings) quip;
   final double basePrice;
   final double incomePerSecond;
+  final bool isClickMultiplier;
   final double growth;
 }

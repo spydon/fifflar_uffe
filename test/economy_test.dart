@@ -41,13 +41,22 @@ void main() {
     final economy = Economy(
       owned: {
         shopCatalog[0].id: 2,
-        shopCatalog[1].id: 1,
+        shopCatalog[2].id: 1,
       },
     );
     final expected =
-        2 * shopCatalog[0].incomePerSecond + shopCatalog[1].incomePerSecond;
+        2 * shopCatalog[0].incomePerSecond + shopCatalog[2].incomePerSecond;
     expect(economy.incomePerSecond, expected);
     economy.tick(2);
     expect(economy.balance, 2 * expected);
+  });
+
+  test('click multiplier scales with owned tax cuts', () {
+    final taxCut = shopCatalog.singleWhere((item) => item.isClickMultiplier);
+    final economy = Economy(owned: {taxCut.id: 1});
+    expect(economy.clickMultiplier, 2);
+    expect(economy.incomePerSecond, 0);
+    economy.earnClick();
+    expect(economy.balance, 2);
   });
 }
