@@ -3,13 +3,13 @@ import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/play_world.dart';
 import 'package:fifflar_uffe/model/economy.dart';
 import 'package:fifflar_uffe/model/game_event.dart';
-import 'package:fifflar_uffe/model/shop_item.dart';
+import 'package:fifflar_uffe/model/skill_def.dart';
 import 'package:fifflar_uffe/model/timeline.dart';
 import 'package:fifflar_uffe/routes/about_route.dart';
 import 'package:fifflar_uffe/routes/game_over_route.dart';
 import 'package:fifflar_uffe/routes/pause_route.dart';
 import 'package:fifflar_uffe/routes/settings_route.dart';
-import 'package:fifflar_uffe/routes/shop_route.dart';
+import 'package:fifflar_uffe/routes/skill_tree_route.dart';
 import 'package:fifflar_uffe/services/i18n.dart';
 import 'package:fifflar_uffe/services/persistence_service.dart';
 import 'package:fifflar_uffe/ui/hud/date_counter.dart';
@@ -75,7 +75,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
         'pause': PauseRoute(),
         'settings': SettingsRoute(),
         'about': AboutRoute(),
-        'shop': ShopRoute(),
+        'shop': SkillTreeRoute(),
         'gameOver': GameOverRoute(),
       },
     );
@@ -101,10 +101,10 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
     add(TimerComponent(period: 5, repeat: true, onTick: _autosave));
   }
 
-  bool buyItem(ShopItemDef item) {
-    final bought = economy.buy(item);
+  bool buyItem(SkillDef skill) {
+    final bought = economy.buy(skill);
     if (bought) {
-      uffe.say(item.quip(i18n.strings));
+      uffe.say(skill.quip(i18n.strings));
       saveNow();
     }
     return bought;
