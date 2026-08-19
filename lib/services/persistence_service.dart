@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:fifflar_uffe/model/skill_id.dart';
 import 'package:fifflar_uffe/services/i18n.dart';
+import 'package:fifflar_uffe/util/snake_case.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SaveData {
@@ -47,7 +48,7 @@ class PersistenceService {
       final ownedJson = json['owned'] as Map<String, dynamic>? ?? {};
       final owned = <SkillId, int>{};
       for (final entry in ownedJson.entries) {
-        final id = SkillId.fromStorageKey(entry.key);
+        final id = SkillId.fromSnakeCase(entry.key);
         if (id != null) {
           owned[id] = entry.value as int;
         }
@@ -85,7 +86,7 @@ class PersistenceService {
         'highScore': highScore,
         'continued': continued,
         'owned': owned.map(
-          (id, count) => MapEntry(id.storageKey, count),
+          (id, count) => MapEntry(id.snakeCaseName, count),
         ),
         'savedAt': DateTime.now().toIso8601String(),
       }),

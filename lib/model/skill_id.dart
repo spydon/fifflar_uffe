@@ -1,25 +1,23 @@
+import 'package:fifflar_uffe/util/snake_case.dart';
+
 enum SkillId {
-  hireCleaner('hire_cleaner'),
-  cheatApartment('cheat_apartment'),
-  taxiRides('taxi_rides'),
-  chinaTrips('china_trips'),
-  furnishPalace('furnish_palace'),
-  writeBook('write_book'),
-  lowerTaxes('lower_taxes'),
-  breakPromise('break_promise'),
-  cutSickLeave('cut_sick_leave'),
-  privatizeSchools('privatize_schools'),
-  privatizeHospitals('privatize_hospitals'),
-  sellPreschools('sell_preschools'),
-  sellPublicHousing('sell_public_housing');
+  hireCleaner,
+  cheatApartment,
+  taxiRides,
+  chinaTrips,
+  furnishPalace,
+  writeBook,
+  lowerTaxes,
+  breakPromise,
+  cutSickLeave,
+  privatizeSchools,
+  privatizeHospitals,
+  sellPreschools,
+  sellPublicHousing;
 
-  const SkillId(this.storageKey);
-
-  final String storageKey;
-
-  static SkillId? fromStorageKey(String key) {
+  static SkillId? fromSnakeCase(String key) {
     for (final id in values) {
-      if (id.storageKey == key) {
+      if (id.snakeCaseName == key) {
         return id;
       }
     }
