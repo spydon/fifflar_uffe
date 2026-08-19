@@ -16,24 +16,26 @@ class UffeComponent extends HudMarginComponent
   static const double _headSourceHeight = 200;
   static const double _bodySourceHeight = 811;
   static const double _flapDistance = 14;
+  static const double _wobbleAngle = 0.1;
 
   late final SpeechBubbleComponent _bubble;
   late final SpriteComponent _head;
   late final Vector2 _headRestPosition;
-  Effect? _flap;
+  final List<Effect> _talkEffects = [];
 
   @override
   Future<void> onLoad() async {
     size = Vector2(132, 222);
     final scaleFactor = size.y / _sourceHeight;
     final bodyTop = (_sourceHeight - _bodySourceHeight) * scaleFactor;
-    _headRestPosition = Vector2(0, bodyTop - _headSourceHeight * scaleFactor);
+    _headRestPosition = Vector2(_sourceWidth * scaleFactor / 2, bodyTop);
     _head = SpriteComponent(
       sprite: Sprite(game.images.fromCache(AssetPaths.uffeHead)),
       size: Vector2(
         _sourceWidth * scaleFactor,
         _headSourceHeight * scaleFactor,
       ),
+      anchor: Anchor.bottomCenter,
       position: _headRestPosition.clone(),
     );
     addAll([
@@ -60,15 +62,25 @@ class UffeComponent extends HudMarginComponent
   }
 
   void _setTalking({required bool talking}) {
-    _flap?.removeFromParent();
-    _flap = null;
+    for (final effect in _talkEffects) {
+      effect.removeFromParent();
+    }
+    _talkEffects.clear();
     _head.position = _headRestPosition.clone();
+    _head.angle = 0;
     if (talking) {
-      _flap = MoveByEffect(
-        Vector2(0, -_flapDistance),
-        EffectController(duration: 0.09, alternate: true, infinite: true),
-      );
-      _head.add(_flap!);
+      _head.angle = -_wobbleAngle / 2;
+      _talkEffects.addAll([
+        MoveByEffect(
+          Vector2(0, -_flapDistance),
+          EffectController(duration: 0.09, alternate: true, infinite: true),
+        ),
+        RotateEffect.by(
+          _wobbleAngle,
+          EffectController(duration: 0.14, alternate: true, infinite: true),
+        ),
+      ]);
+      _head.addAll(_talkEffects);
     }
   }
 }
