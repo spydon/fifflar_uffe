@@ -23,9 +23,13 @@ class SkillDetailPage extends ModalPage {
 
   final SkillDef skill;
 
+  static const double _labelX = 158;
+  static const double _valueX = 272;
+  static const List<double> _rowYs = [58, 88, 118, 148];
+
   late final PanelComponent _background;
-  late final TextComponent _info;
-  late final TextComponent _requires;
+  late final List<TextComponent> _labels;
+  late final List<TextComponent> _values;
   late final LocalizedTextBoxComponent _explanation;
   late final LocalizedLinkComponent _sourceLink;
   late final GameButton _buyButton;
@@ -33,6 +37,20 @@ class SkillDetailPage extends ModalPage {
   @override
   Future<void> onLoad() async {
     await super.onLoad();
+    _labels = [
+      for (final y in _rowYs)
+        TextComponent(
+          textRenderer: TextStyles.statLabel,
+          position: Vector2(_labelX, y),
+        ),
+    ];
+    _values = [
+      for (final y in _rowYs)
+        TextComponent(
+          textRenderer: TextStyles.statValue,
+          position: Vector2(_valueX, y),
+        ),
+    ];
     panel.addAll([
       _background = PanelComponent(size: designSize.clone()),
       PanelHeader(
@@ -49,27 +67,21 @@ class SkillDetailPage extends ModalPage {
       SpriteComponent(
         sprite: Sprite(game.images.fromCache(AssetPaths.itemSlot)),
         size: Vector2(86, 94),
-        position: Vector2(50, 90),
+        position: Vector2(50, 56),
       ),
       SpriteComponent(
         sprite: Sprite(game.images.fromCache(skill.iconPath)),
         size: Vector2.all(52),
         anchor: Anchor.center,
-        position: Vector2(93, 135),
+        position: Vector2(93, 103),
       ),
-      _info = TextComponent(
-        textRenderer: TextStyles.info,
-        position: Vector2(158, 96),
-      ),
-      _requires = TextComponent(
-        textRenderer: TextStyles.info,
-        position: Vector2(158, 156),
-      ),
+      ..._labels,
+      ..._values,
       _explanation = LocalizedTextBoxComponent(
         selector: skill.explanation,
         textRenderer: TextStyles.paragraph,
         boxConfig: const TextBoxConfig(maxWidth: 464),
-        position: Vector2(48, 204),
+        position: Vector2(48, 172),
       ),
       _sourceLink = LocalizedLinkComponent(
         selector: (strings) => '${strings.sourceLabel}: ${skill.source}',
@@ -122,19 +134,28 @@ class SkillDetailPage extends ModalPage {
   void _refresh() {
     final strings = game.i18n.strings;
     final economy = game.economy;
-    final effect = skill.isClickMultiplier
-        ? '+${skill.clickBonus}x'
-        : '+${skill.incomePerSecond} ${strings.perSecond}';
-    _info.text =
-        '${formatSek(economy.priceOf(skill))}'
-        ' | ${strings.owned}: ${economy.ownedCount(skill)}'
-        ' | $effect';
     final unlocked = economy.isUnlocked(skill);
     final requirement = skill.requires;
-    _requires.text = unlocked || requirement == null
-        ? ''
-        : '${strings.requiresLabel}: '
-              '${skillById(requirement).name(strings)}';
+    final effect = skill.isClickMultiplier
+        ? '+${formatSek(skill.clickBonus * economy.baseClickValue)} '
+              '${strings.perClick}'
+        : '+${formatSek(skill.incomePerSecond)}/s';
+    _labels[0].text = strings.priceLabel;
+    _values[0].text = formatSek(economy.priceOf(skill));
+    _values[0].textRenderer = economy.canAfford(skill)
+        ? TextStyles.statValue
+        : TextStyles.statValueMuted;
+    _labels[1].text = strings.owned;
+    _values[1].text = '${economy.ownedCount(skill)}';
+    _labels[2].text = strings.givesLabel;
+    _values[2].text = effect;
+    if (unlocked || requirement == null) {
+      _labels[3].text = '';
+      _values[3].text = '';
+    } else {
+      _labels[3].text = strings.requiresLabel;
+      _values[3].text = skillById(requirement).name(strings);
+    }
     _buyButton.isDisabled = !unlocked || !economy.canAfford(skill);
   }
 }
