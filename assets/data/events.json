@@ -1,6 +1,20 @@
 {
   "events": [
     {
+      "id": "st_goran",
+      "date": "2000-01-05",
+      "source": "Wikipedia",
+      "url": "https://sv.wikipedia.org/wiki/Sankt_G%C3%B6rans_sjukhus",
+      "title": {
+        "sv": "S:t Göran privatiseras",
+        "en": "S:t Göran is privatized"
+      },
+      "body": {
+        "sv": "Det borgerliga landstinget säljer S:t Görans sjukhus till Bure för 300 miljoner, i strid med upphandlingslagen.",
+        "en": "The conservative county council sells S:t Göran hospital to Bure for 300 million, in breach of procurement law."
+      }
+    },
+    {
       "id": "svart_stadhjalp",
       "date": "2001-06-01",
       "source": "Dagens Arena",
@@ -12,6 +26,160 @@
       "body": {
         "sv": "Uffe betalar städhjälpen svart i sex månader.",
         "en": "Uffe pays his cleaner under the table for six months."
+      }
+    },
+    {
+      "id": "valstugereportaget",
+      "date": "2002-09-05",
+      "source": "Wikipedia",
+      "url": "https://sv.wikipedia.org/wiki/Valstugereportaget",
+      "title": {
+        "sv": "Valstugereportaget",
+        "en": "The election booth exposé"
+      },
+      "body": {
+        "sv": "Moderata valarbetare fångas på film med rasistiska uttalanden i valstugorna, dagar före valet.",
+        "en": "Moderate campaign workers are caught on film making racist remarks in the party's election booths, days before the election."
+      }
+    },
+    {
+      "id": "minister_avgangar",
+      "date": "2006-10-14",
+      "source": "Flamman",
+      "url": "https://www.flamman.se/skandalerna-som-skakat-m/",
+      "title": {
+        "sv": "Ministrarna faller",
+        "en": "The ministers fall"
+      },
+      "body": {
+        "sv": "Nytillträdda moderata ministrar avgår efter avslöjanden om svart hemhjälp och obetald tv-licens.",
+        "en": "Newly appointed Moderate ministers resign after revelations of undeclared domestic help and unpaid TV licences."
+      }
+    },
+    {
+      "id": "vin_och_sprit",
+      "date": "2008-03-31",
+      "source": "Wikipedia",
+      "url": "https://sv.wikipedia.org/wiki/Vin_%26_Sprit",
+      "title": {
+        "sv": "Familjesilvret säljs",
+        "en": "Selling the family silver"
+      },
+      "body": {
+        "sv": "Regeringen Reinfeldt säljer statliga Vin & Sprit med Absolut Vodka till franska Pernod Ricard.",
+        "en": "The Reinfeldt government sells state-owned Vin & Sprit with Absolut Vodka to French Pernod Ricard."
+      }
+    },
+    {
+      "id": "avknoppningarna",
+      "date": "2008-04-15",
+      "source": "Sveriges Radio",
+      "url": "https://sverigesradio.se/artikel/4063990",
+      "title": {
+        "sv": "Avknoppningarna",
+        "en": "The spin-offs"
+      },
+      "body": {
+        "sv": "Stockholm säljer förskolor och hemtjänst till personal långt under värdet. Vantörs hemtjänst går för 69 500 kronor.",
+        "en": "Stockholm sells preschools and home care to staff far below value. Vantör home care goes for 69 500 kronor."
+      }
+    },
+    {
+      "id": "allmannyttan_reas",
+      "date": "2008-09-01",
+      "source": "Dagens Arena",
+      "url": "https://www.dagensarena.se/essa/40-ar-av-privatiserad-allmannytta-stockholm/",
+      "title": {
+        "sv": "Allmännyttan reas ut",
+        "en": "Public housing on sale"
+      },
+      "body": {
+        "sv": "Över tusen allmännyttiga lägenheter säljs till Einar Mattsson för 6 600 kronor per kvadratmeter.",
+        "en": "Over a thousand public housing apartments are sold to Einar Mattsson for 6 600 kronor per square meter."
+      }
+    },
+    {
+      "id": "kinaresorna",
+      "date": "2009-06-01",
+      "source": "Aktuellt Fokus",
+      "url": "https://aktuelltfokus.se/ulf-kristerssons-varsta-korruptions-skandaler/",
+      "title": {
+        "sv": "Kinaresorna",
+        "en": "The China trips"
+      },
+      "body": {
+        "sv": "Socialborgarrådet Uffe gör tre Kinaresor på ett år för 128 000 kronor av skattemedel.",
+        "en": "As social services commissioner, Uffe makes three China trips in one year for 128 000 kronor of taxpayer money."
+      }
+    },
+    {
+      "id": "graddfilslagenheten",
+      "date": "2010-03-01",
+      "source": "Aktuellt Fokus",
+      "url": "https://aktuelltfokus.se/ulf-kristerssons-varsta-korruptions-skandaler/",
+      "title": {
+        "sv": "Lägenhet i gräddfilen",
+        "en": "An apartment past the queue"
+      },
+      "body": {
+        "sv": "Uffe får en attraktiv hyresrätt förbi bostadskön, via vd:n för Einar Mattsson.",
+        "en": "Uffe gets an attractive rental past the housing queue, through the chief executive of Einar Mattsson."
+      }
+    },
+    {
+      "id": "stupstocken",
+      "date": "2010-10-05",
+      "source": "Equal",
+      "url": "https://equalsthlm.se/artiklar/ulf-kristerssons-sjukpenningspolitik-misslyckades/",
+      "title": {
+        "sv": "Stupstocken",
+        "en": "The sick leave cliff"
+      },
+      "body": {
+        "sv": "Runt 100 000 långtidssjuka utförsäkras. Socialförsäkringsminister Uffe försvarar tidsgränsen.",
+        "en": "Around 100 000 long-term sick people are cut off. Social insurance minister Uffe defends the time limit."
+      }
+    },
+    {
+      "id": "taxinotan",
+      "date": "2017-09-15",
+      "source": "Morgontidningen",
+      "url": "https://morgontidningen.se/2025/01/ulf-kristersson-skandaler/",
+      "title": {
+        "sv": "Taxinotan",
+        "en": "The taxi bill"
+      },
+      "body": {
+        "sv": "TV4 avslöjar att Uffe tagit 668 taxiresor för 113 000 kronor av skattemedel på två år.",
+        "en": "TV4 reveals that Uffe took 668 taxi rides for 113 000 kronor of taxpayer money in two years."
+      }
+    },
+    {
+      "id": "tidoavtalet",
+      "date": "2022-10-14",
+      "source": "SVT Nyheter",
+      "url": "https://www.svt.se/nyheter/inrikes/avgaende-c-partiledaren-om-kristerssons-m-lofte-stort-svek",
+      "title": {
+        "sv": "Löftet bryts",
+        "en": "The promise is broken"
+      },
+      "body": {
+        "sv": "Uffe bildar regering på Tidöavtalet med SD, trots löftet till förintelseöverlevaren Hédi Fried.",
+        "en": "Uffe forms a government on the Tidö Agreement with SD, despite his promise to Holocaust survivor Hédi Fried."
+      }
+    },
+    {
+      "id": "sagerska_notan",
+      "date": "2023-06-01",
+      "source": "Eskilstuna-Kuriren",
+      "url": "https://www.ekuriren.se/nyheter/strangnas/artikel/granskning-av-dyra-konsultinkop-till-sagerska-palatset/r24qw4vj",
+      "title": {
+        "sv": "Lyxnotan på Sagerska",
+        "en": "The Sager House bill"
+      },
+      "body": {
+        "sv": "Statsministerns tjänstebostad möbleras för runt en halv miljon av skattemedel, med en trasmatta för 60 000 kronor.",
+        "en": "The prime minister's residence is furnished for about half a million of taxpayer money, including a 60 000 kronor rag rug."
       }
     }
   ]
