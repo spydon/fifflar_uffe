@@ -57,6 +57,20 @@
       }
     },
     {
+      "id": "centrumkompaniet",
+      "date": "2007-05-15",
+      "source": "SVT Nyheter",
+      "url": "https://www.svt.se/nyheter/lokalt/stockholm/boultbee-kollades-inte-trots-varningar",
+      "title": {
+        "sv": "Förortscentrumen säljs",
+        "en": "The suburb centers are sold"
+      },
+      "body": {
+        "sv": "Stockholm säljer tio centrum, bland dem Skärholmen och Tensta, till brittiska Boultbee trots varningar. Hyrorna chockhöjs och servicen faller.",
+        "en": "Stockholm sells ten shopping centers, among them Skärholmen and Tensta, to British Boultbee despite warnings. Rents soar and service crumbles."
+      }
+    },
+    {
       "id": "krogkvallen",
       "date": "2007-10-29",
       "source": "SVT Nyheter",
@@ -68,6 +82,20 @@
       "body": {
         "sv": "Statsministerns statssekreterare avgår efter en våt krogkväll, mitt under sin beredskap för regeringens krishantering.",
         "en": "The prime minister's state secretary resigns after a boozy bar night, while on duty for the government's crisis readiness."
+      }
+    },
+    {
+      "id": "serafen",
+      "date": "2007-12-10",
+      "source": "Sveriges Radio",
+      "url": "https://www.sverigesradio.se/artikel/5079436",
+      "title": {
+        "sv": "Vårdcentralen till vrakpris",
+        "en": "The health center at scrap price"
+      },
+      "body": {
+        "sv": "Serafens vårdcentral säljs till sex läkare för 694 500 kronor och säljs vidare för runt 20 miljoner. Domstol fann att affären bröt mot kommunallagen.",
+        "en": "The Serafen health center is sold to six doctors for 694 500 kronor and resold for around 20 million. A court found the deal broke municipal law."
       }
     },
     {
@@ -127,6 +155,20 @@
       }
     },
     {
+      "id": "apoteken",
+      "date": "2009-07-01",
+      "source": "Sveriges Radio",
+      "url": "https://sverigesradio.se/artikel/1092913",
+      "title": {
+        "sv": "Apoteken säljs ut",
+        "en": "The pharmacies are sold off"
+      },
+      "body": {
+        "sv": "Apoteksmonopolet avskaffas och över 600 statliga apotek säljs ut till privata kedjor och riskkapital.",
+        "en": "The pharmacy monopoly is abolished and over 600 state pharmacies are sold off to private chains and venture capital."
+      }
+    },
+    {
       "id": "graddfilslagenheten",
       "date": "2010-03-01",
       "source": "Aktuellt Fokus",
@@ -152,6 +194,20 @@
       "body": {
         "sv": "Runt 100 000 långtidssjuka utförsäkras. Socialförsäkringsminister Uffe försvarar tidsgränsen.",
         "en": "Around 100 000 long-term sick people are cut off. Social insurance minister Uffe defends the time limit."
+      }
+    },
+    {
+      "id": "caremaskandalen",
+      "date": "2011-10-11",
+      "source": "Wikipedia",
+      "url": "https://sv.wikipedia.org/wiki/Caremaskandalen",
+      "title": {
+        "sv": "Caremaskandalen",
+        "en": "The Carema scandal"
+      },
+      "body": {
+        "sv": "Vanvård avslöjas på privatdrivna äldreboenden: undernärda boende och nedskuren personal, medan vinsterna går till skatteparadis.",
+        "en": "Neglect is exposed at privately run elderly homes: malnourished residents and slashed staffing, while the profits go to tax havens."
       }
     },
     {
