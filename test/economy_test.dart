@@ -51,6 +51,31 @@ void main() {
     expect(economy.balance, 2 * expected);
   });
 
+  test('total earned accumulates and is not reduced by purchases', () {
+    final economy = Economy();
+    for (var i = 0; i < apartment.basePrice; i++) {
+      economy.earnClick();
+    }
+    economy.tick(4);
+    final earned = apartment.basePrice;
+    expect(economy.totalEarned, earned);
+    expect(economy.buy(apartment), isTrue);
+    expect(economy.totalEarned, earned);
+    expect(economy.balance, 0);
+  });
+
+  test('reset clears balance, total earned, and owned items', () {
+    final economy = Economy(
+      balance: 100,
+      totalEarned: 250,
+      owned: {apartment.id: 3},
+    );
+    economy.reset();
+    expect(economy.balance, 0);
+    expect(economy.totalEarned, 0);
+    expect(economy.owned, isEmpty);
+  });
+
   test('click multiplier scales with owned tax cuts', () {
     final taxCut = shopCatalog.singleWhere((item) => item.isClickMultiplier);
     final economy = Economy(owned: {taxCut.id: 1});

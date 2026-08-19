@@ -16,12 +16,34 @@ void main() {
   test('round trips balance, owned, and language', () async {
     SharedPreferences.setMockInitialValues({});
     final service = await PersistenceService.create();
-    await service.saveGame(balance: 123.4, owned: {'lower_taxes': 3});
+    await service.saveGame(
+      balance: 123.4,
+      totalEarned: 543.2,
+      elapsedDays: 42.5,
+      highScore: 999.9,
+      owned: {'lower_taxes': 3},
+    );
     await service.saveLanguage(AppLanguage.en);
     final save = service.load();
     expect(save.balance, 123.4);
+    expect(save.totalEarned, 543.2);
+    expect(save.elapsedDays, 42.5);
+    expect(save.highScore, 999.9);
     expect(save.owned, {'lower_taxes': 3});
     expect(save.language, AppLanguage.en);
+  });
+
+  test('older saves without timeline fields load with defaults', () async {
+    SharedPreferences.setMockInitialValues({
+      'fifflar_uffe.save.v1': '{"balance": 50, "owned": {"lower_taxes": 1}}',
+    });
+    final service = await PersistenceService.create();
+    final save = service.load();
+    expect(save.balance, 50);
+    expect(save.totalEarned, 0);
+    expect(save.elapsedDays, 0);
+    expect(save.highScore, 0);
+    expect(save.owned, {'lower_taxes': 1});
   });
 
   test('falls back to defaults on corrupt save data', () async {

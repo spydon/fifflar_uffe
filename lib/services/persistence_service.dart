@@ -6,11 +6,17 @@ import 'package:shared_preferences/shared_preferences.dart';
 class SaveData {
   const SaveData({
     this.balance = 0,
+    this.totalEarned = 0,
+    this.elapsedDays = 0,
+    this.highScore = 0,
     this.owned = const {},
     this.language = AppLanguage.sv,
   });
 
   final double balance;
+  final double totalEarned;
+  final double elapsedDays;
+  final double highScore;
   final Map<String, int> owned;
   final AppLanguage language;
 }
@@ -38,6 +44,9 @@ class PersistenceService {
       final ownedJson = json['owned'] as Map<String, dynamic>? ?? {};
       return SaveData(
         balance: (json['balance'] as num?)?.toDouble() ?? 0,
+        totalEarned: (json['totalEarned'] as num?)?.toDouble() ?? 0,
+        elapsedDays: (json['elapsedDays'] as num?)?.toDouble() ?? 0,
+        highScore: (json['highScore'] as num?)?.toDouble() ?? 0,
         owned: ownedJson.map((key, value) => MapEntry(key, value as int)),
         language: language,
       );
@@ -50,12 +59,18 @@ class PersistenceService {
 
   Future<void> saveGame({
     required double balance,
+    required double totalEarned,
+    required double elapsedDays,
+    required double highScore,
     required Map<String, int> owned,
   }) async {
     await _preferences.setString(
       _saveKey,
       jsonEncode({
         'balance': balance,
+        'totalEarned': totalEarned,
+        'elapsedDays': elapsedDays,
+        'highScore': highScore,
         'owned': owned,
         'savedAt': DateTime.now().toIso8601String(),
       }),

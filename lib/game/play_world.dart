@@ -2,8 +2,10 @@ import 'dart:ui';
 
 import 'package:fifflar_uffe/components/background_component.dart';
 import 'package:fifflar_uffe/components/building_component.dart';
+import 'package:fifflar_uffe/components/floating_text_component.dart';
 import 'package:fifflar_uffe/components/income_component.dart';
 import 'package:fifflar_uffe/components/money_component.dart';
+import 'package:fifflar_uffe/components/timeline_component.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/model/shop_catalog.dart';
 import 'package:flame/components.dart';
@@ -35,8 +37,25 @@ class PlayWorld extends World with HasGameReference<FifflarUffeGame> {
       area: Rectangle.fromRect(playRect),
       spawnWhenLoaded: true,
     );
-    addAll([BackgroundComponent(), _spawner!, IncomeComponent()]);
+    addAll([
+      BackgroundComponent(),
+      _spawner!,
+      IncomeComponent(),
+      TimelineComponent(),
+    ]);
     _syncBuildings();
+  }
+
+  void resetRun() {
+    final runComponents = [
+      ...children.whereType<MoneyComponent>(),
+      ...children.whereType<FloatingTextComponent>(),
+      ..._buildings.values,
+    ];
+    for (final component in runComponents) {
+      component.removeFromParent();
+    }
+    _buildings.clear();
   }
 
   @override
