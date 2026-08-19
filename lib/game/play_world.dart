@@ -7,7 +7,7 @@ import 'package:fifflar_uffe/components/income_component.dart';
 import 'package:fifflar_uffe/components/money_component.dart';
 import 'package:fifflar_uffe/components/timeline_component.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
-import 'package:fifflar_uffe/model/shop_catalog.dart';
+import 'package:fifflar_uffe/model/skill_catalog.dart';
 import 'package:flame/components.dart';
 import 'package:flame/experimental.dart';
 
@@ -71,12 +71,12 @@ class PlayWorld extends World with HasGameReference<FifflarUffeGame> {
   }
 
   void _syncBuildings() {
-    for (var i = 0; i < shopCatalog.length; i++) {
-      final item = shopCatalog[i];
-      final owned = game.economy.ownedCount(item) > 0;
-      if (owned && !_buildings.containsKey(item.id)) {
-        final building = BuildingComponent(item: item, slotIndex: i);
-        _buildings[item.id] = building;
+    for (var i = 0; i < skillCatalog.length; i++) {
+      final skill = skillCatalog[i];
+      final owned = game.economy.ownedCount(skill) > 0;
+      if (owned && !_buildings.containsKey(skill.id)) {
+        final building = BuildingComponent(skill: skill, slotIndex: i);
+        _buildings[skill.id] = building;
         add(building);
       }
     }

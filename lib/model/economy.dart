@@ -1,7 +1,7 @@
 import 'dart:math';
 
-import 'package:fifflar_uffe/model/shop_catalog.dart';
-import 'package:fifflar_uffe/model/shop_item.dart';
+import 'package:fifflar_uffe/model/skill_catalog.dart';
+import 'package:fifflar_uffe/model/skill_def.dart';
 import 'package:flutter/foundation.dart';
 
 class Economy extends ChangeNotifier {
@@ -17,26 +17,32 @@ class Economy extends ChangeNotifier {
 
   double get totalEarned => _totalEarned;
 
-  int get clickMultiplier => shopCatalog
-      .where((item) => item.isClickMultiplier)
-      .fold(1, (multiplier, item) => multiplier + ownedCount(item));
+  int get clickMultiplier => skillCatalog
+      .where((skill) => skill.isClickMultiplier)
+      .fold(1, (multiplier, skill) => multiplier + ownedCount(skill));
 
   double get clickValue => baseClickValue * clickMultiplier;
 
   Map<String, int> get owned => Map.unmodifiable(_owned);
 
-  int ownedCount(ShopItemDef item) => _owned[item.id] ?? 0;
+  int ownedCount(SkillDef skill) => _owned[skill.id] ?? 0;
 
-  double get incomePerSecond => shopCatalog.fold(
-    0,
-    (sum, item) => sum + item.incomePerSecond * ownedCount(item),
-  );
-
-  double priceOf(ShopItemDef item) {
-    return (item.basePrice * pow(item.growth, ownedCount(item))).ceilToDouble();
+  bool isUnlocked(SkillDef skill) {
+    final requirement = skill.requires;
+    return requirement == null || (_owned[requirement] ?? 0) > 0;
   }
 
-  bool canAfford(ShopItemDef item) => _balance >= priceOf(item);
+  double get incomePerSecond => skillCatalog.fold(
+    0,
+    (sum, skill) => sum + skill.incomePerSecond * ownedCount(skill),
+  );
+
+  double priceOf(SkillDef skill) {
+    return (skill.basePrice * pow(skill.growth, ownedCount(skill)))
+        .ceilToDouble();
+  }
+
+  bool canAfford(SkillDef skill) => _balance >= priceOf(skill);
 
   void earnClick() {
     _balance += clickValue;
@@ -60,12 +66,12 @@ class Economy extends ChangeNotifier {
     notifyListeners();
   }
 
-  bool buy(ShopItemDef item) {
-    if (!canAfford(item)) {
+  bool buy(SkillDef skill) {
+    if (!isUnlocked(skill) || !canAfford(skill)) {
       return false;
     }
-    _balance -= priceOf(item);
-    _owned[item.id] = ownedCount(item) + 1;
+    _balance -= priceOf(skill);
+    _owned[skill.id] = ownedCount(skill) + 1;
     notifyListeners();
     return true;
   }

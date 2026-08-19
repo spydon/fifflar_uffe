@@ -15,6 +15,15 @@ class AssetPaths {
   static const iconPeople = 'Icons/IconsDefault/128px/IconsDefault43_128px.png';
   static const iconPotion = 'Icons/IconsDefault/128px/IconsDefault54_128px.png';
   static const iconBook = 'Icons/IconsDefault/128px/IconsDefault58_128px.png';
+  static const iconPencil = 'Icons/IconsDefault/128px/IconsDefault6_128px.png';
+  static const iconStopwatch =
+      'Icons/IconsDefault/128px/IconsDefault10_128px.png';
+  static const iconLock = 'Icons/IconsDefault/128px/IconsDefault11_128px.png';
+  static const iconDiamond =
+      'Icons/IconsDefault/128px/IconsDefault23_128px.png';
+  static const iconBabyClothes =
+      'Icons/IconsDefault/128px/IconsDefault27_128px.png';
+  static const iconShoe = 'Icons/IconsDefault/128px/IconsDefault45_128px.png';
 
   static const buttonWideGreen = 'Buttons/Round/RoundButton2_green.png';
   static const buttonWideLime = 'Buttons/Round/RoundButton2_lime.png';
@@ -50,6 +59,12 @@ class AssetPaths {
     iconPeople,
     iconPotion,
     iconBook,
+    iconPencil,
+    iconStopwatch,
+    iconLock,
+    iconDiamond,
+    iconBabyClothes,
+    iconShoe,
     buttonWideGreen,
     buttonWideLime,
     buttonWideBlue,

@@ -3,8 +3,8 @@ import 'dart:math';
 import 'package:fifflar_uffe/components/floating_text_component.dart';
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
-import 'package:fifflar_uffe/model/shop_catalog.dart';
-import 'package:fifflar_uffe/model/shop_item.dart';
+import 'package:fifflar_uffe/model/skill_catalog.dart';
+import 'package:fifflar_uffe/model/skill_def.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:fifflar_uffe/util/sek_format.dart';
 import 'package:flame/components.dart';
@@ -14,10 +14,10 @@ import 'package:flutter/animation.dart';
 
 class BuildingComponent extends PositionComponent
     with TapCallbacks, HasGameReference<FifflarUffeGame> {
-  BuildingComponent({required this.item, required this.slotIndex})
+  BuildingComponent({required this.skill, required this.slotIndex})
     : super(size: Vector2(104, 130), anchor: Anchor.center);
 
-  final ShopItemDef item;
+  final SkillDef skill;
   final int slotIndex;
 
   late final TextComponent _count;
@@ -33,7 +33,7 @@ class BuildingComponent extends PositionComponent
         position: Vector2(size.x / 2, 0),
       ),
       SpriteComponent(
-        sprite: Sprite(game.images.fromCache(item.iconPath)),
+        sprite: Sprite(game.images.fromCache(skill.iconPath)),
         size: Vector2.all(56),
         anchor: Anchor.center,
         position: Vector2(size.x / 2, 50),
@@ -82,14 +82,14 @@ class BuildingComponent extends PositionComponent
 
   @override
   void onTapDown(TapDownEvent event) {
-    if (game.buyItem(item)) {
+    if (game.buyItem(skill)) {
       add(
         ScaleEffect.by(
           Vector2.all(1.15),
           EffectController(duration: 0.1, alternate: true),
         ),
       );
-      if (item.isClickMultiplier) {
+      if (skill.isClickMultiplier) {
         game.world.add(
           FloatingTextComponent(
             text: 'x${game.economy.clickMultiplier}',
@@ -106,7 +106,7 @@ class BuildingComponent extends PositionComponent
       1,
       min(4, ((gameSize.x - 40) / (size.x + gap)).floor()),
     );
-    final rows = (shopCatalog.length / columns).ceil();
+    final rows = (skillCatalog.length / columns).ceil();
     final row = slotIndex ~/ columns;
     final column = slotIndex % columns;
     final gridWidth = columns * size.x + (columns - 1) * gap;
@@ -121,9 +121,9 @@ class BuildingComponent extends PositionComponent
 
   void _refresh() {
     final economy = game.economy;
-    _count.text = '${economy.ownedCount(item)}';
-    _price.text = formatSek(economy.priceOf(item));
-    _price.textRenderer = economy.canAfford(item)
+    _count.text = '${economy.ownedCount(skill)}';
+    _price.text = formatSek(economy.priceOf(skill));
+    _price.textRenderer = economy.canAfford(skill)
         ? TextStyles.priceTag
         : TextStyles.priceTagDisabled;
   }

@@ -1,0 +1,125 @@
+import 'package:fifflar_uffe/game/assets.dart';
+import 'package:fifflar_uffe/model/skill_catalog.dart';
+import 'package:fifflar_uffe/model/skill_def.dart';
+import 'package:fifflar_uffe/ui/game_button.dart';
+import 'package:fifflar_uffe/ui/localized_link_component.dart';
+import 'package:fifflar_uffe/ui/localized_text_box_component.dart';
+import 'package:fifflar_uffe/ui/modal_page.dart';
+import 'package:fifflar_uffe/ui/panel_close_button.dart';
+import 'package:fifflar_uffe/ui/panel_component.dart';
+import 'package:fifflar_uffe/ui/panel_header.dart';
+import 'package:fifflar_uffe/ui/text_styles.dart';
+import 'package:fifflar_uffe/util/sek_format.dart';
+import 'package:flame/components.dart';
+import 'package:flame/game.dart';
+
+class SkillDetailRoute extends Route {
+  SkillDetailRoute({required SkillDef skill})
+    : super(() => SkillDetailPage(skill: skill), transparent: true);
+}
+
+class SkillDetailPage extends ModalPage {
+  SkillDetailPage({required this.skill}) : super(designSize: Vector2(640, 580));
+
+  final SkillDef skill;
+
+  late final TextComponent _info;
+  late final TextComponent _requires;
+  late final GameButton _buyButton;
+
+  @override
+  Future<void> onLoad() async {
+    await super.onLoad();
+    panel.addAll([
+      PanelComponent(size: designSize),
+      PanelHeader(
+        title: skill.name,
+        size: Vector2(500, 64),
+        position: Vector2(designSize.x / 2, 0),
+        anchor: Anchor.center,
+      ),
+      PanelCloseButton(
+        position: Vector2(designSize.x - 20, 20),
+        anchor: Anchor.center,
+        onPressed: close,
+      ),
+      SpriteComponent(
+        sprite: Sprite(game.images.fromCache(AssetPaths.itemSlot)),
+        size: Vector2(86, 94),
+        position: Vector2(70, 92),
+      ),
+      SpriteComponent(
+        sprite: Sprite(game.images.fromCache(skill.iconPath)),
+        size: Vector2.all(52),
+        anchor: Anchor.center,
+        position: Vector2(113, 137),
+      ),
+      _info = TextComponent(
+        textRenderer: TextStyles.info,
+        position: Vector2(180, 96),
+      ),
+      _requires = TextComponent(
+        textRenderer: TextStyles.info,
+        position: Vector2(180, 160),
+      ),
+      LocalizedTextBoxComponent(
+        selector: skill.explanation,
+        textRenderer: TextStyles.paragraph,
+        boxConfig: const TextBoxConfig(maxWidth: 516),
+        position: Vector2(62, 208),
+      ),
+      LocalizedLinkComponent(
+        selector: (strings) => '${strings.sourceLabel}: ${skill.source}',
+        url: skill.sourceUrl,
+        position: Vector2(70, 408),
+      ),
+      _buyButton = GameButton(
+        label: (strings) => strings.buy,
+        size: Vector2(210, 84),
+        position: Vector2(designSize.x / 2, 500),
+        anchor: Anchor.center,
+        onPressed: _buy,
+      ),
+    ]);
+  }
+
+  @override
+  void onMount() {
+    super.onMount();
+    _refresh();
+    game.economy.addListener(_refresh);
+    game.i18n.language.addListener(_refresh);
+  }
+
+  @override
+  void onRemove() {
+    game.economy.removeListener(_refresh);
+    game.i18n.language.removeListener(_refresh);
+    super.onRemove();
+  }
+
+  void _buy() {
+    if (game.buyItem(skill)) {
+      close();
+    }
+  }
+
+  void _refresh() {
+    final strings = game.i18n.strings;
+    final economy = game.economy;
+    final effect = skill.isClickMultiplier
+        ? 'x${economy.ownedCount(skill) + 1}'
+        : '+${skill.incomePerSecond} ${strings.perSecond}';
+    _info.text =
+        '${formatSek(economy.priceOf(skill))}'
+        ' | ${strings.owned}: ${economy.ownedCount(skill)}'
+        ' | $effect';
+    final unlocked = economy.isUnlocked(skill);
+    final requirement = skill.requires;
+    _requires.text = unlocked || requirement == null
+        ? ''
+        : '${strings.requiresLabel}: '
+              '${skillById(requirement).name(strings)}';
+    _buyButton.isDisabled = !unlocked || !economy.canAfford(skill);
+  }
+}

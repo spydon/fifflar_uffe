@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:fifflar_uffe/components/building_component.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
-import 'package:fifflar_uffe/model/shop_catalog.dart';
+import 'package:fifflar_uffe/model/skill_catalog.dart';
 import 'package:fifflar_uffe/model/timeline.dart';
 import 'package:fifflar_uffe/ui/hud/event_card_component.dart';
 import 'package:fifflar_uffe/ui/hud/shop_hint_component.dart';
@@ -35,7 +35,7 @@ void main() {
       game.update(0);
       await game.ready();
       expect(game.world.children.whereType<BuildingComponent>(), isEmpty);
-      final item = shopCatalog.first;
+      final item = skillCatalog.first;
       for (var i = 0; i < item.basePrice; i++) {
         game.economy.earnClick();
       }
@@ -43,7 +43,7 @@ void main() {
       game.update(0);
       await game.ready();
       final buildings = game.world.children.whereType<BuildingComponent>();
-      expect(buildings.map((building) => building.item.id), [item.id]);
+      expect(buildings.map((building) => building.skill.id), [item.id]);
     },
   );
 
@@ -63,7 +63,7 @@ void main() {
       game.update(0);
       await game.ready();
       final buildings = game.world.children.whereType<BuildingComponent>();
-      expect(buildings.map((building) => building.item.id), ['lower_taxes']);
+      expect(buildings.map((building) => building.skill.id), ['lower_taxes']);
     },
   );
 
