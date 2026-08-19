@@ -28,7 +28,7 @@ class SpeechBubbleComponent extends PositionComponent
       SpriteComponent(
         sprite: Sprite(game.images.fromCache(AssetPaths.speechBubble)),
         size: size,
-      )..opacity = 0.85,
+      )..opacity = 0.7,
       _text = TextBoxComponent(
         textRenderer: TextStyles.bubble,
         boxConfig: const TextBoxConfig(maxWidth: 190),
