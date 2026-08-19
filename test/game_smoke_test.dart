@@ -29,6 +29,20 @@ void main() {
   );
 
   testWithGame<FifflarUffeGame>(
+    'frame deltas above five seconds are discarded',
+    FifflarUffeGame.new,
+    (game) async {
+      game.update(0);
+      await game.ready();
+      final before = game.timeline.elapsedDays;
+      game.update(6);
+      expect(game.timeline.elapsedDays, before);
+      game.update(1);
+      expect(game.timeline.elapsedDays, greaterThan(before));
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
     'a building appears after the first purchase of an item',
     FifflarUffeGame.new,
     (game) async {
