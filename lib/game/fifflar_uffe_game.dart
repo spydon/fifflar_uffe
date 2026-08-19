@@ -16,6 +16,7 @@ import 'package:fifflar_uffe/ui/hud/date_counter.dart';
 import 'package:fifflar_uffe/ui/hud/event_feed_component.dart';
 import 'package:fifflar_uffe/ui/hud/hud_icon_button.dart';
 import 'package:fifflar_uffe/ui/hud/sek_counter.dart';
+import 'package:fifflar_uffe/ui/hud/shop_hint_component.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/services.dart';
@@ -92,6 +93,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
         margin: const EdgeInsets.only(bottom: 16, right: 16),
         onPressed: () => router.pushNamed('shop'),
       ),
+      ShopHintComponent(),
       router,
       uffe = UffeComponent(priority: router.priority),
     ]);
