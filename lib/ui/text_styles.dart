@@ -107,6 +107,17 @@ class TextStyles {
     ),
   );
 
+  static final hint = TextPaint(
+    style: const TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+      color: Color(0xFFFFF6E3),
+      shadows: [
+        Shadow(color: Color(0xB3000000), offset: Offset(0, 2), blurRadius: 3),
+      ],
+    ),
+  );
+
   static const Color floatingGreen = Color(0xFF2E9940);
 
   static const floatingStyle = TextStyle(

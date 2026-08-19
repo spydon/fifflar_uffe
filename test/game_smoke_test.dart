@@ -5,6 +5,7 @@ import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/model/shop_catalog.dart';
 import 'package:fifflar_uffe/model/timeline.dart';
 import 'package:fifflar_uffe/ui/hud/event_card_component.dart';
+import 'package:fifflar_uffe/ui/hud/shop_hint_component.dart';
 import 'package:flame_test/flame_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -217,6 +218,30 @@ void main() {
         game.eventFeed.children.whereType<EventCardComponent>(),
         isEmpty,
       );
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
+    'the shop hint appears at ten kronor and fades after a few seconds',
+    FifflarUffeGame.new,
+    (game) async {
+      game.update(0);
+      await game.ready();
+      final hint = game.camera.viewport.children
+          .whereType<ShopHintComponent>()
+          .single;
+      expect(hint.isVisible, isFalse);
+      for (var i = 0; i < 10; i++) {
+        game.economy.earnClick();
+      }
+      game.update(0.1);
+      await game.ready();
+      expect(hint.isVisible, isTrue);
+      for (var i = 0; i < 8; i++) {
+        game.update(1);
+      }
+      await game.ready();
+      expect(hint.isVisible, isFalse);
     },
   );
 
