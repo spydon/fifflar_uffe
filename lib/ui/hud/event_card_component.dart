@@ -38,7 +38,7 @@ class EventCardComponent extends PositionComponent
       _EventLink(
         text: event.source,
         url: event.url,
-        position: Vector2(_padding, 96),
+        position: Vector2(_padding + 8, 96),
       ),
       TimerComponent(
         period: _displayDuration,
