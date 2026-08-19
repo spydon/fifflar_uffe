@@ -101,7 +101,7 @@ class SvStrings extends Strings {
       'Spelet är satir, men händelserna i spelet bygger på '
       'verklig nyhetsrapportering.';
   @override
-  String get aboutAttributions => 'Attributioner';
+  String get aboutAttributions => 'Bildkällor';
   @override
   String get itemHireCleaner => 'Anlita städhjälp (svart)';
   @override
@@ -311,7 +311,7 @@ class EnStrings extends Strings {
       'The game is satire, but the events in the game are based '
       'on real news reporting.';
   @override
-  String get aboutAttributions => 'Attributions';
+  String get aboutAttributions => 'Image credits';
   @override
   String get itemHireCleaner => 'Hire cleaning help (off the books)';
   @override
