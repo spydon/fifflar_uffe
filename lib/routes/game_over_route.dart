@@ -1,12 +1,17 @@
+import 'dart:async';
+
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/model/timeline.dart';
 import 'package:fifflar_uffe/routes/share_preview_route.dart';
+import 'package:fifflar_uffe/services/highscore_client.dart';
 import 'package:fifflar_uffe/services/share_service.dart';
+import 'package:fifflar_uffe/services/strings.dart';
 import 'package:fifflar_uffe/ui/game_button.dart';
 import 'package:fifflar_uffe/ui/localized_link_component.dart';
 import 'package:fifflar_uffe/ui/localized_text_box_component.dart';
 import 'package:fifflar_uffe/ui/localized_text_component.dart';
 import 'package:fifflar_uffe/ui/modal_page.dart';
+import 'package:fifflar_uffe/ui/name_input_component.dart';
 import 'package:fifflar_uffe/ui/panel_component.dart';
 import 'package:fifflar_uffe/ui/panel_header.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
@@ -21,6 +26,7 @@ class GameOverRoute extends Route with HasGameReference<FifflarUffeGame> {
   @override
   void onPush(Route? previousRoute) {
     game.world.updatePaused = true;
+    unawaited(game.highscore.probe());
   }
 
   @override
@@ -33,15 +39,29 @@ class GameOverPage extends ModalPage {
   GameOverPage()
     : super(designSize: Vector2(700, 480), dismissOnScrimTap: false);
 
+  static const int maxNameLength = 10;
+  static final RegExp _allowedName = RegExp(
+    r"^[\p{L}\p{N} .,_!?'-]+$",
+    unicode: true,
+  );
+
   late final PanelComponent _background;
   late final LocalizedTextBoxComponent _appeal;
   late final LocalizedTextComponent _finalScore;
   late final LocalizedTextComponent _highScore;
+  late final NameInputComponent _nameInput;
+  late final GameButton _submit;
+  late final LocalizedTextBoxComponent _status;
   late final LocalizedTextBoxComponent _satire;
   late final LocalizedLinkComponent _referencesLink;
   late final GameButton _playAgain;
   late final GameButton _continue;
   late final GameButton _share;
+
+  bool _built = false;
+  bool _submitting = false;
+  HighscoreError? _error;
+  bool _invalidName = false;
 
   @override
   Future<void> onLoad() async {
@@ -91,6 +111,13 @@ class GameOverPage extends ModalPage {
         textRenderer: infoStyle,
         anchor: Anchor.center,
       ),
+      _status = LocalizedTextBoxComponent(
+        selector: _statusText,
+        textRenderer: infoStyle,
+        boxConfig: TextBoxConfig(maxWidth: textWidth),
+        align: Anchor.topCenter,
+        anchor: Anchor.topCenter,
+      ),
       _satire = LocalizedTextBoxComponent(
         selector: (strings) => strings.aboutSatire,
         textRenderer: infoStyle,
@@ -125,15 +152,87 @@ class GameOverPage extends ModalPage {
       ),
       _share = GameButton(
         label: (strings) => strings.share,
-        color: GameButtonColor.yellow,
+        color: GameButtonColor.blue,
         size: Vector2(280, 92),
         anchor: Anchor.center,
         onPressed: _shareResult,
       ),
     ]);
+    _nameInput = NameInputComponent(
+      maxLength: maxNameLength,
+      initialText: game.highscoreName ?? '',
+      anchor: Anchor.center,
+      onSubmitted: () => unawaited(_submitScore()),
+    );
+    _submit = GameButton(
+      label: (strings) => strings.submitScore,
+      color: GameButtonColor.yellow,
+      size: Vector2(280, 92),
+      anchor: Anchor.center,
+      onPressed: () => unawaited(_submitScore()),
+    );
     _appeal.size.addListener(_layoutContent);
+    _status.size.addListener(_layoutContent);
     _satire.size.addListener(_layoutContent);
+    _built = true;
+    _refresh();
+  }
+
+  @override
+  void onMount() {
+    super.onMount();
+    game.highscore.available.addListener(_refresh);
+  }
+
+  @override
+  void onRemove() {
+    game.highscore.available.removeListener(_refresh);
+    super.onRemove();
+  }
+
+  bool get _showSubmitSection => game.canSubmitHighscore;
+
+  String _statusText(Strings strings) {
+    if (game.highscoreSubmitted) {
+      final rank = game.highscoreRank;
+      return rank == null ? strings.submitAlreadyDone : strings.yourRank(rank);
+    }
+    if (_invalidName) {
+      return strings.invalidName;
+    }
+    return switch (_error) {
+      null => '',
+      HighscoreError.tooEarly => strings.submitTooEarly,
+      HighscoreError.alreadySubmitted => strings.submitAlreadyDone,
+      HighscoreError.cooldown => strings.submitCooldown,
+      HighscoreError.invalidName => strings.invalidName,
+      HighscoreError.flagged ||
+      HighscoreError.implausible ||
+      HighscoreError.runNotFinished ||
+      HighscoreError.invalidState ||
+      HighscoreError.invalidScore => strings.submitRejected,
+      _ => strings.submitFailed,
+    };
+  }
+
+  void _refresh() {
+    if (!_built) {
+      return;
+    }
+    final show = _showSubmitSection;
+    _setVisible(_nameInput, show);
+    _setVisible(_submit, show);
+    _submit.isDisabled = _submitting;
+    _status.text = _statusText(game.i18n.strings);
     _layoutContent();
+  }
+
+  void _setVisible(Component component, bool visible) {
+    if (visible && component.parent == null) {
+      panel.add(component);
+    } else if (!visible && component.parent != null) {
+      component.removeFromParent();
+    }
   }
 
   void _layoutContent() {
@@ -144,6 +243,16 @@ class GameOverPage extends ModalPage {
     y += 42;
     _highScore.position = Vector2(center, y);
     y += 24;
+    if (_showSubmitSection) {
+      _nameInput.position = Vector2(center, y + _nameInput.size.y / 2);
+      y += _nameInput.size.y + 6;
+      _submit.position = Vector2(center, y + 46);
+      y += 92 + 8;
+    }
+    if (_status.text.isNotEmpty) {
+      _status.position = Vector2(center, y);
+      y += _status.size.y + 14;
+    }
     _satire.position = Vector2(center, y);
     y += _satire.size.y + 20;
     _referencesLink.position = Vector2(center, y);
@@ -161,6 +270,42 @@ class GameOverPage extends ModalPage {
     }
     _background.size = Vector2(designSize.x, y);
     resizePanel(Vector2(designSize.x, y));
+  }
+
+  static String cleanName(String raw) =>
+      raw.replaceAll(RegExp(r'\s+'), ' ').trim();
+
+  static bool isValidName(String name) =>
+      name.isNotEmpty &&
+      name.length <= maxNameLength &&
+      _allowedName.hasMatch(name);
+
+  Future<void> _submitScore() async {
+    if (_submitting || !_showSubmitSection) {
+      return;
+    }
+    final name = cleanName(_nameInput.text);
+    _invalidName = !isValidName(name);
+    _error = null;
+    if (_invalidName) {
+      _refresh();
+      return;
+    }
+    _nameInput.unfocus();
+    _submitting = true;
+    _refresh();
+    try {
+      await game.submitHighscore(name);
+    } on HighscoreException catch (exception) {
+      _error = exception.error;
+    } on TimeoutException {
+      _error = HighscoreError.network;
+    } finally {
+      _submitting = false;
+      if (isMounted) {
+        _refresh();
+      }
+    }
   }
 
   Future<void> _shareResult() async {

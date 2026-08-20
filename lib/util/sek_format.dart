@@ -1,3 +1,5 @@
+import 'dart:math';
+
 const String _nonBreakingSpace = ' ';
 
 String formatSek(double value) {
@@ -11,4 +13,22 @@ String formatSek(double value) {
   }
   buffer.write('${_nonBreakingSpace}kr');
   return buffer.toString();
+}
+
+String formatSekShort(double value) {
+  if (value < 1e15) {
+    return formatSek(value);
+  }
+  var exponent = (log(value) / ln10).floor();
+  var mantissa = value / pow(10.0, exponent);
+  if (mantissa >= 10) {
+    mantissa /= 10;
+    exponent++;
+  }
+  var digits = mantissa.toStringAsFixed(1);
+  if (digits == '10.0') {
+    digits = '1.0';
+    exponent++;
+  }
+  return '${digits.replaceAll('.', ',')}e$exponent${_nonBreakingSpace}kr';
 }

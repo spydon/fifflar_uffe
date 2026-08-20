@@ -17,6 +17,11 @@ dependencies:
   gal: ^2.3.3
   share_plus: ^13.3.0
   shared_preferences: ^2.5.0
+  supabase_flutter:
+    git:
+      url: https://github.com/supabase/supabase-flutter.git
+      ref: main
+      path: packages/supabase_flutter
   url_launcher: ^6.3.0
   web: ^1.1.1
 
@@ -40,6 +45,51 @@ dependency_overrides:
       url: https://github.com/flame-engine/flame.git
       ref: perf/component-set-backing
       path: packages/flame
+  iceberg:
+    git:
+      url: https://github.com/supabase/supabase-flutter.git
+      ref: main
+      path: packages/iceberg
+  postgrest:
+    git:
+      url: https://github.com/supabase/supabase-flutter.git
+      ref: main
+      path: packages/postgrest
+  supabase:
+    git:
+      url: https://github.com/supabase/supabase-flutter.git
+      ref: main
+      path: packages/supabase
+  supabase_auth:
+    git:
+      url: https://github.com/supabase/supabase-flutter.git
+      ref: main
+      path: packages/supabase_auth
+  supabase_common:
+    git:
+      url: https://github.com/supabase/supabase-flutter.git
+      ref: main
+      path: packages/supabase_common
+  supabase_functions:
+    git:
+      url: https://github.com/supabase/supabase-flutter.git
+      ref: main
+      path: packages/supabase_functions
+  supabase_realtime:
+    git:
+      url: https://github.com/supabase/supabase-flutter.git
+      ref: main
+      path: packages/supabase_realtime
+  supabase_storage:
+    git:
+      url: https://github.com/supabase/supabase-flutter.git
+      ref: main
+      path: packages/supabase_storage
+  yet_another_json_isolate:
+    git:
+      url: https://github.com/supabase/supabase-flutter.git
+      ref: main
+      path: packages/yet_another_json_isolate
 
 flutter:
   uses-material-design: true
