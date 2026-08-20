@@ -317,7 +317,7 @@ class SvStrings extends Strings {
       'har haft sönder kapitalismen';
   @override
   String gamesPlayed(int count) =>
-      '$count ${count == 1 ? 'omgång' : 'omgångar'} har spelats';
+      '$count ${count == 1 ? 'omgång' : 'omgångar'} har spelats totalt';
   @override
   String get loading => 'Laddar...';
   @override
@@ -608,7 +608,7 @@ class EnStrings extends Strings {
       '$count ${count == 1 ? 'person has' : 'people have'} broken capitalism';
   @override
   String gamesPlayed(int count) =>
-      '$count ${count == 1 ? 'game has' : 'games have'} been played';
+      '$count ${count == 1 ? 'game has' : 'games have'} been played in total';
   @override
   String get loading => 'Loading...';
   @override
