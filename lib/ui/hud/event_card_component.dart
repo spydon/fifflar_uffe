@@ -3,6 +3,7 @@ import 'package:fifflar_uffe/model/game_event.dart';
 import 'package:fifflar_uffe/ui/panel_close_button.dart';
 import 'package:fifflar_uffe/ui/panel_component.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
+import 'package:fifflar_uffe/util/non_breaking_numbers.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
@@ -95,8 +96,8 @@ class EventCardComponent extends PositionComponent
 
   void _refresh() {
     final language = game.i18n.language.value;
-    _title.text = event.title(language);
-    _body.text = event.body(language);
+    _title.text = nonBreakingNumbers(event.title(language));
+    _body.text = nonBreakingNumbers(event.body(language));
   }
 
   @override
