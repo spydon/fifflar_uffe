@@ -113,7 +113,7 @@ void main() {
     expect(economy.balance, 20);
   });
 
-  test('deeper multiplier skills give bigger click bonuses', () {
+  test('multiplier skills multiply together per owned copy', () {
     final economy = Economy(
       owned: {
         SkillId.writeBook: 2,
@@ -122,8 +122,8 @@ void main() {
         SkillId.cutSickLeave: 1,
       },
     );
-    expect(economy.clickMultiplier, 1 + 2 + 2 + 5 + 10);
+    expect(economy.clickMultiplier, 2 * 2 * 3 * 4 * 5);
     economy.earnClick();
-    expect(economy.balance, 200);
+    expect(economy.balance, 2400);
   });
 }

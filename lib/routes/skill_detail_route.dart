@@ -163,8 +163,7 @@ class SkillDetailPage extends ModalPage {
     final unlocked = economy.isUnlocked(skill);
     final requirement = skill.requires;
     final effect = skill.isClickMultiplier
-        ? '+${formatSek(skill.clickBonus * economy.baseClickValue)} '
-              '${strings.perClick}'
+        ? 'x${skill.clickFactor} ${strings.perClick}'
         : '+${formatSek(skill.incomePerSecond)}/s';
     _labels[0].text = strings.priceLabel;
     _values[0].text = formatSek(economy.priceOf(skill));

@@ -1,3 +1,4 @@
+import 'package:fifflar_uffe/components/floating_text_component.dart';
 import 'package:fifflar_uffe/components/uffe_component.dart';
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/play_world.dart';
@@ -16,6 +17,7 @@ import 'package:fifflar_uffe/ui/hud/event_feed_component.dart';
 import 'package:fifflar_uffe/ui/hud/hud_icon_button.dart';
 import 'package:fifflar_uffe/ui/hud/sek_counter.dart';
 import 'package:fifflar_uffe/ui/hud/shop_hint_component.dart';
+import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/services.dart';
@@ -113,6 +115,17 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
     final bought = economy.buy(skill);
     if (bought) {
       uffe.say(skill.quip(i18n.strings));
+      if (skill.isClickMultiplier) {
+        camera.viewport.add(
+          FloatingTextComponent(
+            text: 'x${economy.clickMultiplier} ${i18n.strings.perClick}',
+            position: Vector2(size.x / 2, size.y * 0.35),
+            style: TextStyles.floatingStyle.copyWith(fontSize: 42),
+            lifetime: 1.5,
+            priority: router.priority + 2,
+          ),
+        );
+      }
       saveNow();
     }
     return bought;
