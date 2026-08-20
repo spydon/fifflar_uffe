@@ -62,6 +62,8 @@ abstract class Strings {
   String get continuePlaying;
   String get brokeCapitalism;
   String get share;
+  String get shareTitle;
+  String get download;
   String get shareHeadline;
   String get shareTagline;
   String get shopHint;
@@ -241,6 +243,10 @@ class SvStrings extends Strings {
   String get brokeCapitalism => 'Du hade sönder kapitalismen :(';
   @override
   String get share => 'Dela';
+  @override
+  String get shareTitle => 'Dela ditt resultat';
+  @override
+  String get download => 'Ladda ner';
   @override
   String get shareHeadline => 'Jag klarade fifflar-uffe.se!';
   @override
@@ -469,6 +475,10 @@ class EnStrings extends Strings {
   String get brokeCapitalism => 'You broke capitalism :(';
   @override
   String get share => 'Share';
+  @override
+  String get shareTitle => 'Share your result';
+  @override
+  String get download => 'Download';
   @override
   String get shareHeadline => 'I completed fifflar-uffe.se!';
   @override
