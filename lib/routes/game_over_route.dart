@@ -253,10 +253,7 @@ class GameOverPage extends ModalPage {
       _status.position = Vector2(center, y);
       y += _status.size.y + 14;
     }
-    _satire.position = Vector2(center, y);
-    y += _satire.size.y + 20;
-    _referencesLink.position = Vector2(center, y);
-    y += 42;
+    y += 6;
     if (narrow) {
       _playAgain.position = Vector2(center, y + 46);
       _continue.position = Vector2(center, y + 152);
@@ -268,6 +265,10 @@ class GameOverPage extends ModalPage {
       _share.position = Vector2(center, y + 152);
       y += 152 + 46 + 30;
     }
+    _satire.position = Vector2(center, y);
+    y += _satire.size.y + 20;
+    _referencesLink.position = Vector2(center, y);
+    y += 36;
     _background.size = Vector2(designSize.x, y);
     resizePanel(Vector2(designSize.x, y));
   }
