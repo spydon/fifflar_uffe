@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:fifflar_uffe/components/floating_text_component.dart';
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/model/skill_catalog.dart';
@@ -90,14 +89,6 @@ class BuildingComponent extends PositionComponent
           EffectController(duration: 0.1, alternate: true),
         ),
       );
-      if (skill.isClickMultiplier) {
-        game.world.add(
-          FloatingTextComponent(
-            text: 'x${game.economy.clickMultiplier}',
-            position: position - Vector2(0, size.y / 2 + 12),
-          ),
-        );
-      }
     }
   }
 
