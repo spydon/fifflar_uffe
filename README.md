@@ -63,7 +63,8 @@ run from sequence numbered progress reports using the same economy rules as
 the game, so only trajectories the real game can produce are accepted. The
 schema, functions and their pgTAP tests live in `supabase/`; migrations are
 applied to the hosted project by the Supabase GitHub integration on merge to
-`main`, and the project needs anonymous sign-ins enabled in its dashboard.
+`main`, and the project needs both new sign-ups and anonymous sign-ins
+enabled under Authentication in its dashboard.
 
 To run the backend locally (Docker required) and point the game at it:
 
