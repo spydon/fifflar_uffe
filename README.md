@@ -30,6 +30,8 @@ The game is satire, but the events in it are based on real news reporting:
   commenting on every purchase.
 - Swedish by default with English one flag tap away.
 - Progress saved locally, with a persistent high score across runs.
+- An online top ten list with a counter of everyone who broke capitalism,
+  hidden automatically when the backend cannot be reached.
 - Responsive layouts for both desktop and phones.
 
 ## Development
@@ -52,6 +54,26 @@ flutter test
 
 Pushes to `main` build the web release and deploy it through the `web`
 branch, and pull requests run the same checks in CI.
+
+### Online highscores
+
+The highscore list lives in a Supabase project. Players are signed in
+anonymously, never touch the tables directly, and the database replays every
+run from sequence numbered progress reports using the same economy rules as
+the game, so only trajectories the real game can produce are accepted. The
+schema, functions and their pgTAP tests live in `supabase/`; migrations are
+applied to the hosted project by the Supabase GitHub integration on merge to
+`main`, and the project needs anonymous sign-ins enabled in its dashboard.
+
+To run the backend locally (Docker required) and point the game at it:
+
+```sh
+supabase start
+supabase test db
+flutter run -d chrome \
+  --dart-define=SUPABASE_URL=http://127.0.0.1:54521 \
+  --dart-define=SUPABASE_PUBLISHABLE_KEY=<publishable key from supabase status>
+```
 
 ## Contributing
 

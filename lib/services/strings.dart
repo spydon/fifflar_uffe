@@ -67,6 +67,27 @@ abstract class Strings {
   String get download;
   String get shareHeadline;
   String get shareTagline;
+  String get highscores;
+  String get highscoreNameHeader;
+  String get highscoreScoreHeader;
+  String get submitScore;
+  String get yourName;
+  String get nameHint;
+  String get submit;
+  String yourRank(int rank);
+  String yourBest(String score, int rank);
+  String get notRanked;
+  String brokenCapitalismCount(int count);
+  String get loading;
+  String get highscoreLoadError;
+  String get retry;
+  String get submitFailed;
+  String get submitTooEarly;
+  String get submitAlreadyDone;
+  String get submitCooldown;
+  String get submitRejected;
+  String get invalidName;
+  String get emptyLeaderboard;
   String get shopHint;
   String affordHint(String item);
   String get references;
@@ -254,6 +275,51 @@ class SvStrings extends Strings {
   String get shareHeadline => 'Jag klarade fifflar-uffe.se!';
   @override
   String get shareTagline => 'Nu vet jag hur man blir en riktig fifflare.';
+  @override
+  String get highscores => 'Topplista';
+  @override
+  String get highscoreNameHeader => 'Namn';
+  @override
+  String get highscoreScoreHeader => 'Fifflat';
+  @override
+  String get submitScore => 'Till topplistan';
+  @override
+  String get yourName => 'Ditt namn';
+  @override
+  String get nameHint => 'Högst 10 tecken';
+  @override
+  String get submit => 'Skicka';
+  @override
+  String yourRank(int rank) => 'Du ligger på plats $rank på topplistan!';
+  @override
+  String yourBest(String score, int rank) => 'Ditt bästa: $score (plats $rank)';
+  @override
+  String get notRanked => 'Du finns inte med på topplistan än';
+  @override
+  String brokenCapitalismCount(int count) =>
+      '$count ${count == 1 ? 'person' : 'personer'} '
+      'har haft sönder kapitalismen';
+  @override
+  String get loading => 'Laddar...';
+  @override
+  String get highscoreLoadError => 'Kunde inte hämta topplistan';
+  @override
+  String get retry => 'Försök igen';
+  @override
+  String get submitFailed => 'Det gick inte att skicka in resultatet';
+  @override
+  String get submitTooEarly => 'Omgången var för kort för att räknas';
+  @override
+  String get submitAlreadyDone => 'Resultatet är redan inskickat';
+  @override
+  String get submitCooldown => 'Vänta en stund och försök igen';
+  @override
+  String get submitRejected => 'Omgången kunde inte verifieras';
+  @override
+  String get invalidName =>
+      '1 till 10 tecken: bokstäver, siffror, mellanslag och . , ! ? - _';
+  @override
+  String get emptyLeaderboard => 'Ingen har fifflat klart än';
   @override
   String get shopHint => 'Fiffla mer effektivt!';
   @override
@@ -488,6 +554,50 @@ class EnStrings extends Strings {
   String get shareHeadline => 'I completed fifflar-uffe.se!';
   @override
   String get shareTagline => 'Now I know how to be a good fifflare.';
+  @override
+  String get highscores => 'Highscores';
+  @override
+  String get highscoreNameHeader => 'Name';
+  @override
+  String get highscoreScoreHeader => 'Fiddled';
+  @override
+  String get submitScore => 'Submit score';
+  @override
+  String get yourName => 'Your name';
+  @override
+  String get nameHint => 'At most 10 characters';
+  @override
+  String get submit => 'Submit';
+  @override
+  String yourRank(int rank) => 'You are in place $rank on the highscores!';
+  @override
+  String yourBest(String score, int rank) => 'Your best: $score (place $rank)';
+  @override
+  String get notRanked => 'You are not on the highscores yet';
+  @override
+  String brokenCapitalismCount(int count) =>
+      '$count ${count == 1 ? 'person has' : 'people have'} broken capitalism';
+  @override
+  String get loading => 'Loading...';
+  @override
+  String get highscoreLoadError => 'Could not load the highscores';
+  @override
+  String get retry => 'Try again';
+  @override
+  String get submitFailed => 'Could not submit the score';
+  @override
+  String get submitTooEarly => 'The run was too short to count';
+  @override
+  String get submitAlreadyDone => 'This score is already submitted';
+  @override
+  String get submitCooldown => 'Wait a moment and try again';
+  @override
+  String get submitRejected => 'The run could not be verified';
+  @override
+  String get invalidName =>
+      '1 to 10 characters: letters, digits, spaces and . , ! ? - _';
+  @override
+  String get emptyLeaderboard => 'Nobody has finished fiddling yet';
   @override
   String get shopHint => 'Fiddle more efficiently!';
   @override

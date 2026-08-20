@@ -17,6 +17,38 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "13.3.0"
+  app_links:
+    dependency: transitive
+    description:
+      name: app_links
+      sha256: f8db46d2ea9ff6f3a37191a7fd5b7813da1253ace8c32c1b9eadace41d1188ea
+      url: "https://pub.dev"
+    source: hosted
+    version: "7.2.1"
+  app_links_linux:
+    dependency: transitive
+    description:
+      name: app_links_linux
+      sha256: f5f7173a78609f3dfd4c2ff2c95bd559ab43c80a87dc6a095921d96c05688c81
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.3"
+  app_links_platform_interface:
+    dependency: transitive
+    description:
+      name: app_links_platform_interface
+      sha256: "7546f09a6e93f4a2df2fe2bd40a5c6c64310ac461b036d82b43033be7a59f809"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.4"
+  app_links_web:
+    dependency: transitive
+    description:
+      name: app_links_web
+      sha256: af060ed76183f9e2b87510a9480e56a5352b6c249778d07bd2c95fc35632a555
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.4"
   args:
     dependency: transitive
     description:
@@ -113,6 +145,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.7"
+  dart_jsonwebtoken:
+    dependency: transitive
+    description:
+      name: dart_jsonwebtoken
+      sha256: ad84e60181696513d04d5f2078e0bbc20365b911f46f647797317414bdc88fbe
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.4.1"
   fake_async:
     dependency: transitive
     description:
@@ -219,6 +259,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.3"
+  gtk:
+    dependency: transitive
+    description:
+      name: gtk
+      sha256: "4ff85b2a16724029dd9e5bbb5a94b6918f9973f74ba571c949d2002801879cf5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.2.0"
   hooks:
     dependency: transitive
     description:
@@ -227,6 +275,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.2"
+  http:
+    dependency: transitive
+    description:
+      name: http
+      sha256: "87721a4a50b19c7f1d49001e51409bddc46303966ce89a65af4f4e6004896412"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.6.0"
   http_multi_server:
     dependency: transitive
     description:
@@ -243,6 +299,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.1.2"
+  iceberg:
+    dependency: "direct overridden"
+    description:
+      path: "packages/iceberg"
+      ref: main
+      resolved-ref: "7942c37770c5a12b18b27afc66b8595e67fdd22d"
+      url: "https://github.com/supabase/supabase-flutter.git"
+    source: git
+    version: "0.1.0"
   io:
     dependency: transitive
     description:
@@ -275,6 +340,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.0"
+  json_annotation:
+    dependency: transitive
+    description:
+      name: json_annotation
+      sha256: "2a743920d81b7910627f68ee2c9ac1fc0bfee32b9fc3403587d7c6791ca12f80"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.12.0"
   leak_tracker:
     dependency: transitive
     description:
@@ -371,6 +444,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.0"
+  passkeys_platform_interface:
+    dependency: transitive
+    description:
+      name: passkeys_platform_interface
+      sha256: e810520c7b79dca629fdc266958564eedd77dc85a955f5e94430dfccb92eef68
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.9.0"
   path:
     dependency: transitive
     description:
@@ -443,6 +524,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
+  pointycastle:
+    dependency: transitive
+    description:
+      name: pointycastle
+      sha256: "92aa3841d083cc4b0f4709b5c74fd6409a3e6ba833ffc7dc6a8fee096366acf5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.0.0"
   pool:
     dependency: transitive
     description:
@@ -451,6 +540,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.2"
+  postgrest:
+    dependency: "direct overridden"
+    description:
+      path: "packages/postgrest"
+      ref: main
+      resolved-ref: "7942c37770c5a12b18b27afc66b8595e67fdd22d"
+      url: "https://github.com/supabase/supabase-flutter.git"
+    source: git
+    version: "2.9.1"
   pub_semver:
     dependency: transitive
     description:
@@ -624,6 +722,69 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.1"
+  supabase:
+    dependency: "direct overridden"
+    description:
+      path: "packages/supabase"
+      ref: main
+      resolved-ref: "7942c37770c5a12b18b27afc66b8595e67fdd22d"
+      url: "https://github.com/supabase/supabase-flutter.git"
+    source: git
+    version: "2.16.0"
+  supabase_auth:
+    dependency: "direct overridden"
+    description:
+      path: "packages/supabase_auth"
+      ref: main
+      resolved-ref: "7942c37770c5a12b18b27afc66b8595e67fdd22d"
+      url: "https://github.com/supabase/supabase-flutter.git"
+    source: git
+    version: "3.0.0-dev.1"
+  supabase_common:
+    dependency: "direct overridden"
+    description:
+      path: "packages/supabase_common"
+      ref: main
+      resolved-ref: "7942c37770c5a12b18b27afc66b8595e67fdd22d"
+      url: "https://github.com/supabase/supabase-flutter.git"
+    source: git
+    version: "0.1.2"
+  supabase_flutter:
+    dependency: "direct main"
+    description:
+      path: "packages/supabase_flutter"
+      ref: main
+      resolved-ref: "7942c37770c5a12b18b27afc66b8595e67fdd22d"
+      url: "https://github.com/supabase/supabase-flutter.git"
+    source: git
+    version: "2.17.1"
+  supabase_functions:
+    dependency: "direct overridden"
+    description:
+      path: "packages/supabase_functions"
+      ref: main
+      resolved-ref: "7942c37770c5a12b18b27afc66b8595e67fdd22d"
+      url: "https://github.com/supabase/supabase-flutter.git"
+    source: git
+    version: "3.0.0-dev.1"
+  supabase_realtime:
+    dependency: "direct overridden"
+    description:
+      path: "packages/supabase_realtime"
+      ref: main
+      resolved-ref: "7942c37770c5a12b18b27afc66b8595e67fdd22d"
+      url: "https://github.com/supabase/supabase-flutter.git"
+    source: git
+    version: "3.0.0-dev.1"
+  supabase_storage:
+    dependency: "direct overridden"
+    description:
+      path: "packages/supabase_storage"
+      ref: main
+      resolved-ref: "7942c37770c5a12b18b27afc66b8595e67fdd22d"
+      url: "https://github.com/supabase/supabase-flutter.git"
+    source: git
+    version: "3.0.0-dev.1"
   term_glyph:
     dependency: transitive
     description:
@@ -816,6 +977,15 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.3"
+  yet_another_json_isolate:
+    dependency: "direct overridden"
+    description:
+      path: "packages/yet_another_json_isolate"
+      ref: main
+      resolved-ref: "7942c37770c5a12b18b27afc66b8595e67fdd22d"
+      url: "https://github.com/supabase/supabase-flutter.git"
+    source: git
+    version: "2.1.1"
 sdks:
   dart: ">=3.13.0 <4.0.0"
   flutter: ">=3.44.0"

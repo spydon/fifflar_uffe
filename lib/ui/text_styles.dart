@@ -139,6 +139,22 @@ class TextStyles {
     ),
   );
 
+  static final statValueHighlight = TextPaint(
+    style: const TextStyle(
+      fontSize: 17,
+      fontWeight: FontWeight.bold,
+      color: floatingGreen,
+    ),
+  );
+
+  static final placeholder = TextPaint(
+    style: const TextStyle(
+      fontSize: 20,
+      fontWeight: FontWeight.bold,
+      color: Color(0x805B4632),
+    ),
+  );
+
   static final treePrice = TextPaint(
     style: const TextStyle(
       fontSize: 16,

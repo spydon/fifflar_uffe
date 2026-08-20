@@ -24,6 +24,13 @@ void main() {
       highScore: 999.9,
       continued: true,
       owned: {SkillId.lowerTaxes: 3},
+      runId: 'run-1',
+      runSeq: 4,
+      runFlagged: true,
+      highscoreName: 'Uffe',
+      highscoreSubmitted: true,
+      highscoreRank: 7,
+      capitalismReported: true,
     );
     await service.saveLanguage(AppLanguage.en);
     final save = service.load();
@@ -34,6 +41,13 @@ void main() {
     expect(save.continued, isTrue);
     expect(save.owned, {SkillId.lowerTaxes: 3});
     expect(save.language, AppLanguage.en);
+    expect(save.runId, 'run-1');
+    expect(save.runSeq, 4);
+    expect(save.runFlagged, isTrue);
+    expect(save.highscoreName, 'Uffe');
+    expect(save.highscoreSubmitted, isTrue);
+    expect(save.highscoreRank, 7);
+    expect(save.capitalismReported, isTrue);
   });
 
   test('older saves without timeline fields load with defaults', () async {
@@ -48,6 +62,13 @@ void main() {
     expect(save.highScore, 0);
     expect(save.continued, isFalse);
     expect(save.owned, {SkillId.lowerTaxes: 1});
+    expect(save.runId, isNull);
+    expect(save.runSeq, 0);
+    expect(save.runFlagged, isFalse);
+    expect(save.highscoreName, isNull);
+    expect(save.highscoreSubmitted, isFalse);
+    expect(save.highscoreRank, isNull);
+    expect(save.capitalismReported, isFalse);
   });
 
   test('falls back to defaults on corrupt save data', () async {

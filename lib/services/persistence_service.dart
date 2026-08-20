@@ -14,6 +14,13 @@ class SaveData {
     this.continued = false,
     this.owned = const {},
     this.language = AppLanguage.sv,
+    this.runId,
+    this.runSeq = 0,
+    this.runFlagged = false,
+    this.highscoreName,
+    this.highscoreSubmitted = false,
+    this.highscoreRank,
+    this.capitalismReported = false,
   });
 
   final double balance;
@@ -23,6 +30,13 @@ class SaveData {
   final bool continued;
   final Map<SkillId, int> owned;
   final AppLanguage language;
+  final String? runId;
+  final int runSeq;
+  final bool runFlagged;
+  final String? highscoreName;
+  final bool highscoreSubmitted;
+  final int? highscoreRank;
+  final bool capitalismReported;
 }
 
 class PersistenceService {
@@ -61,6 +75,13 @@ class PersistenceService {
         continued: json['continued'] as bool? ?? false,
         owned: owned,
         language: language,
+        runId: json['runId'] as String?,
+        runSeq: json['runSeq'] as int? ?? 0,
+        runFlagged: json['runFlagged'] as bool? ?? false,
+        highscoreName: json['highscoreName'] as String?,
+        highscoreSubmitted: json['highscoreSubmitted'] as bool? ?? false,
+        highscoreRank: json['highscoreRank'] as int?,
+        capitalismReported: json['capitalismReported'] as bool? ?? false,
       );
     } on FormatException {
       return SaveData(language: language);
@@ -76,6 +97,13 @@ class PersistenceService {
     required double highScore,
     required bool continued,
     required Map<SkillId, int> owned,
+    String? runId,
+    int runSeq = 0,
+    bool runFlagged = false,
+    String? highscoreName,
+    bool highscoreSubmitted = false,
+    int? highscoreRank,
+    bool capitalismReported = false,
   }) async {
     await _preferences.setString(
       _saveKey,
@@ -88,6 +116,13 @@ class PersistenceService {
         'owned': owned.map(
           (id, count) => MapEntry(id.snakeCaseName, count),
         ),
+        'runId': runId,
+        'runSeq': runSeq,
+        'runFlagged': runFlagged,
+        'highscoreName': highscoreName,
+        'highscoreSubmitted': highscoreSubmitted,
+        'highscoreRank': highscoreRank,
+        'capitalismReported': capitalismReported,
         'savedAt': DateTime.now().toIso8601String(),
       }),
     );
