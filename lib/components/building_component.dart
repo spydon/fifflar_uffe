@@ -144,6 +144,7 @@ class BuildingComponent extends PositionComponent
       _coinParticles = null;
       return;
     }
+    final speedBoost = 1 + 0.15 * (min(level, 10) - 1);
     _coinParticles = ParticleEmitterComponent(
       position: Vector2(size.x / 2, 52),
       emitter: ParticleEmitter(
@@ -151,7 +152,7 @@ class BuildingComponent extends PositionComponent
         rate: min(level.toDouble(), _maxParticleRate),
         lifespan: (1.0, 1.6),
         shape: const CircleEmitterShape(56, edgeOnly: true),
-        speed: (12, 26),
+        speed: (12 * speedBoost, 26 * speedBoost),
         direction: -pi / 2,
         spread: 1,
         size: (10, 15),
