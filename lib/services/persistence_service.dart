@@ -21,6 +21,7 @@ class SaveData {
     this.highscoreSubmitted = false,
     this.highscoreRank,
     this.capitalismReported = false,
+    this.menuSeen = false,
   });
 
   final double balance;
@@ -37,6 +38,7 @@ class SaveData {
   final bool highscoreSubmitted;
   final int? highscoreRank;
   final bool capitalismReported;
+  final bool menuSeen;
 }
 
 class PersistenceService {
@@ -44,6 +46,7 @@ class PersistenceService {
 
   static const _saveKey = 'fifflar_uffe.save.v1';
   static const _languageKey = 'fifflar_uffe.language';
+  static const _menuSeenKey = 'fifflar_uffe.menu_seen';
 
   final SharedPreferences _preferences;
 
@@ -53,9 +56,10 @@ class PersistenceService {
 
   SaveData load() {
     final language = AppLanguage.fromCode(_preferences.getString(_languageKey));
+    final menuSeen = _preferences.getBool(_menuSeenKey) ?? false;
     final raw = _preferences.getString(_saveKey);
     if (raw == null) {
-      return SaveData(language: language);
+      return SaveData(language: language, menuSeen: menuSeen);
     }
     try {
       final json = jsonDecode(raw) as Map<String, dynamic>;
@@ -82,11 +86,12 @@ class PersistenceService {
         highscoreSubmitted: json['highscoreSubmitted'] as bool? ?? false,
         highscoreRank: json['highscoreRank'] as int?,
         capitalismReported: json['capitalismReported'] as bool? ?? false,
+        menuSeen: menuSeen,
       );
     } on FormatException {
-      return SaveData(language: language);
+      return SaveData(language: language, menuSeen: menuSeen);
     } on TypeError {
-      return SaveData(language: language);
+      return SaveData(language: language, menuSeen: menuSeen);
     }
   }
 
@@ -130,5 +135,9 @@ class PersistenceService {
 
   Future<void> saveLanguage(AppLanguage language) async {
     await _preferences.setString(_languageKey, language.name);
+  }
+
+  Future<void> markMenuSeen() async {
+    await _preferences.setBool(_menuSeenKey, true);
   }
 }

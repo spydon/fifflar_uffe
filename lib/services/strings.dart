@@ -1,6 +1,10 @@
 abstract class Strings {
   const Strings();
 
+  String get mainMenuTitle;
+  String get startPlaying;
+  String get settings;
+  String get language;
   String get pauseTitle;
   String get resume;
   String get restart;
@@ -99,6 +103,14 @@ abstract class Strings {
 class SvStrings extends Strings {
   const SvStrings();
 
+  @override
+  String get mainMenuTitle => 'Fifflar-Uffe';
+  @override
+  String get startPlaying => 'Börja fiffla';
+  @override
+  String get settings => 'Inställningar';
+  @override
+  String get language => 'Språk';
   @override
   String get pauseTitle => 'Pausat';
   @override
@@ -374,6 +386,14 @@ class SvStrings extends Strings {
 class EnStrings extends Strings {
   const EnStrings();
 
+  @override
+  String get mainMenuTitle => 'Fifflar-Uffe';
+  @override
+  String get startPlaying => 'Start fiffling';
+  @override
+  String get settings => 'Settings';
+  @override
+  String get language => 'Language';
   @override
   String get pauseTitle => 'Paused';
   @override

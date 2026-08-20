@@ -12,6 +12,14 @@ void main() {
     expect(save.balance, 0);
     expect(save.owned, isEmpty);
     expect(save.language, AppLanguage.sv);
+    expect(save.menuSeen, isFalse);
+  });
+
+  test('remembers that the main menu has been shown', () async {
+    SharedPreferences.setMockInitialValues({});
+    final service = await PersistenceService.create();
+    await service.markMenuSeen();
+    expect(service.load().menuSeen, isTrue);
   });
 
   test('round trips balance, owned, and language', () async {

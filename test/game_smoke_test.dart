@@ -5,6 +5,8 @@ import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/model/skill_catalog.dart';
 import 'package:fifflar_uffe/model/skill_id.dart';
 import 'package:fifflar_uffe/model/timeline.dart';
+import 'package:fifflar_uffe/routes/main_menu_route.dart';
+import 'package:fifflar_uffe/ui/game_button.dart';
 import 'package:fifflar_uffe/ui/hud/event_card_component.dart';
 import 'package:fifflar_uffe/ui/hud/shop_hint_component.dart';
 import 'package:flame_test/flame_test.dart';
@@ -15,7 +17,7 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUp(() {
-    SharedPreferences.setMockInitialValues({});
+    SharedPreferences.setMockInitialValues({'fifflar_uffe.menu_seen': true});
   });
 
   testWithGame<FifflarUffeGame>(
@@ -26,6 +28,97 @@ void main() {
       await game.ready();
       expect(game.router.currentRoute, game.router.routes['home']);
       expect(game.world.updatePaused, isFalse);
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
+    'the first launch opens the main menu and freezes the world',
+    () {
+      SharedPreferences.setMockInitialValues({});
+      return FifflarUffeGame();
+    },
+    (game) async {
+      game.update(0);
+      await game.ready();
+      game.update(0);
+      await game.ready();
+      expect(game.router.currentRoute, game.router.routes['mainMenu']);
+      expect(game.world.updatePaused, isTrue);
+      final page = game.router.currentRoute.children
+          .whereType<MainMenuPage>()
+          .single;
+      final labels = page.panel.children
+          .whereType<GameButton>()
+          .map((button) => button.label(game.i18n.strings))
+          .toList();
+      expect(labels, ['Börja fiffla', 'Inställningar', 'Om']);
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
+    'starting from the main menu remembers that it was shown',
+    () {
+      SharedPreferences.setMockInitialValues({});
+      return FifflarUffeGame();
+    },
+    (game) async {
+      game.update(0);
+      await game.ready();
+      game.update(0);
+      await game.ready();
+      final page = game.router.currentRoute.children
+          .whereType<MainMenuPage>()
+          .single;
+      page.panel.children
+          .whereType<GameButton>()
+          .firstWhere(
+            (button) => button.label(game.i18n.strings) == 'Börja fiffla',
+          )
+          .onPressed!();
+      game.update(1);
+      await game.ready();
+      game.update(0);
+      await game.ready();
+      expect(game.router.currentRoute, game.router.routes['home']);
+      expect(game.world.updatePaused, isFalse);
+      expect(game.persistence.load().menuSeen, isTrue);
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
+    'the main menu opens the settings and about pages',
+    () {
+      SharedPreferences.setMockInitialValues({});
+      return FifflarUffeGame();
+    },
+    (game) async {
+      game.update(0);
+      await game.ready();
+      game.update(0);
+      await game.ready();
+      final page = game.router.currentRoute.children
+          .whereType<MainMenuPage>()
+          .single;
+      GameButton buttonLabelled(String label) =>
+          page.panel.children.whereType<GameButton>().firstWhere(
+            (button) => button.label(game.i18n.strings) == label,
+          );
+      buttonLabelled('Inställningar').onPressed!();
+      game.update(0);
+      await game.ready();
+      expect(game.router.currentRoute, game.router.routes['settings']);
+      game.router.pop();
+      game.update(0);
+      await game.ready();
+      buttonLabelled('Om').onPressed!();
+      game.update(0);
+      await game.ready();
+      expect(game.router.currentRoute, game.router.routes['about']);
+      game.router.pop();
+      game.update(0);
+      await game.ready();
+      expect(game.router.currentRoute, game.router.routes['mainMenu']);
+      expect(game.world.updatePaused, isTrue);
     },
   );
 
@@ -66,6 +159,7 @@ void main() {
     'buildings from a saved game appear on load',
     () {
       SharedPreferences.setMockInitialValues({
+        'fifflar_uffe.menu_seen': true,
         'fifflar_uffe.save.v1': jsonEncode({
           'balance': 500.0,
           'owned': {'lower_taxes': 2},
@@ -88,6 +182,7 @@ void main() {
     'reaching election day ends the game and restart begins a new run',
     () {
       SharedPreferences.setMockInitialValues({
+        'fifflar_uffe.menu_seen': true,
         'fifflar_uffe.save.v1': jsonEncode({
           'balance': 10.0,
           'totalEarned': 25.0,
@@ -126,6 +221,7 @@ void main() {
     'open popups are closed when the game over banner appears',
     () {
       SharedPreferences.setMockInitialValues({
+        'fifflar_uffe.menu_seen': true,
         'fifflar_uffe.save.v1': jsonEncode({
           'balance': 10.0,
           'totalEarned': 25.0,
@@ -157,6 +253,7 @@ void main() {
     'continuing after game over keeps the run going past election day',
     () {
       SharedPreferences.setMockInitialValues({
+        'fifflar_uffe.menu_seen': true,
         'fifflar_uffe.save.v1': jsonEncode({
           'balance': 10.0,
           'totalEarned': 25.0,
@@ -191,6 +288,7 @@ void main() {
     'a continued save loads past election day without a game over',
     () {
       SharedPreferences.setMockInitialValues({
+        'fifflar_uffe.menu_seen': true,
         'fifflar_uffe.save.v1': jsonEncode({
           'balance': 10.0,
           'totalEarned': 25.0,
@@ -218,6 +316,7 @@ void main() {
     'an event card appears when its date is reached, not on load',
     () {
       SharedPreferences.setMockInitialValues({
+        'fifflar_uffe.menu_seen': true,
         'fifflar_uffe.save.v1': jsonEncode({
           'balance': 0.0,
           'owned': <String, int>{},
@@ -248,6 +347,7 @@ void main() {
     'events already in the past are not replayed on load',
     () {
       SharedPreferences.setMockInitialValues({
+        'fifflar_uffe.menu_seen': true,
         'fifflar_uffe.save.v1': jsonEncode({
           'balance': 0.0,
           'owned': <String, int>{},

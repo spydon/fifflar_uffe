@@ -19,7 +19,7 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUp(() {
-    SharedPreferences.setMockInitialValues({});
+    SharedPreferences.setMockInitialValues({'fifflar_uffe.menu_seen': true});
   });
 
   Future<void> settle(FifflarUffeGame game) async {
@@ -135,6 +135,7 @@ void main() {
       'a run that is already underway gets no token',
       () {
         SharedPreferences.setMockInitialValues({
+          'fifflar_uffe.menu_seen': true,
           'fifflar_uffe.save.v1': jsonEncode({
             'balance': 500.0,
             'totalEarned': 500.0,
@@ -194,6 +195,7 @@ void main() {
       'an implausible report flags the run and hides submission',
       () {
         SharedPreferences.setMockInitialValues({
+          'fifflar_uffe.menu_seen': true,
           'fifflar_uffe.save.v1': jsonEncode({
             ...finishedSave(runId: 'run-9'),
             'elapsedDays': Timeline.totalDays - 400,
@@ -217,6 +219,7 @@ void main() {
       'the game over screen submits the final state with a name',
       () {
         SharedPreferences.setMockInitialValues({
+          'fifflar_uffe.menu_seen': true,
           'fifflar_uffe.save.v1': jsonEncode(finishedSave(runId: 'run-9')),
         });
         return FifflarUffeGame(highscoreClient: client);
@@ -267,6 +270,7 @@ void main() {
       'invalid names are rejected before anything is sent',
       () {
         SharedPreferences.setMockInitialValues({
+          'fifflar_uffe.menu_seen': true,
           'fifflar_uffe.save.v1': jsonEncode(finishedSave(runId: 'run-9')),
         });
         return FifflarUffeGame(highscoreClient: client);
@@ -292,6 +296,7 @@ void main() {
       'a rejected submission keeps the run unsubmitted',
       () {
         SharedPreferences.setMockInitialValues({
+          'fifflar_uffe.menu_seen': true,
           'fifflar_uffe.save.v1': jsonEncode(finishedSave(runId: 'run-9')),
         });
         return FifflarUffeGame(highscoreClient: client);
@@ -312,6 +317,7 @@ void main() {
       'breaking capitalism is reported once with the final state',
       () {
         SharedPreferences.setMockInitialValues({
+          'fifflar_uffe.menu_seen': true,
           'fifflar_uffe.save.v1': jsonEncode({
             'balance': 0.0,
             'totalEarned': 0.0,
@@ -378,6 +384,7 @@ void main() {
       'the submit section is hidden at game over when offline',
       () {
         SharedPreferences.setMockInitialValues({
+          'fifflar_uffe.menu_seen': true,
           'fifflar_uffe.save.v1': jsonEncode(finishedSave(runId: 'run-9')),
         });
         return FifflarUffeGame(

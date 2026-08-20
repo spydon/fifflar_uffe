@@ -12,7 +12,9 @@ import 'package:fifflar_uffe/routes/about_route.dart';
 import 'package:fifflar_uffe/routes/broken_capitalism_route.dart';
 import 'package:fifflar_uffe/routes/game_over_route.dart';
 import 'package:fifflar_uffe/routes/highscore_route.dart';
+import 'package:fifflar_uffe/routes/main_menu_route.dart';
 import 'package:fifflar_uffe/routes/pause_route.dart';
+import 'package:fifflar_uffe/routes/settings_route.dart';
 import 'package:fifflar_uffe/routes/skill_tree_route.dart';
 import 'package:fifflar_uffe/services/highscore_client.dart';
 import 'package:fifflar_uffe/services/highscore_service.dart';
@@ -124,7 +126,9 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
       initialRoute: 'home',
       routes: {
         'home': Route(Component.new, transparent: true),
+        'mainMenu': MainMenuRoute(),
         'pause': PauseRoute(),
+        'settings': SettingsRoute(),
         'about': AboutRoute(),
         'shop': SkillTreeRoute(),
         'highscore': HighscoreRoute(),
@@ -160,6 +164,9 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
       ),
     );
     unawaited(highscore.probe());
+    if (!save.menuSeen) {
+      unawaited(router.mounted.then((_) => router.pushNamed('mainMenu')));
+    }
   }
 
   bool buyItem(SkillDef skill) {
