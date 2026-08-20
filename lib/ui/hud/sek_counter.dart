@@ -11,6 +11,8 @@ class SekCounter extends HudMarginComponent
     with HasGameReference<FifflarUffeGame>, HudAutoScale {
   SekCounter() : super(margin: const EdgeInsets.only(top: 12, right: 12));
 
+  static const double _notchInset = 12;
+
   late final TextComponent _text;
   late final TextComponent _incomeText;
 
@@ -59,5 +61,8 @@ class SekCounter extends HudMarginComponent
   void _refresh() {
     _text.text = formatSek(game.economy.balance);
     _incomeText.text = '+${formatSek(game.economy.incomePerSecond)}/s';
+    if (_text.size.x > size.x - 2 * _notchInset) {
+      game.handleBalanceOverflow();
+    }
   }
 }

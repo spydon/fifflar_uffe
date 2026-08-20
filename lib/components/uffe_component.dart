@@ -1,4 +1,4 @@
-import 'package:fifflar_uffe/game/assets.dart';
+import 'package:fifflar_uffe/components/uffe_figure_component.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/ui/hud/hud_auto_scale.dart';
 import 'package:fifflar_uffe/ui/speech_bubble_component.dart';
@@ -13,17 +13,12 @@ class UffeComponent extends HudMarginComponent
     : super(margin: const EdgeInsets.only(left: 12), priority: restPriority);
 
   static const int restPriority = -1;
-  static const double _sourceWidth = 609;
-  static const double _sourceHeight = 1024;
-  static const double _headSourceHeight = 200;
-  static const double _bodySourceHeight = 811;
   static const double _flapDistance = 14;
   static const double _wobbleAngle = 0.1;
   static const double _leanDistance = 26;
 
   late final SpeechBubbleComponent _bubble;
-  late final SpriteComponent _head;
-  late final Vector2 _headRestPosition;
+  late final UffeFigureComponent _figure;
   final List<Effect> _talkEffects = [];
   final List<Effect> _leanEffects = [];
   Vector2? _restPosition;
@@ -31,29 +26,8 @@ class UffeComponent extends HudMarginComponent
   @override
   Future<void> onLoad() async {
     size = Vector2(132, 222);
-    final scaleFactor = size.y / _sourceHeight;
-    final bodyTop = (_sourceHeight - _bodySourceHeight) * scaleFactor;
-    _headRestPosition = Vector2(_sourceWidth * scaleFactor / 2, bodyTop);
-    _head = SpriteComponent(
-      sprite: Sprite(game.images.fromCache(AssetPaths.uffeHead)),
-      size: Vector2(
-        _sourceWidth * scaleFactor,
-        _headSourceHeight * scaleFactor,
-      ),
-      anchor: Anchor.bottomCenter,
-      position: _headRestPosition.clone(),
-    );
-    addAll([
-      SpriteComponent(
-        sprite: Sprite(game.images.fromCache(AssetPaths.uffeBody)),
-        size: Vector2(
-          _sourceWidth * scaleFactor,
-          _bodySourceHeight * scaleFactor,
-        ),
-        position: Vector2(0, bodyTop),
-      ),
-      _head,
-    ]);
+    _figure = UffeFigureComponent(height: size.y);
+    add(_figure);
     _bubble = SpeechBubbleComponent(
       position: Vector2(86, 36),
       anchor: Anchor.bottomLeft,
@@ -71,15 +45,16 @@ class UffeComponent extends HudMarginComponent
       effect.removeFromParent();
     }
     _talkEffects.clear();
-    _head.position = _headRestPosition.clone();
-    _head.angle = 0;
+    final head = _figure.head;
+    head.position = _figure.headRestPosition.clone();
+    head.angle = 0;
     final wasLeaning = _leanEffects.isNotEmpty;
     for (final effect in _leanEffects) {
       effect.removeFromParent();
     }
     _leanEffects.clear();
     if (talking) {
-      _head.angle = -_wobbleAngle / 2;
+      head.angle = -_wobbleAngle / 2;
       _talkEffects.addAll([
         MoveByEffect(
           Vector2(0, -_flapDistance),
@@ -90,7 +65,7 @@ class UffeComponent extends HudMarginComponent
           EffectController(duration: 0.14, alternate: true, infinite: true),
         ),
       ]);
-      _head.addAll(_talkEffects);
+      head.addAll(_talkEffects);
       if (!wasLeaning) {
         _restPosition = position.clone();
       }

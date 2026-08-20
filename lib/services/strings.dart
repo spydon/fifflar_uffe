@@ -60,6 +60,7 @@ abstract class Strings {
   String get highScoreLabel;
   String get playAgain;
   String get continuePlaying;
+  String get brokeCapitalism;
   String get share;
   String get shareHeadline;
   String get shareTagline;
@@ -236,6 +237,8 @@ class SvStrings extends Strings {
   String get playAgain => 'Fiffla igen';
   @override
   String get continuePlaying => 'Fortsätt fiffla';
+  @override
+  String get brokeCapitalism => 'Du hade sönder kapitalismen :(';
   @override
   String get share => 'Dela';
   @override
@@ -462,6 +465,8 @@ class EnStrings extends Strings {
   String get playAgain => 'Fiddle again';
   @override
   String get continuePlaying => 'Keep fiddling';
+  @override
+  String get brokeCapitalism => 'You broke capitalism :(';
   @override
   String get share => 'Share';
   @override
