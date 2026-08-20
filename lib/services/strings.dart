@@ -150,7 +150,8 @@ class SvStrings extends Strings {
   @override
   String get quipPrivatizeSchools => 'Marknaden fixar skolan!';
   @override
-  String get quipPrivatizeHospitals => 'Vårdköer? Inte för mig!';
+  String get quipPrivatizeHospitals =>
+      'Vård ska bara vara tillgängligt för de rika!';
   @override
   String get quipSellPreschools => 'Såld! Långt under marknadspris.';
   @override
@@ -365,7 +366,8 @@ class EnStrings extends Strings {
   @override
   String get quipPrivatizeSchools => 'The market will fix the schools!';
   @override
-  String get quipPrivatizeHospitals => 'Care queues? Not for me!';
+  String get quipPrivatizeHospitals =>
+      'Healthcare should only be available to the rich!';
   @override
   String get quipSellPreschools => 'Sold! Well below market value.';
   @override
