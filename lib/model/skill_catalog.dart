@@ -5,7 +5,7 @@ import 'package:fifflar_uffe/model/skill_id.dart';
 final List<SkillDef> skillCatalog = [
   SkillDef(
     id: SkillId.hireCleaner,
-    iconPath: AssetPaths.iconPeople,
+    iconPath: AssetPaths.skillHireCleaner,
     name: (strings) => strings.itemHireCleaner,
     quip: (strings) => strings.quipHireCleaner,
     explanation: (strings) => strings.explainHireCleaner,
@@ -18,7 +18,7 @@ final List<SkillDef> skillCatalog = [
   ),
   SkillDef(
     id: SkillId.cheatApartment,
-    iconPath: AssetPaths.iconHouse,
+    iconPath: AssetPaths.skillCheatApartment,
     name: (strings) => strings.itemCheatApartment,
     quip: (strings) => strings.quipCheatApartment,
     explanation: (strings) => strings.explainCheatApartment,
@@ -32,7 +32,7 @@ final List<SkillDef> skillCatalog = [
   ),
   SkillDef(
     id: SkillId.taxiRides,
-    iconPath: AssetPaths.iconStopwatch,
+    iconPath: AssetPaths.skillTaxiRides,
     name: (strings) => strings.itemTaxiRides,
     quip: (strings) => strings.quipTaxiRides,
     explanation: (strings) => strings.explainTaxiRides,
@@ -46,7 +46,7 @@ final List<SkillDef> skillCatalog = [
   ),
   SkillDef(
     id: SkillId.chinaTrips,
-    iconPath: AssetPaths.iconShoe,
+    iconPath: AssetPaths.skillChinaTrips,
     name: (strings) => strings.itemChinaTrips,
     quip: (strings) => strings.quipChinaTrips,
     explanation: (strings) => strings.explainChinaTrips,
@@ -61,7 +61,7 @@ final List<SkillDef> skillCatalog = [
   ),
   SkillDef(
     id: SkillId.furnishPalace,
-    iconPath: AssetPaths.iconTrophy,
+    iconPath: AssetPaths.skillFurnishPalace,
     name: (strings) => strings.itemFurnishPalace,
     quip: (strings) => strings.quipFurnishPalace,
     explanation: (strings) => strings.explainFurnishPalace,
@@ -75,7 +75,7 @@ final List<SkillDef> skillCatalog = [
   ),
   SkillDef(
     id: SkillId.writeBook,
-    iconPath: AssetPaths.iconBook,
+    iconPath: AssetPaths.skillWriteBook,
     name: (strings) => strings.itemWriteBook,
     quip: (strings) => strings.quipWriteBook,
     explanation: (strings) => strings.explainWriteBook,
@@ -90,7 +90,7 @@ final List<SkillDef> skillCatalog = [
   ),
   SkillDef(
     id: SkillId.lowerTaxes,
-    iconPath: AssetPaths.iconDiamond,
+    iconPath: AssetPaths.skillLowerTaxes,
     name: (strings) => strings.itemLowerTaxes,
     quip: (strings) => strings.quipLowerTaxes,
     explanation: (strings) => strings.explainLowerTaxes,
@@ -105,7 +105,7 @@ final List<SkillDef> skillCatalog = [
   ),
   SkillDef(
     id: SkillId.breakPromise,
-    iconPath: AssetPaths.iconBrokenHeart,
+    iconPath: AssetPaths.skillBreakPromise,
     name: (strings) => strings.itemBreakPromise,
     quip: (strings) => strings.quipBreakPromise,
     explanation: (strings) => strings.explainBreakPromise,
@@ -120,7 +120,7 @@ final List<SkillDef> skillCatalog = [
   ),
   SkillDef(
     id: SkillId.cutSickLeave,
-    iconPath: AssetPaths.iconCalendar,
+    iconPath: AssetPaths.skillCutSickLeave,
     name: (strings) => strings.itemCutSickLeave,
     quip: (strings) => strings.quipCutSickLeave,
     explanation: (strings) => strings.explainCutSickLeave,
@@ -135,7 +135,7 @@ final List<SkillDef> skillCatalog = [
   ),
   SkillDef(
     id: SkillId.privatizeSchools,
-    iconPath: AssetPaths.iconPencil,
+    iconPath: AssetPaths.skillPrivatizeSchools,
     name: (strings) => strings.itemPrivatizeSchools,
     quip: (strings) => strings.quipPrivatizeSchools,
     explanation: (strings) => strings.explainPrivatizeSchools,
@@ -149,7 +149,7 @@ final List<SkillDef> skillCatalog = [
   ),
   SkillDef(
     id: SkillId.privatizeHospitals,
-    iconPath: AssetPaths.iconPotion,
+    iconPath: AssetPaths.skillPrivatizeHospitals,
     name: (strings) => strings.itemPrivatizeHospitals,
     quip: (strings) => strings.quipPrivatizeHospitals,
     explanation: (strings) => strings.explainPrivatizeHospitals,
@@ -163,7 +163,7 @@ final List<SkillDef> skillCatalog = [
   ),
   SkillDef(
     id: SkillId.sellPreschools,
-    iconPath: AssetPaths.iconBabyClothes,
+    iconPath: AssetPaths.skillSellPreschools,
     name: (strings) => strings.itemSellPreschools,
     quip: (strings) => strings.quipSellPreschools,
     explanation: (strings) => strings.explainSellPreschools,
@@ -177,7 +177,7 @@ final List<SkillDef> skillCatalog = [
   ),
   SkillDef(
     id: SkillId.sellPublicHousing,
-    iconPath: AssetPaths.iconEnvelope,
+    iconPath: AssetPaths.skillSellPublicHousing,
     name: (strings) => strings.itemSellPublicHousing,
     quip: (strings) => strings.quipSellPublicHousing,
     explanation: (strings) => strings.explainSellPublicHousing,

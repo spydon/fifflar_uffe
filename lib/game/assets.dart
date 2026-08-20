@@ -1,32 +1,27 @@
 class AssetPaths {
   AssetPaths._();
 
-  static const iconHouse = 'Icons/IconsDefault/128px/IconsDefault4_128px.png';
   static const iconStorefront =
       'Icons/IconsDefault/128px/IconsDefault12_128px.png';
   static const iconGear = 'Icons/IconsDefault/128px/IconsDefault14_128px.png';
   static const iconPause = 'Icons/IconsDefault/128px/IconsDefault21_128px.png';
   static const iconClose = 'Icons/IconsDefault/128px/IconsDefault25_128px.png';
   static const iconCoin = 'Icons/IconsDefault/128px/IconsDefault26_128px.png';
-  static const iconEnvelope =
-      'Icons/IconsDefault/128px/IconsDefault9_128px.png';
-  static const iconBrokenHeart =
-      'Icons/IconsDefault/128px/IconsDefault35_128px.png';
-  static const iconPeople = 'Icons/IconsDefault/128px/IconsDefault43_128px.png';
-  static const iconPotion = 'Icons/IconsDefault/128px/IconsDefault54_128px.png';
-  static const iconBook = 'Icons/IconsDefault/128px/IconsDefault58_128px.png';
-  static const iconPencil = 'Icons/IconsDefault/128px/IconsDefault6_128px.png';
-  static const iconStopwatch =
-      'Icons/IconsDefault/128px/IconsDefault10_128px.png';
   static const iconLock = 'Icons/IconsDefault/128px/IconsDefault11_128px.png';
-  static const iconDiamond =
-      'Icons/IconsDefault/128px/IconsDefault23_128px.png';
-  static const iconBabyClothes =
-      'Icons/IconsDefault/128px/IconsDefault27_128px.png';
-  static const iconShoe = 'Icons/IconsDefault/128px/IconsDefault45_128px.png';
-  static const iconTrophy = 'Icons/IconsDefault/128px/IconsDefault57_128px.png';
-  static const iconCalendar =
-      'Icons/IconsDefault/128px/IconsDefault28_128px.png';
+
+  static const skillHireCleaner = 'skills/hire_cleaner.png';
+  static const skillCheatApartment = 'skills/cheat_apartment.png';
+  static const skillTaxiRides = 'skills/taxi_rides.png';
+  static const skillChinaTrips = 'skills/china_trips.png';
+  static const skillFurnishPalace = 'skills/furnish_palace.png';
+  static const skillWriteBook = 'skills/write_book.png';
+  static const skillLowerTaxes = 'skills/lower_taxes.png';
+  static const skillBreakPromise = 'skills/break_promise.png';
+  static const skillCutSickLeave = 'skills/cut_sick_leave.png';
+  static const skillPrivatizeSchools = 'skills/privatize_schools.png';
+  static const skillPrivatizeHospitals = 'skills/privatize_hospitals.png';
+  static const skillSellPreschools = 'skills/sell_preschools.png';
+  static const skillSellPublicHousing = 'skills/sell_public_housing.png';
 
   static const buttonWideGreen = 'Buttons/Round/RoundButton2_green.png';
   static const buttonWideLime = 'Buttons/Round/RoundButton2_lime.png';
@@ -55,25 +50,25 @@ class AssetPaths {
   static const background = 'riksdag_bg.jpg';
 
   static const all = [
-    iconHouse,
     iconStorefront,
     iconGear,
     iconPause,
     iconClose,
     iconCoin,
-    iconEnvelope,
-    iconBrokenHeart,
-    iconPeople,
-    iconPotion,
-    iconBook,
-    iconPencil,
-    iconStopwatch,
     iconLock,
-    iconDiamond,
-    iconBabyClothes,
-    iconShoe,
-    iconTrophy,
-    iconCalendar,
+    skillHireCleaner,
+    skillCheatApartment,
+    skillTaxiRides,
+    skillChinaTrips,
+    skillFurnishPalace,
+    skillWriteBook,
+    skillLowerTaxes,
+    skillBreakPromise,
+    skillCutSickLeave,
+    skillPrivatizeSchools,
+    skillPrivatizeHospitals,
+    skillSellPreschools,
+    skillSellPublicHousing,
     buttonWideGreen,
     buttonWideLime,
     buttonWideBlue,
