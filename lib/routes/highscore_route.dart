@@ -27,6 +27,7 @@ class HighscorePage extends ModalPage {
   static const double _cellPadding = 10;
   static const double _footerGap = 22;
   static const double _footerSpacing = 28;
+  static const double _bottomPadding = 58;
   static const double _messageY = 270;
 
   final List<TextComponent> _ranks = [];
@@ -72,6 +73,9 @@ class HighscorePage extends ModalPage {
       _tableTop + top + height / 2,
     );
     final footerTop = _tableTop + _grid.size.y + _footerGap;
+    resizePanel(
+      Vector2(designSize.x, footerTop + 2 * _footerSpacing + _bottomPadding),
+    );
     panel.addAll([
       PanelComponent(size: designSize.clone()),
       PanelHeader(
