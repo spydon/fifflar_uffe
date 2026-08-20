@@ -42,6 +42,7 @@ abstract class Strings {
   String get quipPrivatizeHospitals;
   String get quipSellPreschools;
   String get quipSellPublicHousing;
+  String get pokeWarning;
   String get explainHireCleaner;
   String get explainCheatApartment;
   String get explainTaxiRides;
@@ -162,6 +163,8 @@ class SvStrings extends Strings {
   String get quipSellPreschools => 'Såld! Långt under marknadspris.';
   @override
   String get quipSellPublicHousing => 'Tack för lägenheten!';
+  @override
+  String get pokeWarning => "Sluuuuta, jag skickar Jimmie's kompisar på dig!";
   @override
   String get explainHireCleaner =>
       'Kristersson har erkänt att han anlitade svart städhjälp under en '
@@ -390,6 +393,8 @@ class EnStrings extends Strings {
   String get quipSellPreschools => 'Sold! Well below market value.';
   @override
   String get quipSellPublicHousing => 'Thanks for the apartment!';
+  @override
+  String get pokeWarning => "Stooooop, I'll send Jimmie's buddies after you!";
   @override
   String get explainHireCleaner =>
       'Kristersson has admitted that he paid for cleaning help under the '
