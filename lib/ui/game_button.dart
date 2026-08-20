@@ -1,6 +1,7 @@
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/services/strings.dart';
+import 'package:fifflar_uffe/ui/button_spinner.dart';
 import 'package:fifflar_uffe/ui/localized_text_component.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:flame/components.dart';
@@ -30,6 +31,24 @@ class GameButton extends AdvancedButtonComponent
 
   final String Function(Strings strings) label;
   final GameButtonColor color;
+
+  bool _isBusy = false;
+
+  bool get isBusy => _isBusy;
+
+  set isBusy(bool value) {
+    if (_isBusy == value) {
+      return;
+    }
+    _isBusy = value;
+    if (value) {
+      disabledLabel = ButtonSpinner();
+      isDisabled = true;
+    } else {
+      isDisabled = false;
+      disabledLabel = null;
+    }
+  }
 
   @override
   Future<void> onLoad() async {
