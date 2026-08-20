@@ -16,17 +16,19 @@ class UffeComponent extends HudMarginComponent
   static const double _flapDistance = 14;
   static const double _wobbleAngle = 0.1;
   static const double _leanDistance = 26;
+  static const int _pokesBeforeWarning = 10;
 
   late final SpeechBubbleComponent _bubble;
   late final UffeFigureComponent _figure;
   final List<Effect> _talkEffects = [];
   final List<Effect> _leanEffects = [];
   Vector2? _restPosition;
+  int _pokeCount = 0;
 
   @override
   Future<void> onLoad() async {
     size = Vector2(132, 222);
-    _figure = UffeFigureComponent(height: size.y);
+    _figure = UffeFigureComponent(height: size.y, onPoked: _onPoked);
     add(_figure);
     _bubble = SpeechBubbleComponent(
       position: Vector2(86, 36),
@@ -38,6 +40,14 @@ class UffeComponent extends HudMarginComponent
 
   void say(String message) {
     _bubble.say(message);
+  }
+
+  void _onPoked() {
+    _pokeCount++;
+    if (_pokeCount >= _pokesBeforeWarning) {
+      _pokeCount = 0;
+      say(game.i18n.strings.pokeWarning);
+    }
   }
 
   void _setTalking({required bool talking}) {
