@@ -92,7 +92,7 @@ class SkillDetailPage extends ModalPage {
       ),
       SpriteComponent(
         sprite: Sprite(game.images.fromCache(skill.iconPath)),
-        size: Vector2.all(52),
+        size: Vector2.all(66),
         anchor: Anchor.center,
         position: Vector2(93, 103),
       ),
