@@ -61,6 +61,7 @@ abstract class Strings {
   String get playAgain;
   String get continuePlaying;
   String get shopHint;
+  String affordHint(String item);
   String get references;
   String voteAppeal(String date);
   String formatDate(DateTime date);
@@ -233,6 +234,8 @@ class SvStrings extends Strings {
   String get continuePlaying => 'Fortsätt fiffla';
   @override
   String get shopHint => 'Fiffla mer effektivt!';
+  @override
+  String affordHint(String item) => 'Du har råd med $item!';
   @override
   String get references => 'Referenser';
   @override
@@ -450,6 +453,8 @@ class EnStrings extends Strings {
   String get continuePlaying => 'Keep fiddling';
   @override
   String get shopHint => 'Fiddle more efficiently!';
+  @override
+  String affordHint(String item) => 'You can afford $item!';
   @override
   String get references => 'References';
   @override
