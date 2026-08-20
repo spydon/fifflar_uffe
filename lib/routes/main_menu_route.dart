@@ -29,8 +29,8 @@ class MainMenuPage extends ModalPage {
     : super(designSize: Vector2(560, 520), dismissOnScrimTap: false);
 
   static const double _firstButtonY = 120;
-  static const double _buttonSpacing = 110;
-  static const double _bottomPadding = 100;
+  static const double _buttonSpacing = 96;
+  static const double _bottomPadding = 90;
 
   late final PanelComponent _background;
   late final GameButton _start;
@@ -56,7 +56,7 @@ class MainMenuPage extends ModalPage {
       ),
       _start = GameButton(
         label: (strings) => strings.startPlaying,
-        size: Vector2(250, 92),
+        size: GameButton.menuSize,
         anchor: Anchor.center,
         onPressed: () {
           unawaited(game.persistence.markMenuSeen());
@@ -66,14 +66,14 @@ class MainMenuPage extends ModalPage {
       _settings = GameButton(
         label: (strings) => strings.settings,
         color: GameButtonColor.blue,
-        size: Vector2(250, 92),
+        size: GameButton.menuSize,
         anchor: Anchor.center,
         onPressed: () => game.router.pushNamed('settings'),
       ),
       _about = GameButton(
         label: (strings) => strings.about,
         color: GameButtonColor.blue,
-        size: Vector2(250, 92),
+        size: GameButton.menuSize,
         anchor: Anchor.center,
         onPressed: () => game.router.pushNamed('about'),
       ),
@@ -81,7 +81,7 @@ class MainMenuPage extends ModalPage {
     _highscores = GameButton(
       label: (strings) => strings.highscores,
       color: GameButtonColor.yellow,
-      size: Vector2(250, 92),
+      size: GameButton.menuSize,
       anchor: Anchor.center,
       onPressed: () => game.router.pushNamed('highscore'),
     );

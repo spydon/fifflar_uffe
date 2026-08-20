@@ -4,7 +4,7 @@ import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/model/timeline.dart';
 import 'package:fifflar_uffe/routes/game_over_route.dart';
 import 'package:fifflar_uffe/routes/highscore_route.dart';
-import 'package:fifflar_uffe/routes/pause_route.dart';
+import 'package:fifflar_uffe/routes/main_menu_route.dart';
 import 'package:fifflar_uffe/services/highscore_client.dart';
 import 'package:fifflar_uffe/ui/game_button.dart';
 import 'package:fifflar_uffe/ui/name_input_component.dart';
@@ -47,11 +47,11 @@ void main() {
     'savedAt': '2026-08-19T00:00:00.000',
   };
 
-  Iterable<GameButton> pauseButtons(FifflarUffeGame game) => game
+  Iterable<GameButton> menuButtons(FifflarUffeGame game) => game
       .router
       .currentRoute
       .children
-      .whereType<PausePage>()
+      .whereType<MainMenuPage>()
       .single
       .panel
       .children
@@ -82,9 +82,9 @@ void main() {
       await settle(game);
       expect(game.highscore.available.value, isFalse);
       expect(game.runId, isNull);
-      game.router.pushNamed('pause');
+      game.router.pushNamed('mainMenu');
       await settle(game);
-      expect(pauseButtons(game), hasLength(3));
+      expect(menuButtons(game), hasLength(3));
     },
   );
 
@@ -112,9 +112,9 @@ void main() {
         expect(client.signIns, greaterThanOrEqualTo(1));
         expect(game.runId, 'run-1');
         expect(game.persistence.load().runId, 'run-1');
-        game.router.pushNamed('pause');
+        game.router.pushNamed('mainMenu');
         await settle(game);
-        expect(pauseButtons(game), hasLength(4));
+        expect(menuButtons(game), hasLength(4));
         game.router.pushNamed('highscore');
         await settle(game);
         final page = game.router.currentRoute.children
@@ -359,9 +359,9 @@ void main() {
         await settle(game);
         expect(game.highscore.available.value, isFalse);
         expect(game.runId, isNull);
-        game.router.pushNamed('pause');
+        game.router.pushNamed('mainMenu');
         await settle(game);
-        expect(pauseButtons(game), hasLength(3));
+        expect(menuButtons(game), hasLength(3));
       },
     );
 
@@ -374,9 +374,9 @@ void main() {
         await settle(game);
         expect(game.runId, isNull);
         expect(game.highscore.available.value, isFalse);
-        game.router.pushNamed('pause');
+        game.router.pushNamed('mainMenu');
         await settle(game);
-        expect(pauseButtons(game), hasLength(3));
+        expect(menuButtons(game), hasLength(3));
       },
     );
 

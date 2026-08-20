@@ -26,18 +26,7 @@ class PauseRoute extends Route with HasGameReference<FifflarUffeGame> {
 }
 
 class PausePage extends ModalPage {
-  PausePage() : super(designSize: Vector2(560, 520), dismissOnScrimTap: false);
-
-  static const double _firstButtonY = 200;
-  static const double _buttonSpacing = 110;
-  static const double _bottomPadding = 100;
-
-  late final PanelComponent _background;
-  late final GameButton _resume;
-  late final GameButton _highscores;
-  late final GameButton _restart;
-  late final GameButton _about;
-  bool _built = false;
+  PausePage() : super(designSize: Vector2(560, 420), dismissOnScrimTap: false);
 
   @override
   Future<void> onLoad() async {
@@ -47,7 +36,7 @@ class PausePage extends ModalPage {
     }
     final center = designSize.x / 2;
     panel.addAll([
-      _background = PanelComponent(size: designSize.clone()),
+      PanelComponent(size: designSize.clone()),
       PanelHeader(
         title: (strings) => strings.pauseTitle,
         size: Vector2(360, 68),
@@ -64,77 +53,24 @@ class PausePage extends ModalPage {
         position: Vector2(center + 66, 100),
         anchor: Anchor.center,
       ),
-      _resume = GameButton(
+      GameButton(
         label: (strings) => strings.resume,
-        size: Vector2(250, 92),
+        size: GameButton.menuSize,
         anchor: Anchor.center,
+        position: Vector2(center, 200),
         onPressed: close,
       ),
-      _restart = GameButton(
-        label: (strings) => strings.restart,
+      GameButton(
+        label: (strings) => strings.mainMenu,
         color: GameButtonColor.blue,
-        size: Vector2(250, 92),
+        size: GameButton.menuSize,
         anchor: Anchor.center,
+        position: Vector2(center, 296),
         onPressed: () {
           game.restartRun();
-          close();
+          game.router.pushNamed('mainMenu', replace: true);
         },
       ),
-      _about = GameButton(
-        label: (strings) => strings.about,
-        color: GameButtonColor.blue,
-        size: Vector2(250, 92),
-        anchor: Anchor.center,
-        onPressed: () => game.router.pushNamed('about'),
-      ),
     ]);
-    _highscores = GameButton(
-      label: (strings) => strings.highscores,
-      color: GameButtonColor.yellow,
-      size: Vector2(250, 92),
-      anchor: Anchor.center,
-      onPressed: () => game.router.pushNamed('highscore'),
-    );
-    _built = true;
-    _layoutButtons();
-  }
-
-  @override
-  void onMount() {
-    super.onMount();
-    game.highscore.available.addListener(_layoutButtons);
-  }
-
-  @override
-  void onRemove() {
-    game.highscore.available.removeListener(_layoutButtons);
-    super.onRemove();
-  }
-
-  void _layoutButtons() {
-    if (!_built) {
-      return;
-    }
-    final showHighscores = game.highscore.available.value;
-    if (showHighscores && _highscores.parent == null) {
-      panel.add(_highscores);
-    } else if (!showHighscores && _highscores.parent != null) {
-      _highscores.removeFromParent();
-    }
-    final buttons = [
-      _resume,
-      if (showHighscores) _highscores,
-      _restart,
-      _about,
-    ];
-    final center = designSize.x / 2;
-    var y = _firstButtonY;
-    for (final button in buttons) {
-      button.position = Vector2(center, y);
-      y += _buttonSpacing;
-    }
-    final height = y - _buttonSpacing + _bottomPadding;
-    _background.size = Vector2(designSize.x, height);
-    resizePanel(Vector2(designSize.x, height));
   }
 }
