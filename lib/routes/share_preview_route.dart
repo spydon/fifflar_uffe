@@ -37,7 +37,7 @@ class SharePreviewPage extends ModalPage {
     final cardHeight = cardWidth * ShareCard.height / ShareCard.width;
     const cardTop = 64.0;
     final buttonsTop = cardTop + cardHeight + 28;
-    final height = buttonsTop + (narrow ? 198 : 92) + 30;
+    final height = buttonsTop + (narrow ? 172 : 80) + 30;
     resizePanel(Vector2(width, height));
     panel.addAll([
       PanelComponent(size: designSize.clone()),
@@ -61,19 +61,19 @@ class SharePreviewPage extends ModalPage {
       GameButton(
         label: (strings) => strings.share,
         color: GameButtonColor.yellow,
-        size: Vector2(280, 92),
+        size: GameButton.wideSize,
         anchor: Anchor.center,
-        position: Vector2(narrow ? center : center - 160, buttonsTop + 46),
+        position: Vector2(narrow ? center : center - 140, buttonsTop + 40),
         onPressed: () => ShareService.shareCard(game, png),
       ),
       GameButton(
         label: (strings) => strings.download,
         color: GameButtonColor.blue,
-        size: Vector2(280, 92),
+        size: GameButton.wideSize,
         anchor: Anchor.center,
         position: Vector2(
-          narrow ? center : center + 160,
-          buttonsTop + (narrow ? 152 : 46),
+          narrow ? center : center + 140,
+          buttonsTop + (narrow ? 132 : 40),
         ),
         onPressed: () =>
             DownloadService.downloadPng(png, ShareService.fileName),

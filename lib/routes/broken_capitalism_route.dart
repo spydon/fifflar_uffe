@@ -58,7 +58,7 @@ class BrokenCapitalismPage extends ModalPage {
       ),
       _playAgain = GameButton(
         label: (strings) => strings.playAgain,
-        size: Vector2(280, 92),
+        size: GameButton.wideSize,
         anchor: Anchor.center,
         onPressed: () {
           game.restartRun();
@@ -72,8 +72,8 @@ class BrokenCapitalismPage extends ModalPage {
 
   void _layoutContent() {
     final y = _message.position.y + _message.size.y + 30;
-    _playAgain.position = Vector2(designSize.x / 2, y + 46);
-    final height = y + 92 + 36;
+    _playAgain.position = Vector2(designSize.x / 2, y + 40);
+    final height = y + 80 + 36;
     _background.size = Vector2(designSize.x, height);
     resizePanel(Vector2(designSize.x, height));
   }

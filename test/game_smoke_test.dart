@@ -6,6 +6,7 @@ import 'package:fifflar_uffe/model/skill_catalog.dart';
 import 'package:fifflar_uffe/model/skill_id.dart';
 import 'package:fifflar_uffe/model/timeline.dart';
 import 'package:fifflar_uffe/routes/main_menu_route.dart';
+import 'package:fifflar_uffe/routes/pause_route.dart';
 import 'package:fifflar_uffe/ui/game_button.dart';
 import 'package:fifflar_uffe/ui/hud/event_card_component.dart';
 import 'package:fifflar_uffe/ui/hud/shop_hint_component.dart';
@@ -433,6 +434,42 @@ void main() {
       game.update(0);
       await game.ready();
       expect(game.world.updatePaused, isFalse);
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
+    'the pause menu can exit the run and return to the main menu',
+    FifflarUffeGame.new,
+    (game) async {
+      game.update(0);
+      await game.ready();
+      for (var i = 0; i < 5; i++) {
+        game.economy.earnClick();
+      }
+      game.router.pushNamed('pause');
+      game.update(0);
+      await game.ready();
+      final page = game.router.currentRoute.children
+          .whereType<PausePage>()
+          .single;
+      final labels = page.panel.children
+          .whereType<GameButton>()
+          .map((button) => button.label(game.i18n.strings))
+          .toList();
+      expect(labels, ['Fortsätt', 'Huvudmeny']);
+      page.panel.children
+          .whereType<GameButton>()
+          .firstWhere(
+            (button) => button.label(game.i18n.strings) == 'Huvudmeny',
+          )
+          .onPressed!();
+      game.update(0);
+      await game.ready();
+      expect(game.router.currentRoute, game.router.routes['mainMenu']);
+      expect(game.router.previousRoute, game.router.routes['home']);
+      expect(game.world.updatePaused, isTrue);
+      expect(game.economy.balance, 0);
+      expect(game.economy.totalEarned, 0);
     },
   );
 

@@ -2,6 +2,7 @@ abstract class Strings {
   const Strings();
 
   String get mainMenuTitle;
+  String get mainMenu;
   String get startPlaying;
   String get settings;
   String get language;
@@ -105,6 +106,8 @@ class SvStrings extends Strings {
 
   @override
   String get mainMenuTitle => 'Fifflar-Uffe';
+  @override
+  String get mainMenu => 'Huvudmeny';
   @override
   String get startPlaying => 'Börja fiffla';
   @override
@@ -388,6 +391,8 @@ class EnStrings extends Strings {
 
   @override
   String get mainMenuTitle => 'Fifflar-Uffe';
+  @override
+  String get mainMenu => 'Main menu';
   @override
   String get startPlaying => 'Start fiffling';
   @override

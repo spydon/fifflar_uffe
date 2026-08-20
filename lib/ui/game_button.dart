@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/services/strings.dart';
@@ -28,6 +30,10 @@ class GameButton extends AdvancedButtonComponent
     super.anchor,
     super.priority,
   }) : super(onPressed: onPressed, size: size);
+
+  static final Vector2 menuSize = Vector2(216, 80);
+  static final Vector2 wideSize = Vector2(250, 80);
+  static const double _labelInset = 22;
 
   final String Function(Strings strings) label;
   final GameButtonColor color;
@@ -62,9 +68,19 @@ class GameButton extends AdvancedButtonComponent
     disabledSkin = SpriteComponent(
       sprite: Sprite(game.images.fromCache(AssetPaths.buttonWideGray)),
     );
-    defaultLabel = LocalizedTextComponent(
+    final text = LocalizedTextComponent(
       selector: label,
       textRenderer: TextStyles.button,
     );
+    defaultLabel = text;
+    text.size.addListener(() => _fitLabel(text));
+    _fitLabel(text);
+  }
+
+  void _fitLabel(LocalizedTextComponent text) {
+    final maxWidth = size.x - 2 * _labelInset;
+    final textWidth = text.size.x;
+    final factor = textWidth > 0 ? min(1.0, maxWidth / textWidth) : 1.0;
+    text.scale = Vector2.all(factor);
   }
 }
