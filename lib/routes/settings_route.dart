@@ -15,7 +15,7 @@ class SettingsRoute extends Route {
 }
 
 class SettingsPage extends ModalPage {
-  SettingsPage() : super(designSize: Vector2(520, 300));
+  SettingsPage() : super(designSize: Vector2(520, 224));
 
   @override
   Future<void> onLoad() async {
@@ -41,16 +41,16 @@ class SettingsPage extends ModalPage {
         selector: (strings) => strings.language,
         textRenderer: TextStyles.body,
         anchor: Anchor.center,
-        position: Vector2(center, 110),
+        position: Vector2(center, 66),
       ),
       LanguageFlagButton(
         language: AppLanguage.sv,
-        position: Vector2(center - 66, 190),
+        position: Vector2(center - 66, 132),
         anchor: Anchor.center,
       ),
       LanguageFlagButton(
         language: AppLanguage.en,
-        position: Vector2(center + 66, 190),
+        position: Vector2(center + 66, 132),
         anchor: Anchor.center,
       ),
     ]);

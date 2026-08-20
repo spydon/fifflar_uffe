@@ -50,7 +50,7 @@ class AboutPage extends ModalPage {
             ? TextStyles.enlarged(TextStyles.paragraph, 1.25)
             : TextStyles.paragraph,
         boxConfig: TextBoxConfig(maxWidth: textWidth),
-        position: Vector2(left, 74),
+        position: Vector2(left, 50),
       ),
       _references = LocalizedLinkComponent(
         selector: (strings) => strings.references,
