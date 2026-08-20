@@ -12,6 +12,7 @@ class SekCounter extends HudMarginComponent
   SekCounter() : super(margin: const EdgeInsets.only(top: 12, right: 12));
 
   late final TextComponent _text;
+  late final TextComponent _incomeText;
 
   @override
   Future<void> onLoad() async {
@@ -28,6 +29,18 @@ class SekCounter extends HudMarginComponent
       position: size / 2,
     );
     add(_text);
+    final incomePill = SpriteComponent(
+      sprite: Sprite(game.images.fromCache(AssetPaths.labelPill)),
+      size: Vector2(size.x, 36),
+      position: Vector2(0, size.y + 4),
+    );
+    _incomeText = TextComponent(
+      textRenderer: TextStyles.subCounter,
+      anchor: Anchor.center,
+      position: incomePill.size / 2,
+    );
+    incomePill.add(_incomeText);
+    add(incomePill);
   }
 
   @override
@@ -45,5 +58,6 @@ class SekCounter extends HudMarginComponent
 
   void _refresh() {
     _text.text = formatSek(game.economy.balance);
+    _incomeText.text = '+${formatSek(game.economy.incomePerSecond)}/s';
   }
 }

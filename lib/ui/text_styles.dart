@@ -49,6 +49,14 @@ class TextStyles {
     ),
   );
 
+  static final subCounter = TextPaint(
+    style: const TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+      color: lightBrown,
+    ),
+  );
+
   static final paragraph = TextPaint(
     style: const TextStyle(fontSize: 19, color: brown),
   );
