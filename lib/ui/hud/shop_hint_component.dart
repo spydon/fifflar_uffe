@@ -2,7 +2,8 @@ import 'dart:math';
 
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/model/skill_catalog.dart';
-import 'package:fifflar_uffe/ui/localized_text_component.dart';
+import 'package:fifflar_uffe/model/skill_def.dart';
+import 'package:fifflar_uffe/model/skill_id.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
@@ -15,16 +16,23 @@ class ShopHintComponent extends HudMarginComponent
     : super(margin: const EdgeInsets.only(bottom: 37, right: 92));
 
   static const double _displayDuration = 6;
-
-  @override
-  void onGameResize(Vector2 size) {
-    scale = Vector2.all(min(1, (size.x - 104) / 260));
-    super.onGameResize(size);
-  }
+  static const double _arrowReserve = 44;
+  static const double _sideMargins = 104;
 
   late final PositionComponent _content;
-  bool _shown = false;
+  late final TextComponent _text;
+  late final _ArrowComponent _arrow;
+  final Set<SkillId> _announced = {};
+  bool _showing = false;
   bool _dismissing = false;
+
+  @override
+  void onGameResize(Vector2 gameSize) {
+    if (isLoaded) {
+      _updateScale(gameSize);
+    }
+    super.onGameResize(gameSize);
+  }
 
   @override
   Future<void> onLoad() async {
@@ -36,36 +44,54 @@ class ShopHintComponent extends HudMarginComponent
       position: size / 2,
     );
     _content.addAll([
-      LocalizedTextComponent(
-        selector: (strings) => strings.shopHint,
+      _text = TextComponent(
         textRenderer: TextStyles.hint,
         anchor: Anchor.centerRight,
-        position: Vector2(size.x - 44, size.y / 2),
+        position: Vector2(size.x - _arrowReserve, size.y / 2),
       ),
-      _ArrowComponent(position: Vector2(size.x - 34, 4)),
+      _arrow = _ArrowComponent(position: Vector2(size.x - 34, 4)),
     ]);
     add(_content);
+    _updateScale(game.size);
+  }
+
+  void resetRun() {
+    _announced.clear();
   }
 
   @override
   void update(double dt) {
     super.update(dt);
-    if (!_shown) {
-      if (game.economy.balance >= skillCatalog.first.basePrice &&
-          game.economy.owned.isEmpty) {
-        _show();
+    if (_showing) {
+      if (isVisible &&
+          !_dismissing &&
+          game.router.currentRoute == game.router.routes['shop']) {
+        _dismiss();
       }
       return;
     }
-    if (isVisible &&
-        !_dismissing &&
-        game.router.currentRoute == game.router.routes['shop']) {
-      _dismiss();
+    final economy = game.economy;
+    for (final skill in skillCatalog) {
+      if (_announced.contains(skill.id) ||
+          economy.ownedCount(skill) > 0 ||
+          !economy.isUnlocked(skill) ||
+          !economy.canAfford(skill)) {
+        continue;
+      }
+      _announced.add(skill.id);
+      _show(skill);
+      break;
     }
   }
 
-  void _show() {
-    _shown = true;
+  void _show(SkillDef skill) {
+    final strings = game.i18n.strings;
+    _text.text = game.economy.owned.isEmpty
+        ? strings.shopHint
+        : strings.affordHint(skill.name(strings));
+    _layout();
+    _showing = true;
+    _dismissing = false;
     isVisible = true;
     _content.scale = Vector2.zero();
     _content.addAll([
@@ -87,16 +113,37 @@ class ShopHintComponent extends HudMarginComponent
     );
   }
 
+  void _layout() {
+    size = Vector2(_text.size.x + _arrowReserve + 6, 30);
+    _content.size = size;
+    _content.position = size / 2;
+    _text.position = Vector2(size.x - _arrowReserve, size.y / 2);
+    _arrow.position = Vector2(size.x - 34, 4);
+    _updateScale(game.size);
+  }
+
+  void _updateScale(Vector2 gameSize) {
+    scale = Vector2.all(min(1, (gameSize.x - _sideMargins) / size.x));
+  }
+
   void _dismiss() {
     if (_dismissing) {
       return;
     }
     _dismissing = true;
+    for (final effect in _content.children.whereType<Effect>().toList()) {
+      effect.removeFromParent();
+    }
     _content.add(
       ScaleEffect.to(
         Vector2.zero(),
         EffectController(duration: 0.25, curve: Curves.easeIn),
-        onComplete: () => isVisible = false,
+        onComplete: () {
+          isVisible = false;
+          _showing = false;
+          _dismissing = false;
+          _content.position = size / 2;
+        },
       ),
     );
   }

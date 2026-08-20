@@ -34,6 +34,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
   late final RouterComponent router;
   late final UffeComponent uffe;
   late final EventFeedComponent eventFeed;
+  late final ShopHintComponent shopHint;
 
   static const double _maxDeltaTime = 5;
 
@@ -103,7 +104,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
         margin: const EdgeInsets.only(bottom: 16, right: 16),
         onPressed: () => router.pushNamed('shop'),
       ),
-      ShopHintComponent(),
+      shopHint = ShopHintComponent(),
       router,
       uffe = UffeComponent(),
     ]);
@@ -155,6 +156,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
     _gameOver = false;
     economy.reset();
     eventFeed.resetRun();
+    shopHint.resetRun();
     timeline.reset();
     world.resetRun();
     saveNow();
