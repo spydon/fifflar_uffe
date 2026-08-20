@@ -1,5 +1,6 @@
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/model/game_event.dart';
+import 'package:fifflar_uffe/ui/panel_close_button.dart';
 import 'package:fifflar_uffe/ui/panel_component.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:flame/components.dart';
@@ -9,7 +10,7 @@ import 'package:flutter/animation.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class EventCardComponent extends PositionComponent
-    with HasGameReference<FifflarUffeGame> {
+    with HasGameReference<FifflarUffeGame>, TapCallbacks {
   EventCardComponent({required this.event}) : super(size: Vector2(320, 172));
 
   static const double _displayDuration = 15;
@@ -21,6 +22,7 @@ class EventCardComponent extends PositionComponent
   late final TextBoxComponent _title;
   late final TextBoxComponent _body;
   late final _EventLink _link;
+  bool _dismissing = false;
 
   @override
   Future<void> onLoad() async {
@@ -29,7 +31,7 @@ class EventCardComponent extends PositionComponent
       _panel = PanelComponent(size: size * 2)..scale = Vector2.all(0.5),
       _title = TextBoxComponent(
         textRenderer: TextStyles.eventTitle,
-        boxConfig: TextBoxConfig(maxWidth: textWidth),
+        boxConfig: TextBoxConfig(maxWidth: textWidth - 24),
         position: Vector2(_padding, 12),
       ),
       _body = TextBoxComponent(
@@ -42,6 +44,11 @@ class EventCardComponent extends PositionComponent
         url: event.url,
         position: Vector2(_padding + 8, 132),
       ),
+      PanelCloseButton(
+        position: Vector2(size.x - 10, 12),
+        anchor: Anchor.center,
+        onPressed: _slideAway,
+      )..scale = Vector2.all(0.55),
       TimerComponent(
         period: _displayDuration,
         removeOnFinish: true,
@@ -92,7 +99,30 @@ class EventCardComponent extends PositionComponent
     _body.text = event.body(language);
   }
 
+  @override
+  void onTapUp(TapUpEvent event) {
+    _slideAway();
+  }
+
+  void _slideAway() {
+    if (_dismissing) {
+      return;
+    }
+    _dismissing = true;
+    add(
+      MoveEffect.by(
+        Vector2(-(size.x + 60), 0),
+        EffectController(duration: 0.35, curve: Curves.easeInBack),
+        onComplete: removeFromParent,
+      ),
+    );
+  }
+
   void _dismiss() {
+    if (_dismissing) {
+      return;
+    }
+    _dismissing = true;
     add(
       ScaleEffect.to(
         Vector2.zero(),
