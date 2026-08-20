@@ -78,6 +78,7 @@ abstract class Strings {
   String yourBest(String score, int rank);
   String get notRanked;
   String brokenCapitalismCount(int count);
+  String gamesPlayed(int count);
   String get loading;
   String get highscoreLoadError;
   String get retry;
@@ -299,6 +300,9 @@ class SvStrings extends Strings {
   String brokenCapitalismCount(int count) =>
       '$count ${count == 1 ? 'person' : 'personer'} '
       'har haft sönder kapitalismen';
+  @override
+  String gamesPlayed(int count) =>
+      '$count ${count == 1 ? 'omgång' : 'omgångar'} har spelats';
   @override
   String get loading => 'Laddar...';
   @override
@@ -577,6 +581,9 @@ class EnStrings extends Strings {
   @override
   String brokenCapitalismCount(int count) =>
       '$count ${count == 1 ? 'person has' : 'people have'} broken capitalism';
+  @override
+  String gamesPlayed(int count) =>
+      '$count ${count == 1 ? 'game has' : 'games have'} been played';
   @override
   String get loading => 'Loading...';
   @override

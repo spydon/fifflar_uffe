@@ -136,11 +136,13 @@ class Leaderboard {
     this.top = const [],
     this.me,
     this.brokenCapitalismCount = 0,
+    this.gamesPlayed = 0,
   });
 
   final List<HighscoreEntry> top;
   final HighscoreEntry? me;
   final int brokenCapitalismCount;
+  final int gamesPlayed;
 
   factory Leaderboard.fromJson(Map<String, dynamic> json) {
     final top = (json['top'] as List<dynamic>? ?? const [])
@@ -152,6 +154,7 @@ class Leaderboard {
       top: top,
       me: me == null ? null : HighscoreEntry.fromJson(me),
       brokenCapitalismCount: json['broken_capitalism_count'] as int? ?? 0,
+      gamesPlayed: json['games_played'] as int? ?? 0,
     );
   }
 }

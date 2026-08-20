@@ -109,6 +109,10 @@ select is(
     "broke_capitalism": false}'::jsonb,
   'run_state reports the accepted sequence number'
 );
+select is(
+  public.leaderboard() ->> 'games_played', '1',
+  'a run counts as played once a report is accepted'
+);
 
 -- Implausible reports flag the run.
 select pg_temp.act_as('00000000-0000-0000-0000-000000000002');
@@ -280,6 +284,10 @@ select is(
 select is(
   public.leaderboard() ->> 'broken_capitalism_count', '1',
   'the leaderboard counts people who broke capitalism'
+);
+select is(
+  public.leaderboard() ->> 'games_played', '3',
+  'flagged and idle runs are not counted as played games'
 );
 
 -------------------------------------------------------------------------------
