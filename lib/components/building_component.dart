@@ -10,6 +10,7 @@ import 'package:fifflar_uffe/util/sek_format.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
+import 'package:flame/particles.dart';
 import 'package:flutter/animation.dart';
 
 class BuildingComponent extends PositionComponent
@@ -20,8 +21,12 @@ class BuildingComponent extends PositionComponent
   final SkillDef skill;
   final int slotIndex;
 
+  static const double _maxParticleRate = 4;
+
   late final TextComponent _count;
   late final TextComponent _price;
+  ParticleEmitterComponent? _coinParticles;
+  int _particleLevel = 0;
 
   @override
   Future<void> onLoad() async {
@@ -125,5 +130,38 @@ class BuildingComponent extends PositionComponent
     _price.textRenderer = economy.canAfford(skill)
         ? TextStyles.priceTag
         : TextStyles.priceTagDisabled;
+    _updateParticles();
+  }
+
+  void _updateParticles() {
+    final level = game.economy.ownedCount(skill);
+    if (level == _particleLevel && _coinParticles != null) {
+      return;
+    }
+    _particleLevel = level;
+    _coinParticles?.removeFromParent();
+    if (level == 0) {
+      _coinParticles = null;
+      return;
+    }
+    _coinParticles = ParticleEmitterComponent(
+      position: Vector2(size.x / 2, 52),
+      emitter: ParticleEmitter(
+        maxParticles: 16,
+        rate: min(level.toDouble(), _maxParticleRate),
+        lifespan: (1.0, 1.6),
+        shape: const CircleEmitterShape(56, edgeOnly: true),
+        speed: (12, 26),
+        direction: -pi / 2,
+        spread: 1,
+        size: (10, 15),
+        opacityOverLife: ParticleCurve(1, 0, curve: Curves.easeIn),
+        scaleOverLife: ParticleCurve(1, 0.6),
+      ),
+      renderer: SpriteParticleRenderer(
+        Sprite(game.images.fromCache(AssetPaths.iconCoin)),
+      ),
+    );
+    add(_coinParticles!);
   }
 }
