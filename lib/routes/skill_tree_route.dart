@@ -110,7 +110,7 @@ class SkillNodeComponent extends PositionComponent
       ),
       _icon = SpriteComponent(
         sprite: Sprite(game.images.fromCache(skill.iconPath)),
-        size: Vector2.all(54),
+        size: Vector2.all(72),
         anchor: Anchor.center,
         position: Vector2(size.x / 2, 50),
       ),
