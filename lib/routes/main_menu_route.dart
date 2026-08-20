@@ -1,0 +1,130 @@
+import 'dart:async';
+
+import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
+import 'package:fifflar_uffe/ui/game_button.dart';
+import 'package:fifflar_uffe/ui/modal_page.dart';
+import 'package:fifflar_uffe/ui/panel_component.dart';
+import 'package:fifflar_uffe/ui/panel_header.dart';
+import 'package:flame/components.dart';
+import 'package:flame/game.dart';
+
+class MainMenuRoute extends Route with HasGameReference<FifflarUffeGame> {
+  MainMenuRoute()
+    : super(MainMenuPage.new, transparent: true, maintainState: false);
+
+  @override
+  void onPush(Route? previousRoute) {
+    game.world.updatePaused = true;
+    unawaited(game.highscore.probe());
+  }
+
+  @override
+  void onPop(Route nextRoute) {
+    game.world.updatePaused = false;
+  }
+}
+
+class MainMenuPage extends ModalPage {
+  MainMenuPage()
+    : super(designSize: Vector2(560, 520), dismissOnScrimTap: false);
+
+  static const double _firstButtonY = 120;
+  static const double _buttonSpacing = 110;
+  static const double _bottomPadding = 100;
+
+  late final PanelComponent _background;
+  late final GameButton _start;
+  late final GameButton _highscores;
+  late final GameButton _settings;
+  late final GameButton _about;
+  bool _built = false;
+
+  @override
+  Future<void> onLoad() async {
+    await super.onLoad();
+    if (isNarrowScreen) {
+      resizePanel(Vector2(460, designSize.y));
+    }
+    final center = designSize.x / 2;
+    panel.addAll([
+      _background = PanelComponent(size: designSize.clone()),
+      PanelHeader(
+        title: (strings) => strings.mainMenuTitle,
+        size: Vector2(360, 68),
+        position: Vector2(center, 0),
+        anchor: Anchor.center,
+      ),
+      _start = GameButton(
+        label: (strings) => strings.startPlaying,
+        size: Vector2(250, 92),
+        anchor: Anchor.center,
+        onPressed: () {
+          unawaited(game.persistence.markMenuSeen());
+          close();
+        },
+      ),
+      _settings = GameButton(
+        label: (strings) => strings.settings,
+        color: GameButtonColor.blue,
+        size: Vector2(250, 92),
+        anchor: Anchor.center,
+        onPressed: () => game.router.pushNamed('settings'),
+      ),
+      _about = GameButton(
+        label: (strings) => strings.about,
+        color: GameButtonColor.blue,
+        size: Vector2(250, 92),
+        anchor: Anchor.center,
+        onPressed: () => game.router.pushNamed('about'),
+      ),
+    ]);
+    _highscores = GameButton(
+      label: (strings) => strings.highscores,
+      color: GameButtonColor.yellow,
+      size: Vector2(250, 92),
+      anchor: Anchor.center,
+      onPressed: () => game.router.pushNamed('highscore'),
+    );
+    _built = true;
+    _layoutButtons();
+  }
+
+  @override
+  void onMount() {
+    super.onMount();
+    game.highscore.available.addListener(_layoutButtons);
+  }
+
+  @override
+  void onRemove() {
+    game.highscore.available.removeListener(_layoutButtons);
+    super.onRemove();
+  }
+
+  void _layoutButtons() {
+    if (!_built) {
+      return;
+    }
+    final showHighscores = game.highscore.available.value;
+    if (showHighscores && _highscores.parent == null) {
+      panel.add(_highscores);
+    } else if (!showHighscores && _highscores.parent != null) {
+      _highscores.removeFromParent();
+    }
+    final buttons = [
+      _start,
+      if (showHighscores) _highscores,
+      _settings,
+      _about,
+    ];
+    final center = designSize.x / 2;
+    var y = _firstButtonY;
+    for (final button in buttons) {
+      button.position = Vector2(center, y);
+      y += _buttonSpacing;
+    }
+    final height = y - _buttonSpacing + _bottomPadding;
+    _background.size = Vector2(designSize.x, height);
+    resizePanel(Vector2(designSize.x, height));
+  }
+}
