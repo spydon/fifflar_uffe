@@ -27,6 +27,7 @@ class HighscorePage extends ModalPage {
   static const double _dividerY = 478;
   static const double _footerY = 494;
   static const double _secondFooterY = 530;
+  static const double _thirdFooterY = 556;
   static const double _messageY = 270;
 
   final List<TextComponent> _ranks = [];
@@ -38,6 +39,7 @@ class HighscorePage extends ModalPage {
   late final TextComponent _message;
   late final TextComponent _myBest;
   late final TextComponent _brokenCount;
+  late final TextComponent _gamesPlayed;
   late final GameButton _retry;
   late final RectangleComponent _divider;
 
@@ -102,6 +104,11 @@ class HighscorePage extends ModalPage {
         textRenderer: TextStyles.statLabel,
         anchor: Anchor.topCenter,
         position: Vector2(center, _secondFooterY),
+      ),
+      _gamesPlayed = TextComponent(
+        textRenderer: TextStyles.statLabel,
+        anchor: Anchor.topCenter,
+        position: Vector2(center, _thirdFooterY),
       ),
       _message = TextComponent(
         textRenderer: TextStyles.info,
@@ -219,6 +226,7 @@ class HighscorePage extends ModalPage {
     if (leaderboard == null) {
       _myBest.text = '';
       _brokenCount.text = '';
+      _gamesPlayed.text = '';
       return;
     }
     final me = leaderboard.me;
@@ -228,6 +236,7 @@ class HighscorePage extends ModalPage {
     _brokenCount.text = strings.brokenCapitalismCount(
       leaderboard.brokenCapitalismCount,
     );
+    _gamesPlayed.text = strings.gamesPlayed(leaderboard.gamesPlayed);
   }
 
   void _setVisible(Component component, bool visible) {
