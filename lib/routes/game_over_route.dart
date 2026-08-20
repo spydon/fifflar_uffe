@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/model/timeline.dart';
 import 'package:fifflar_uffe/services/share_service.dart';
@@ -163,13 +165,18 @@ class GameOverPage extends ModalPage {
   }
 
   Future<void> _shareResult() async {
-    _share.isDisabled = true;
+    if (_share.isBusy) {
+      return;
+    }
+    _share.isBusy = true;
+    final Uint8List bytes;
     try {
-      await ShareService.shareResult(game);
+      bytes = await ShareService.renderCard(game);
     } finally {
       if (isMounted) {
-        _share.isDisabled = false;
+        _share.isBusy = false;
       }
     }
+    await ShareService.shareCard(game, bytes);
   }
 }
