@@ -39,18 +39,24 @@ class ShareCard {
   final double totalEarned;
 
   Future<Uint8List> toPng() async {
+    final image = await toImage();
+    final png = await encodePng(image);
+    image.dispose();
+    return png;
+  }
+
+  Future<ui.Image> toImage() {
     final recorder = ui.PictureRecorder();
     final canvas = ui.Canvas(
       recorder,
       const Rect.fromLTWH(0, 0, width, height),
     );
     paint(canvas);
-    final image = await recorder.endRecording().toImage(
-      width.toInt(),
-      height.toInt(),
-    );
+    return recorder.endRecording().toImage(width.toInt(), height.toInt());
+  }
+
+  static Future<Uint8List> encodePng(ui.Image image) async {
     final data = await image.toByteData(format: ui.ImageByteFormat.png);
-    image.dispose();
     return data!.buffer.asUint8List();
   }
 

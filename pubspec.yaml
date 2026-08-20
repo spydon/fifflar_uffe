@@ -14,9 +14,11 @@ dependencies:
       path: packages/flame
   flutter:
     sdk: flutter
+  gal: ^2.3.3
   share_plus: ^13.3.0
   shared_preferences: ^2.5.0
   url_launcher: ^6.3.0
+  web: ^1.1.1
 
 dev_dependencies:
   flame_lint:
