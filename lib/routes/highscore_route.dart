@@ -6,11 +6,11 @@ import 'package:fifflar_uffe/ui/modal_page.dart';
 import 'package:fifflar_uffe/ui/panel_close_button.dart';
 import 'package:fifflar_uffe/ui/panel_component.dart';
 import 'package:fifflar_uffe/ui/panel_header.dart';
+import 'package:fifflar_uffe/ui/table_grid_component.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:fifflar_uffe/util/sek_format.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
-import 'package:flutter/painting.dart';
 
 class HighscoreRoute extends Route {
   HighscoreRoute()
@@ -21,18 +21,18 @@ class HighscorePage extends ModalPage {
   HighscorePage() : super(designSize: Vector2(560, 640));
 
   static const int rowCount = 10;
-  static const double _headerY = 72;
-  static const double _firstRowY = 106;
-  static const double _rowHeight = 36;
-  static const double _dividerY = 478;
-  static const double _footerY = 494;
-  static const double _secondFooterY = 530;
-  static const double _thirdFooterY = 556;
+  static const double _tableTop = 72;
+  static const double _headerHeight = 36;
+  static const double _rowHeight = 34;
+  static const double _cellPadding = 10;
+  static const double _footerGap = 22;
+  static const double _footerSpacing = 28;
   static const double _messageY = 270;
 
   final List<TextComponent> _ranks = [];
   final List<TextComponent> _names = [];
   final List<TextComponent> _scores = [];
+  late final TableGridComponent _grid;
   late final TextComponent _rankHeader;
   late final TextComponent _nameHeader;
   late final TextComponent _scoreHeader;
@@ -41,7 +41,6 @@ class HighscorePage extends ModalPage {
   late final TextComponent _brokenCount;
   late final TextComponent _gamesPlayed;
   late final GameButton _retry;
-  late final RectangleComponent _divider;
 
   Leaderboard? _leaderboard;
   bool _built = false;
@@ -55,10 +54,24 @@ class HighscorePage extends ModalPage {
       resizePanel(Vector2(460, designSize.y));
     }
     final center = designSize.x / 2;
-    final left = isNarrowScreen ? 36.0 : 52.0;
-    final right = designSize.x - left;
-    final rankX = left + 32;
-    final nameX = left + 48;
+    final narrow = isNarrowScreen;
+    final left = narrow ? 28.0 : 40.0;
+    final tableWidth = designSize.x - 2 * left;
+    final columnWidths = narrow
+        ? [44.0, 140.0, tableWidth - 184]
+        : [48.0, 190.0, tableWidth - 238];
+    _grid = TableGridComponent(
+      columnWidths: columnWidths,
+      headerHeight: _headerHeight,
+      rowHeight: _rowHeight,
+      rowCount: rowCount,
+      position: Vector2(left, _tableTop),
+    );
+    Vector2 cell(int column, double top, double height) => Vector2(
+      left + _grid.columnLeft(column) + _cellPadding,
+      _tableTop + top + height / 2,
+    );
+    final footerTop = _tableTop + _grid.size.y + _footerGap;
     panel.addAll([
       PanelComponent(size: designSize.clone()),
       PanelHeader(
@@ -76,39 +89,39 @@ class HighscorePage extends ModalPage {
         _ranks.addAndReturn(
           TextComponent(
             textRenderer: TextStyles.statValue,
-            anchor: Anchor.topRight,
-            position: Vector2(rankX, _firstRowY + i * _rowHeight),
+            anchor: Anchor.centerLeft,
+            position: cell(0, _grid.rowTop(i), _rowHeight),
           ),
         ),
         _names.addAndReturn(
           TextComponent(
             textRenderer: TextStyles.statValue,
-            anchor: Anchor.topLeft,
-            position: Vector2(nameX, _firstRowY + i * _rowHeight),
+            anchor: Anchor.centerLeft,
+            position: cell(1, _grid.rowTop(i), _rowHeight),
           ),
         ),
         _scores.addAndReturn(
           TextComponent(
             textRenderer: TextStyles.statValue,
-            anchor: Anchor.topRight,
-            position: Vector2(right, _firstRowY + i * _rowHeight),
+            anchor: Anchor.centerLeft,
+            position: cell(2, _grid.rowTop(i), _rowHeight),
           ),
         ),
       ],
       _myBest = TextComponent(
         textRenderer: TextStyles.statLabel,
         anchor: Anchor.topCenter,
-        position: Vector2(center, _footerY),
+        position: Vector2(center, footerTop),
       ),
       _brokenCount = TextComponent(
         textRenderer: TextStyles.statLabel,
         anchor: Anchor.topCenter,
-        position: Vector2(center, _secondFooterY),
+        position: Vector2(center, footerTop + _footerSpacing),
       ),
       _gamesPlayed = TextComponent(
         textRenderer: TextStyles.statLabel,
         anchor: Anchor.topCenter,
-        position: Vector2(center, _thirdFooterY),
+        position: Vector2(center, footerTop + 2 * _footerSpacing),
       ),
       _message = TextComponent(
         textRenderer: TextStyles.info,
@@ -119,23 +132,18 @@ class HighscorePage extends ModalPage {
     _rankHeader = TextComponent(
       text: '#',
       textRenderer: TextStyles.statLabel,
-      anchor: Anchor.topRight,
-      position: Vector2(rankX, _headerY),
+      anchor: Anchor.centerLeft,
+      position: cell(0, 0, _headerHeight),
     );
     _nameHeader = TextComponent(
       textRenderer: TextStyles.statLabel,
-      anchor: Anchor.topLeft,
-      position: Vector2(nameX, _headerY),
+      anchor: Anchor.centerLeft,
+      position: cell(1, 0, _headerHeight),
     );
     _scoreHeader = TextComponent(
       textRenderer: TextStyles.statLabel,
-      anchor: Anchor.topRight,
-      position: Vector2(right, _headerY),
-    );
-    _divider = RectangleComponent(
-      size: Vector2(designSize.x - 2 * left, 2),
-      position: Vector2(left, _dividerY),
-      paint: Paint()..color = const Color(0x668A7156),
+      anchor: Anchor.centerLeft,
+      position: cell(2, 0, _headerHeight),
     );
     _retry = GameButton(
       label: (strings) => strings.retry,
@@ -192,7 +200,7 @@ class HighscorePage extends ModalPage {
     final leaderboard = _leaderboard;
     _nameHeader.text = strings.highscoreNameHeader;
     _scoreHeader.text = strings.highscoreScoreHeader;
-    final showTable = leaderboard != null;
+    final showTable = leaderboard != null && leaderboard.top.isNotEmpty;
     final showRetry = _failed && leaderboard == null;
     _setVisible(_retry, showRetry);
     if (leaderboard == null) {
@@ -205,7 +213,7 @@ class HighscorePage extends ModalPage {
     _setVisible(_rankHeader, showTable);
     _setVisible(_nameHeader, showTable);
     _setVisible(_scoreHeader, showTable);
-    _setVisible(_divider, showTable);
+    _setVisible(_grid, showTable);
     for (var i = 0; i < rowCount; i++) {
       final entry = leaderboard != null && i < leaderboard.top.length
           ? leaderboard.top[i]
