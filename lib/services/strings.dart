@@ -60,6 +60,9 @@ abstract class Strings {
   String get highScoreLabel;
   String get playAgain;
   String get continuePlaying;
+  String get share;
+  String get shareHeadline;
+  String get shareTagline;
   String get shopHint;
   String affordHint(String item);
   String get references;
@@ -233,6 +236,12 @@ class SvStrings extends Strings {
   String get playAgain => 'Fiffla igen';
   @override
   String get continuePlaying => 'Fortsätt fiffla';
+  @override
+  String get share => 'Dela';
+  @override
+  String get shareHeadline => 'Jag klarade fifflar-uffe.se!';
+  @override
+  String get shareTagline => 'Nu vet jag hur man blir en riktig fifflare.';
   @override
   String get shopHint => 'Fiffla mer effektivt!';
   @override
@@ -453,6 +462,12 @@ class EnStrings extends Strings {
   String get playAgain => 'Fiddle again';
   @override
   String get continuePlaying => 'Keep fiddling';
+  @override
+  String get share => 'Share';
+  @override
+  String get shareHeadline => 'I completed fifflar-uffe.se!';
+  @override
+  String get shareTagline => 'Now I know how to be a good fifflare.';
   @override
   String get shopHint => 'Fiddle more efficiently!';
   @override

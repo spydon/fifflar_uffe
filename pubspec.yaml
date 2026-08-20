@@ -14,6 +14,7 @@ dependencies:
       path: packages/flame
   flutter:
     sdk: flutter
+  share_plus: ^13.3.0
   shared_preferences: ^2.5.0
   url_launcher: ^6.3.0
 
@@ -66,6 +67,8 @@ flutter:
     - assets/images/Buttons/Round/RoundButton2_blue.png
     - assets/images/Buttons/Round/RoundButton2_turquoise.png
     - assets/images/Buttons/Round/RoundButton2_gray.png
+    - assets/images/Buttons/Round/RoundButton2_yellow.png
+    - assets/images/Buttons/Round/RoundButton2_cream.png
     - assets/images/Buttons/Round/RoundButton1_white.png
     - assets/images/Buttons/Round/RoundButton1_gray.png
     - assets/images/Labels/Label1.png

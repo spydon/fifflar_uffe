@@ -7,7 +7,8 @@ import 'package:flame/components.dart';
 
 enum GameButtonColor {
   green(AssetPaths.buttonWideGreen, AssetPaths.buttonWideLime),
-  blue(AssetPaths.buttonWideBlue, AssetPaths.buttonWideTurquoise);
+  blue(AssetPaths.buttonWideBlue, AssetPaths.buttonWideTurquoise),
+  yellow(AssetPaths.buttonWideYellow, AssetPaths.buttonWideCream);
 
   const GameButtonColor(this.upSkinPath, this.downSkinPath);
 
