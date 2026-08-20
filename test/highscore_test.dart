@@ -129,7 +129,7 @@ void main() {
         expect(texts, contains('5\u00a0000\u00a0kr'));
         expect(texts, contains('Ditt bästa: 25\u00a0kr (plats 2)'));
         expect(texts, contains('3 personer har haft sönder kapitalismen'));
-        expect(texts, contains('42 omgångar har spelats'));
+        expect(texts, contains('42 omgångar har spelats totalt'));
       },
     );
 
