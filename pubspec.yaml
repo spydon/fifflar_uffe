@@ -43,25 +43,25 @@ flutter:
   uses-material-design: true
   assets:
     - assets/data/events.json
-    - assets/images/Icons/IconsDefault/128px/IconsDefault4_128px.png
-    - assets/images/Icons/IconsDefault/128px/IconsDefault6_128px.png
-    - assets/images/Icons/IconsDefault/128px/IconsDefault10_128px.png
     - assets/images/Icons/IconsDefault/128px/IconsDefault11_128px.png
-    - assets/images/Icons/IconsDefault/128px/IconsDefault23_128px.png
-    - assets/images/Icons/IconsDefault/128px/IconsDefault27_128px.png
-    - assets/images/Icons/IconsDefault/128px/IconsDefault28_128px.png
-    - assets/images/Icons/IconsDefault/128px/IconsDefault57_128px.png
-    - assets/images/Icons/IconsDefault/128px/IconsDefault45_128px.png
-    - assets/images/Icons/IconsDefault/128px/IconsDefault9_128px.png
-    - assets/images/Icons/IconsDefault/128px/IconsDefault35_128px.png
     - assets/images/Icons/IconsDefault/128px/IconsDefault12_128px.png
     - assets/images/Icons/IconsDefault/128px/IconsDefault14_128px.png
     - assets/images/Icons/IconsDefault/128px/IconsDefault21_128px.png
     - assets/images/Icons/IconsDefault/128px/IconsDefault25_128px.png
     - assets/images/Icons/IconsDefault/128px/IconsDefault26_128px.png
-    - assets/images/Icons/IconsDefault/128px/IconsDefault43_128px.png
-    - assets/images/Icons/IconsDefault/128px/IconsDefault54_128px.png
-    - assets/images/Icons/IconsDefault/128px/IconsDefault58_128px.png
+    - assets/images/skills/hire_cleaner.png
+    - assets/images/skills/cheat_apartment.png
+    - assets/images/skills/taxi_rides.png
+    - assets/images/skills/china_trips.png
+    - assets/images/skills/furnish_palace.png
+    - assets/images/skills/write_book.png
+    - assets/images/skills/lower_taxes.png
+    - assets/images/skills/break_promise.png
+    - assets/images/skills/cut_sick_leave.png
+    - assets/images/skills/privatize_schools.png
+    - assets/images/skills/privatize_hospitals.png
+    - assets/images/skills/sell_preschools.png
+    - assets/images/skills/sell_public_housing.png
     - assets/images/Buttons/Round/RoundButton2_green.png
     - assets/images/Buttons/Round/RoundButton2_lime.png
     - assets/images/Buttons/Round/RoundButton2_blue.png
