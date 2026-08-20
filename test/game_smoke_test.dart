@@ -335,4 +335,48 @@ void main() {
       expect(game.world.updatePaused, isFalse);
     },
   );
+
+  testWithGame<FifflarUffeGame>(
+    'a balance too wide for the counter breaks capitalism',
+    FifflarUffeGame.new,
+    (game) async {
+      game.update(0);
+      await game.ready();
+      game.economy.baseClickValue = 1e15;
+      game.economy.earnClick();
+      game.update(0);
+      await game.ready();
+      expect(
+        game.router.currentRoute,
+        game.router.routes['brokenCapitalism'],
+      );
+      expect(game.world.updatePaused, isTrue);
+      expect(game.highScore, game.economy.totalEarned);
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
+    'restarting after breaking capitalism allows it to break again',
+    FifflarUffeGame.new,
+    (game) async {
+      game.update(0);
+      await game.ready();
+      game.economy.baseClickValue = 1e15;
+      game.economy.earnClick();
+      game.update(0);
+      await game.ready();
+      game.restartRun();
+      game.router.pop();
+      game.update(0);
+      await game.ready();
+      expect(game.router.currentRoute, game.router.routes['home']);
+      game.economy.earnClick();
+      game.update(0);
+      await game.ready();
+      expect(
+        game.router.currentRoute,
+        game.router.routes['brokenCapitalism'],
+      );
+    },
+  );
 }

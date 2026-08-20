@@ -7,6 +7,7 @@ import 'package:fifflar_uffe/model/game_event.dart';
 import 'package:fifflar_uffe/model/skill_def.dart';
 import 'package:fifflar_uffe/model/timeline.dart';
 import 'package:fifflar_uffe/routes/about_route.dart';
+import 'package:fifflar_uffe/routes/broken_capitalism_route.dart';
 import 'package:fifflar_uffe/routes/game_over_route.dart';
 import 'package:fifflar_uffe/routes/pause_route.dart';
 import 'package:fifflar_uffe/routes/skill_tree_route.dart';
@@ -41,6 +42,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
   double highScore = 0;
   bool _dirty = false;
   bool _gameOver = false;
+  bool _capitalismBroken = false;
 
   @override
   void update(double dt) {
@@ -88,6 +90,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
         'about': AboutRoute(),
         'shop': SkillTreeRoute(),
         'gameOver': GameOverRoute(),
+        'brokenCapitalism': BrokenCapitalismRoute(),
       },
     );
     camera.viewport.addAll([
@@ -137,6 +140,18 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
       return;
     }
     _gameOver = true;
+    _openEnding('gameOver');
+  }
+
+  void handleBalanceOverflow() {
+    if (_capitalismBroken || !router.isMounted) {
+      return;
+    }
+    _capitalismBroken = true;
+    _openEnding('brokenCapitalism');
+  }
+
+  void _openEnding(String routeName) {
     if (economy.totalEarned > highScore) {
       highScore = economy.totalEarned;
     }
@@ -144,7 +159,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
     while (router.currentRoute != router.routes['home']) {
       router.pop();
     }
-    router.pushNamed('gameOver');
+    router.pushNamed(routeName);
   }
 
   void continueRun() {
@@ -154,6 +169,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> {
 
   void restartRun() {
     _gameOver = false;
+    _capitalismBroken = false;
     economy.reset();
     eventFeed.resetRun();
     shopHint.resetRun();
