@@ -1,5 +1,6 @@
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/model/timeline.dart';
+import 'package:fifflar_uffe/services/share_service.dart';
 import 'package:fifflar_uffe/ui/game_button.dart';
 import 'package:fifflar_uffe/ui/localized_link_component.dart';
 import 'package:fifflar_uffe/ui/localized_text_box_component.dart';
@@ -39,6 +40,7 @@ class GameOverPage extends ModalPage {
   late final LocalizedLinkComponent _referencesLink;
   late final GameButton _playAgain;
   late final GameButton _continue;
+  late final GameButton _share;
 
   @override
   Future<void> onLoad() async {
@@ -120,6 +122,13 @@ class GameOverPage extends ModalPage {
           close();
         },
       ),
+      _share = GameButton(
+        label: (strings) => strings.share,
+        color: GameButtonColor.yellow,
+        size: Vector2(280, 92),
+        anchor: Anchor.center,
+        onPressed: _shareResult,
+      ),
     ]);
     _appeal.size.addListener(_layoutContent);
     _satire.size.addListener(_layoutContent);
@@ -141,13 +150,26 @@ class GameOverPage extends ModalPage {
     if (narrow) {
       _playAgain.position = Vector2(center, y + 46);
       _continue.position = Vector2(center, y + 152);
-      y += 152 + 46 + 30;
+      _share.position = Vector2(center, y + 258);
+      y += 258 + 46 + 30;
     } else {
       _playAgain.position = Vector2(center - 160, y + 46);
       _continue.position = Vector2(center + 160, y + 46);
-      y += 46 + 46 + 30;
+      _share.position = Vector2(center, y + 152);
+      y += 152 + 46 + 30;
     }
     _background.size = Vector2(designSize.x, y);
     resizePanel(Vector2(designSize.x, y));
+  }
+
+  Future<void> _shareResult() async {
+    _share.isDisabled = true;
+    try {
+      await ShareService.shareResult(game);
+    } finally {
+      if (isMounted) {
+        _share.isDisabled = false;
+      }
+    }
   }
 }
