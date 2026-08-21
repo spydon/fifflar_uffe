@@ -51,9 +51,10 @@ class GameOverPage extends ModalPage {
   late final PanelComponent _background;
   late final LocalizedTextBoxComponent _appeal;
   late final LocalizedTextComponent _finalScore;
-  late final LocalizedTextComponent _highScore;
+  late final LocalizedTextBoxComponent _submitHint;
   late final NameInputComponent _nameInput;
   late final SendButton _send;
+  late final GameButton _toHighscores;
   late final LocalizedTextBoxComponent _status;
   late final LocalizedTextBoxComponent _satire;
   late final LocalizedLinkComponent _referencesLink;
@@ -106,12 +107,6 @@ class GameOverPage extends ModalPage {
         textRenderer: narrow
             ? TextStyles.enlarged(TextStyles.body, 1.15)
             : TextStyles.body,
-        anchor: Anchor.center,
-      ),
-      _highScore = LocalizedTextComponent(
-        selector: (strings) =>
-            '${strings.highScoreLabel}: ${formatSek(game.highScore)}',
-        textRenderer: infoStyle,
         anchor: Anchor.center,
       ),
       _status = LocalizedTextBoxComponent(
@@ -168,6 +163,20 @@ class GameOverPage extends ModalPage {
       anchor: Anchor.center,
       onPressed: () => unawaited(_submitScore()),
     );
+    _toHighscores = GameButton(
+      label: (strings) => strings.openHighscores,
+      color: GameButtonColor.yellow,
+      anchor: Anchor.center,
+      onPressed: () => game.router.pushNamed('highscore'),
+    );
+    _submitHint = LocalizedTextBoxComponent(
+      selector: (strings) => strings.submitExplanation,
+      textRenderer: infoStyle,
+      boxConfig: TextBoxConfig(maxWidth: textWidth),
+      align: Anchor.topCenter,
+      anchor: Anchor.topCenter,
+    );
+    _submitHint.size.addListener(_layoutContent);
     add(_FocusCatcher(onTap: _nameInput.unfocus));
     _appeal.size.addListener(_layoutContent);
     _status.size.addListener(_layoutContent);
@@ -190,10 +199,12 @@ class GameOverPage extends ModalPage {
 
   bool get _showSubmitSection => game.canSubmitHighscore;
 
+  bool get _showHighscoresButton =>
+      game.highscoreSubmitted && game.highscore.available.value;
+
   String _statusText(Strings strings) {
     if (game.highscoreSubmitted) {
-      final rank = game.highscoreRank;
-      return rank == null ? strings.submitAlreadyDone : strings.yourRank(rank);
+      return '';
     }
     if (_invalidName) {
       return strings.invalidName;
@@ -219,7 +230,9 @@ class GameOverPage extends ModalPage {
     }
     final show = _showSubmitSection;
     _setVisible(_nameInput, show);
+    _setVisible(_submitHint, show);
     _setVisible(_send, show);
+    _setVisible(_toHighscores, _showHighscoresButton);
     _send.isDisabled = _submitting;
     _status.text = _statusText(game.i18n.strings);
     _layoutContent();
@@ -239,9 +252,9 @@ class GameOverPage extends ModalPage {
     var y = _appeal.position.y + _appeal.size.y + 24;
     _finalScore.position = Vector2(center, y);
     y += 42;
-    _highScore.position = Vector2(center, y);
-    y += 24;
     if (_showSubmitSection) {
+      _submitHint.position = Vector2(center, y);
+      y += _submitHint.size.y + 10;
       final rowWidth = _nameInput.size.x + _sendGap + _send.size.x;
       final rowLeft = center - rowWidth / 2;
       final rowMiddle = y + _nameInput.size.y / 2;
@@ -254,6 +267,10 @@ class GameOverPage extends ModalPage {
         rowMiddle,
       );
       y += _nameInput.size.y + 14;
+    }
+    if (_showHighscoresButton) {
+      _toHighscores.position = Vector2(center, y + 40);
+      y += 80 + 14;
     }
     if (_status.text.isNotEmpty) {
       _status.position = Vector2(center, y);

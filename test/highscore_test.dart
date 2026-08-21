@@ -252,10 +252,15 @@ void main() {
         expect(save.highscoreRank, 1);
         expect(game.canSubmitHighscore, isFalse);
         expect(page.panel.children.whereType<NameInputComponent>(), isEmpty);
-        final texts = page.panel.children.whereType<TextBoxComponent>().map(
-          (component) => component.text,
+        final toHighscores = page.panel.children.whereType<GameButton>().where(
+          (button) => button.label(game.i18n.strings) == 'Till topplistan',
         );
-        expect(texts, contains('Du ligger på plats 1 på topplistan!'));
+        expect(toHighscores, hasLength(1));
+        toHighscores.single.onPressed!();
+        await settle(game);
+        expect(game.router.currentRoute, game.router.routes['highscore']);
+        game.router.pop();
+        await settle(game);
 
         game.restartRun();
         await settle(game);
