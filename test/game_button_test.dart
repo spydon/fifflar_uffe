@@ -1,6 +1,7 @@
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/ui/button_spinner.dart';
 import 'package:fifflar_uffe/ui/game_button.dart';
+import 'package:fifflar_uffe/ui/lightened_sprite_component.dart';
 import 'package:fifflar_uffe/ui/localized_text_component.dart';
 import 'package:flame/components.dart';
 import 'package:flame_test/flame_test.dart';
@@ -55,6 +56,36 @@ void main() {
       );
       button.onTapDown(createTapDownEvents(game: game));
       expect(presses, 1);
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
+    'a hovered button shows a lightened skin',
+    FifflarUffeGame.new,
+    (game) async {
+      game.update(0);
+      await game.ready();
+      final button = GameButton(
+        label: (strings) => strings.share,
+        onPressed: () {},
+      );
+      game.add(button);
+      game.update(0);
+      await game.ready();
+      final hover = button.skinsMap[ButtonState.hover];
+      expect(hover, isA<LightenedSpriteComponent>());
+      expect(hover!.parent, isNull);
+      // ignore: invalid_use_of_protected_member
+      button.setState(ButtonState.hover);
+      game.update(0);
+      await game.ready();
+      // ignore: invalid_use_of_protected_member
+      expect(hover.parent, button.skinContainer);
+      // ignore: invalid_use_of_protected_member
+      button.setState(ButtonState.up);
+      game.update(0);
+      await game.ready();
+      expect(hover.parent, isNull);
     },
   );
 }

@@ -1,5 +1,6 @@
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
+import 'package:fifflar_uffe/ui/lightened_sprite_component.dart';
 import 'package:flame/components.dart';
 
 class PanelCloseButton extends AdvancedButtonComponent
@@ -19,6 +20,9 @@ class PanelCloseButton extends AdvancedButtonComponent
     );
     downSkin = SpriteComponent(
       sprite: Sprite(game.images.fromCache(AssetPaths.buttonCompactGray)),
+    );
+    hoverSkin = LightenedSpriteComponent(
+      sprite: Sprite(game.images.fromCache(AssetPaths.buttonCompactWhite)),
     );
     defaultLabel = SpriteComponent(
       sprite: Sprite(game.images.fromCache(AssetPaths.iconClose)),

@@ -1,5 +1,6 @@
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
+import 'package:fifflar_uffe/ui/lightened_sprite_component.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
@@ -30,6 +31,9 @@ class HudIconButton extends HudMarginComponent
         ),
         downSkin: SpriteComponent(
           sprite: Sprite(game.images.fromCache(AssetPaths.buttonCompactGray)),
+        ),
+        hoverSkin: LightenedSpriteComponent(
+          sprite: Sprite(game.images.fromCache(AssetPaths.buttonCompactWhite)),
         ),
         defaultLabel: _OutlinedIcon(
           sprite: Sprite(game.images.fromCache(iconPath)),
