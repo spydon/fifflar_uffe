@@ -11,6 +11,7 @@ import 'package:fifflar_uffe/ui/game_button.dart';
 import 'package:fifflar_uffe/ui/hud/event_card_component.dart';
 import 'package:fifflar_uffe/ui/hud/event_feed_component.dart';
 import 'package:fifflar_uffe/ui/hud/shop_hint_component.dart';
+import 'package:fifflar_uffe/ui/language_flag_button.dart';
 import 'package:fifflar_uffe/ui/toggle_button.dart';
 import 'package:flame_test/flame_test.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -380,6 +381,30 @@ void main() {
   );
 
   testWithGame<FifflarUffeGame>(
+    'the pause menu opens the settings page',
+    FifflarUffeGame.new,
+    (game) async {
+      game.update(0);
+      await game.ready();
+      game.router.pushNamed('pause');
+      game.update(0);
+      await game.ready();
+      final page = game.router.currentRoute.children
+          .whereType<PausePage>()
+          .single;
+      expect(page.panel.children.whereType<LanguageFlagButton>(), isEmpty);
+      final settings = page.panel.children.whereType<GameButton>().firstWhere(
+        (button) =>
+            button.label(game.i18n.strings) == game.i18n.strings.settingsButton,
+      );
+      settings.onPressed!();
+      game.update(0);
+      await game.ready();
+      expect(game.router.currentRoute, game.router.routes['settings']);
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
     'an event card appears when its date is reached, not on load',
     () {
       SharedPreferences.setMockInitialValues({
@@ -590,7 +615,7 @@ void main() {
           .whereType<GameButton>()
           .map((button) => button.label(game.i18n.strings))
           .toList();
-      expect(labels, ['Fortsätt', 'Huvudmeny']);
+      expect(labels, ['Fortsätt', '⚙️ Inställningar', 'Huvudmeny']);
       page.panel.children
           .whereType<GameButton>()
           .firstWhere(

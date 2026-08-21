@@ -1,9 +1,7 @@
 import 'dart:async';
 
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
-import 'package:fifflar_uffe/services/i18n.dart';
 import 'package:fifflar_uffe/ui/game_button.dart';
-import 'package:fifflar_uffe/ui/language_flag_button.dart';
 import 'package:fifflar_uffe/ui/modal_page.dart';
 import 'package:fifflar_uffe/ui/panel_component.dart';
 import 'package:fifflar_uffe/ui/panel_header.dart';
@@ -43,21 +41,18 @@ class PausePage extends ModalPage {
         position: Vector2(center, 0),
         anchor: Anchor.center,
       ),
-      LanguageFlagButton(
-        language: AppLanguage.sv,
-        position: Vector2(center - 66, 100),
-        anchor: Anchor.center,
-      ),
-      LanguageFlagButton(
-        language: AppLanguage.en,
-        position: Vector2(center + 66, 100),
-        anchor: Anchor.center,
-      ),
       GameButton(
         label: (strings) => strings.resume,
         anchor: Anchor.center,
-        position: Vector2(center, 200),
+        position: Vector2(center, 104),
         onPressed: close,
+      ),
+      GameButton(
+        label: (strings) => strings.settingsButton,
+        color: GameButtonColor.blue,
+        anchor: Anchor.center,
+        position: Vector2(center, 200),
+        onPressed: () => game.router.pushNamed('settings'),
       ),
       GameButton(
         label: (strings) => strings.mainMenu,
