@@ -20,9 +20,12 @@ class EventFeedComponent extends HudMarginComponent
 
   List<GameEvent> get queuedEvents => List.unmodifiable(_queue);
 
-  bool get _showingCard => children.whereType<EventCardComponent>().any(
-    (card) => !card.isDismissing,
-  );
+  EventCardComponent? _current;
+
+  bool get _showingCard {
+    final current = _current;
+    return current != null && current.parent == this && !current.isDismissing;
+  }
 
   @override
   void onGameResize(Vector2 size) {
@@ -60,6 +63,7 @@ class EventFeedComponent extends HudMarginComponent
   void resetRun() {
     _consumed.clear();
     _queue.clear();
+    _current = null;
     _shownFor = 0;
     for (final card in children.whereType<EventCardComponent>().toList()) {
       card.removeFromParent();
@@ -89,7 +93,9 @@ class EventFeedComponent extends HudMarginComponent
     for (final card in children.whereType<EventCardComponent>().toList()) {
       card.removeFromParent();
     }
-    add(EventCardComponent(event: event));
+    final card = EventCardComponent(event: event);
+    add(card);
+    _current = card;
     _shownFor = 0;
   }
 }
