@@ -203,6 +203,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
     }
     _gameOver = true;
     _openEnding('gameOver');
+    sound?.playGameOver();
   }
 
   void handleBalanceOverflow() {
