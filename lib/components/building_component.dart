@@ -15,11 +15,13 @@ import 'package:flutter/animation.dart';
 
 class BuildingComponent extends PositionComponent
     with TapCallbacks, HasGameReference<FifflarUffeGame> {
-  BuildingComponent({required this.skill, required this.slotIndex})
+  BuildingComponent({required this.skill})
     : super(size: Vector2(104, 130), anchor: Anchor.center);
 
+  static const double _gap = 24;
+  static const double _verticalMargin = 180;
+
   final SkillDef skill;
-  final int slotIndex;
 
   static const double _maxParticleRate = 4;
 
@@ -58,10 +60,25 @@ class BuildingComponent extends PositionComponent
     scale = Vector2.zero();
     add(
       ScaleEffect.to(
-        Vector2.all(HudAutoScale.factorFor(game.size)),
+        Vector2.all(layoutFactor(game.size)),
         EffectController(duration: 0.3, curve: Curves.easeOutBack),
       ),
     );
+  }
+
+  static int get _columns =>
+      skillCatalog.map((skill) => skill.branch).reduce(max) + 1;
+
+  static int get _rows =>
+      skillCatalog.map((skill) => skill.tier).reduce(max) + 1;
+
+  static double _gridHeight(double factor) =>
+      (_rows * 130 + (_rows - 1) * _gap) * factor;
+
+  static double layoutFactor(Vector2 gameSize) {
+    final widthFactor = HudAutoScale.factorFor(gameSize);
+    final available = gameSize.y - _verticalMargin;
+    return min(widthFactor, available / _gridHeight(1));
   }
 
   @override
@@ -98,28 +115,23 @@ class BuildingComponent extends PositionComponent
   }
 
   void _updatePosition(Vector2 gameSize) {
-    final factor = HudAutoScale.factorFor(gameSize);
-    final pop = children.whereType<ScaleEffect>().isEmpty;
-    if (pop) {
+    final factor = layoutFactor(gameSize);
+    final settled = children.whereType<ScaleEffect>().isEmpty;
+    if (settled) {
       scale = Vector2.all(factor);
     }
-    final gap = 24.0 * factor;
+    final gap = _gap * factor;
     final tileWidth = size.x * factor;
     final tileHeight = size.y * factor;
-    final columns = max(
-      1,
-      min(4, ((gameSize.x - 40) / (tileWidth + gap)).floor()),
-    );
-    final rows = (skillCatalog.length / columns).ceil();
-    final row = slotIndex ~/ columns;
-    final column = slotIndex % columns;
+    final columns = _columns;
+    final rows = _rows;
     final gridWidth = columns * tileWidth + (columns - 1) * gap;
     final gridHeight = rows * tileHeight + (rows - 1) * gap;
     final left = (gameSize.x - gridWidth) / 2;
     final top = (gameSize.y - gridHeight) / 2;
     position = Vector2(
-      left + column * (tileWidth + gap) + tileWidth / 2,
-      top + row * (tileHeight + gap) + tileHeight / 2,
+      left + skill.branch * (tileWidth + gap) + tileWidth / 2,
+      top + skill.tier * (tileHeight + gap) + tileHeight / 2,
     );
   }
 
