@@ -372,7 +372,9 @@ void main() {
         game.eventFeed.queuedEvents.map((event) => event.id),
         ['valstugereportaget'],
       );
-      game.update(EventFeedComponent.minReadTime - 0.5);
+      for (var i = 0; i < 5; i++) {
+        game.update((EventFeedComponent.minReadTime - 0.5) / 5);
+      }
       await game.ready();
       expect(cards().single.event.id, 'svart_stadhjalp');
       game.update(1);
