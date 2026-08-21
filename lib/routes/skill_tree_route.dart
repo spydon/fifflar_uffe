@@ -5,6 +5,7 @@ import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/model/skill_catalog.dart';
 import 'package:fifflar_uffe/model/skill_def.dart';
 import 'package:fifflar_uffe/routes/skill_detail_route.dart';
+import 'package:fifflar_uffe/ui/hover_lighten.dart';
 import 'package:fifflar_uffe/ui/modal_page.dart';
 import 'package:fifflar_uffe/ui/panel_close_button.dart';
 import 'package:fifflar_uffe/ui/panel_header.dart';
@@ -88,7 +89,11 @@ class _SkillTreeEdges extends PositionComponent {
 }
 
 class SkillNodeComponent extends PositionComponent
-    with TapCallbacks, HasGameReference<FifflarUffeGame> {
+    with
+        TapCallbacks,
+        HoverCallbacks,
+        HoverLighten,
+        HasGameReference<FifflarUffeGame> {
   SkillNodeComponent({required this.skill, super.position})
     : super(size: Vector2(110, 124), anchor: Anchor.center, priority: 2);
 

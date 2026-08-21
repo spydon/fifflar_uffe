@@ -1,13 +1,18 @@
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/services/i18n.dart';
+import 'package:fifflar_uffe/ui/hover_lighten.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flutter/painting.dart';
 
 class LanguageFlagButton extends PositionComponent
-    with TapCallbacks, HasGameReference<FifflarUffeGame> {
+    with
+        TapCallbacks,
+        HoverCallbacks,
+        HoverLighten,
+        HasGameReference<FifflarUffeGame> {
   LanguageFlagButton({required this.language, super.position, super.anchor})
     : super(size: Vector2(96, 60));
 

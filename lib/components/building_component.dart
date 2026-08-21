@@ -4,6 +4,7 @@ import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/model/skill_catalog.dart';
 import 'package:fifflar_uffe/model/skill_def.dart';
+import 'package:fifflar_uffe/ui/hover_lighten.dart';
 import 'package:fifflar_uffe/ui/hud/hud_auto_scale.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:fifflar_uffe/util/sek_format.dart';
@@ -14,7 +15,11 @@ import 'package:flame/particles.dart';
 import 'package:flutter/animation.dart';
 
 class BuildingComponent extends PositionComponent
-    with TapCallbacks, HasGameReference<FifflarUffeGame> {
+    with
+        TapCallbacks,
+        HoverCallbacks,
+        HoverLighten,
+        HasGameReference<FifflarUffeGame> {
   BuildingComponent({required this.skill})
     : super(size: Vector2(104, 130), anchor: Anchor.center);
 
