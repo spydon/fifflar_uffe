@@ -154,8 +154,7 @@ class SvStrings extends Strings {
   String get aboutAttributions => 'Bildkällor';
   @override
   String get aboutOpenSource =>
-      'Spelet är öppen källkod och bidrag är varmt välkomna, både idéer '
-      'och kod.';
+      'Spelet är öppen källkod och PRs/issues är varmt välkomna.';
   @override
   String get aboutGithub => 'Källkoden på GitHub';
   @override
@@ -451,8 +450,7 @@ class EnStrings extends Strings {
   String get aboutAttributions => 'Image credits';
   @override
   String get aboutOpenSource =>
-      'The game is open source and contributions are very welcome, ideas '
-      'as well as code.';
+      'The game is open source and PRs/issues are very welcome.';
   @override
   String get aboutGithub => 'Source code on GitHub';
   @override
