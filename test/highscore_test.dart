@@ -272,6 +272,32 @@ void main() {
     );
 
     testWithGame<FifflarUffeGame>(
+      'a score below the submitted best only offers the highscore list',
+      () {
+        SharedPreferences.setMockInitialValues({
+          'fifflar_uffe.menu_seen': true,
+          'fifflar_uffe.save.v1': jsonEncode(finishedSave(runId: 'run-9')),
+        });
+        client.leaderboard = const Leaderboard(
+          top: [HighscoreEntry(rank: 1, name: 'Uffe', score: 1000, isMe: true)],
+          me: HighscoreEntry(rank: 1, name: 'Uffe', score: 1000, isMe: true),
+        );
+        return FifflarUffeGame(highscoreClient: client);
+      },
+      (game) async {
+        final page = await reachGameOver(game);
+        expect(game.beatsSubmittedBest, isFalse);
+        expect(game.canSubmitHighscore, isFalse);
+        expect(page.panel.children.whereType<NameInputComponent>(), isEmpty);
+        expect(page.panel.children.whereType<SendButton>(), isEmpty);
+        final toHighscores = page.panel.children.whereType<GameButton>().where(
+          (button) => button.label(game.i18n.strings) == 'Till topplistan',
+        );
+        expect(toHighscores, hasLength(1));
+      },
+    );
+
+    testWithGame<FifflarUffeGame>(
       'invalid names are rejected before anything is sent',
       () {
         SharedPreferences.setMockInitialValues({
