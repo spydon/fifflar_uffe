@@ -25,6 +25,8 @@ class EventCardComponent extends PositionComponent
   late final _EventLink _link;
   bool _dismissing = false;
 
+  bool get isDismissing => _dismissing;
+
   @override
   Future<void> onLoad() async {
     final textWidth = size.x - 2 * _padding;
