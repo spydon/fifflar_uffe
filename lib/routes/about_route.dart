@@ -19,6 +19,8 @@ class AboutPage extends ModalPage {
   late final LocalizedTextBoxComponent _satire;
   late final LocalizedLinkComponent _references;
   late final LocalizedLinkComponent _imageCredits;
+  late final LocalizedTextBoxComponent _openSource;
+  late final LocalizedLinkComponent _github;
 
   @override
   Future<void> onLoad() async {
@@ -68,8 +70,25 @@ class AboutPage extends ModalPage {
             : TextStyles.eventLink,
         position: Vector2(left + 8, 198),
       ),
+      _openSource = LocalizedTextBoxComponent(
+        selector: (strings) => strings.aboutOpenSource,
+        textRenderer: isNarrowScreen
+            ? TextStyles.enlarged(TextStyles.paragraph, 1.25)
+            : TextStyles.paragraph,
+        boxConfig: TextBoxConfig(maxWidth: textWidth),
+        position: Vector2(left, 240),
+      ),
+      _github = LocalizedLinkComponent(
+        selector: (strings) => strings.aboutGithub,
+        url: 'https://github.com/spydon/fifflar_uffe',
+        textRenderer: isNarrowScreen
+            ? TextStyles.enlarged(TextStyles.eventLink, 1.3)
+            : TextStyles.eventLink,
+        position: Vector2(left + 8, 330),
+      ),
     ]);
     _satire.size.addListener(_layoutContent);
+    _openSource.size.addListener(_layoutContent);
     _layoutContent();
   }
 
@@ -78,7 +97,10 @@ class AboutPage extends ModalPage {
     final satireBottom = _satire.position.y + _satire.size.y;
     _references.position = Vector2(left + 8, satireBottom + 10);
     _imageCredits.position = Vector2(left + 8, satireBottom + 48);
-    final height = satireBottom + 48 + 26 + 32;
+    _openSource.position = Vector2(left, satireBottom + 48 + 26 + 18);
+    final openSourceBottom = _openSource.position.y + _openSource.size.y;
+    _github.position = Vector2(left + 8, openSourceBottom + 10);
+    final height = openSourceBottom + 10 + 26 + 32;
     _background.size = Vector2(designSize.x, height);
     resizePanel(Vector2(designSize.x, height));
   }

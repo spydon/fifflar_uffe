@@ -21,6 +21,8 @@ abstract class Strings {
   String get about;
   String get aboutSatire;
   String get aboutAttributions;
+  String get aboutOpenSource;
+  String get aboutGithub;
   String get itemHireCleaner;
   String get itemCheatApartment;
   String get itemTaxiRides;
@@ -147,6 +149,12 @@ class SvStrings extends Strings {
       'verklig nyhetsrapportering.';
   @override
   String get aboutAttributions => 'Bildkällor';
+  @override
+  String get aboutOpenSource =>
+      'Spelet är öppen källkod och bidrag är varmt välkomna, både idéer '
+      'och kod.';
+  @override
+  String get aboutGithub => 'Källkoden på GitHub';
   @override
   String get itemHireCleaner => 'Anlita städhjälp (svart)';
   @override
@@ -436,6 +444,12 @@ class EnStrings extends Strings {
       'on real news reporting.';
   @override
   String get aboutAttributions => 'Image credits';
+  @override
+  String get aboutOpenSource =>
+      'The game is open source and contributions are very welcome, ideas '
+      'as well as code.';
+  @override
+  String get aboutGithub => 'Source code on GitHub';
   @override
   String get itemHireCleaner => 'Hire cleaning help (off the books)';
   @override
