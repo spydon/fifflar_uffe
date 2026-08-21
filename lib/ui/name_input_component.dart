@@ -35,6 +35,7 @@ class NameInputComponent extends PositionComponent
   double _caretTime = 0;
   late final TextComponent _text;
   late final LocalizedTextComponent _placeholder;
+  late final RectangleComponent _caret;
   bool _built = false;
 
   String get text => _value.text.trim();
@@ -60,6 +61,11 @@ class NameInputComponent extends PositionComponent
         anchor: Anchor.centerLeft,
         position: Vector2(_textInset + 8, size.y / 2 - 3),
       ),
+      _caret = RectangleComponent(
+        size: Vector2(2, TextStyles.body.getLineMetrics('A').height),
+        anchor: Anchor.centerLeft,
+        paint: _caretPaint,
+      ),
     ]);
     _built = true;
     _refresh();
@@ -75,29 +81,18 @@ class NameInputComponent extends PositionComponent
   void update(double dt) {
     super.update(dt);
     _caretTime += dt;
+    if (_built) {
+      _caret.opacity = _caretTime % _caretPeriod <= _caretPeriod / 2 ? 1 : 0;
+    }
   }
 
-  @override
-  void render(Canvas canvas) {
-    super.render(canvas);
-    if (_caretTime % _caretPeriod > _caretPeriod / 2) {
-      return;
-    }
+  void _placeCaret() {
     final offset = _value.selection.isValid
         ? _value.selection.extentOffset.clamp(0, _value.text.length)
         : _value.text.length;
     final prefix = _value.text.substring(0, offset);
     final width = TextStyles.body.getLineMetrics(prefix).width;
-    final lineHeight = TextStyles.body.getLineMetrics('A').height;
-    canvas.drawRect(
-      Rect.fromLTWH(
-        _textInset + width + 1,
-        size.y / 2 - 3 - lineHeight / 2,
-        2,
-        lineHeight,
-      ),
-      _caretPaint,
-    );
+    _caret.position = Vector2(_textInset + width + 1, size.y / 2 - 3);
   }
 
   @override
@@ -181,6 +176,7 @@ class NameInputComponent extends PositionComponent
       return;
     }
     _text.text = _value.text;
+    _placeCaret();
     _placeholder.scale = _value.text.isEmpty && !hasFocus
         ? Vector2.all(1)
         : Vector2.zero();

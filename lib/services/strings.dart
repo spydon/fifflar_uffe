@@ -76,9 +76,10 @@ abstract class Strings {
   String get highscoreNameHeader;
   String get highscoreScoreHeader;
   String get yourName;
+  String get submitExplanation;
   String get nameHint;
   String get submit;
-  String yourRank(int rank);
+  String get openHighscores;
   String yourBest(String score, int rank);
   String get notRanked;
   String brokenCapitalismCount(int count);
@@ -299,11 +300,14 @@ class SvStrings extends Strings {
   @override
   String get yourName => 'Ditt namn';
   @override
+  String get submitExplanation =>
+      'Skriv ditt namn och skicka in resultatet till topplistan';
+  @override
   String get nameHint => 'Högst 10 tecken';
   @override
   String get submit => 'Skicka';
   @override
-  String yourRank(int rank) => 'Du ligger på plats $rank på topplistan!';
+  String get openHighscores => 'Till topplistan';
   @override
   String yourBest(String score, int rank) => 'Ditt bästa: $score (plats $rank)';
   @override
@@ -589,11 +593,14 @@ class EnStrings extends Strings {
   @override
   String get yourName => 'Your name';
   @override
+  String get submitExplanation =>
+      'Enter your name and submit your score to the highscores';
+  @override
   String get nameHint => 'At most 10 characters';
   @override
   String get submit => 'Submit';
   @override
-  String yourRank(int rank) => 'You are in place $rank on the highscores!';
+  String get openHighscores => 'To the highscores';
   @override
   String yourBest(String score, int rank) => 'Your best: $score (place $rank)';
   @override
