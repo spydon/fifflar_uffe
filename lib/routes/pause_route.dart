@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/ui/game_button.dart';
 import 'package:fifflar_uffe/ui/modal_page.dart';
@@ -48,7 +49,8 @@ class PausePage extends ModalPage {
         onPressed: close,
       ),
       GameButton(
-        label: (strings) => strings.settingsButton,
+        label: (strings) => strings.settings,
+        iconPath: AssetPaths.iconGear,
         color: GameButtonColor.blue,
         anchor: Anchor.center,
         position: Vector2(center, 200),

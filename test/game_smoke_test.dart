@@ -55,7 +55,7 @@ void main() {
           .whereType<GameButton>()
           .map((button) => button.label(game.i18n.strings))
           .toList();
-      expect(labels, ['Börja fiffla', '⚙️ Inställningar', 'Om']);
+      expect(labels, ['Börja fiffla', 'Inställningar', 'Om']);
     },
   );
 
@@ -107,7 +107,7 @@ void main() {
           page.panel.children.whereType<GameButton>().firstWhere(
             (button) => button.label(game.i18n.strings) == label,
           );
-      buttonLabelled(game.i18n.strings.settingsButton).onPressed!();
+      buttonLabelled('Inställningar').onPressed!();
       game.update(0);
       await game.ready();
       expect(game.router.currentRoute, game.router.routes['settings']);
@@ -395,7 +395,7 @@ void main() {
       expect(page.panel.children.whereType<LanguageFlagButton>(), isEmpty);
       final settings = page.panel.children.whereType<GameButton>().firstWhere(
         (button) =>
-            button.label(game.i18n.strings) == game.i18n.strings.settingsButton,
+            button.label(game.i18n.strings) == game.i18n.strings.settings,
       );
       settings.onPressed!();
       game.update(0);
@@ -615,7 +615,7 @@ void main() {
           .whereType<GameButton>()
           .map((button) => button.label(game.i18n.strings))
           .toList();
-      expect(labels, ['Fortsätt', '⚙️ Inställningar', 'Huvudmeny']);
+      expect(labels, ['Fortsätt', 'Inställningar', 'Huvudmeny']);
       page.panel.children
           .whereType<GameButton>()
           .firstWhere(

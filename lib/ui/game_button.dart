@@ -27,6 +27,7 @@ class GameButton extends AdvancedButtonComponent
     required void Function() onPressed,
     Vector2? size,
     this.color = GameButtonColor.green,
+    this.iconPath,
     super.position,
     super.anchor,
     super.priority,
@@ -37,6 +38,7 @@ class GameButton extends AdvancedButtonComponent
 
   final String Function(Strings strings) label;
   final GameButtonColor color;
+  final String? iconPath;
 
   bool _isBusy = false;
 
@@ -68,19 +70,55 @@ class GameButton extends AdvancedButtonComponent
     disabledSkin = SpriteComponent(
       sprite: Sprite(game.images.fromCache(AssetPaths.buttonWideGray)),
     );
-    final text = LocalizedTextComponent(
-      selector: label,
-      textRenderer: TextStyles.button,
-    );
-    defaultLabel = text;
-    text.size.addListener(() => _fitLabel(text));
-    _fitLabel(text);
+    final icon = iconPath;
+    final content = icon == null
+        ? LocalizedTextComponent(
+            selector: label,
+            textRenderer: TextStyles.button,
+          )
+        : _IconLabel(
+            sprite: Sprite(game.images.fromCache(icon)),
+            selector: label,
+          );
+    defaultLabel = content;
+    content.size.addListener(() => _fitLabel(content));
+    _fitLabel(content);
   }
 
-  void _fitLabel(LocalizedTextComponent text) {
+  void _fitLabel(PositionComponent content) {
     final maxWidth = size.x - 2 * _labelInset;
-    final textWidth = text.size.x;
-    final factor = textWidth > 0 ? min(1.0, maxWidth / textWidth) : 1.0;
-    text.scale = Vector2.all(factor);
+    final contentWidth = content.size.x;
+    final factor = contentWidth > 0 ? min(1.0, maxWidth / contentWidth) : 1.0;
+    content.scale = Vector2.all(factor);
+  }
+}
+
+class _IconLabel extends PositionComponent {
+  _IconLabel({required Sprite sprite, required this.selector})
+    : _icon = SpriteComponent(sprite: sprite, size: Vector2.all(_iconSize));
+
+  static const double _iconSize = 30;
+  static const double _gap = 10;
+
+  final String Function(Strings strings) selector;
+  final SpriteComponent _icon;
+  late final LocalizedTextComponent _text;
+
+  @override
+  Future<void> onLoad() async {
+    _text = LocalizedTextComponent(
+      selector: selector,
+      textRenderer: TextStyles.button,
+    );
+    addAll([_icon, _text]);
+    _text.size.addListener(_layout);
+    _layout();
+  }
+
+  void _layout() {
+    final height = max(_iconSize, _text.size.y);
+    size = Vector2(_iconSize + _gap + _text.size.x, height);
+    _icon.position = Vector2(0, (height - _iconSize) / 2);
+    _text.position = Vector2(_iconSize + _gap, (height - _text.size.y) / 2);
   }
 }
