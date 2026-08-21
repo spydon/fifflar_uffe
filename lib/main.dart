@@ -1,6 +1,7 @@
 // ignore_for_file: do_not_use_environment
 
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
+import 'package:fifflar_uffe/services/sound_service.dart';
 import 'package:fifflar_uffe/services/supabase_highscore_client.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/services.dart';
@@ -15,6 +16,7 @@ void main() {
   runApp(
     GameWidget<FifflarUffeGame>.managed(
       gameFactory: () => FifflarUffeGame(
+        sound: SoundService(),
         highscoreClient: _supabaseUrl.isEmpty || _supabaseKey.isEmpty
             ? SupabaseHighscoreClient()
             : SupabaseHighscoreClient(

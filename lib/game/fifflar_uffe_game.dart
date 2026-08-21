@@ -20,6 +20,7 @@ import 'package:fifflar_uffe/services/highscore_client.dart';
 import 'package:fifflar_uffe/services/highscore_service.dart';
 import 'package:fifflar_uffe/services/i18n.dart';
 import 'package:fifflar_uffe/services/persistence_service.dart';
+import 'package:fifflar_uffe/services/sound_service.dart';
 import 'package:fifflar_uffe/ui/hud/date_counter.dart';
 import 'package:fifflar_uffe/ui/hud/event_feed_component.dart';
 import 'package:fifflar_uffe/ui/hud/hud_icon_button.dart';
@@ -34,7 +35,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart' hide Route;
 
 class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
-  FifflarUffeGame({this.highscoreClient}) : super(world: PlayWorld());
+  FifflarUffeGame({this.highscoreClient, this.sound})
+    : super(world: PlayWorld());
 
   late final Economy economy;
   late final Timeline timeline;
@@ -52,6 +54,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
   static const double _freshRunMaxDays = 80;
 
   final HighscoreClient? highscoreClient;
+  final SoundService? sound;
 
   double highScore = 0;
   String? runId;
@@ -164,6 +167,10 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
       ),
     );
     unawaited(highscore.probe());
+    final soundService = sound;
+    if (soundService != null) {
+      unawaited(soundService.init());
+    }
     if (!save.menuSeen) {
       unawaited(router.mounted.then((_) => router.pushNamed('mainMenu')));
     }

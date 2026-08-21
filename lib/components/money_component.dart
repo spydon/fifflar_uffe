@@ -59,6 +59,7 @@ class MoneyComponent extends SpriteComponent
     }
     _collected = true;
     game.economy.earnClick();
+    game.sound?.playCoin();
     parent.add(
       FloatingTextComponent(
         text: '+${formatSek(game.economy.clickValue)}',
