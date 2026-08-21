@@ -179,6 +179,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
   bool buyItem(SkillDef skill) {
     final bought = economy.buy(skill);
     if (bought) {
+      sound?.playPurchase();
       uffe.say(skill.quip(i18n.strings));
       if (skill.isClickMultiplier) {
         camera.viewport.add(
