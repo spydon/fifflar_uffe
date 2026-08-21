@@ -9,6 +9,7 @@ import 'package:fifflar_uffe/routes/main_menu_route.dart';
 import 'package:fifflar_uffe/routes/pause_route.dart';
 import 'package:fifflar_uffe/ui/game_button.dart';
 import 'package:fifflar_uffe/ui/hud/event_card_component.dart';
+import 'package:fifflar_uffe/ui/hud/event_feed_component.dart';
 import 'package:fifflar_uffe/ui/hud/shop_hint_component.dart';
 import 'package:flame_test/flame_test.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -341,6 +342,72 @@ void main() {
       game.update(0);
       await game.ready();
       expect(cards(), isEmpty);
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
+    'events arriving together are queued so each can be read',
+    () {
+      SharedPreferences.setMockInitialValues({
+        'fifflar_uffe.menu_seen': true,
+        'fifflar_uffe.save.v1': jsonEncode({
+          'balance': 0.0,
+          'owned': <String, int>{},
+          'elapsedDays': 516.0,
+          'savedAt': '2026-08-19T00:00:00.000',
+        }),
+      });
+      return FifflarUffeGame();
+    },
+    (game) async {
+      game.update(0);
+      await game.ready();
+      Iterable<EventCardComponent> cards() =>
+          game.eventFeed.children.whereType<EventCardComponent>();
+      game.timeline.advance(60);
+      game.update(0);
+      await game.ready();
+      expect(cards().single.event.id, 'svart_stadhjalp');
+      expect(
+        game.eventFeed.queuedEvents.map((event) => event.id),
+        ['valstugereportaget'],
+      );
+      game.update(EventFeedComponent.minReadTime - 0.5);
+      await game.ready();
+      expect(cards().single.event.id, 'svart_stadhjalp');
+      game.update(1);
+      await game.ready();
+      expect(cards().single.event.id, 'valstugereportaget');
+      expect(game.eventFeed.queuedEvents, isEmpty);
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
+    'a dismissed card makes room for the next queued event at once',
+    () {
+      SharedPreferences.setMockInitialValues({
+        'fifflar_uffe.menu_seen': true,
+        'fifflar_uffe.save.v1': jsonEncode({
+          'balance': 0.0,
+          'owned': <String, int>{},
+          'elapsedDays': 516.0,
+          'savedAt': '2026-08-19T00:00:00.000',
+        }),
+      });
+      return FifflarUffeGame();
+    },
+    (game) async {
+      game.update(0);
+      await game.ready();
+      Iterable<EventCardComponent> cards() =>
+          game.eventFeed.children.whereType<EventCardComponent>();
+      game.timeline.advance(60);
+      game.update(0);
+      await game.ready();
+      cards().single.removeFromParent();
+      game.update(0);
+      await game.ready();
+      expect(cards().single.event.id, 'valstugereportaget');
     },
   );
 

@@ -12,7 +12,17 @@ class EventFeedComponent extends HudMarginComponent
   EventFeedComponent()
     : super(margin: const EdgeInsets.only(top: 80, left: 12));
 
+  static const double minReadTime = 6;
+
   final Set<String> _consumed = {};
+  final List<GameEvent> _queue = [];
+  double _shownFor = 0;
+
+  List<GameEvent> get queuedEvents => List.unmodifiable(_queue);
+
+  bool get _showingCard => children.whereType<EventCardComponent>().any(
+    (card) => !card.isDismissing,
+  );
 
   @override
   void onGameResize(Vector2 size) {
@@ -40,8 +50,17 @@ class EventFeedComponent extends HudMarginComponent
     super.onRemove();
   }
 
+  @override
+  void update(double dt) {
+    super.update(dt);
+    _shownFor += dt;
+    _showNextIfReady();
+  }
+
   void resetRun() {
     _consumed.clear();
+    _queue.clear();
+    _shownFor = 0;
     for (final card in children.whereType<EventCardComponent>().toList()) {
       card.removeFromParent();
     }
@@ -50,9 +69,20 @@ class EventFeedComponent extends HudMarginComponent
   void _checkEvents() {
     for (final event in game.eventCatalog.upTo(game.timeline.currentDate)) {
       if (_consumed.add(event.id)) {
-        _show(event);
+        _queue.add(event);
       }
     }
+    _showNextIfReady();
+  }
+
+  void _showNextIfReady() {
+    if (_queue.isEmpty) {
+      return;
+    }
+    if (_showingCard && _shownFor < minReadTime) {
+      return;
+    }
+    _show(_queue.removeAt(0));
   }
 
   void _show(GameEvent event) {
@@ -60,5 +90,6 @@ class EventFeedComponent extends HudMarginComponent
       card.removeFromParent();
     }
     add(EventCardComponent(event: event));
+    _shownFor = 0;
   }
 }
