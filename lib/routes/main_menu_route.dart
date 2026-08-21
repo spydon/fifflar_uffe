@@ -63,7 +63,7 @@ class MainMenuPage extends ModalPage {
         },
       ),
       _settings = GameButton(
-        label: (strings) => strings.settings,
+        label: (strings) => strings.settingsButton,
         color: GameButtonColor.blue,
         anchor: Anchor.center,
         onPressed: () => game.router.pushNamed('settings'),

@@ -90,4 +90,11 @@ void main() {
     expect(save.owned, isEmpty);
     expect(save.language, AppLanguage.en);
   });
+
+  test('remembers that sound was turned off', () async {
+    SharedPreferences.setMockInitialValues({});
+    final service = await PersistenceService.create();
+    await service.saveSoundEnabled(enabled: false);
+    expect(service.load().soundEnabled, isFalse);
+  });
 }

@@ -11,6 +11,7 @@ import 'package:fifflar_uffe/ui/game_button.dart';
 import 'package:fifflar_uffe/ui/hud/event_card_component.dart';
 import 'package:fifflar_uffe/ui/hud/event_feed_component.dart';
 import 'package:fifflar_uffe/ui/hud/shop_hint_component.dart';
+import 'package:fifflar_uffe/ui/toggle_button.dart';
 import 'package:flame_test/flame_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -53,7 +54,7 @@ void main() {
           .whereType<GameButton>()
           .map((button) => button.label(game.i18n.strings))
           .toList();
-      expect(labels, ['Börja fiffla', 'Inställningar', 'Om']);
+      expect(labels, ['Börja fiffla', '⚙️ Inställningar', 'Om']);
     },
   );
 
@@ -105,7 +106,7 @@ void main() {
           page.panel.children.whereType<GameButton>().firstWhere(
             (button) => button.label(game.i18n.strings) == label,
           );
-      buttonLabelled('Inställningar').onPressed!();
+      buttonLabelled(game.i18n.strings.settingsButton).onPressed!();
       game.update(0);
       await game.ready();
       expect(game.router.currentRoute, game.router.routes['settings']);
@@ -353,6 +354,28 @@ void main() {
         book.position.y - cleaner.position.y,
         closeTo((130 + 24) * factor, 0.01),
       );
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
+    'turning sound off in the settings is persisted',
+    FifflarUffeGame.new,
+    (game) async {
+      game.update(0);
+      await game.ready();
+      expect(game.soundEnabled.value, isTrue);
+      game.router.pushNamed('settings');
+      game.update(0);
+      await game.ready();
+      final toggle = game.router.currentRoute
+          .descendants()
+          .whereType<ToggleButton>()
+          .single;
+      toggle.onPressed!();
+      game.update(0);
+      await game.ready();
+      expect(game.soundEnabled.value, isFalse);
+      expect(game.persistence.load().soundEnabled, isFalse);
     },
   );
 

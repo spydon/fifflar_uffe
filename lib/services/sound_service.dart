@@ -31,6 +31,7 @@ class SoundService {
   final SoLoud _soloud;
   final Random _random;
   final Map<SoundEffect, List<AudioSource>> _sources = {};
+  final ValueNotifier<bool> enabled = ValueNotifier(true);
   bool _ready = false;
 
   bool get isReady => _ready;
@@ -53,7 +54,7 @@ class SoundService {
 
   void play(SoundEffect effect) {
     final sources = _sources[effect];
-    if (!_ready || sources == null || sources.isEmpty) {
+    if (!_ready || !enabled.value || sources == null || sources.isEmpty) {
       return;
     }
     final source = sources[_random.nextInt(sources.length)];

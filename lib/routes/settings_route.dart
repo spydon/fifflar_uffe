@@ -6,6 +6,7 @@ import 'package:fifflar_uffe/ui/panel_close_button.dart';
 import 'package:fifflar_uffe/ui/panel_component.dart';
 import 'package:fifflar_uffe/ui/panel_header.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
+import 'package:fifflar_uffe/ui/toggle_button.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 
@@ -15,7 +16,7 @@ class SettingsRoute extends Route {
 }
 
 class SettingsPage extends ModalPage {
-  SettingsPage() : super(designSize: Vector2(520, 224));
+  SettingsPage() : super(designSize: Vector2(520, 300));
 
   @override
   Future<void> onLoad() async {
@@ -51,6 +52,17 @@ class SettingsPage extends ModalPage {
       LanguageFlagButton(
         language: AppLanguage.en,
         position: Vector2(center + 66, 132),
+        anchor: Anchor.center,
+      ),
+      LocalizedTextComponent(
+        selector: (strings) => strings.sound,
+        textRenderer: TextStyles.body,
+        anchor: Anchor.centerRight,
+        position: Vector2(center - 20, 222),
+      ),
+      ToggleButton(
+        value: game.soundEnabled,
+        position: Vector2(center + 40, 222),
         anchor: Anchor.center,
       ),
     ]);

@@ -22,6 +22,7 @@ class SaveData {
     this.highscoreRank,
     this.capitalismReported = false,
     this.menuSeen = false,
+    this.soundEnabled = true,
   });
 
   final double balance;
@@ -39,6 +40,7 @@ class SaveData {
   final int? highscoreRank;
   final bool capitalismReported;
   final bool menuSeen;
+  final bool soundEnabled;
 }
 
 class PersistenceService {
@@ -47,6 +49,7 @@ class PersistenceService {
   static const _saveKey = 'fifflar_uffe.save.v1';
   static const _languageKey = 'fifflar_uffe.language';
   static const _menuSeenKey = 'fifflar_uffe.menu_seen';
+  static const _soundKey = 'fifflar_uffe.sound_enabled';
 
   final SharedPreferences _preferences;
 
@@ -57,9 +60,14 @@ class PersistenceService {
   SaveData load() {
     final language = AppLanguage.fromCode(_preferences.getString(_languageKey));
     final menuSeen = _preferences.getBool(_menuSeenKey) ?? false;
+    final soundEnabled = _preferences.getBool(_soundKey) ?? true;
     final raw = _preferences.getString(_saveKey);
     if (raw == null) {
-      return SaveData(language: language, menuSeen: menuSeen);
+      return SaveData(
+        language: language,
+        menuSeen: menuSeen,
+        soundEnabled: soundEnabled,
+      );
     }
     try {
       final json = jsonDecode(raw) as Map<String, dynamic>;
@@ -87,11 +95,20 @@ class PersistenceService {
         highscoreRank: json['highscoreRank'] as int?,
         capitalismReported: json['capitalismReported'] as bool? ?? false,
         menuSeen: menuSeen,
+        soundEnabled: soundEnabled,
       );
     } on FormatException {
-      return SaveData(language: language, menuSeen: menuSeen);
+      return SaveData(
+        language: language,
+        menuSeen: menuSeen,
+        soundEnabled: soundEnabled,
+      );
     } on TypeError {
-      return SaveData(language: language, menuSeen: menuSeen);
+      return SaveData(
+        language: language,
+        menuSeen: menuSeen,
+        soundEnabled: soundEnabled,
+      );
     }
   }
 
@@ -139,5 +156,9 @@ class PersistenceService {
 
   Future<void> markMenuSeen() async {
     await _preferences.setBool(_menuSeenKey, true);
+  }
+
+  Future<void> saveSoundEnabled({required bool enabled}) async {
+    await _preferences.setBool(_soundKey, enabled);
   }
 }

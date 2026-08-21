@@ -5,6 +5,8 @@ abstract class Strings {
   String get mainMenu;
   String get startPlaying;
   String get settings;
+  String get settingsButton;
+  String get sound;
   String get language;
   String get pauseTitle;
   String get resume;
@@ -115,6 +117,10 @@ class SvStrings extends Strings {
   String get startPlaying => 'Börja fiffla';
   @override
   String get settings => 'Inställningar';
+  @override
+  String get settingsButton => '⚙️ Inställningar';
+  @override
+  String get sound => 'Ljud';
   @override
   String get language => 'Språk';
   @override
@@ -410,6 +416,10 @@ class EnStrings extends Strings {
   String get startPlaying => 'Start fiffling';
   @override
   String get settings => 'Settings';
+  @override
+  String get settingsButton => '⚙️ Settings';
+  @override
+  String get sound => 'Sound';
   @override
   String get language => 'Language';
   @override

@@ -55,6 +55,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
 
   final HighscoreClient? highscoreClient;
   final SoundService? sound;
+  final ValueNotifier<bool> soundEnabled = ValueNotifier(true);
 
   double highScore = 0;
   String? runId;
@@ -167,6 +168,9 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
       ),
     );
     unawaited(highscore.probe());
+    soundEnabled.value = save.soundEnabled;
+    sound?.enabled.value = save.soundEnabled;
+    soundEnabled.addListener(_onSoundToggled);
     final soundService = sound;
     if (soundService != null) {
       unawaited(soundService.init());
@@ -174,6 +178,11 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
     if (!save.menuSeen) {
       unawaited(router.mounted.then((_) => router.pushNamed('mainMenu')));
     }
+  }
+
+  void _onSoundToggled() {
+    sound?.enabled.value = soundEnabled.value;
+    persistence.saveSoundEnabled(enabled: soundEnabled.value);
   }
 
   bool buyItem(SkillDef skill) {
