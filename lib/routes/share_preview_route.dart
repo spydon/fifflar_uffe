@@ -61,18 +61,16 @@ class SharePreviewPage extends ModalPage {
       GameButton(
         label: (strings) => strings.share,
         color: GameButtonColor.yellow,
-        size: GameButton.wideSize,
         anchor: Anchor.center,
-        position: Vector2(narrow ? center : center - 140, buttonsTop + 40),
+        position: Vector2(narrow ? center : center - 120, buttonsTop + 40),
         onPressed: () => ShareService.shareCard(game, png),
       ),
       GameButton(
         label: (strings) => strings.download,
         color: GameButtonColor.blue,
-        size: GameButton.wideSize,
         anchor: Anchor.center,
         position: Vector2(
-          narrow ? center : center + 140,
+          narrow ? center : center + 120,
           buttonsTop + (narrow ? 132 : 40),
         ),
         onPressed: () =>

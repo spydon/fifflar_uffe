@@ -55,7 +55,6 @@ class PausePage extends ModalPage {
       ),
       GameButton(
         label: (strings) => strings.resume,
-        size: GameButton.menuSize,
         anchor: Anchor.center,
         position: Vector2(center, 200),
         onPressed: close,
@@ -63,7 +62,6 @@ class PausePage extends ModalPage {
       GameButton(
         label: (strings) => strings.mainMenu,
         color: GameButtonColor.blue,
-        size: GameButton.menuSize,
         anchor: Anchor.center,
         position: Vector2(center, 296),
         onPressed: () {

@@ -24,15 +24,14 @@ class GameButton extends AdvancedButtonComponent
   GameButton({
     required this.label,
     required void Function() onPressed,
-    required Vector2 size,
+    Vector2? size,
     this.color = GameButtonColor.green,
     super.position,
     super.anchor,
     super.priority,
-  }) : super(onPressed: onPressed, size: size);
+  }) : super(onPressed: onPressed, size: size ?? defaultSize.clone());
 
-  static final Vector2 menuSize = Vector2(216, 80);
-  static final Vector2 wideSize = Vector2(250, 80);
+  static final Vector2 defaultSize = Vector2(216, 80);
   static const double _labelInset = 22;
 
   final String Function(Strings strings) label;

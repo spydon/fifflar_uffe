@@ -58,7 +58,6 @@ class BrokenCapitalismPage extends ModalPage {
       ),
       _playAgain = GameButton(
         label: (strings) => strings.playAgain,
-        size: GameButton.wideSize,
         anchor: Anchor.center,
         onPressed: () {
           game.restartRun();

@@ -152,7 +152,6 @@ class HighscorePage extends ModalPage {
     _retry = GameButton(
       label: (strings) => strings.retry,
       color: GameButtonColor.blue,
-      size: Vector2(210, 84),
       position: Vector2(center, _messageY + 80),
       anchor: Anchor.center,
       onPressed: () => unawaited(_load()),

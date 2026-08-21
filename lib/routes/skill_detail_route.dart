@@ -116,7 +116,6 @@ class SkillDetailPage extends ModalPage {
       ),
       _buyButton = GameButton(
         label: (strings) => strings.buy,
-        size: Vector2(210, 84),
         position: Vector2(designSize.x / 2, 520),
         anchor: Anchor.center,
         onPressed: _buy,
