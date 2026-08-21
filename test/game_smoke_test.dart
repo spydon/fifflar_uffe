@@ -315,6 +315,48 @@ void main() {
   );
 
   testWithGame<FifflarUffeGame>(
+    'buildings sit in the same branch and tier layout as the shop',
+    () {
+      SharedPreferences.setMockInitialValues({
+        'fifflar_uffe.menu_seen': true,
+        'fifflar_uffe.save.v1': jsonEncode({
+          'balance': 0.0,
+          'owned': {'hire_cleaner': 1, 'write_book': 1, 'privatize_schools': 1},
+          'savedAt': '2026-08-19T00:00:00.000',
+        }),
+      });
+      return FifflarUffeGame();
+    },
+    (game) async {
+      game.update(0);
+      await game.ready();
+      game.update(1);
+      await game.ready();
+      final buildings = {
+        for (final building
+            in game.world.children.whereType<BuildingComponent>())
+          building.skill.id: building,
+      };
+      final cleaner = buildings[SkillId.hireCleaner]!;
+      final book = buildings[SkillId.writeBook]!;
+      final schools = buildings[SkillId.privatizeSchools]!;
+      expect(book.position.x, cleaner.position.x);
+      expect(book.position.y, greaterThan(cleaner.position.y));
+      expect(schools.position.y, book.position.y);
+      expect(schools.position.x, greaterThan(book.position.x));
+      final factor = BuildingComponent.layoutFactor(game.size);
+      expect(
+        schools.position.x - book.position.x,
+        closeTo((104 + 24) * factor, 0.01),
+      );
+      expect(
+        book.position.y - cleaner.position.y,
+        closeTo((130 + 24) * factor, 0.01),
+      );
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
     'an event card appears when its date is reached, not on load',
     () {
       SharedPreferences.setMockInitialValues({

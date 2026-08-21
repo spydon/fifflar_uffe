@@ -72,11 +72,10 @@ class PlayWorld extends World with HasGameReference<FifflarUffeGame> {
   }
 
   void _syncBuildings() {
-    for (var i = 0; i < skillCatalog.length; i++) {
-      final skill = skillCatalog[i];
+    for (final skill in skillCatalog) {
       final owned = game.economy.ownedCount(skill) > 0;
       if (owned && !_buildings.containsKey(skill.id)) {
-        final building = BuildingComponent(skill: skill, slotIndex: i);
+        final building = BuildingComponent(skill: skill);
         _buildings[skill.id] = building;
         add(building);
       }
