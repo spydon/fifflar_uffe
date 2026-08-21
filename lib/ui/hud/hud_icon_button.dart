@@ -1,6 +1,6 @@
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
-import 'package:fifflar_uffe/ui/lightened_sprite_component.dart';
+import 'package:fifflar_uffe/ui/hover_lighten.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:flame/components.dart';
 import 'package:flame/input.dart';
@@ -24,16 +24,13 @@ class HudIconButton extends HudMarginComponent
   Future<void> onLoad() async {
     size = Vector2(64, 72);
     add(
-      AdvancedButtonComponent(
+      _HudButton(
         size: size,
         defaultSkin: SpriteComponent(
           sprite: Sprite(game.images.fromCache(AssetPaths.buttonCompactWhite)),
         ),
         downSkin: SpriteComponent(
           sprite: Sprite(game.images.fromCache(AssetPaths.buttonCompactGray)),
-        ),
-        hoverSkin: LightenedSpriteComponent(
-          sprite: Sprite(game.images.fromCache(AssetPaths.buttonCompactWhite)),
         ),
         defaultLabel: _OutlinedIcon(
           sprite: Sprite(game.images.fromCache(iconPath)),
@@ -42,6 +39,16 @@ class HudIconButton extends HudMarginComponent
       ),
     );
   }
+}
+
+class _HudButton extends AdvancedButtonComponent with HoverLighten {
+  _HudButton({
+    required super.size,
+    required super.defaultSkin,
+    required super.downSkin,
+    required super.defaultLabel,
+    required super.onPressed,
+  });
 }
 
 class _OutlinedIcon extends PositionComponent {

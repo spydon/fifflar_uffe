@@ -75,7 +75,6 @@ abstract class Strings {
   String get highscores;
   String get highscoreNameHeader;
   String get highscoreScoreHeader;
-  String get submitScore;
   String get yourName;
   String get nameHint;
   String get submit;
@@ -297,8 +296,6 @@ class SvStrings extends Strings {
   String get highscoreNameHeader => 'Namn';
   @override
   String get highscoreScoreHeader => 'Fifflat (överskott)';
-  @override
-  String get submitScore => 'Till topplistan';
   @override
   String get yourName => 'Ditt namn';
   @override
@@ -589,8 +586,6 @@ class EnStrings extends Strings {
   String get highscoreNameHeader => 'Name';
   @override
   String get highscoreScoreHeader => 'Fiddled (surplus)';
-  @override
-  String get submitScore => 'Submit score';
   @override
   String get yourName => 'Your name';
   @override
