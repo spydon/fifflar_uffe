@@ -56,7 +56,6 @@ class MainMenuPage extends ModalPage {
       ),
       _start = GameButton(
         label: (strings) => strings.startPlaying,
-        size: GameButton.menuSize,
         anchor: Anchor.center,
         onPressed: () {
           unawaited(game.persistence.markMenuSeen());
@@ -66,14 +65,12 @@ class MainMenuPage extends ModalPage {
       _settings = GameButton(
         label: (strings) => strings.settings,
         color: GameButtonColor.blue,
-        size: GameButton.menuSize,
         anchor: Anchor.center,
         onPressed: () => game.router.pushNamed('settings'),
       ),
       _about = GameButton(
         label: (strings) => strings.about,
         color: GameButtonColor.blue,
-        size: GameButton.menuSize,
         anchor: Anchor.center,
         onPressed: () => game.router.pushNamed('about'),
       ),
@@ -81,7 +78,6 @@ class MainMenuPage extends ModalPage {
     _highscores = GameButton(
       label: (strings) => strings.highscores,
       color: GameButtonColor.yellow,
-      size: GameButton.menuSize,
       anchor: Anchor.center,
       onPressed: () => game.router.pushNamed('highscore'),
     );

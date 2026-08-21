@@ -133,7 +133,6 @@ class GameOverPage extends ModalPage {
       ),
       _playAgain = GameButton(
         label: (strings) => strings.playAgain,
-        size: GameButton.wideSize,
         anchor: Anchor.center,
         onPressed: () {
           game.restartRun();
@@ -143,7 +142,6 @@ class GameOverPage extends ModalPage {
       _continue = GameButton(
         label: (strings) => strings.continuePlaying,
         color: GameButtonColor.blue,
-        size: GameButton.wideSize,
         anchor: Anchor.center,
         onPressed: () {
           game.continueRun();
@@ -153,7 +151,6 @@ class GameOverPage extends ModalPage {
       _share = GameButton(
         label: (strings) => strings.share,
         color: GameButtonColor.blue,
-        size: GameButton.wideSize,
         anchor: Anchor.center,
         onPressed: _shareResult,
       ),
@@ -167,7 +164,6 @@ class GameOverPage extends ModalPage {
     _submit = GameButton(
       label: (strings) => strings.submitScore,
       color: GameButtonColor.yellow,
-      size: GameButton.wideSize,
       anchor: Anchor.center,
       onPressed: () => unawaited(_submitScore()),
     );
@@ -260,8 +256,8 @@ class GameOverPage extends ModalPage {
       _share.position = Vector2(center, y + 224);
       y += 224 + 40 + 30;
     } else {
-      _playAgain.position = Vector2(center - 140, y + 40);
-      _continue.position = Vector2(center + 140, y + 40);
+      _playAgain.position = Vector2(center - 120, y + 40);
+      _continue.position = Vector2(center + 120, y + 40);
       _share.position = Vector2(center, y + 132);
       y += 132 + 40 + 30;
     }
