@@ -12,7 +12,7 @@ import 'package:fifflar_uffe/ui/hud/event_card_component.dart';
 import 'package:fifflar_uffe/ui/hud/event_feed_component.dart';
 import 'package:fifflar_uffe/ui/hud/shop_hint_component.dart';
 import 'package:fifflar_uffe/ui/language_flag_button.dart';
-import 'package:fifflar_uffe/ui/toggle_button.dart';
+import 'package:fifflar_uffe/ui/switch_button.dart';
 import 'package:flame_test/flame_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -370,9 +370,9 @@ void main() {
       await game.ready();
       final toggle = game.router.currentRoute
           .descendants()
-          .whereType<ToggleButton>()
+          .whereType<SwitchButton>()
           .single;
-      toggle.onPressed!();
+      toggle.value.value = !toggle.value.value;
       game.update(0);
       await game.ready();
       expect(game.soundEnabled.value, isFalse);
