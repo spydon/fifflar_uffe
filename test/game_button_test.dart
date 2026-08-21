@@ -1,6 +1,8 @@
 import 'dart:ui';
 
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
+import 'package:fifflar_uffe/model/skill_catalog.dart';
+import 'package:fifflar_uffe/routes/skill_tree_route.dart';
 import 'package:fifflar_uffe/services/i18n.dart';
 import 'package:fifflar_uffe/ui/button_spinner.dart';
 import 'package:fifflar_uffe/ui/game_button.dart';
@@ -126,6 +128,32 @@ void main() {
       for (final sprite in flag.children.whereType<SpriteComponent>()) {
         expect(sprite.paint.colorFilter, isNotNull);
       }
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
+    'hovering a skill node leaves its texts untouched',
+    FifflarUffeGame.new,
+    (game) async {
+      game.update(0);
+      await game.ready();
+      final node = SkillNodeComponent(skill: skillCatalog.first);
+      game.add(node);
+      game.update(0);
+      await game.ready();
+      node.onHoverEnter();
+      game.update(0);
+      await game.ready();
+      for (final text in node.descendants().whereType<TextComponent>()) {
+        expect(text.children.whereType<ColorEffect>(), isEmpty);
+      }
+      final tintedSprites = node
+          .descendants()
+          .whereType<SpriteComponent>()
+          .where(
+            (sprite) => sprite.children.whereType<ColorEffect>().isNotEmpty,
+          );
+      expect(tintedSprites, isNotEmpty);
     },
   );
 }
