@@ -13,7 +13,8 @@ enum SoundEffect {
     'assets/sounds/door_1.mp3',
     'assets/sounds/door_2.mp3',
     'assets/sounds/door_3.mp3',
-  ], volume: 0.7);
+  ], volume: 0.7),
+  gameOver(['assets/sounds/fanfare.mp3'], volume: 0.9);
 
   const SoundEffect(this.paths, {required this.volume});
 
@@ -61,6 +62,8 @@ class SoundService {
   void playCoin() => play(SoundEffect.coin);
 
   void playPurchase() => play(SoundEffect.purchase);
+
+  void playGameOver() => play(SoundEffect.gameOver);
 
   void dispose() {
     if (_ready) {

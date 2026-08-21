@@ -102,6 +102,7 @@ flutter:
     - assets/sounds/door_1.mp3
     - assets/sounds/door_2.mp3
     - assets/sounds/door_3.mp3
+    - assets/sounds/fanfare.mp3
     - assets/images/Icons/IconsDefault/128px/IconsDefault11_128px.png
     - assets/images/Icons/IconsDefault/128px/IconsDefault12_128px.png
     - assets/images/Icons/IconsDefault/128px/IconsDefault14_128px.png
