@@ -1,10 +1,11 @@
 import 'dart:ui';
 
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
+import 'package:fifflar_uffe/services/i18n.dart';
 import 'package:fifflar_uffe/ui/button_spinner.dart';
 import 'package:fifflar_uffe/ui/game_button.dart';
+import 'package:fifflar_uffe/ui/language_flag_button.dart';
 import 'package:fifflar_uffe/ui/localized_text_component.dart';
-
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame_test/flame_test.dart';
@@ -101,6 +102,30 @@ void main() {
           BlendMode.srcATop,
         ),
       );
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
+    'plain tappable controls are tinted on hover too',
+    FifflarUffeGame.new,
+    (game) async {
+      game.update(0);
+      await game.ready();
+      final flag = LanguageFlagButton(language: AppLanguage.en);
+      game.add(flag);
+      game.update(0);
+      await game.ready();
+      flag.onHoverEnter();
+      game.update(0);
+      await game.ready();
+      final tinted = flag.descendants().where(
+        (component) => component.children.whereType<ColorEffect>().isNotEmpty,
+      );
+      expect(tinted, hasLength(2));
+      game.update(0.5);
+      for (final sprite in flag.children.whereType<SpriteComponent>()) {
+        expect(sprite.paint.colorFilter, isNotNull);
+      }
     },
   );
 }
