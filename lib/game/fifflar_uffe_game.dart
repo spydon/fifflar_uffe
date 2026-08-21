@@ -212,6 +212,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
     }
     _capitalismBroken = true;
     _openEnding('brokenCapitalism');
+    sound?.playBrokenCapitalism();
     unawaited(_reportBrokenCapitalism());
   }
 
