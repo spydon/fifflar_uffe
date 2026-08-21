@@ -4,7 +4,7 @@ import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/services/strings.dart';
 import 'package:fifflar_uffe/ui/button_spinner.dart';
-import 'package:fifflar_uffe/ui/lightened_sprite_component.dart';
+import 'package:fifflar_uffe/ui/hover_lighten.dart';
 import 'package:fifflar_uffe/ui/localized_text_component.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:flame/components.dart';
@@ -21,7 +21,7 @@ enum GameButtonColor {
 }
 
 class GameButton extends AdvancedButtonComponent
-    with HasGameReference<FifflarUffeGame> {
+    with HasGameReference<FifflarUffeGame>, HoverLighten {
   GameButton({
     required this.label,
     required void Function() onPressed,
@@ -64,9 +64,6 @@ class GameButton extends AdvancedButtonComponent
     );
     downSkin = SpriteComponent(
       sprite: Sprite(game.images.fromCache(color.downSkinPath)),
-    );
-    hoverSkin = LightenedSpriteComponent(
-      sprite: Sprite(game.images.fromCache(color.upSkinPath)),
     );
     disabledSkin = SpriteComponent(
       sprite: Sprite(game.images.fromCache(AssetPaths.buttonWideGray)),

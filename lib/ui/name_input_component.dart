@@ -58,7 +58,7 @@ class NameInputComponent extends PositionComponent
         selector: (strings) => strings.nameHint,
         textRenderer: TextStyles.placeholder,
         anchor: Anchor.centerLeft,
-        position: Vector2(_textInset, size.y / 2 - 3),
+        position: Vector2(_textInset + 8, size.y / 2 - 3),
       ),
     ]);
     _built = true;
@@ -80,7 +80,7 @@ class NameInputComponent extends PositionComponent
   @override
   void render(Canvas canvas) {
     super.render(canvas);
-    if (!hasFocus || _caretTime % _caretPeriod > _caretPeriod / 2) {
+    if (_caretTime % _caretPeriod > _caretPeriod / 2) {
       return;
     }
     final offset = _value.selection.isValid

@@ -8,6 +8,7 @@ import 'package:fifflar_uffe/routes/main_menu_route.dart';
 import 'package:fifflar_uffe/services/highscore_client.dart';
 import 'package:fifflar_uffe/ui/game_button.dart';
 import 'package:fifflar_uffe/ui/name_input_component.dart';
+import 'package:fifflar_uffe/ui/send_button.dart';
 import 'package:flame/components.dart';
 import 'package:flame_test/flame_test.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -61,10 +62,7 @@ void main() {
       game.router.currentRoute.children.whereType<GameOverPage>().single;
 
   void pressSubmit(FifflarUffeGame game, GameOverPage page) {
-    final submit = page.panel.children.whereType<GameButton>().firstWhere(
-      (button) => button.label(game.i18n.strings) == 'Till topplistan',
-    );
-    submit.onPressed!();
+    page.panel.children.whereType<SendButton>().single.onPressed!();
   }
 
   Future<GameOverPage> reachGameOver(FifflarUffeGame game) async {

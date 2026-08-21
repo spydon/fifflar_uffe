@@ -14,9 +14,11 @@ import 'package:fifflar_uffe/ui/modal_page.dart';
 import 'package:fifflar_uffe/ui/name_input_component.dart';
 import 'package:fifflar_uffe/ui/panel_component.dart';
 import 'package:fifflar_uffe/ui/panel_header.dart';
+import 'package:fifflar_uffe/ui/send_button.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:fifflar_uffe/util/sek_format.dart';
 import 'package:flame/components.dart';
+import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 
 class GameOverRoute extends Route with HasGameReference<FifflarUffeGame> {
@@ -40,6 +42,7 @@ class GameOverPage extends ModalPage {
     : super(designSize: Vector2(700, 480), dismissOnScrimTap: false);
 
   static const int maxNameLength = 10;
+  static const double _sendGap = 12;
   static final RegExp _allowedName = RegExp(
     r"^[\p{L}\p{N} .,_!?'-]+$",
     unicode: true,
@@ -50,7 +53,7 @@ class GameOverPage extends ModalPage {
   late final LocalizedTextComponent _finalScore;
   late final LocalizedTextComponent _highScore;
   late final NameInputComponent _nameInput;
-  late final GameButton _submit;
+  late final SendButton _send;
   late final LocalizedTextBoxComponent _status;
   late final LocalizedTextBoxComponent _satire;
   late final LocalizedLinkComponent _referencesLink;
@@ -161,12 +164,11 @@ class GameOverPage extends ModalPage {
       anchor: Anchor.center,
       onSubmitted: () => unawaited(_submitScore()),
     );
-    _submit = GameButton(
-      label: (strings) => strings.submitScore,
-      color: GameButtonColor.yellow,
+    _send = SendButton(
       anchor: Anchor.center,
       onPressed: () => unawaited(_submitScore()),
     );
+    add(_FocusCatcher(onTap: _nameInput.unfocus));
     _appeal.size.addListener(_layoutContent);
     _status.size.addListener(_layoutContent);
     _satire.size.addListener(_layoutContent);
@@ -217,8 +219,8 @@ class GameOverPage extends ModalPage {
     }
     final show = _showSubmitSection;
     _setVisible(_nameInput, show);
-    _setVisible(_submit, show);
-    _submit.isDisabled = _submitting;
+    _setVisible(_send, show);
+    _send.isDisabled = _submitting;
     _status.text = _statusText(game.i18n.strings);
     _layoutContent();
   }
@@ -240,10 +242,18 @@ class GameOverPage extends ModalPage {
     _highScore.position = Vector2(center, y);
     y += 24;
     if (_showSubmitSection) {
-      _nameInput.position = Vector2(center, y + _nameInput.size.y / 2);
-      y += _nameInput.size.y + 6;
-      _submit.position = Vector2(center, y + 40);
-      y += 80 + 8;
+      final rowWidth = _nameInput.size.x + _sendGap + _send.size.x;
+      final rowLeft = center - rowWidth / 2;
+      final rowMiddle = y + _nameInput.size.y / 2;
+      _nameInput.position = Vector2(
+        rowLeft + _nameInput.size.x / 2,
+        rowMiddle,
+      );
+      _send.position = Vector2(
+        rowLeft + rowWidth - _send.size.x / 2,
+        rowMiddle,
+      );
+      y += _nameInput.size.y + 14;
     }
     if (_status.text.isNotEmpty) {
       _status.position = Vector2(center, y);
@@ -325,5 +335,28 @@ class GameOverPage extends ModalPage {
     game.router.pushRoute(
       SharePreviewRoute(png: card.png, image: card.image),
     );
+  }
+}
+
+class _FocusCatcher extends PositionComponent
+    with TapCallbacks, HasGameReference<FifflarUffeGame> {
+  _FocusCatcher({required this.onTap}) : super(priority: -1);
+
+  final void Function() onTap;
+
+  @override
+  Future<void> onLoad() async {
+    size = game.size;
+  }
+
+  @override
+  void onGameResize(Vector2 size) {
+    super.onGameResize(size);
+    this.size = size;
+  }
+
+  @override
+  void onTapDown(TapDownEvent event) {
+    onTap();
   }
 }

@@ -1,9 +1,12 @@
+import 'dart:ui';
+
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/ui/button_spinner.dart';
 import 'package:fifflar_uffe/ui/game_button.dart';
-import 'package:fifflar_uffe/ui/lightened_sprite_component.dart';
 import 'package:fifflar_uffe/ui/localized_text_component.dart';
+
 import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
 import 'package:flame_test/flame_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -60,7 +63,7 @@ void main() {
   );
 
   testWithGame<FifflarUffeGame>(
-    'a hovered button shows a lightened skin',
+    'a hovered button is tinted lighter and restored on exit',
     FifflarUffeGame.new,
     (game) async {
       game.update(0);
@@ -72,20 +75,32 @@ void main() {
       game.add(button);
       game.update(0);
       await game.ready();
-      final hover = button.skinsMap[ButtonState.hover];
-      expect(hover, isA<LightenedSpriteComponent>());
-      expect(hover!.parent, isNull);
-      // ignore: invalid_use_of_protected_member
-      button.setState(ButtonState.hover);
+      final skin = button.defaultSkin! as SpriteComponent;
+      expect(skin.paint.colorFilter, isNull);
+      button.onHoverEnter();
       game.update(0);
       await game.ready();
-      // ignore: invalid_use_of_protected_member
-      expect(hover.parent, button.skinContainer);
-      // ignore: invalid_use_of_protected_member
-      button.setState(ButtonState.up);
+      expect(skin.children.whereType<ColorEffect>(), hasLength(1));
+      game.update(0.5);
+      expect(skin.paint.colorFilter, isNotNull);
+      expect(
+        skin.paint.colorFilter,
+        ColorFilter.mode(
+          const Color(0xFFFFFFFF).withValues(alpha: 0.25),
+          BlendMode.srcATop,
+        ),
+      );
+      button.onHoverExit();
       game.update(0);
       await game.ready();
-      expect(hover.parent, isNull);
+      game.update(0.5);
+      expect(
+        skin.paint.colorFilter,
+        ColorFilter.mode(
+          const Color(0xFFFFFFFF).withValues(alpha: 0),
+          BlendMode.srcATop,
+        ),
+      );
     },
   );
 }
