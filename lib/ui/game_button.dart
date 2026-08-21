@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
@@ -94,18 +95,43 @@ class GameButton extends AdvancedButtonComponent
 }
 
 class _IconLabel extends PositionComponent {
-  _IconLabel({required Sprite sprite, required this.selector})
-    : _icon = SpriteComponent(sprite: sprite, size: Vector2.all(_iconSize));
+  _IconLabel({required this.sprite, required this.selector});
 
-  static const double _iconSize = 30;
-  static const double _gap = 10;
+  static const double _iconSize = 34;
+  static const double _outline = 3;
+  static const double _gap = 8;
+  static final Paint _outlinePaint = Paint()
+    ..colorFilter = const ColorFilter.mode(TextStyles.brown, BlendMode.srcIn);
+  static final Paint _fillPaint = Paint()
+    ..colorFilter = const ColorFilter.mode(
+      Color(0xFFFFF6E3),
+      BlendMode.srcIn,
+    );
 
+  final Sprite sprite;
   final String Function(Strings strings) selector;
-  final SpriteComponent _icon;
+  late final PositionComponent _icon;
   late final LocalizedTextComponent _text;
 
   @override
   Future<void> onLoad() async {
+    _icon = PositionComponent(size: Vector2.all(_iconSize))
+      ..addAll([
+        SpriteComponent(
+          sprite: sprite,
+          size: Vector2.all(_iconSize + 2 * _outline),
+          anchor: Anchor.center,
+          position: Vector2.all(_iconSize / 2),
+          paint: _outlinePaint,
+        ),
+        SpriteComponent(
+          sprite: sprite,
+          size: Vector2.all(_iconSize),
+          anchor: Anchor.center,
+          position: Vector2.all(_iconSize / 2),
+          paint: _fillPaint,
+        ),
+      ]);
     _text = LocalizedTextComponent(
       selector: selector,
       textRenderer: TextStyles.button,
