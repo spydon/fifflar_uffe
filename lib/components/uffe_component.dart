@@ -47,7 +47,9 @@ class UffeComponent extends HudMarginComponent
     if (_pokeCount >= _pokesBeforeWarning) {
       _pokeCount = 0;
       say(game.i18n.strings.pokeWarning);
+      return;
     }
+    game.sound?.playLaugh();
   }
 
   void _setTalking({required bool talking}) {

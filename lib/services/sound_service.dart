@@ -15,7 +15,8 @@ enum SoundEffect {
     'assets/sounds/door_3.mp3',
   ], volume: 0.7),
   gameOver(['assets/sounds/fanfare.mp3'], volume: 0.9),
-  brokenCapitalism(['assets/sounds/broken_glass.mp3'], volume: 0.9);
+  brokenCapitalism(['assets/sounds/broken_glass.mp3'], volume: 0.9),
+  laugh(['assets/sounds/laugh.mp3'], volume: 0.8);
 
   const SoundEffect(this.paths, {required this.volume});
 
@@ -68,6 +69,8 @@ class SoundService {
   void playGameOver() => play(SoundEffect.gameOver);
 
   void playBrokenCapitalism() => play(SoundEffect.brokenCapitalism);
+
+  void playLaugh() => play(SoundEffect.laugh);
 
   void dispose() {
     if (_ready) {
