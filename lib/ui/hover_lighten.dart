@@ -16,10 +16,13 @@ mixin HoverLighten on Component, HoverCallbacks {
       return [if (skin != null && skin is HasPaint) skin];
     }
     return [
-      if (self is HasPaint) self,
-      ...descendants().whereType<HasPaint>().cast<Component>(),
+      if (_isArtwork(self)) self,
+      ...descendants().where(_isArtwork),
     ];
   }
+
+  static bool _isArtwork(Component component) =>
+      component is SpriteComponent || component is ShapeComponent;
 
   @override
   void onHoverEnter() {
