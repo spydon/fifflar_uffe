@@ -249,9 +249,15 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
   bool get hasActiveRun =>
       highscore.available.value && runId != null && !runFlagged;
 
+  bool get beatsSubmittedBest {
+    final best = highscore.lastLeaderboard?.me?.score;
+    return best == null || economy.totalEarned > best;
+  }
+
   bool get canSubmitHighscore =>
       hasActiveRun &&
       !highscoreSubmitted &&
+      beatsSubmittedBest &&
       timeline.isOver &&
       !timeline.unbounded &&
       economy.totalEarned > 0 &&

@@ -189,6 +189,13 @@ class GameOverPage extends ModalPage {
   void onMount() {
     super.onMount();
     game.highscore.available.addListener(_refresh);
+    unawaited(
+      game.highscore.probe().then((_) {
+        if (isMounted) {
+          _refresh();
+        }
+      }),
+    );
   }
 
   @override
@@ -200,7 +207,7 @@ class GameOverPage extends ModalPage {
   bool get _showSubmitSection => game.canSubmitHighscore;
 
   bool get _showHighscoresButton =>
-      game.highscoreSubmitted && game.highscore.available.value;
+      game.highscore.available.value && !_showSubmitSection;
 
   String _statusText(Strings strings) {
     if (game.highscoreSubmitted) {
