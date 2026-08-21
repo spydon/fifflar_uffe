@@ -28,7 +28,7 @@ class AssetPaths {
   static const buttonWideBlue = 'Buttons/Round/RoundButton2_blue.png';
   static const buttonWideTurquoise = 'Buttons/Round/RoundButton2_turquoise.png';
   static const buttonWideGray = 'Buttons/Round/RoundButton2_gray.png';
-  static const buttonWideYellow = 'Buttons/Round/RoundButton2_yellow.png';
+  static const buttonWideYellow = 'Buttons/Round/RoundButton2_yellow_dark.png';
   static const buttonWideCream = 'Buttons/Round/RoundButton2_cream.png';
   static const buttonCompactWhite = 'Buttons/Round/RoundButton1_white.png';
   static const buttonCompactGray = 'Buttons/Round/RoundButton1_gray.png';
