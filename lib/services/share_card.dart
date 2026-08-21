@@ -2,6 +2,7 @@ import 'dart:math';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 
+import 'package:fifflar_uffe/services/png_encoder.dart';
 import 'package:fifflar_uffe/services/strings.dart';
 import 'package:fifflar_uffe/util/sek_format.dart';
 import 'package:flutter/painting.dart';
@@ -56,8 +57,7 @@ class ShareCard {
   }
 
   static Future<Uint8List> encodePng(ui.Image image) async {
-    final data = await image.toByteData(format: ui.ImageByteFormat.png);
-    return data!.buffer.asUint8List();
+    return PngEncoder.encode(image);
   }
 
   void paint(ui.Canvas canvas) {
