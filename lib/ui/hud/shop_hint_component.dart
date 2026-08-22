@@ -93,6 +93,7 @@ class ShopHintComponent extends HudMarginComponent
     _showing = true;
     _dismissing = false;
     isVisible = true;
+    priority = game.router.priority + 2;
     _content.scale = Vector2.zero();
     _content.addAll([
       ScaleEffect.to(
@@ -119,7 +120,7 @@ class ShopHintComponent extends HudMarginComponent
     _content.position = size / 2;
     _text.position = Vector2(size.x - _arrowReserve, size.y / 2);
     _arrow.position = Vector2(size.x - 34, 4);
-    _updateScale(game.size);
+    onGameResize(game.size);
   }
 
   void _updateScale(Vector2 gameSize) {
@@ -142,6 +143,7 @@ class ShopHintComponent extends HudMarginComponent
           isVisible = false;
           _showing = false;
           _dismissing = false;
+          priority = 0;
           _content.position = size / 2;
         },
       ),

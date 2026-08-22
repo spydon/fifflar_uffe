@@ -14,6 +14,7 @@ import 'package:fifflar_uffe/ui/hud/event_feed_component.dart';
 import 'package:fifflar_uffe/ui/hud/shop_hint_component.dart';
 import 'package:fifflar_uffe/ui/language_flag_button.dart';
 import 'package:fifflar_uffe/ui/switch_button.dart';
+import 'package:flame/components.dart';
 import 'package:flame_test/flame_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -431,6 +432,28 @@ void main() {
       game.update(0);
       await game.ready();
       expect(game.router.currentRoute, game.router.routes['settings']);
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
+    'the shop hint stays on a narrow screen and in front of Uffe',
+    FifflarUffeGame.new,
+    (game) async {
+      game.onGameResize(Vector2(360, 640));
+      game.update(0);
+      await game.ready();
+      for (var i = 0; i < 10; i++) {
+        game.economy.earnClick();
+      }
+      game.update(0);
+      await game.ready();
+      final hint = game.shopHint;
+      expect(hint.isVisible, isTrue);
+      expect(hint.scale.x, lessThan(1));
+      expect(hint.position.x, greaterThanOrEqualTo(0));
+      expect(hint.position.x + hint.scaledSize.x, lessThanOrEqualTo(360));
+      expect(hint.priority, greaterThan(game.router.priority));
+      expect(hint.priority, greaterThan(game.uffe.priority));
     },
   );
 
