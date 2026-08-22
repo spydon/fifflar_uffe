@@ -133,7 +133,7 @@ void main() {
           top: [HighscoreEntry(rank: 1, name: 'Idag', score: 7, isMe: false)],
         );
         final dailyTab = page.panel.children.whereType<GameButton>().firstWhere(
-          (button) => button.label(game.i18n.strings) == 'Dygnet',
+          (button) => button.label(game.i18n.strings) == '24 timmar',
         );
         dailyTab.onPressed!();
         await settle(game);

@@ -358,11 +358,11 @@ class SvStrings extends Strings {
   @override
   String get highscores => 'Topplista';
   @override
-  String get periodAllTime => 'Alla tider';
+  String get periodAllTime => 'Genom tiderna';
   @override
-  String get periodWeekly => 'Veckan';
+  String get periodWeekly => '7 dagar';
   @override
-  String get periodDaily => 'Dygnet';
+  String get periodDaily => '24 timmar';
   @override
   String get highscoreNameHeader => 'Namn';
   @override
@@ -717,9 +717,9 @@ class EnStrings extends Strings {
   @override
   String get periodAllTime => 'All time';
   @override
-  String get periodWeekly => 'Weekly';
+  String get periodWeekly => '7 days';
   @override
-  String get periodDaily => 'Daily';
+  String get periodDaily => '24 hours';
   @override
   String get highscoreNameHeader => 'Name';
   @override
