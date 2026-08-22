@@ -95,12 +95,12 @@ class AboutPage extends ModalPage {
   void _layoutContent() {
     final left = (designSize.x - (designSize.x - 140)) / 2;
     final satireBottom = _satire.position.y + _satire.size.y;
-    _references.position = Vector2(left + 8, satireBottom + 10);
-    _imageCredits.position = Vector2(left + 8, satireBottom + 48);
-    _openSource.position = Vector2(left, satireBottom + 48 + 26 + 18);
+    _openSource.position = Vector2(left, satireBottom + 16);
     final openSourceBottom = _openSource.position.y + _openSource.size.y;
     _github.position = Vector2(left + 8, openSourceBottom + 10);
-    final height = openSourceBottom + 10 + 26 + 32;
+    _references.position = Vector2(left + 8, openSourceBottom + 48);
+    _imageCredits.position = Vector2(left + 8, openSourceBottom + 86);
+    final height = openSourceBottom + 86 + 26 + 32;
     _background.size = Vector2(designSize.x, height);
     resizePanel(Vector2(designSize.x, height));
   }
