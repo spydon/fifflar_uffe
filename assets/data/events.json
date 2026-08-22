@@ -43,6 +43,20 @@
       }
     },
     {
+      "id": "adoptionscentrum",
+      "date": "2004-06-01",
+      "source": "Wikipedia",
+      "url": "https://sv.wikipedia.org/wiki/Ulf_Kristersson",
+      "title": {
+        "sv": "Ordförande för Adoptionscentrum",
+        "en": "Chairman of Adoptionscentrum"
+      },
+      "body": {
+        "sv": "Uffe är ordförande för Adoptionscentrum 2003 till 2005. Under hans tid avslöjas att kidnappade barn från Kina förmedlats till svenska familjer, och enligt dåvarande informationschefen kände han till förhållandena.",
+        "en": "Uffe chairs Adoptionscentrum from 2003 to 2005. During his tenure it is revealed that kidnapped children from China were placed with Swedish families, and according to the head of communications at the time he knew about the conditions."
+      }
+    },
+    {
       "id": "minister_avgangar",
       "date": "2006-10-14",
       "source": "SVT Nyheter",
@@ -68,6 +82,20 @@
       "body": {
         "sv": "Stockholm säljer tio centrum, bland dem Skärholmen och Tensta, till brittiska Boultbee trots varningar. Hyrorna chockhöjs och servicen faller.",
         "en": "Stockholm sells ten shopping centers, among them Skärholmen and Tensta, to British Boultbee despite warnings. Rents soar and service crumbles."
+      }
+    },
+    {
+      "id": "kinaresorna",
+      "date": "2007-08-01",
+      "source": "Dagens Arena",
+      "url": "https://www.dagensarena.se/innehall/ulf-kristersson-kritiserad-forr/",
+      "title": {
+        "sv": "Kinaresorna",
+        "en": "The China trips"
+      },
+      "body": {
+        "sv": "Socialborgarrådet Uffe reser till Kina var tredje månad, för 128 000 kronor av skattemedel.",
+        "en": "As social services commissioner, Uffe travels to China every third month, for 128 000 kronor of taxpayer money."
       }
     },
     {
@@ -99,6 +127,20 @@
       }
     },
     {
+      "id": "allmannyttan_reas",
+      "date": "2008-03-18",
+      "source": "Sveriges Radio",
+      "url": "https://www.sverigesradio.se/artikel/1960541",
+      "title": {
+        "sv": "Allmännyttan reas ut",
+        "en": "Public housing on sale"
+      },
+      "body": {
+        "sv": "Svenska Bostäders 1 200 lägenheter i Hjulsta säljs till Einar Mattsson för 600 miljoner kronor (2025 köper staden tillbaka dem för 1,4 miljarder).",
+        "en": "Svenska Bostäder's 1 200 apartments in Hjulsta are sold to Einar Mattsson for 600 million kronor (in 2025 the city buys them back for 1.4 billion)."
+      }
+    },
+    {
       "id": "vin_och_sprit",
       "date": "2008-03-31",
       "source": "Wikipedia",
@@ -124,34 +166,6 @@
       "body": {
         "sv": "Stockholm säljer förskolor och hemtjänst till personal långt under värdet. Vantörs hemtjänst går för 69 500 kronor (köparna gör 9,4 miljoner i vinst på två år).",
         "en": "Stockholm sells preschools and home care to staff far below value. Vantör home care goes for 69 500 kronor (the buyers make 9.4 million in profit in two years)."
-      }
-    },
-    {
-      "id": "allmannyttan_reas",
-      "date": "2008-03-18",
-      "source": "Sveriges Radio",
-      "url": "https://www.sverigesradio.se/artikel/1960541",
-      "title": {
-        "sv": "Allmännyttan reas ut",
-        "en": "Public housing on sale"
-      },
-      "body": {
-        "sv": "Svenska Bostäders 1 200 lägenheter i Hjulsta säljs till Einar Mattsson för 600 miljoner kronor (2025 köper staden tillbaka dem för 1,4 miljarder).",
-        "en": "Svenska Bostäder's 1 200 apartments in Hjulsta are sold to Einar Mattsson for 600 million kronor (in 2025 the city buys them back for 1.4 billion)."
-      }
-    },
-    {
-      "id": "kinaresorna",
-      "date": "2007-08-01",
-      "source": "Dagens Arena",
-      "url": "https://www.dagensarena.se/innehall/ulf-kristersson-kritiserad-forr/",
-      "title": {
-        "sv": "Kinaresorna",
-        "en": "The China trips"
-      },
-      "body": {
-        "sv": "Socialborgarrådet Uffe reser till Kina var tredje månad, för 128 000 kronor av skattemedel.",
-        "en": "As social services commissioner, Uffe travels to China every third month, for 128 000 kronor of taxpayer money."
       }
     },
     {
@@ -183,20 +197,6 @@
       }
     },
     {
-      "id": "graddfilslagenheten",
-      "date": "2010-10-06",
-      "source": "SVT Nyheter",
-      "url": "https://www.svt.se/nyheter/inrikes/nya-ministern-fick-hyresratt-genom-kontakter",
-      "title": {
-        "sv": "Lägenhet i gräddfilen",
-        "en": "An apartment past the queue"
-      },
-      "body": {
-        "sv": "Uffe får en attraktiv hyresrätt förbi bostadskön, via vd:n för Einar Mattsson.",
-        "en": "Uffe gets an attractive rental past the housing queue, through the chief executive of Einar Mattsson."
-      }
-    },
-    {
       "id": "stupstocken",
       "date": "2010-10-05",
       "source": "SVT Nyheter",
@@ -208,6 +208,20 @@
       "body": {
         "sv": "Långtidssjuka börjar utförsäkras vid sjukförsäkringens bortre tidsgräns. Socialförsäkringsminister Uffe försvarar stupstocken.",
         "en": "Long-term sick people start being cut off at the sickness insurance time limit. Social insurance minister Uffe defends the cliff."
+      }
+    },
+    {
+      "id": "graddfilslagenheten",
+      "date": "2010-10-06",
+      "source": "SVT Nyheter",
+      "url": "https://www.svt.se/nyheter/inrikes/nya-ministern-fick-hyresratt-genom-kontakter",
+      "title": {
+        "sv": "Lägenhet i gräddfilen",
+        "en": "An apartment past the queue"
+      },
+      "body": {
+        "sv": "Uffe får en attraktiv hyresrätt förbi bostadskön, via vd:n för Einar Mattsson.",
+        "en": "Uffe gets an attractive rental past the housing queue, through the chief executive of Einar Mattsson."
       }
     },
     {
