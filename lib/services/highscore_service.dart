@@ -17,7 +17,12 @@ class HighscoreService {
   final Duration offlineBackoff;
 
   final ValueNotifier<bool> available = ValueNotifier(false);
-  Leaderboard? lastLeaderboard;
+  final Map<LeaderboardPeriod, Leaderboard> _leaderboards = {};
+
+  Leaderboard? get lastLeaderboard => _leaderboards[LeaderboardPeriod.allTime];
+
+  Leaderboard? cachedLeaderboard(LeaderboardPeriod period) =>
+      _leaderboards[period];
 
   Future<void>? _probe;
   DateTime? _lastSuccess;
@@ -61,10 +66,12 @@ class HighscoreService {
     }
   }
 
-  Future<Leaderboard> fetchLeaderboard() => _guard((client) async {
+  Future<Leaderboard> fetchLeaderboard({
+    LeaderboardPeriod period = LeaderboardPeriod.allTime,
+  }) => _guard((client) async {
     await client.signIn();
-    final leaderboard = await client.fetchLeaderboard();
-    lastLeaderboard = leaderboard;
+    final leaderboard = await client.fetchLeaderboard(period: period);
+    _leaderboards[period] = leaderboard;
     return leaderboard;
   });
 

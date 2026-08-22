@@ -131,6 +131,16 @@ class HighscoreEntry {
   );
 }
 
+enum LeaderboardPeriod {
+  allTime('all'),
+  weekly('week'),
+  daily('day');
+
+  const LeaderboardPeriod(this.code);
+
+  final String code;
+}
+
 class Leaderboard {
   const Leaderboard({
     this.top = const [],
@@ -203,5 +213,7 @@ abstract interface class HighscoreClient {
     required RunSnapshot snapshot,
   });
 
-  Future<Leaderboard> fetchLeaderboard();
+  Future<Leaderboard> fetchLeaderboard({
+    LeaderboardPeriod period = LeaderboardPeriod.allTime,
+  });
 }

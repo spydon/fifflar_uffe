@@ -18,17 +18,18 @@ class HighscoreRoute extends Route {
 }
 
 class HighscorePage extends ModalPage {
-  HighscorePage() : super(designSize: Vector2(560, 640));
+  HighscorePage() : super(designSize: Vector2(560, 700));
 
   static const int rowCount = 10;
-  static const double _tableTop = 72;
+  static const double _tabsY = 98;
+  static const double _tableTop = 138;
   static const double _headerHeight = 36;
   static const double _rowHeight = 34;
   static const double _cellPadding = 10;
   static const double _footerGap = 22;
   static const double _footerSpacing = 28;
   static const double _bottomPadding = 58;
-  static const double _messageY = 270;
+  static const double _messageY = 330;
 
   final List<TextComponent> _ranks = [];
   final List<TextComponent> _names = [];
@@ -42,8 +43,10 @@ class HighscorePage extends ModalPage {
   late final TextComponent _brokenCount;
   late final TextComponent _gamesPlayed;
   late final GameButton _retry;
+  final List<GameButton> _tabs = [];
 
   Leaderboard? _leaderboard;
+  LeaderboardPeriod _period = LeaderboardPeriod.allTime;
   bool _built = false;
   bool _loading = false;
   bool _failed = false;
@@ -156,8 +159,48 @@ class HighscorePage extends ModalPage {
       anchor: Anchor.center,
       onPressed: () => unawaited(_load()),
     );
-    _leaderboard = game.highscore.lastLeaderboard;
+    _leaderboard = game.highscore.cachedLeaderboard(_period);
     _built = true;
+    _buildTabs();
+    unawaited(_load());
+  }
+
+  void _buildTabs() {
+    for (final tab in _tabs) {
+      tab.removeFromParent();
+    }
+    _tabs.clear();
+    final narrow = isNarrowScreen;
+    final center = designSize.x / 2;
+    final spacing = narrow ? 138.0 : 160.0;
+    final size = narrow ? Vector2(128, 50) : Vector2(150, 52);
+    for (final (index, period) in LeaderboardPeriod.values.indexed) {
+      final tab = GameButton(
+        label: (strings) => switch (period) {
+          LeaderboardPeriod.allTime => strings.periodAllTime,
+          LeaderboardPeriod.weekly => strings.periodWeekly,
+          LeaderboardPeriod.daily => strings.periodDaily,
+        },
+        color: period == _period ? GameButtonColor.green : GameButtonColor.blue,
+        size: size,
+        anchor: Anchor.center,
+        position: Vector2(center + (index - 1) * spacing, _tabsY),
+        onPressed: () => _selectPeriod(period),
+      );
+      _tabs.add(tab);
+      panel.add(tab);
+    }
+  }
+
+  void _selectPeriod(LeaderboardPeriod period) {
+    if (period == _period) {
+      return;
+    }
+    _period = period;
+    _leaderboard = game.highscore.cachedLeaderboard(period);
+    _failed = false;
+    _buildTabs();
+    _refresh();
     unawaited(_load());
   }
 
@@ -178,18 +221,27 @@ class HighscorePage extends ModalPage {
     if (_loading) {
       return;
     }
+    final period = _period;
     _loading = true;
     _failed = false;
     _refresh();
     try {
-      _leaderboard = await game.highscore.fetchLeaderboard();
+      final leaderboard = await game.highscore.fetchLeaderboard(
+        period: period,
+      );
+      if (period == _period) {
+        _leaderboard = leaderboard;
+      }
     } on HighscoreException {
-      _failed = true;
+      _failed = period == _period;
     } on TimeoutException {
-      _failed = true;
+      _failed = period == _period;
     } finally {
       _loading = false;
       if (isMounted) {
+        if (period != _period) {
+          unawaited(_load());
+        }
         _refresh();
       }
     }

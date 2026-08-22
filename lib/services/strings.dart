@@ -76,6 +76,9 @@ abstract class Strings {
   String get shareHeadline;
   String get shareTagline;
   String get highscores;
+  String get periodAllTime;
+  String get periodWeekly;
+  String get periodDaily;
   String get highscoreNameHeader;
   String get highscoreScoreHeader;
   String get yourName;
@@ -354,6 +357,12 @@ class SvStrings extends Strings {
   String get shareTagline => 'Nu vet jag hur man blir en riktig fifflare.';
   @override
   String get highscores => 'Topplista';
+  @override
+  String get periodAllTime => 'Alla tider';
+  @override
+  String get periodWeekly => 'Veckan';
+  @override
+  String get periodDaily => 'Dygnet';
   @override
   String get highscoreNameHeader => 'Namn';
   @override
@@ -705,6 +714,12 @@ class EnStrings extends Strings {
   String get shareTagline => 'Now I know how to be a good fifflare.';
   @override
   String get highscores => 'Highscores';
+  @override
+  String get periodAllTime => 'All time';
+  @override
+  String get periodWeekly => 'Weekly';
+  @override
+  String get periodDaily => 'Daily';
   @override
   String get highscoreNameHeader => 'Name';
   @override

@@ -103,8 +103,12 @@ class SupabaseHighscoreClient implements HighscoreClient {
   }
 
   @override
-  Future<Leaderboard> fetchLeaderboard() async {
-    return Leaderboard.fromJson(await _call('leaderboard'));
+  Future<Leaderboard> fetchLeaderboard({
+    LeaderboardPeriod period = LeaderboardPeriod.allTime,
+  }) async {
+    return Leaderboard.fromJson(
+      await _call('leaderboard', {'p_period': period.code}),
+    );
   }
 
   Future<Map<String, dynamic>> _call(

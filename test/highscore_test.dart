@@ -128,6 +128,23 @@ void main() {
         expect(texts, contains('Ditt bästa: 25\u00a0kr (plats 2)'));
         expect(texts, contains('3 personer har haft sönder kapitalismen'));
         expect(texts, contains('42 omgångar har spelats totalt'));
+
+        client.periodLeaderboards[LeaderboardPeriod.daily] = const Leaderboard(
+          top: [HighscoreEntry(rank: 1, name: 'Idag', score: 7, isMe: false)],
+        );
+        final dailyTab = page.panel.children.whereType<GameButton>().firstWhere(
+          (button) => button.label(game.i18n.strings) == 'Dygnet',
+        );
+        dailyTab.onPressed!();
+        await settle(game);
+        expect(client.fetchedPeriods, contains(LeaderboardPeriod.daily));
+        final dailyTexts = page.panel.children
+            .whereType<TextComponent>()
+            .map((component) => component.text)
+            .toList();
+        expect(dailyTexts, contains('Idag'));
+        expect(dailyTexts, isNot(contains('Magda')));
+        expect(dailyTexts, contains('Du finns inte med på topplistan än'));
       },
     );
 

@@ -241,6 +241,34 @@ select is(
   public.leaderboard() -> 'top' -> 1 ->> 'is_me', 'true',
   'the caller is marked in the top list'
 );
+select is(
+  jsonb_array_length(public.leaderboard('week') -> 'top'), 2,
+  'runs submitted this week are on the weekly list'
+);
+select is(
+  public.leaderboard('day') -> 'me' ->> 'rank', '2',
+  'the daily list ranks the caller by today''s best run'
+);
+select pg_temp.as_admin();
+update public.runs set submitted_at = now() - interval '3 days'
+  where id = pg_temp.run('u1');
+select pg_temp.act_as('00000000-0000-0000-0000-000000000001');
+select is(
+  public.leaderboard('day') -> 'me', 'null'::jsonb,
+  'a run older than a day leaves the daily list'
+);
+select is(
+  public.leaderboard('week') -> 'me' ->> 'rank', '2',
+  'a run from three days ago stays on the weekly list'
+);
+select is(
+  public.leaderboard('all') -> 'me' ->> 'rank', '2',
+  'the all time list is unaffected by the window'
+);
+select is(
+  public.leaderboard('month') ->> 'error', 'invalid_state',
+  'unknown periods are rejected'
+);
 
 -------------------------------------------------------------------------------
 -- Broken capitalism
@@ -296,6 +324,7 @@ select is(
 select pg_temp.as_admin();
 set local role anon;
 select throws_ok('select public.leaderboard()', '42501');
+select throws_ok($$select public.leaderboard('day')$$, '42501');
 select throws_ok('select public.start_run()', '42501');
 
 select * from finish();

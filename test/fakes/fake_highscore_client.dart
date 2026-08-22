@@ -4,6 +4,8 @@ class FakeHighscoreClient implements HighscoreClient {
   bool online = true;
   bool rateLimited = false;
   Leaderboard leaderboard = const Leaderboard();
+  final Map<LeaderboardPeriod, Leaderboard> periodLeaderboards = {};
+  final List<LeaderboardPeriod> fetchedPeriods = [];
   int runCounter = 0;
   int signIns = 0;
   int serverSeq = 0;
@@ -104,8 +106,11 @@ class FakeHighscoreClient implements HighscoreClient {
   }
 
   @override
-  Future<Leaderboard> fetchLeaderboard() async {
+  Future<Leaderboard> fetchLeaderboard({
+    LeaderboardPeriod period = LeaderboardPeriod.allTime,
+  }) async {
     _checkOnline();
-    return leaderboard;
+    fetchedPeriods.add(period);
+    return periodLeaderboards[period] ?? leaderboard;
   }
 }
