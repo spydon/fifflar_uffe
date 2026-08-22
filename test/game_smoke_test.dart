@@ -7,6 +7,7 @@ import 'package:fifflar_uffe/model/skill_id.dart';
 import 'package:fifflar_uffe/model/timeline.dart';
 import 'package:fifflar_uffe/routes/main_menu_route.dart';
 import 'package:fifflar_uffe/routes/pause_route.dart';
+import 'package:fifflar_uffe/routes/skill_detail_route.dart';
 import 'package:fifflar_uffe/ui/game_button.dart';
 import 'package:fifflar_uffe/ui/hud/event_card_component.dart';
 import 'package:fifflar_uffe/ui/hud/event_feed_component.dart';
@@ -222,6 +223,35 @@ void main() {
   );
 
   testWithGame<FifflarUffeGame>(
+    'the skill tree and its detail pages pause the world',
+    FifflarUffeGame.new,
+    (game) async {
+      game.update(0);
+      await game.ready();
+      final before = game.timeline.elapsedDays;
+      game.router.pushNamed('shop');
+      game.update(0);
+      await game.ready();
+      expect(game.world.updatePaused, isTrue);
+      game.router.pushRoute(SkillDetailRoute(skill: skillCatalog.first));
+      game.update(0);
+      await game.ready();
+      expect(game.world.updatePaused, isTrue);
+      game.router.pop();
+      game.update(0);
+      await game.ready();
+      expect(game.router.currentRoute, game.router.routes['shop']);
+      expect(game.world.updatePaused, isTrue);
+      game.update(1);
+      expect(game.timeline.elapsedDays, before);
+      game.router.pop();
+      game.update(0);
+      await game.ready();
+      expect(game.world.updatePaused, isFalse);
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
     'open popups are closed when the game over banner appears',
     () {
       SharedPreferences.setMockInitialValues({
@@ -239,10 +269,10 @@ void main() {
     (game) async {
       game.update(0);
       await game.ready();
-      game.router.pushNamed('shop');
+      game.router.pushNamed('about');
       game.update(0);
       await game.ready();
-      expect(game.router.currentRoute, game.router.routes['shop']);
+      expect(game.router.currentRoute, game.router.routes['about']);
       game.update(1);
       await game.ready();
       expect(game.router.currentRoute, game.router.routes['gameOver']);

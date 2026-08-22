@@ -15,9 +15,19 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 
-class SkillTreeRoute extends Route {
+class SkillTreeRoute extends Route with HasGameReference<FifflarUffeGame> {
   SkillTreeRoute()
     : super(SkillTreePage.new, transparent: true, maintainState: false);
+
+  @override
+  void onPush(Route? previousRoute) {
+    game.world.updatePaused = true;
+  }
+
+  @override
+  void onPop(Route nextRoute) {
+    game.world.updatePaused = false;
+  }
 }
 
 class SkillTreePage extends ModalPage {
