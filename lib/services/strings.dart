@@ -37,19 +37,19 @@ abstract class Strings {
   String get itemPrivatizeHospitals;
   String get itemSellPreschools;
   String get itemSellPublicHousing;
-  String get quipHireCleaner;
-  String get quipCheatApartment;
-  String get quipTaxiRides;
-  String get quipChinaTrips;
-  String get quipFurnishPalace;
-  String get quipWriteBook;
-  String get quipLowerTaxes;
-  String get quipBreakPromise;
-  String get quipCutSickLeave;
-  String get quipPrivatizeSchools;
-  String get quipPrivatizeHospitals;
-  String get quipSellPreschools;
-  String get quipSellPublicHousing;
+  List<String> get quipHireCleaner;
+  List<String> get quipCheatApartment;
+  List<String> get quipTaxiRides;
+  List<String> get quipChinaTrips;
+  List<String> get quipFurnishPalace;
+  List<String> get quipWriteBook;
+  List<String> get quipLowerTaxes;
+  List<String> get quipBreakPromise;
+  List<String> get quipCutSickLeave;
+  List<String> get quipPrivatizeSchools;
+  List<String> get quipPrivatizeHospitals;
+  List<String> get quipSellPreschools;
+  List<String> get quipSellPublicHousing;
   String get pokeWarning;
   String get explainHireCleaner;
   String get explainCheatApartment;
@@ -184,32 +184,83 @@ class SvStrings extends Strings {
   @override
   String get itemSellPublicHousing => 'Sälj allmännyttan till kompispris';
   @override
-  String get quipHireCleaner => 'Kvitto? Vilket kvitto?';
+  List<String> get quipHireCleaner => const [
+    'Kvitto? Vilket kvitto?',
+    'Kontant i ett kuvert, som man gör.',
+    'Skatteverket behöver inte veta allt.',
+  ];
   @override
-  String get quipCheatApartment => 'Bostadskön är till för andra!';
+  List<String> get quipCheatApartment => const [
+    'Bostadskön är till för andra!',
+    'Tjugo år i kö? Jag tog hissen.',
+    'Det heter kontakter, inte fiffel.',
+  ];
   @override
-  String get quipTaxiRides => 'Taxametern tickar, notan är er!';
+  List<String> get quipTaxiRides => const [
+    'Taxametern tickar, notan är er!',
+    'Bussen går ju inte dit jag vill.',
+    'Kör runt kvarteret en gång till.',
+  ];
   @override
-  String get quipChinaTrips => 'Studieresa! Typ.';
+  List<String> get quipChinaTrips => const [
+    'Studieresa! Typ.',
+    'Var tredje månad är man ju tvungen.',
+    'Jag studerade mest lunchmenyn.',
+  ];
   @override
-  String get quipFurnishPalace => 'En trasmatta för 60 000? Fynd!';
+  List<String> get quipFurnishPalace => const [
+    'En trasmatta för 60 000? Fynd!',
+    'Konsulten sa att gardinerna var billiga.',
+    'Det är ju inte mina pengar.',
+  ];
   @override
-  String get quipWriteBook => 'Ord är gratis, åsikter är guld!';
+  List<String> get quipWriteBook => const [
+    'Ord är gratis, åsikter är guld!',
+    'Kapitel ett: Skyll på någon annan.',
+    'Jag har inte läst den själv.',
+  ];
   @override
-  String get quipLowerTaxes => 'Mina vänner blir så glada!';
+  List<String> get quipLowerTaxes => const [
+    'Mina vänner blir så glada!',
+    'Det sipprar ner, har jag hört.',
+    'Villorna i Danderyd jublar!',
+  ];
   @override
-  String get quipBreakPromise => 'Aldrig, aldrig, aldrig... nåja.';
+  List<String> get quipBreakPromise => const [
+    'Aldrig, aldrig, aldrig... nåja.',
+    'Löften är bara ord i sändning.',
+    'Det var den gamla Uffe som lovade.',
+  ];
   @override
-  String get quipCutSickLeave => 'Kalendern säger att ni är friska!';
+  List<String> get quipCutSickLeave => const [
+    'Kalendern säger att ni är friska!',
+    'Man blir frisk av att vara fattig.',
+    'Friskare siffror, i alla fall.',
+  ];
   @override
-  String get quipPrivatizeSchools => 'Marknaden fixar skolan!';
+  List<String> get quipPrivatizeSchools => const [
+    'Marknaden fixar skolan!',
+    'Betyg är gratis om man tar dem från aktieägarna.',
+    'Vinst i varje klassrum!',
+  ];
   @override
-  String get quipPrivatizeHospitals =>
-      'Vård ska bara vara tillgängligt för de rika!';
+  List<String> get quipPrivatizeHospitals => const [
+    'Vård ska bara vara tillgängligt för de rika!',
+    'Kön är kortare om man betalar.',
+    'Akuten? Den finns i appen.',
+  ];
   @override
-  String get quipSellPreschools => 'Såld! Långt under marknadspris.';
+  List<String> get quipSellPreschools => const [
+    'Såld! Långt under marknadspris.',
+    'Barnen märker ingen skillnad.',
+    'Förskola idag, bostadsrätt imorgon.',
+  ];
   @override
-  String get quipSellPublicHousing => 'Tack för lägenheten!';
+  List<String> get quipSellPublicHousing => const [
+    'Tack för lägenheten!',
+    'Polarna får en hyresrätt var.',
+    'Hyran går upp, humöret också!',
+  ];
   @override
   String get pokeWarning => "Sluuuuta, jag skickar Jimmie's kompisar på dig!";
   @override
@@ -480,32 +531,83 @@ class EnStrings extends Strings {
   @override
   String get itemSellPublicHousing => 'Sell public housing to a pal';
   @override
-  String get quipHireCleaner => 'Receipt? What receipt?';
+  List<String> get quipHireCleaner => const [
+    'Receipt? What receipt?',
+    'Cash in an envelope, the usual way.',
+    'The tax office does not need to know everything.',
+  ];
   @override
-  String get quipCheatApartment => 'Housing queues are for other people!';
+  List<String> get quipCheatApartment => const [
+    'Housing queues are for other people!',
+    'Twenty years in line? I took the lift.',
+    'It is called contacts, not fiddling.',
+  ];
   @override
-  String get quipTaxiRides => 'The meter is running, the bill is yours!';
+  List<String> get quipTaxiRides => const [
+    'The meter is running, the bill is yours!',
+    'The bus does not go where I want.',
+    'Take another lap around the block.',
+  ];
   @override
-  String get quipChinaTrips => 'Study trip! Sort of.';
+  List<String> get quipChinaTrips => const [
+    'Study trip! Sort of.',
+    'Every third month is simply required.',
+    'I mostly studied the lunch menu.',
+  ];
   @override
-  String get quipFurnishPalace => 'A rag rug for 60 000? A steal!';
+  List<String> get quipFurnishPalace => const [
+    'A rag rug for 60 000? A steal!',
+    'The consultant said the curtains were cheap.',
+    'It is not my money anyway.',
+  ];
   @override
-  String get quipWriteBook => 'Words are free, opinions are gold!';
+  List<String> get quipWriteBook => const [
+    'Words are free, opinions are gold!',
+    'Chapter one: Blame somebody else.',
+    'I have not read it myself.',
+  ];
   @override
-  String get quipLowerTaxes => 'My friends will be so pleased!';
+  List<String> get quipLowerTaxes => const [
+    'My friends will be so pleased!',
+    'It trickles down, I am told.',
+    'The villas in Danderyd are cheering!',
+  ];
   @override
-  String get quipBreakPromise => 'Never, never, never... oh well.';
+  List<String> get quipBreakPromise => const [
+    'Never, never, never... oh well.',
+    'Promises are just words on air.',
+    'That was the old Uffe promising.',
+  ];
   @override
-  String get quipCutSickLeave => 'The calendar says you are healthy!';
+  List<String> get quipCutSickLeave => const [
+    'The calendar says you are healthy!',
+    'Being poor cures most things.',
+    'Healthier numbers, at least.',
+  ];
   @override
-  String get quipPrivatizeSchools => 'The market will fix the schools!';
+  List<String> get quipPrivatizeSchools => const [
+    'The market will fix the schools!',
+    'Grades are free when the shareholders hand them out.',
+    'Profit in every classroom!',
+  ];
   @override
-  String get quipPrivatizeHospitals =>
-      'Healthcare should only be available to the rich!';
+  List<String> get quipPrivatizeHospitals => const [
+    'Healthcare should only be available to the rich!',
+    'The queue is shorter if you pay.',
+    'The emergency room? It is in the app.',
+  ];
   @override
-  String get quipSellPreschools => 'Sold! Well below market value.';
+  List<String> get quipSellPreschools => const [
+    'Sold! Well below market value.',
+    'The children will not notice.',
+    'Preschool today, condos tomorrow.',
+  ];
   @override
-  String get quipSellPublicHousing => 'Thanks for the apartment!';
+  List<String> get quipSellPublicHousing => const [
+    'Thanks for the apartment!',
+    'The boys get a flat each.',
+    'Rent goes up, and so does my mood!',
+  ];
   @override
   String get pokeWarning => "Stooooop, I'll send Jimmie's buddies after you!";
   @override

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:fifflar_uffe/components/floating_text_component.dart';
 import 'package:fifflar_uffe/components/uffe_component.dart';
@@ -54,6 +55,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
   static const double _freshRunMaxDays = 80;
 
   final HighscoreClient? highscoreClient;
+  final Random _random = Random();
   final SoundService? sound;
   final ValueNotifier<bool> soundEnabled = ValueNotifier(true);
 
@@ -189,7 +191,8 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
     final bought = economy.buy(skill);
     if (bought) {
       sound?.playPurchase();
-      uffe.say(skill.quip(i18n.strings));
+      final quips = skill.quip(i18n.strings);
+      uffe.say(quips[_random.nextInt(quips.length)]);
       if (skill.isClickMultiplier) {
         camera.viewport.add(
           FloatingTextComponent(

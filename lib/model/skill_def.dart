@@ -22,7 +22,7 @@ class SkillDef {
   final SkillId id;
   final String iconPath;
   final String Function(Strings strings) name;
-  final String Function(Strings strings) quip;
+  final List<String> Function(Strings strings) quip;
   final String Function(Strings strings) explanation;
   final String source;
   final String sourceUrl;
