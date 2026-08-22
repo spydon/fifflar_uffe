@@ -357,7 +357,7 @@ class SvStrings extends Strings {
   @override
   String get highscoreNameHeader => 'Namn';
   @override
-  String get highscoreScoreHeader => 'Fifflat (överskott)';
+  String get highscoreScoreHeader => 'Fifflat (totalt)';
   @override
   String get yourName => 'Ditt namn';
   @override
@@ -708,7 +708,7 @@ class EnStrings extends Strings {
   @override
   String get highscoreNameHeader => 'Name';
   @override
-  String get highscoreScoreHeader => 'Fiddled (surplus)';
+  String get highscoreScoreHeader => 'Fiddled (total)';
   @override
   String get yourName => 'Your name';
   @override
