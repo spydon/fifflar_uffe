@@ -15,20 +15,6 @@
       }
     },
     {
-      "id": "strangnas",
-      "date": "2000-01-03",
-      "source": "Svenska Dagbladet",
-      "url": "https://www.svd.se/a/Kvm027/kristerssons-arv-ideologiskt-drivet-jatteforluster",
-      "title": {
-        "sv": "Arvet från Strängnäs",
-        "en": "The Strängnäs legacy"
-      },
-      "body": {
-        "sv": "Som finanskommunalråd i Strängnäs på 90-talet vänder Uffe ett överskott till underskott på ett år. Anställningsstopp, nedskärningar i skola och omsorg, höjd färdtjänst, och kommunens fastigheter säljs till bolag som hyr ut dem tillbaka. Resultat: 18 miljoner i förlust.",
-        "en": "As finance commissioner in Strängnäs in the 1990s Uffe turns a surplus into a deficit within a year. A hiring freeze, cuts to schools and care, higher transport fees, and the municipal buildings are sold to companies that rent them back. Result: a loss of 18 million."
-      }
-    },
-    {
       "id": "st_goran",
       "date": "2000-01-05",
       "source": "Wikipedia",
@@ -40,6 +26,20 @@
       "body": {
         "sv": "Det borgerliga landstinget säljer S:t Görans sjukhus till Bure för 300 miljoner, i strid med upphandlingslagen.",
         "en": "The conservative county council sells S:t Göran hospital to Bure for 300 million, in breach of procurement law."
+      }
+    },
+    {
+      "id": "strangnas",
+      "date": "2000-05-01",
+      "source": "Svenska Dagbladet",
+      "url": "https://www.svd.se/a/Kvm027/kristerssons-arv-ideologiskt-drivet-jatteforluster",
+      "title": {
+        "sv": "Arvet från Strängnäs",
+        "en": "The Strängnäs legacy"
+      },
+      "body": {
+        "sv": "Som finanskommunalråd i Strängnäs på 90-talet vänder Uffe ett överskott till underskott på ett år. Anställningsstopp, nedskärningar i skola och omsorg, höjd färdtjänst, och kommunens fastigheter säljs till bolag som hyr ut dem tillbaka. Resultat: 18 miljoner i förlust.",
+        "en": "As finance commissioner in Strängnäs in the 1990s Uffe turns a surplus into a deficit within a year. A hiring freeze, cuts to schools and care, higher transport fees, and the municipal buildings are sold to companies that rent them back. Result: a loss of 18 million."
       }
     },
     {
