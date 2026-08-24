@@ -125,6 +125,9 @@
       color: #1b6ca8;
       font-weight: bold;
     }
+    article .sources {
+      margin: 0;
+    }
     article .date {
       display: none;
       color: #a05a3c;
@@ -204,12 +207,20 @@
           title.textContent = event.title.sv;
           const body = document.createElement('p');
           body.textContent = event.body.sv;
-          const link = document.createElement('a');
-          link.href = event.url;
-          link.textContent = event.source;
-          link.target = '_blank';
-          link.rel = 'noopener';
-          article.append(date, title, body, link);
+          const links = document.createElement('p');
+          links.className = 'sources';
+          event.sources.forEach((source, index) => {
+            if (index > 0) {
+              links.append(' \u00b7 ');
+            }
+            const link = document.createElement('a');
+            link.href = source.url;
+            link.textContent = source.name;
+            link.target = '_blank';
+            link.rel = 'noopener';
+            links.append(link);
+          });
+          article.append(date, title, body, links);
           row.append(gutter, node, article);
           container.append(row);
         }

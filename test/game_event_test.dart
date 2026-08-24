@@ -8,16 +8,17 @@ const _catalogJson = '''
     {
       "id": "second",
       "date": "2001-06-01",
-      "source": "Dagens Arena",
-      "url": "https://example.com/second",
+      "sources": [
+        {"name": "Dagens Arena", "url": "https://example.com/second"},
+        {"name": "Wikipedia", "url": "https://example.com/more"}
+      ],
       "title": {"sv": "Svart städhjälp", "en": "Undeclared cleaning help"},
       "body": {"sv": "Uffe fifflar.", "en": "Uffe fiddles."}
     },
     {
       "id": "first",
       "date": "2000-03-01",
-      "source": "Testbladet",
-      "url": "https://example.com/first",
+      "sources": [{"name": "Testbladet", "url": "https://example.com/first"}],
       "title": {"sv": "Första nyheten"},
       "body": {"sv": "Något hände."}
     }
@@ -33,6 +34,8 @@ void main() {
     expect(event.date, DateTime.utc(2001, 6));
     expect(event.source, 'Dagens Arena');
     expect(event.url, 'https://example.com/second');
+    expect(event.sources, hasLength(2));
+    expect(event.sources.last.name, 'Wikipedia');
     expect(event.title(AppLanguage.sv), 'Svart städhjälp');
     expect(event.title(AppLanguage.en), 'Undeclared cleaning help');
   });
