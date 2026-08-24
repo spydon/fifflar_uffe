@@ -172,13 +172,13 @@
       .then((data) => {
         const container = document.getElementById('events');
         const events = [...data.events].sort(
-          (a, b) => a.date.localeCompare(b.date),
+          (a, b) => a.real_date.localeCompare(b.real_date),
         );
         const months = ['jan', 'feb', 'mar', 'apr', 'maj', 'jun',
           'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
         let currentYear = '';
         for (const event of events) {
-          const [year, month, day] = event.date.split('-');
+          const [year, month, day] = event.real_date.split('-');
           if (year !== currentYear) {
             currentYear = year;
             const marker = document.createElement('div');
@@ -195,14 +195,18 @@
           row.className = 'event';
           const gutter = document.createElement('div');
           gutter.className = 'gutter';
-          const shortDate = `${Number(day)} ${months[Number(month) - 1]}`;
+          const shortDate = day
+            ? `${Number(day)} ${months[Number(month) - 1]}`
+            : month
+              ? months[Number(month) - 1]
+              : '';
           gutter.textContent = shortDate;
           const node = document.createElement('div');
           node.className = 'node';
           const article = document.createElement('article');
           const date = document.createElement('p');
           date.className = 'date';
-          date.textContent = `${shortDate} ${year}`;
+          date.textContent = shortDate ? `${shortDate} ${year}` : year;
           const title = document.createElement('h2');
           title.textContent = event.title.sv;
           const body = document.createElement('p');

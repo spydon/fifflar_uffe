@@ -1,8 +1,31 @@
 {
   "events": [
     {
+      "id": "muf_ordforande",
+      "real_date": "1988-11-26",
+      "title": {
+        "sv": "Uffe tar över MUF",
+        "en": "Uffe takes over the youth wing"
+      },
+      "body": {
+        "sv": "25-åringen Uffe väljs till ordförande för Moderata ungdomsförbundet. Nu börjar karriären.",
+        "en": "At 25 Uffe is elected chairman of the Moderate youth wing. The career begins."
+      },
+      "sources": [
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Ulf_Kristersson"
+        },
+        {
+          "name": "Regeringskansliet",
+          "url": "https://www.regeringen.se/sveriges-regering/statsradsberedningen/ulf-kristersson/cv-ulf-kristersson/"
+        }
+      ]
+    },
+    {
       "id": "valfardsstaten",
-      "date": "2000-01-02",
+      "real_date": "1990-12-31",
+      "game_date": "2000-01-02",
       "title": {
         "sv": "Uppdraget: avveckla välfärdsstaten",
         "en": "The mission: dismantle the welfare state"
@@ -23,8 +46,53 @@
       ]
     },
     {
+      "id": "riksdagsdebuten",
+      "real_date": "1991-10-04",
+      "title": {
+        "sv": "In i riksdagen",
+        "en": "Into parliament"
+      },
+      "body": {
+        "sv": "Uffe tar plats i riksdagen när regeringen Bildt tillträder. Systemskiftet kan börja.",
+        "en": "Uffe takes his seat in parliament as the Bildt government comes to power. The system shift can begin."
+      },
+      "sources": [
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Ulf_Kristersson"
+        },
+        {
+          "name": "Regeringskansliet",
+          "url": "https://www.regeringen.se/sveriges-regering/statsradsberedningen/ulf-kristersson/cv-ulf-kristersson/"
+        }
+      ]
+    },
+    {
+      "id": "slaget_i_lycksele",
+      "real_date": "1992-10-24",
+      "title": {
+        "sv": "Slaget i Lycksele",
+        "en": "The battle of Lycksele"
+      },
+      "body": {
+        "sv": "Uffe förlorar omvalet till MUF-ordförande mot Fredrik Reinfeldt, 55 röster mot 58, på Hotell Lappland i Lycksele. Splittringen i förbundet sitter i länge.",
+        "en": "Uffe loses the youth wing chairmanship to Fredrik Reinfeldt, 55 votes to 58, at Hotell Lappland in Lycksele. The rift in the organisation lingers for years."
+      },
+      "sources": [
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Slaget_i_Lycksele"
+        },
+        {
+          "name": "Wikipedia (Ulf Kristersson)",
+          "url": "https://sv.wikipedia.org/wiki/Ulf_Kristersson"
+        }
+      ]
+    },
+    {
       "id": "non_working_generation",
-      "date": "2000-03-01",
+      "real_date": "1994",
+      "game_date": "2000-03-01",
       "title": {
         "sv": "Boken om den sovande generationen",
         "en": "The book about the non-working generation"
@@ -45,30 +113,31 @@
       ]
     },
     {
-      "id": "strangnas",
-      "date": "2000-05-01",
+      "id": "timbro_marknadschef",
+      "real_date": "1995",
       "title": {
-        "sv": "Arvet från Strängnäs",
-        "en": "The Strängnäs legacy"
+        "sv": "Marknadschef på Timbro",
+        "en": "Marketing chief at Timbro"
       },
       "body": {
-        "sv": "Som finanskommunalråd i Strängnäs på 90-talet vänder Uffe ett överskott till underskott på ett år. Anställningsstopp, nedskärningar i skola och omsorg, höjd färdtjänst, och kommunens fastigheter säljs till bolag som hyr ut dem tillbaka. Resultat: 18 miljoner i förlust.",
-        "en": "As finance commissioner in Strängnäs in the 1990s Uffe turns a surplus into a deficit within a year. A hiring freeze, cuts to schools and care, higher transport fees, and the municipal buildings are sold to companies that rent them back. Result: a loss of 18 million."
+        "sv": "Uffe blir marknadschef på näringslivets tankesmedja Timbro, samtidigt som han sitter i riksdagen. Två arbetsgivare, samma uppdrag.",
+        "en": "Uffe becomes head of marketing at the business think tank Timbro while sitting in parliament. Two employers, one mission."
       },
       "sources": [
         {
-          "name": "Svenska Dagbladet",
-          "url": "https://www.svd.se/a/Kvm027/kristerssons-arv-ideologiskt-drivet-jatteforluster"
+          "name": "Wikipedia (engelska)",
+          "url": "https://en.wikipedia.org/wiki/Ulf_Kristersson"
         },
         {
-          "name": "Aftonbladet",
-          "url": "https://www.aftonbladet.se/ledare/a/a7XQBO/vi-maste-prata-om-ulf-kristerssons-forflutna"
+          "name": "Regeringskansliet",
+          "url": "https://www.regeringen.se/sveriges-regering/statsradsberedningen/ulf-kristersson/cv-ulf-kristersson/"
         }
       ]
     },
     {
       "id": "st_goran",
-      "date": "2000-09-01",
+      "real_date": "1999-12",
+      "game_date": "2000-09-01",
       "title": {
         "sv": "S:t Göran privatiseras",
         "en": "S:t Göran is privatized"
@@ -89,8 +158,31 @@
       ]
     },
     {
+      "id": "ut_ur_riksdagen",
+      "real_date": "2000-04",
+      "title": {
+        "sv": "Ut ur riksdagen",
+        "en": "Out of parliament"
+      },
+      "body": {
+        "sv": "Partiledaren Bo Lundgren tackar nej till Uffes tjänster och Uffe lämnar riksdagen. Comebacken får planeras från Strängnäs.",
+        "en": "Party leader Bo Lundgren declines Uffe’s services and Uffe leaves parliament. The comeback will have to be planned from Strängnäs."
+      },
+      "sources": [
+        {
+          "name": "Wikipedia (engelska)",
+          "url": "https://en.wikipedia.org/wiki/Ulf_Kristersson"
+        },
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Ulf_Kristersson"
+        }
+      ]
+    },
+    {
       "id": "svart_stadhjalp",
-      "date": "2001-06-01",
+      "real_date": "2001",
+      "game_date": "2001-06-01",
       "title": {
         "sv": "Svart städhjälp",
         "en": "Undeclared cleaning help"
@@ -112,7 +204,8 @@
     },
     {
       "id": "valstugereportaget",
-      "date": "2002-09-05",
+      "real_date": "2002-09-05",
+      "game_date": "2002-09-05",
       "title": {
         "sv": "Valstugereportaget",
         "en": "The election booth exposé"
@@ -133,8 +226,32 @@
       ]
     },
     {
+      "id": "strangnas",
+      "real_date": "2003",
+      "game_date": "2000-05-01",
+      "title": {
+        "sv": "Arvet från Strängnäs",
+        "en": "The Strängnäs legacy"
+      },
+      "body": {
+        "sv": "Som finanskommunalråd i Strängnäs (2003 till 2006) vänder Uffe ett överskott till underskott på ett år. Anställningsstopp, nedskärningar i skola och omsorg, höjd färdtjänst, och kommunens fastigheter säljs till bolag som hyr ut dem tillbaka. Resultat: 18 miljoner i förlust.",
+        "en": "As finance commissioner in Strängnäs (2003 to 2006) Uffe turns a surplus into a deficit within a year. A hiring freeze, cuts to schools and care, higher transport fees, and the municipal buildings are sold to companies that rent them back. Result: a loss of 18 million."
+      },
+      "sources": [
+        {
+          "name": "Svenska Dagbladet",
+          "url": "https://www.svd.se/a/Kvm027/kristerssons-arv-ideologiskt-drivet-jatteforluster"
+        },
+        {
+          "name": "Aftonbladet",
+          "url": "https://www.aftonbladet.se/ledare/a/a7XQBO/vi-maste-prata-om-ulf-kristerssons-forflutna"
+        }
+      ]
+    },
+    {
       "id": "adoptionscentrum",
-      "date": "2004-06-01",
+      "real_date": "2003",
+      "game_date": "2004-06-01",
       "title": {
         "sv": "Ordförande för Adoptionscentrum",
         "en": "Chairman of Adoptionscentrum"
@@ -156,7 +273,8 @@
     },
     {
       "id": "minister_avgangar",
-      "date": "2006-10-14",
+      "real_date": "2006-10-14",
+      "game_date": "2006-10-14",
       "title": {
         "sv": "Ministrarna faller",
         "en": "The ministers fall"
@@ -178,7 +296,8 @@
     },
     {
       "id": "centrumkompaniet",
-      "date": "2007-05-15",
+      "real_date": "2007-05-15",
+      "game_date": "2007-05-15",
       "title": {
         "sv": "Förortscentrumen säljs",
         "en": "The suburb centers are sold"
@@ -200,7 +319,8 @@
     },
     {
       "id": "kinaresorna",
-      "date": "2007-08-01",
+      "real_date": "2007-08-01",
+      "game_date": "2007-08-01",
       "title": {
         "sv": "Kinaresorna",
         "en": "The China trips"
@@ -222,7 +342,8 @@
     },
     {
       "id": "krogkvallen",
-      "date": "2007-10-29",
+      "real_date": "2007-10-29",
+      "game_date": "2007-10-29",
       "title": {
         "sv": "Krogkvällen",
         "en": "The bar night"
@@ -244,7 +365,8 @@
     },
     {
       "id": "serafen",
-      "date": "2007-12-10",
+      "real_date": "2007-12-10",
+      "game_date": "2007-12-10",
       "title": {
         "sv": "Vårdcentralen till vrakpris",
         "en": "The health center at scrap price"
@@ -266,7 +388,8 @@
     },
     {
       "id": "allmannyttan_reas",
-      "date": "2008-03-18",
+      "real_date": "2008-03-18",
+      "game_date": "2008-03-18",
       "title": {
         "sv": "Allmännyttan reas ut",
         "en": "Public housing on sale"
@@ -288,7 +411,8 @@
     },
     {
       "id": "vin_och_sprit",
-      "date": "2008-03-31",
+      "real_date": "2008-03-31",
+      "game_date": "2008-03-31",
       "title": {
         "sv": "Familjesilvret säljs",
         "en": "Selling the family silver"
@@ -310,7 +434,8 @@
     },
     {
       "id": "avknoppningarna",
-      "date": "2008-04-15",
+      "real_date": "2008-04-15",
+      "game_date": "2008-04-15",
       "title": {
         "sv": "Avknoppningarna",
         "en": "The spin-offs"
@@ -332,7 +457,8 @@
     },
     {
       "id": "ersta_vaningen",
-      "date": "2009-03-01",
+      "real_date": "2009-03-01",
+      "game_date": "2009-03-01",
       "title": {
         "sv": "Våningen från Ersta",
         "en": "The flat from Ersta"
@@ -354,7 +480,8 @@
     },
     {
       "id": "nuonaffaren",
-      "date": "2009-06-01",
+      "real_date": "2009-06-01",
+      "game_date": "2009-06-01",
       "title": {
         "sv": "Nuonaffären",
         "en": "The Nuon deal"
@@ -376,7 +503,8 @@
     },
     {
       "id": "apoteken",
-      "date": "2009-07-01",
+      "real_date": "2009-07-01",
+      "game_date": "2009-07-01",
       "title": {
         "sv": "Apoteken säljs ut",
         "en": "The pharmacies are sold off"
@@ -394,7 +522,8 @@
     },
     {
       "id": "stupstocken",
-      "date": "2010-10-05",
+      "real_date": "2010-10-05",
+      "game_date": "2010-10-05",
       "title": {
         "sv": "Stupstocken",
         "en": "The sick leave cliff"
@@ -416,7 +545,8 @@
     },
     {
       "id": "graddfilslagenheten",
-      "date": "2010-10-06",
+      "real_date": "2010-10-06",
+      "game_date": "2010-10-06",
       "title": {
         "sv": "Lägenhet i gräddfilen",
         "en": "An apartment past the queue"
@@ -438,7 +568,8 @@
     },
     {
       "id": "caremaskandalen",
-      "date": "2011-10-11",
+      "real_date": "2011-10-11",
+      "game_date": "2011-10-11",
       "title": {
         "sv": "Caremaskandalen",
         "en": "The Carema scandal"
@@ -460,7 +591,8 @@
     },
     {
       "id": "saab_konkurs",
-      "date": "2011-12-19",
+      "real_date": "2011-12-19",
+      "game_date": "2011-12-19",
       "title": {
         "sv": "Saab går i konkurs",
         "en": "Saab goes bankrupt"
@@ -482,7 +614,8 @@
     },
     {
       "id": "saudiaffaren",
-      "date": "2012-03-29",
+      "real_date": "2012-03-29",
+      "game_date": "2012-03-29",
       "title": {
         "sv": "Saudiaffären",
         "en": "The Saudi affair"
@@ -504,7 +637,8 @@
     },
     {
       "id": "bilprovningen",
-      "date": "2012-11-05",
+      "real_date": "2012-11-05",
+      "game_date": "2012-11-05",
       "title": {
         "sv": "Bilprovningen styckas",
         "en": "Bilprovningen is carved up"
@@ -526,7 +660,8 @@
     },
     {
       "id": "nuon_nedskrivning",
-      "date": "2013-07-23",
+      "real_date": "2013-07-23",
+      "game_date": "2013-07-23",
       "title": {
         "sv": "Nuonnotan",
         "en": "The Nuon bill"
@@ -548,7 +683,8 @@
     },
     {
       "id": "taxinotan",
-      "date": "2017-09-29",
+      "real_date": "2017-09-29",
+      "game_date": "2017-09-29",
       "title": {
         "sv": "Taxinotan",
         "en": "The taxi bill"
@@ -570,7 +706,8 @@
     },
     {
       "id": "sommarstugan",
-      "date": "2018-01-20",
+      "real_date": "2018-01-20",
+      "game_date": "2018-01-20",
       "title": {
         "sv": "Sommarstugan med lobbyisten",
         "en": "The summer cottage with the lobbyist"
@@ -592,7 +729,8 @@
     },
     {
       "id": "mammaboendet",
-      "date": "2019-04-25",
+      "real_date": "2019-04-25",
+      "game_date": "2019-04-25",
       "title": {
         "sv": "Skriven hos mamma",
         "en": "Registered at mom's"
@@ -614,7 +752,8 @@
     },
     {
       "id": "tidoavtalet",
-      "date": "2022-10-14",
+      "real_date": "2022-10-14",
+      "game_date": "2022-10-14",
       "title": {
         "sv": "Löftet bryts",
         "en": "The promise is broken"
@@ -636,7 +775,8 @@
     },
     {
       "id": "landerholm_utnamning",
-      "date": "2022-11-10",
+      "real_date": "2022-11-10",
+      "game_date": "2022-11-10",
       "title": {
         "sv": "Barndomsvännen får jobbet",
         "en": "The childhood friend gets the job"
@@ -658,7 +798,8 @@
     },
     {
       "id": "alfisket",
-      "date": "2023-01-26",
+      "real_date": "2023-01-26",
+      "game_date": "2023-01-26",
       "title": {
         "sv": "Ålfisket",
         "en": "The eel fishing"
@@ -680,7 +821,8 @@
     },
     {
       "id": "lofving_utredningen",
-      "date": "2023-02-22",
+      "real_date": "2023-02-22",
+      "game_date": "2023-02-22",
       "title": {
         "sv": "Jäv i polistoppen",
         "en": "Conflict of interest at the police top"
@@ -702,7 +844,8 @@
     },
     {
       "id": "sagerska_notan",
-      "date": "2023-06-01",
+      "real_date": "2023-06-01",
+      "game_date": "2023-06-01",
       "title": {
         "sv": "Lyxnotan på Sagerska",
         "en": "The Sager House bill"
@@ -724,7 +867,8 @@
     },
     {
       "id": "europaskolan_middagen",
-      "date": "2024-04-10",
+      "real_date": "2024-04-10",
+      "game_date": "2024-04-10",
       "title": {
         "sv": "Friskolemiddag på Sagerska",
         "en": "Free school dinner at Sagerska"
@@ -746,7 +890,8 @@
     },
     {
       "id": "honsgarden",
-      "date": "2024-08-15",
+      "real_date": "2024-08-15",
+      "game_date": "2024-08-15",
       "title": {
         "sv": "Hönsgården på Harpsund",
         "en": "The hen house at Harpsund"
@@ -768,7 +913,8 @@
     },
     {
       "id": "landerholm_avgang",
-      "date": "2025-01-27",
+      "real_date": "2025-01-27",
+      "game_date": "2025-01-27",
       "title": {
         "sv": "Säkerhetsrådgivaren avgår",
         "en": "The security advisor resigns"
@@ -790,7 +936,8 @@
     },
     {
       "id": "ministeraktier",
-      "date": "2025-03-07",
+      "real_date": "2025-03-07",
+      "game_date": "2025-03-07",
       "title": {
         "sv": "Ministerns aktieklipp",
         "en": "The minister's stock move"
@@ -812,7 +959,8 @@
     },
     {
       "id": "aktieriktlinjer",
-      "date": "2025-12-09",
+      "real_date": "2025-12-09",
+      "game_date": "2025-12-09",
       "title": {
         "sv": "Nya aktieregler för ministrar",
         "en": "New stock rules for ministers"
@@ -834,7 +982,8 @@
     },
     {
       "id": "teach_for_sweden",
-      "date": "2026-04-09",
+      "real_date": "2026-04-09",
+      "game_date": "2026-04-09",
       "title": {
         "sv": "Svägerskans stiftelse",
         "en": "The sister-in-law's foundation"
@@ -856,7 +1005,8 @@
     },
     {
       "id": "fallokna",
-      "date": "2026-06-09",
+      "real_date": "2026-06-09",
+      "game_date": "2026-06-09",
       "title": {
         "sv": "Gratisjobbarna på Fållökna",
         "en": "The free labor at Fållökna"
@@ -878,7 +1028,8 @@
     },
     {
       "id": "fallokna_toppjobben",
-      "date": "2026-06-20",
+      "real_date": "2026-06-20",
+      "game_date": "2026-06-20",
       "title": {
         "sv": "Gratisjobb ger toppjobb",
         "en": "Free labour pays off"
@@ -900,7 +1051,8 @@
     },
     {
       "id": "prastjobbet",
-      "date": "2026-07-06",
+      "real_date": "2026-07-06",
+      "game_date": "2026-07-06",
       "title": {
         "sv": "Skräddarsydd prästtjänst",
         "en": "A tailor-made priest job"

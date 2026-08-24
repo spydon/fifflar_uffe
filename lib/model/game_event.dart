@@ -22,7 +22,7 @@ class GameEvent {
   });
 
   factory GameEvent.fromJson(Map<String, dynamic> json) {
-    final date = DateTime.parse(json['date'] as String);
+    final date = DateTime.parse(json['game_date'] as String);
     return GameEvent(
       id: json['id'] as String,
       date: DateTime.utc(date.year, date.month, date.day),
@@ -68,8 +68,8 @@ class EventCatalog {
     final json = jsonDecode(raw) as Map<String, dynamic>;
     final eventsJson = json['events'] as List<dynamic>;
     return EventCatalog([
-      for (final event in eventsJson)
-        GameEvent.fromJson(event as Map<String, dynamic>),
+      for (final event in eventsJson.cast<Map<String, dynamic>>())
+        if (event['game_date'] != null) GameEvent.fromJson(event),
     ]);
   }
 

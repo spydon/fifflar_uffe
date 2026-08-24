@@ -7,7 +7,8 @@ const _catalogJson = '''
   "events": [
     {
       "id": "second",
-      "date": "2001-06-01",
+      "real_date": "2001",
+      "game_date": "2001-06-01",
       "sources": [
         {"name": "Dagens Arena", "url": "https://example.com/second"},
         {"name": "Wikipedia", "url": "https://example.com/more"}
@@ -16,8 +17,16 @@ const _catalogJson = '''
       "body": {"sv": "Uffe fifflar.", "en": "Uffe fiddles."}
     },
     {
+      "id": "before_game",
+      "real_date": "1992-10-24",
+      "sources": [{"name": "Wikipedia", "url": "https://example.com/old"}],
+      "title": {"sv": "Före spelet"},
+      "body": {"sv": "Hände i verkligheten."}
+    },
+    {
       "id": "first",
-      "date": "2000-03-01",
+      "real_date": "2000-03-01",
+      "game_date": "2000-03-01",
       "sources": [{"name": "Testbladet", "url": "https://example.com/first"}],
       "title": {"sv": "Första nyheten"},
       "body": {"sv": "Något hände."}
@@ -27,7 +36,7 @@ const _catalogJson = '''
 ''';
 
 void main() {
-  test('parses events from json and sorts them by date', () {
+  test('parses events from json and sorts them by game date', () {
     final catalog = EventCatalog.fromJsonString(_catalogJson);
     expect(catalog.events.map((event) => event.id), ['first', 'second']);
     final event = catalog.events.last;
