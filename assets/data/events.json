@@ -105,10 +105,6 @@
         {
           "name": "Wikipedia",
           "url": "https://sv.wikipedia.org/wiki/Ulf_Kristersson"
-        },
-        {
-          "name": "Wikipedia (engelska)",
-          "url": "https://en.wikipedia.org/wiki/Ulf_Kristersson"
         }
       ]
     },
@@ -125,8 +121,8 @@
       },
       "sources": [
         {
-          "name": "Wikipedia (engelska)",
-          "url": "https://en.wikipedia.org/wiki/Ulf_Kristersson"
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Ulf_Kristersson"
         },
         {
           "name": "Regeringskansliet",
@@ -159,23 +155,23 @@
     },
     {
       "id": "ut_ur_riksdagen",
-      "real_date": "2000-04",
+      "real_date": "2000",
       "title": {
         "sv": "Ut ur riksdagen",
         "en": "Out of parliament"
       },
       "body": {
-        "sv": "Partiledaren Bo Lundgren tackar nej till Uffes tjänster och Uffe lämnar riksdagen. Comebacken får planeras från Strängnäs.",
-        "en": "Party leader Bo Lundgren declines Uffe’s services and Uffe leaves parliament. The comeback will have to be planned from Strängnäs."
+        "sv": "Våren 2000 lämnar Uffe riksdagen för att bli kommunikationsdirektör på IT-bolaget Connecta, mitt i dotcom-kraschen. Comebacken får planeras från Strängnäs.",
+        "en": "In the spring of 2000 Uffe leaves parliament to become communications director at the IT company Connecta, in the middle of the dotcom crash. The comeback will have to be planned from Strängnäs."
       },
       "sources": [
         {
-          "name": "Wikipedia (engelska)",
-          "url": "https://en.wikipedia.org/wiki/Ulf_Kristersson"
-        },
-        {
           "name": "Wikipedia",
           "url": "https://sv.wikipedia.org/wiki/Ulf_Kristersson"
+        },
+        {
+          "name": "Regeringskansliet",
+          "url": "https://www.regeringen.se/sveriges-regering/statsradsberedningen/ulf-kristersson/cv-ulf-kristersson/"
         }
       ]
     },
