@@ -48,3 +48,7 @@ app.*.map.json
 # Widget Preview related
 .widget_preview/
 .claude/
+
+# Android release signing
+android/key.properties
+android/upload-keystore.jks

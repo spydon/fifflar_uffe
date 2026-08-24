@@ -31,7 +31,20 @@ jobs:
 
       - run: flutter pub get
 
-      - run: flutter build apk --release
+      - name: Set up release signing
+        if: env.KEYSTORE != ''
+        env:
+          KEYSTORE: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+        run: |
+          echo "$KEYSTORE" | base64 -d > android/upload-keystore.jks
+          cat > android/key.properties <<PROPS
+          storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          keyPassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}
+          storeFile=../upload-keystore.jks
+          PROPS
+
+      - run: flutter build apk --release --build-number=${{ github.run_number }}
 
       - name: Read version
         id: version
@@ -43,6 +56,21 @@ jobs:
         run: |
           cp build/app/outputs/flutter-apk/app-release.apk \
             "fifflar-uffe-v${{ steps.version.outputs.version }}-${{ github.run_number }}.apk"
+
+      - name: Build app bundle
+        run: flutter build appbundle --release --build-number=${{ github.run_number }}
+
+      - name: Upload to Play Console
+        if: env.PLAY_JSON != ''
+        env:
+          PLAY_JSON: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: se.spydon.fifflar_uffe
+          releaseFiles: build/app/outputs/bundle/release/app-release.aab
+          track: internal
+          status: completed
 
       - name: Create release
         uses: softprops/action-gh-release@v3
