@@ -1,3 +1,11 @@
 /*
   Cross-Origin-Opener-Policy: same-origin
   Cross-Origin-Embedder-Policy: require-corp
+/main.dart.js
+  Cache-Control: public, max-age=0, must-revalidate
+/flutter_bootstrap.js
+  Cache-Control: public, max-age=0, must-revalidate
+/flutter.js
+  Cache-Control: public, max-age=0, must-revalidate
+/canvaskit/*
+  Cache-Control: public, max-age=0, must-revalidate
