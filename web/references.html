@@ -28,7 +28,7 @@
       line-height: 1.5;
     }
     .page {
-      max-width: 640px;
+      max-width: 720px;
       margin: 0 auto;
     }
     h1 {
@@ -38,6 +38,74 @@
     .intro {
       color: #8a7156;
       margin: 0 0 2rem;
+    }
+    .event {
+      display: grid;
+      grid-template-columns: 84px 28px 1fr;
+      column-gap: 0.75rem;
+    }
+    .event > *, .year > * {
+      min-width: 0;
+    }
+    article {
+      overflow-wrap: break-word;
+    }
+    .gutter {
+      text-align: right;
+      color: #8a7156;
+      font-weight: bold;
+      font-size: 0.9rem;
+      padding-top: 1.1rem;
+      white-space: nowrap;
+    }
+    .node {
+      position: relative;
+    }
+    .node::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      margin-left: -2px;
+      background: #e0cfae;
+    }
+    .node::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 1.15rem;
+      width: 12px;
+      height: 12px;
+      margin-left: -8px;
+      border-radius: 50%;
+      background: #ffd460;
+      border: 2px solid #a05a3c;
+    }
+    .event:first-of-type .node::before {
+      top: 1.15rem;
+    }
+    .event:last-of-type .node::before {
+      bottom: auto;
+      height: 1.15rem;
+    }
+    .year {
+      display: grid;
+      grid-template-columns: 84px 28px 1fr;
+      column-gap: 0.75rem;
+    }
+    .year .node::after {
+      content: none;
+    }
+    .year span {
+      justify-self: start;
+      background: #a05a3c;
+      color: #fff6e3;
+      font-weight: bold;
+      border-radius: 999px;
+      padding: 0.1rem 0.9rem;
+      margin: 0.35rem 0;
     }
     article {
       background: #fffdf6;
@@ -56,6 +124,25 @@
     article a {
       color: #1b6ca8;
       font-weight: bold;
+    }
+    article .date {
+      display: none;
+      color: #a05a3c;
+      font-weight: bold;
+      font-size: 0.85rem;
+      margin: 0 0 0.2rem;
+    }
+    @media (max-width: 600px) {
+      .event, .year {
+        grid-template-columns: 20px 1fr;
+        column-gap: 0.6rem;
+      }
+      .gutter {
+        display: none;
+      }
+      article .date {
+        display: block;
+      }
     }
     .back {
       display: inline-block;
@@ -84,8 +171,35 @@
         const events = [...data.events].sort(
           (a, b) => a.date.localeCompare(b.date),
         );
+        const months = ['jan', 'feb', 'mar', 'apr', 'maj', 'jun',
+          'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
+        let currentYear = '';
         for (const event of events) {
+          const [year, month, day] = event.date.split('-');
+          if (year !== currentYear) {
+            currentYear = year;
+            const marker = document.createElement('div');
+            marker.className = 'year';
+            const gutter = document.createElement('div');
+            const node = document.createElement('div');
+            node.className = 'node';
+            const label = document.createElement('span');
+            label.textContent = year;
+            marker.append(gutter, node, label);
+            container.append(marker);
+          }
+          const row = document.createElement('div');
+          row.className = 'event';
+          const gutter = document.createElement('div');
+          gutter.className = 'gutter';
+          const shortDate = `${Number(day)} ${months[Number(month) - 1]}`;
+          gutter.textContent = shortDate;
+          const node = document.createElement('div');
+          node.className = 'node';
           const article = document.createElement('article');
+          const date = document.createElement('p');
+          date.className = 'date';
+          date.textContent = `${shortDate} ${year}`;
           const title = document.createElement('h2');
           title.textContent = event.title.sv;
           const body = document.createElement('p');
@@ -95,8 +209,9 @@
           link.textContent = event.source;
           link.target = '_blank';
           link.rel = 'noopener';
-          article.append(title, body, link);
-          container.append(article);
+          article.append(date, title, body, link);
+          row.append(gutter, node, article);
+          container.append(row);
         }
       });
   </script>
