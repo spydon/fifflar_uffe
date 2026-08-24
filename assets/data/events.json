@@ -3,15 +3,29 @@
     {
       "id": "valfardsstaten",
       "date": "2000-01-02",
-      "source": "Wikipedia",
-      "url": "https://sv.wikipedia.org/wiki/Ulf_Kristersson",
+      "source": "Svensk Tidskrift",
+      "url": "https://www.svensktidskrift.se/ulf-kristersson-thomas-idergard-for-en-individuell-valfardspolitik/",
       "title": {
         "sv": "Uppdraget: avveckla välfärdsstaten",
         "en": "The mission: dismantle the welfare state"
       },
       "body": {
-        "sv": "Redan 1990 förklarar Uffe att hans uppdrag som moderat är att bekämpa och avveckla välfärdsstaten. I boken Non-working generation (1994) jämför han den svenska arbetsmarknadsmodellen med apartheid. Han har aldrig tagit avstånd från det.",
-        "en": "As early as 1990 Uffe declares that his mission as a Moderate is to fight and dismantle the welfare state. In his 1994 book Non-working generation he compares the Swedish labour market model to apartheid. He has never retracted it."
+        "sv": "1990 skriver MUF-ordföranden Uffe: \"Som moderater och förkämpar för individuell frihet och marknadsekonomi har vi ett uppdrag att bekämpa och avveckla välfärdsstaten.\" Han har aldrig tagit avstånd från det.",
+        "en": "In 1990 youth wing chairman Uffe writes: \"As Moderates and champions of individual freedom and market economy we have a mission to fight and dismantle the welfare state.\" He has never retracted it."
+      }
+    },
+    {
+      "id": "non_working_generation",
+      "date": "2000-03-01",
+      "source": "Wikipedia",
+      "url": "https://sv.wikipedia.org/wiki/Ulf_Kristersson",
+      "title": {
+        "sv": "Boken om den sovande generationen",
+        "en": "The book about the non-working generation"
+      },
+      "body": {
+        "sv": "I boken Non-working generation (1994) argumenterar Uffe mot den svenska modellen och välfärdsstaten, som han jämför med apartheid och anser trycker ner människor i passivitet.",
+        "en": "In his 1994 book Non-working generation Uffe argues against the Swedish model and the welfare state, which he compares to apartheid and considers to press people into passivity."
       }
     },
     {
@@ -31,15 +45,15 @@
     {
       "id": "st_goran",
       "date": "2000-09-01",
-      "source": "Wikipedia",
-      "url": "https://sv.wikipedia.org/wiki/Sankt_G%C3%B6rans_sjukhus",
+      "source": "Stockholms Fria",
+      "url": "https://www.stockholmsfria.se/artikel/8503",
       "title": {
         "sv": "S:t Göran privatiseras",
         "en": "S:t Göran is privatized"
       },
       "body": {
-        "sv": "Det borgerliga landstinget säljer S:t Görans sjukhus till Bure för 300 miljoner, i strid med upphandlingslagen.",
-        "en": "The conservative county council sells S:t Göran hospital to Bure for 300 million, in breach of procurement law."
+        "sv": "S:t Görans sjukhus säljs 1999 till Bure, senare Capio, för 250 miljoner, prutat till 225. Landstingets egna revisorer: konstruktionen kringgick upphandlingslagen, och miljardkontraktet på vården följde med utan konkurrens.",
+        "en": "S:t Göran hospital is sold in 1999 to Bure, later Capio, for 250 million, haggled down to 225. The county council's own auditors: the construction circumvented the procurement law, and the billion kronor care contract came along without competition."
       }
     },
     {
@@ -318,8 +332,8 @@
         "en": "Bilprovningen is carved up"
       },
       "body": {
-        "sv": "Sjuttio av Bilprovningens stationer säljs till Opus, delägt via Cypern, för 375 miljoner kronor med säljarkredit.",
-        "en": "Seventy of Bilprovningen's inspection stations are sold to Opus, partly owned via Cyprus, for 375 million kronor on a seller's credit."
+        "sv": "Sjuttio av Bilprovningens stationer säljs till Opus för 375 miljoner kronor när besiktningsmonopolet styckas.",
+        "en": "Seventy of Bilprovningen's inspection stations are sold to Opus for 375 million kronor as the inspection monopoly is carved up."
       }
     },
     {
