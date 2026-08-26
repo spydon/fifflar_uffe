@@ -475,8 +475,8 @@ class EnStrings extends Strings {
   String get mainMenu => 'Main menu';
   @override
   String get mainMenuNote =>
-      "A game takes a little over fifteen minutes and walks through Uffe's "
-      'fiffling through the ages. Can you fiffle enough for yourself in '
+      "A game takes a little over fifteen minutes and covers Uffe's "
+      'fiffling over the years. Can you fiffle enough for yourself in '
       'that time?';
   @override
   String get startPlaying => 'Start fiffling';
