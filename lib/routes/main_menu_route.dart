@@ -3,9 +3,11 @@ import 'dart:async';
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/ui/game_button.dart';
+import 'package:fifflar_uffe/ui/menu_note_component.dart';
 import 'package:fifflar_uffe/ui/modal_page.dart';
 import 'package:fifflar_uffe/ui/panel_component.dart';
 import 'package:fifflar_uffe/ui/panel_header.dart';
+import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 
@@ -29,11 +31,14 @@ class MainMenuPage extends ModalPage {
   MainMenuPage()
     : super(designSize: Vector2(560, 520), dismissOnScrimTap: false);
 
-  static const double _firstButtonY = 120;
+  static const double _noteTop = 54;
+  static const double _noteInset = 40;
+  static const double _noteToButtonGap = 66;
   static const double _buttonSpacing = 96;
   static const double _bottomPadding = 90;
 
   late final PanelComponent _background;
+  late final MenuNoteComponent _note;
   late final GameButton _start;
   late final GameButton _highscores;
   late final GameButton _settings;
@@ -54,6 +59,15 @@ class MainMenuPage extends ModalPage {
         size: Vector2(360, 68),
         position: Vector2(center, 0),
         anchor: Anchor.center,
+      ),
+      _note = MenuNoteComponent(
+        selector: (strings) => strings.mainMenuNote,
+        textRenderer: isNarrowScreen
+            ? TextStyles.enlarged(TextStyles.note, 1.2)
+            : TextStyles.note,
+        width: designSize.x - 2 * _noteInset,
+        position: Vector2(center, _noteTop),
+        anchor: Anchor.topCenter,
       ),
       _start = GameButton(
         label: (strings) => strings.startPlaying,
@@ -84,6 +98,7 @@ class MainMenuPage extends ModalPage {
       onPressed: () => game.router.pushNamed('highscore'),
     );
     _built = true;
+    _note.size.addListener(_layoutButtons);
     _layoutButtons();
   }
 
@@ -116,7 +131,7 @@ class MainMenuPage extends ModalPage {
       _about,
     ];
     final center = designSize.x / 2;
-    var y = _firstButtonY;
+    var y = _note.position.y + _note.size.y + _noteToButtonGap;
     for (final button in buttons) {
       button.position = Vector2(center, y);
       y += _buttonSpacing;

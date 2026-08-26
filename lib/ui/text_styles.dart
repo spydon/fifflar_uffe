@@ -61,6 +61,15 @@ class TextStyles {
     style: const TextStyle(fontSize: 19, color: brown),
   );
 
+  static final note = TextPaint(
+    style: const TextStyle(
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+      color: brown,
+      height: 1.3,
+    ),
+  );
+
   static final bubble = TextPaint(
     style: const TextStyle(
       fontSize: 17,
