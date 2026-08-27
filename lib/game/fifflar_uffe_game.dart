@@ -177,7 +177,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
     if (soundService != null) {
       unawaited(soundService.init());
     }
-    if (!save.menuSeen) {
+    if (isFreshRun) {
       unawaited(router.mounted.then((_) => router.pushNamed('mainMenu')));
     }
   }

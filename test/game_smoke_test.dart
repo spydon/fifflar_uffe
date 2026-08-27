@@ -19,17 +19,30 @@ import 'package:flame_test/flame_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'fakes/start_run.dart';
+
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUp(() {
-    SharedPreferences.setMockInitialValues({'fifflar_uffe.menu_seen': true});
+    SharedPreferences.setMockInitialValues({});
   });
 
   testWithGame<FifflarUffeGame>(
-    'game loads with the home route active',
-    FifflarUffeGame.new,
+    'an ongoing game loads with the home route active',
+    () {
+      SharedPreferences.setMockInitialValues({
+        'fifflar_uffe.save.v1': jsonEncode({
+          'balance': 5.0,
+          'elapsedDays': 100.0,
+          'savedAt': '2026-08-19T00:00:00.000',
+        }),
+      });
+      return FifflarUffeGame();
+    },
     (game) async {
+      game.update(0);
+      await game.ready();
       game.update(0);
       await game.ready();
       expect(game.router.currentRoute, game.router.routes['home']);
@@ -38,11 +51,8 @@ void main() {
   );
 
   testWithGame<FifflarUffeGame>(
-    'the first launch opens the main menu and freezes the world',
-    () {
-      SharedPreferences.setMockInitialValues({});
-      return FifflarUffeGame();
-    },
+    'a fresh run opens the main menu and freezes the world',
+    FifflarUffeGame.new,
     (game) async {
       game.update(0);
       await game.ready();
@@ -62,11 +72,8 @@ void main() {
   );
 
   testWithGame<FifflarUffeGame>(
-    'starting from the main menu remembers that it was shown',
-    () {
-      SharedPreferences.setMockInitialValues({});
-      return FifflarUffeGame();
-    },
+    'starting from the main menu resumes the game',
+    FifflarUffeGame.new,
     (game) async {
       game.update(0);
       await game.ready();
@@ -87,16 +94,12 @@ void main() {
       await game.ready();
       expect(game.router.currentRoute, game.router.routes['home']);
       expect(game.world.updatePaused, isFalse);
-      expect(game.persistence.load().menuSeen, isTrue);
     },
   );
 
   testWithGame<FifflarUffeGame>(
     'the main menu opens the settings and about pages',
-    () {
-      SharedPreferences.setMockInitialValues({});
-      return FifflarUffeGame();
-    },
+    FifflarUffeGame.new,
     (game) async {
       game.update(0);
       await game.ready();
@@ -165,7 +168,6 @@ void main() {
     'buildings from a saved game appear on load',
     () {
       SharedPreferences.setMockInitialValues({
-        'fifflar_uffe.menu_seen': true,
         'fifflar_uffe.save.v1': jsonEncode({
           'balance': 500.0,
           'owned': {'lower_taxes': 2},
@@ -188,7 +190,6 @@ void main() {
     'reaching election day ends the game and restart begins a new run',
     () {
       SharedPreferences.setMockInitialValues({
-        'fifflar_uffe.menu_seen': true,
         'fifflar_uffe.save.v1': jsonEncode({
           'balance': 10.0,
           'totalEarned': 25.0,
@@ -227,8 +228,7 @@ void main() {
     'the skill tree and its detail pages pause the world',
     FifflarUffeGame.new,
     (game) async {
-      game.update(0);
-      await game.ready();
+      await startRun(game);
       final before = game.timeline.elapsedDays;
       game.router.pushNamed('shop');
       game.update(0);
@@ -256,7 +256,6 @@ void main() {
     'open popups are closed when the game over banner appears',
     () {
       SharedPreferences.setMockInitialValues({
-        'fifflar_uffe.menu_seen': true,
         'fifflar_uffe.save.v1': jsonEncode({
           'balance': 10.0,
           'totalEarned': 25.0,
@@ -288,7 +287,6 @@ void main() {
     'continuing after game over keeps the run going past election day',
     () {
       SharedPreferences.setMockInitialValues({
-        'fifflar_uffe.menu_seen': true,
         'fifflar_uffe.save.v1': jsonEncode({
           'balance': 10.0,
           'totalEarned': 25.0,
@@ -323,7 +321,6 @@ void main() {
     'a continued save loads past election day without a game over',
     () {
       SharedPreferences.setMockInitialValues({
-        'fifflar_uffe.menu_seen': true,
         'fifflar_uffe.save.v1': jsonEncode({
           'balance': 10.0,
           'totalEarned': 25.0,
@@ -351,7 +348,6 @@ void main() {
     'buildings sit in the same branch and tier layout as the shop',
     () {
       SharedPreferences.setMockInitialValues({
-        'fifflar_uffe.menu_seen': true,
         'fifflar_uffe.save.v1': jsonEncode({
           'balance': 0.0,
           'owned': {'hire_cleaner': 1, 'write_book': 1, 'privatize_schools': 1},
@@ -393,8 +389,7 @@ void main() {
     'turning sound off in the settings is persisted',
     FifflarUffeGame.new,
     (game) async {
-      game.update(0);
-      await game.ready();
+      await startRun(game);
       expect(game.soundEnabled.value, isTrue);
       game.router.pushNamed('settings');
       game.update(0);
@@ -415,8 +410,7 @@ void main() {
     'the pause menu opens the settings page',
     FifflarUffeGame.new,
     (game) async {
-      game.update(0);
-      await game.ready();
+      await startRun(game);
       game.router.pushNamed('pause');
       game.update(0);
       await game.ready();
@@ -461,7 +455,6 @@ void main() {
     'an event card appears when its date is reached, not on load',
     () {
       SharedPreferences.setMockInitialValues({
-        'fifflar_uffe.menu_seen': true,
         'fifflar_uffe.save.v1': jsonEncode({
           'balance': 0.0,
           'owned': <String, int>{},
@@ -492,7 +485,6 @@ void main() {
     'events arriving together are queued so each can be read',
     () {
       SharedPreferences.setMockInitialValues({
-        'fifflar_uffe.menu_seen': true,
         'fifflar_uffe.save.v1': jsonEncode({
           'balance': 0.0,
           'owned': <String, int>{},
@@ -531,7 +523,6 @@ void main() {
     'a dismissed card makes room for the next queued event at once',
     () {
       SharedPreferences.setMockInitialValues({
-        'fifflar_uffe.menu_seen': true,
         'fifflar_uffe.save.v1': jsonEncode({
           'balance': 0.0,
           'owned': <String, int>{},
@@ -560,7 +551,6 @@ void main() {
     'events already in the past are not replayed on load',
     () {
       SharedPreferences.setMockInitialValues({
-        'fifflar_uffe.menu_seen': true,
         'fifflar_uffe.save.v1': jsonEncode({
           'balance': 0.0,
           'owned': <String, int>{},
@@ -653,8 +643,7 @@ void main() {
     'the pause menu can exit the run and return to the main menu',
     FifflarUffeGame.new,
     (game) async {
-      game.update(0);
-      await game.ready();
+      await startRun(game);
       for (var i = 0; i < 5; i++) {
         game.economy.earnClick();
       }
@@ -689,8 +678,7 @@ void main() {
     'a balance too wide for the counter breaks capitalism',
     FifflarUffeGame.new,
     (game) async {
-      game.update(0);
-      await game.ready();
+      await startRun(game);
       game.economy.baseClickValue = 1e15;
       game.economy.earnClick();
       game.update(0);
@@ -708,8 +696,7 @@ void main() {
     'restarting after breaking capitalism allows it to break again',
     FifflarUffeGame.new,
     (game) async {
-      game.update(0);
-      await game.ready();
+      await startRun(game);
       game.economy.baseClickValue = 1e15;
       game.economy.earnClick();
       game.update(0);

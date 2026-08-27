@@ -72,10 +72,7 @@ class MainMenuPage extends ModalPage {
       _start = GameButton(
         label: (strings) => strings.startPlaying,
         anchor: Anchor.center,
-        onPressed: () {
-          unawaited(game.persistence.markMenuSeen());
-          close();
-        },
+        onPressed: close,
       ),
       _settings = GameButton(
         label: (strings) => strings.settings,

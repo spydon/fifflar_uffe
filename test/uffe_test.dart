@@ -10,7 +10,7 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUp(() {
-    SharedPreferences.setMockInitialValues({'fifflar_uffe.menu_seen': true});
+    SharedPreferences.setMockInitialValues({});
   });
 
   Future<UffeFigureComponent> loadFigure(FifflarUffeGame game) async {

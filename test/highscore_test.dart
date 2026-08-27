@@ -15,12 +15,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'fakes/fake_highscore_client.dart';
+import 'fakes/start_run.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUp(() {
-    SharedPreferences.setMockInitialValues({'fifflar_uffe.menu_seen': true});
+    SharedPreferences.setMockInitialValues({});
   });
 
   Future<void> settle(FifflarUffeGame game) async {
@@ -152,7 +153,6 @@ void main() {
       'a run that is already underway gets no token',
       () {
         SharedPreferences.setMockInitialValues({
-          'fifflar_uffe.menu_seen': true,
           'fifflar_uffe.save.v1': jsonEncode({
             'balance': 500.0,
             'totalEarned': 500.0,
@@ -174,6 +174,7 @@ void main() {
       'progress is reported while playing and not while paused',
       () => FifflarUffeGame(highscoreClient: client),
       (game) async {
+        await startRun(game);
         await settle(game);
         game.economy.earnClick();
         await play(game, 31);
@@ -196,6 +197,7 @@ void main() {
       'a lost response is recovered through the run state',
       () => FifflarUffeGame(highscoreClient: client),
       (game) async {
+        await startRun(game);
         await settle(game);
         client
           ..serverSeq = 2
@@ -212,7 +214,6 @@ void main() {
       'an implausible report flags the run and hides submission',
       () {
         SharedPreferences.setMockInitialValues({
-          'fifflar_uffe.menu_seen': true,
           'fifflar_uffe.save.v1': jsonEncode({
             ...finishedSave(runId: 'run-9'),
             'elapsedDays': Timeline.totalDays - 400,
@@ -236,7 +237,6 @@ void main() {
       'the game over screen submits the final state with a name',
       () {
         SharedPreferences.setMockInitialValues({
-          'fifflar_uffe.menu_seen': true,
           'fifflar_uffe.save.v1': jsonEncode(finishedSave(runId: 'run-9')),
         });
         return FifflarUffeGame(highscoreClient: client);
@@ -292,7 +292,6 @@ void main() {
       'a score below the submitted best only offers the highscore list',
       () {
         SharedPreferences.setMockInitialValues({
-          'fifflar_uffe.menu_seen': true,
           'fifflar_uffe.save.v1': jsonEncode(finishedSave(runId: 'run-9')),
         });
         client.leaderboard = const Leaderboard(
@@ -318,7 +317,6 @@ void main() {
       'invalid names are rejected before anything is sent',
       () {
         SharedPreferences.setMockInitialValues({
-          'fifflar_uffe.menu_seen': true,
           'fifflar_uffe.save.v1': jsonEncode(finishedSave(runId: 'run-9')),
         });
         return FifflarUffeGame(highscoreClient: client);
@@ -344,7 +342,6 @@ void main() {
       'a rejected submission keeps the run unsubmitted',
       () {
         SharedPreferences.setMockInitialValues({
-          'fifflar_uffe.menu_seen': true,
           'fifflar_uffe.save.v1': jsonEncode(finishedSave(runId: 'run-9')),
         });
         return FifflarUffeGame(highscoreClient: client);
@@ -365,7 +362,6 @@ void main() {
       'breaking capitalism is reported once with the final state',
       () {
         SharedPreferences.setMockInitialValues({
-          'fifflar_uffe.menu_seen': true,
           'fifflar_uffe.save.v1': jsonEncode({
             'balance': 0.0,
             'totalEarned': 0.0,
@@ -432,7 +428,6 @@ void main() {
       'the submit section is hidden at game over when offline',
       () {
         SharedPreferences.setMockInitialValues({
-          'fifflar_uffe.menu_seen': true,
           'fifflar_uffe.save.v1': jsonEncode(finishedSave(runId: 'run-9')),
         });
         return FifflarUffeGame(

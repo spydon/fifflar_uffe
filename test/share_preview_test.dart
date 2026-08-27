@@ -10,6 +10,8 @@ import 'package:flame_test/flame_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'fakes/start_run.dart';
+
 ui.Image _fakeCard() {
   final recorder = ui.PictureRecorder();
   ui.Canvas(recorder).drawRect(
@@ -26,15 +28,14 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUp(() {
-    SharedPreferences.setMockInitialValues({'fifflar_uffe.menu_seen': true});
+    SharedPreferences.setMockInitialValues({});
   });
 
   testWithGame<FifflarUffeGame>(
     'share preview shows the card with share and download buttons',
     FifflarUffeGame.new,
     (game) async {
-      game.update(0);
-      await game.ready();
+      await startRun(game);
       final image = _fakeCard();
       game.router.pushRoute(SharePreviewRoute(png: Uint8List(0), image: image));
       game.update(0);
