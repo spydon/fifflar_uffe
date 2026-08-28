@@ -8,6 +8,7 @@ class FakeHighscoreClient implements HighscoreClient {
   final List<LeaderboardPeriod> fetchedPeriods = [];
   int runCounter = 0;
   int signIns = 0;
+  int signInAttempts = 0;
   int serverSeq = 0;
   HighscoreError? reportError;
   HighscoreError? submitError;
@@ -26,6 +27,7 @@ class FakeHighscoreClient implements HighscoreClient {
 
   @override
   Future<void> signIn() async {
+    signInAttempts++;
     _checkOnline();
     signIns++;
   }

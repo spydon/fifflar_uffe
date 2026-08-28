@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/model/timeline.dart';
@@ -42,6 +43,8 @@ class GameOverPage extends ModalPage {
     : super(designSize: Vector2(700, 480), dismissOnScrimTap: false);
 
   static const int maxNameLength = 10;
+  static const double firstRetryDelay = 2;
+  static const double maxRetryDelay = 30;
   static const double _sendGap = 12;
   static final RegExp _allowedName = RegExp(
     r"^[\p{L}\p{N} .,_!?'-]+$",
@@ -64,6 +67,10 @@ class GameOverPage extends ModalPage {
 
   bool _built = false;
   bool _submitting = false;
+  bool _seenAvailable = false;
+  bool _probing = false;
+  Timer? _retry;
+  double _retryDelay = firstRetryDelay;
   HighscoreError? _error;
   bool _invalidName = false;
 
@@ -188,23 +195,63 @@ class GameOverPage extends ModalPage {
   @override
   void onMount() {
     super.onMount();
-    game.highscore.available.addListener(_refresh);
-    unawaited(
-      game.highscore.probe().then((_) {
-        if (isMounted) {
-          _refresh();
-        }
-      }),
-    );
+    _seenAvailable = game.highscore.available.value;
+    game.highscore.available.addListener(_onAvailabilityChanged);
+    unawaited(_probe());
   }
 
   @override
   void onRemove() {
-    game.highscore.available.removeListener(_refresh);
+    game.highscore.available.removeListener(_onAvailabilityChanged);
+    _retry = null;
     super.onRemove();
   }
 
-  bool get _showSubmitSection => game.canSubmitHighscore;
+  @override
+  void update(double dt) {
+    super.update(dt);
+    _retry?.update(dt);
+  }
+
+  void _onAvailabilityChanged() {
+    if (game.highscore.available.value) {
+      _seenAvailable = true;
+      _retryDelay = firstRetryDelay;
+      _retry = null;
+    } else {
+      _scheduleRetry();
+    }
+    _refresh();
+  }
+
+  Future<void> _probe() async {
+    _retry = null;
+    _probing = true;
+    try {
+      await game.highscore.probe();
+    } finally {
+      _probing = false;
+    }
+    if (!isMounted) {
+      return;
+    }
+    if (!game.highscore.available.value) {
+      _scheduleRetry();
+    }
+    _refresh();
+  }
+
+  void _scheduleRetry() {
+    if (_probing || _retry != null) {
+      return;
+    }
+    _retry = Timer(_retryDelay, onTick: () => unawaited(_probe()));
+    _retryDelay = min(_retryDelay * 2, maxRetryDelay);
+  }
+
+  bool get _showSubmitSection =>
+      game.hasUnsubmittedScore &&
+      (game.highscore.available.value || _seenAvailable);
 
   bool get _showHighscoresButton =>
       game.highscore.available.value && !_showSubmitSection;

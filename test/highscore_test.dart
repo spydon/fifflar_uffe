@@ -440,6 +440,106 @@ void main() {
         expect(page.panel.children.whereType<NameInputComponent>(), isEmpty);
       },
     );
+
+    testWithGame<FifflarUffeGame>(
+      'the game over screen retries the backend with a growing delay',
+      () {
+        SharedPreferences.setMockInitialValues({
+          'fifflar_uffe.save.v1': jsonEncode(finishedSave(runId: 'run-9')),
+        });
+        return FifflarUffeGame(
+          highscoreClient: FakeHighscoreClient()..online = false,
+        );
+      },
+      (game) async {
+        final client = game.highscoreClient! as FakeHighscoreClient;
+        await reachGameOver(game);
+        final attemptsAtGameOver = client.signInAttempts;
+        await play(game, 1);
+        expect(client.signInAttempts, attemptsAtGameOver);
+        await play(game, 1);
+        expect(client.signInAttempts, attemptsAtGameOver + 1);
+        await play(game, 4);
+        expect(client.signInAttempts, attemptsAtGameOver + 2);
+        await play(game, 8);
+        expect(client.signInAttempts, attemptsAtGameOver + 3);
+        await play(game, 16);
+        expect(client.signInAttempts, attemptsAtGameOver + 4);
+        await play(game, 30);
+        expect(client.signInAttempts, attemptsAtGameOver + 5);
+        await play(game, 30);
+        expect(client.signInAttempts, attemptsAtGameOver + 6);
+      },
+    );
+
+    testWithGame<FifflarUffeGame>(
+      'the submit section appears once the backend becomes reachable',
+      () {
+        SharedPreferences.setMockInitialValues({
+          'fifflar_uffe.save.v1': jsonEncode(finishedSave(runId: 'run-9')),
+        });
+        return FifflarUffeGame(
+          highscoreClient: FakeHighscoreClient()..online = false,
+        );
+      },
+      (game) async {
+        final client = game.highscoreClient! as FakeHighscoreClient;
+        final page = await reachGameOver(game);
+        expect(page.panel.children.whereType<NameInputComponent>(), isEmpty);
+        final attemptsAtGameOver = client.signInAttempts;
+        client.online = true;
+        await play(game, 2);
+        expect(game.highscore.available.value, isTrue);
+        expect(game.canSubmitHighscore, isTrue);
+        expect(
+          page.panel.children.whereType<NameInputComponent>(),
+          hasLength(1),
+        );
+        expect(client.signInAttempts, attemptsAtGameOver + 1);
+        await play(game, 30);
+        expect(client.signInAttempts, attemptsAtGameOver + 1);
+      },
+    );
+
+    testWithGame<FifflarUffeGame>(
+      'a connection hiccup at game over keeps the submit section',
+      () {
+        SharedPreferences.setMockInitialValues({
+          'fifflar_uffe.save.v1': jsonEncode(finishedSave(runId: 'run-9')),
+        });
+        return FifflarUffeGame(highscoreClient: FakeHighscoreClient());
+      },
+      (game) async {
+        final client = game.highscoreClient! as FakeHighscoreClient;
+        final page = await reachGameOver(game);
+        final input = page.panel.children
+            .whereType<NameInputComponent>()
+            .single;
+        input.updateEditingValue(const TextEditingValue(text: 'Uffe'));
+        client.online = false;
+        pressSubmit(game, page);
+        await settle(game);
+        expect(client.submissions, isEmpty);
+        expect(game.highscore.available.value, isFalse);
+        expect(game.canSubmitHighscore, isFalse);
+        expect(
+          page.panel.children.whereType<NameInputComponent>(),
+          hasLength(1),
+        );
+        final status = page.panel.children.whereType<TextBoxComponent>().map(
+          (component) => component.text,
+        );
+        expect(status, contains('Det gick inte att skicka in resultatet'));
+        client.online = true;
+        await play(game, 2);
+        expect(game.highscore.available.value, isTrue);
+        pressSubmit(game, page);
+        await settle(game);
+        expect(client.submissions, hasLength(1));
+        expect(game.highscoreSubmitted, isTrue);
+        expect(page.panel.children.whereType<NameInputComponent>(), isEmpty);
+      },
+    );
   });
 
   test('names are cleaned and validated like the server does', () {
