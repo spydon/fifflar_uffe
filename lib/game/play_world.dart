@@ -20,6 +20,8 @@ class PlayWorld extends World
   SpawnComponent? _spawner;
   final Map<SkillId, BuildingComponent> _buildings = {};
 
+  bool updatePaused = false;
+
   Rect get playRect {
     final size = game.size;
     return Rect.fromLTWH(
@@ -81,6 +83,14 @@ class PlayWorld extends World
         add(building);
       }
     }
+  }
+
+  @override
+  void updateSubtree(double dt) {
+    if (updatePaused) {
+      return;
+    }
+    super.updateSubtree(dt);
   }
 
   @override

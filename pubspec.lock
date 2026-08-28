@@ -206,7 +206,7 @@ packages:
     description:
       path: "packages/flame"
       ref: "perf/component-set-backing"
-      resolved-ref: "67c607112a4062747251017f9d39eed191c2f702"
+      resolved-ref: "27956f0668c1464132a51815171c56d6909bf482"
       url: "https://github.com/flame-engine/flame.git"
     source: git
     version: "1.38.0"
@@ -224,7 +224,7 @@ packages:
     description:
       path: "packages/flame_test"
       ref: "perf/component-set-backing"
-      resolved-ref: "67c607112a4062747251017f9d39eed191c2f702"
+      resolved-ref: "27956f0668c1464132a51815171c56d6909bf482"
       url: "https://github.com/flame-engine/flame.git"
     source: git
     version: "2.3.0"
