@@ -2,9 +2,11 @@ import 'dart:convert';
 
 import 'package:fifflar_uffe/components/building_component.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
+import 'package:fifflar_uffe/model/economy.dart';
 import 'package:fifflar_uffe/model/skill_catalog.dart';
 import 'package:fifflar_uffe/model/skill_id.dart';
 import 'package:fifflar_uffe/model/timeline.dart';
+import 'package:fifflar_uffe/routes/broken_capitalism_route.dart';
 import 'package:fifflar_uffe/routes/main_menu_route.dart';
 import 'package:fifflar_uffe/routes/pause_route.dart';
 import 'package:fifflar_uffe/routes/skill_detail_route.dart';
@@ -780,11 +782,16 @@ void main() {
   );
 
   testWithGame<FifflarUffeGame>(
-    'a balance too wide for the counter breaks capitalism',
+    'a balance of a trillion kronor breaks capitalism',
     FifflarUffeGame.new,
     (game) async {
       await startRun(game);
-      game.economy.baseClickValue = 1e15;
+      game.economy.baseClickValue = Economy.capitalismLimit - 1;
+      game.economy.earnClick();
+      game.update(0);
+      await game.ready();
+      expect(game.router.currentRoute, game.router.routes['home']);
+      game.economy.baseClickValue = 1;
       game.economy.earnClick();
       game.update(0);
       await game.ready();
@@ -794,6 +801,23 @@ void main() {
       );
       expect(game.world.updatePaused, isTrue);
       expect(game.highScore, game.economy.totalEarned);
+      final page = game.router.currentRoute.children
+          .whereType<BrokenCapitalismPage>()
+          .single;
+      final texts = page.panel.children
+          .whereType<TextBoxComponent>()
+          .map((component) => component.text)
+          .toList();
+      expect(texts, contains('Du hade sönder kapitalismen :('));
+      const limit = '1\u00a0000\u00a0000\u00a0000\u00a0000\u00a0kr';
+      expect(
+        texts,
+        contains(
+          'Den som får ihop mer än $limit har haft sönder kapitalismen och '
+          'får inte skicka in något resultat. Försök komma så nära $limit '
+          'som möjligt utan att passera det!',
+        ),
+      );
     },
   );
 

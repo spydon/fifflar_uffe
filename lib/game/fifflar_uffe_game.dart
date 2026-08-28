@@ -121,6 +121,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
     i18n = I18n(initialLanguage: save.language);
     highscore = HighscoreService(client: highscoreClient);
     economy.addListener(() => _dirty = true);
+    economy.addListener(_checkCapitalismLimit);
     timeline.addListener(() => _dirty = true);
     i18n.language.addListener(
       () => persistence.saveLanguage(i18n.language.value),
@@ -234,6 +235,12 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
     _gameOver = true;
     _openEnding('gameOver');
     sound?.playGameOver();
+  }
+
+  void _checkCapitalismLimit() {
+    if (economy.balance >= Economy.capitalismLimit) {
+      handleBalanceOverflow();
+    }
   }
 
   void handleBalanceOverflow() {

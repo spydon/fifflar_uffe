@@ -9,6 +9,8 @@ class Economy extends ChangeNotifier {
   Economy({this._balance = 0, this._totalEarned = 0, Map<SkillId, int>? owned})
     : _owned = Map.of(owned ?? {});
 
+  static const double capitalismLimit = 1e12;
+
   double _balance;
   double _totalEarned;
   final Map<SkillId, int> _owned;

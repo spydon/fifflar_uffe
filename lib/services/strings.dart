@@ -72,6 +72,7 @@ abstract class Strings {
   String get playAgain;
   String get continuePlaying;
   String get brokeCapitalism;
+  String capitalismLimitNote(String limit);
   String get share;
   String get shareTitle;
   String get download;
@@ -354,6 +355,11 @@ class SvStrings extends Strings {
   String get continuePlaying => 'Fortsätt fiffla';
   @override
   String get brokeCapitalism => 'Du hade sönder kapitalismen :(';
+  @override
+  String capitalismLimitNote(String limit) =>
+      'Den som får ihop mer än $limit har haft sönder kapitalismen och får '
+      'inte skicka in något resultat. Försök komma så nära $limit som '
+      'möjligt utan att passera det!';
   @override
   String get share => 'Dela';
   @override
@@ -720,6 +726,11 @@ class EnStrings extends Strings {
   String get continuePlaying => 'Keep fiddling';
   @override
   String get brokeCapitalism => 'You broke capitalism :(';
+  @override
+  String capitalismLimitNote(String limit) =>
+      'Anyone who gets past $limit has broken capitalism and is not allowed '
+      'to submit a score. Try to get as close to $limit as possible without '
+      'passing it!';
   @override
   String get share => 'Share';
   @override
