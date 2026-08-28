@@ -4,6 +4,7 @@ abstract class Strings {
   String get mainMenuTitle;
   String get mainMenu;
   String get mainMenuNote;
+  String get mainMenuReferencesPrompt;
   String get startPlaying;
   String get settings;
   String get sound;
@@ -120,6 +121,9 @@ class SvStrings extends Strings {
   String get mainMenuNote =>
       "Ett spel tar lite mer än en kvart och går igenom Uffe's fiffel "
       'genom tiderna. Kan du fiffla till dig nog på den tiden?';
+  @override
+  String get mainMenuReferencesPrompt =>
+      'Om du bara vill se allt fiffel som Uffe haft för sig, klicka [här]';
   @override
   String get startPlaying => 'Börja fiffla';
   @override
@@ -478,6 +482,10 @@ class EnStrings extends Strings {
       "A game takes a little over fifteen minutes and covers Uffe's "
       'fiffling over the years. Can you fiffle enough for yourself in '
       'that time?';
+  @override
+  String get mainMenuReferencesPrompt =>
+      'If you just want to see all the fiffling Uffe has been up to, '
+      'click [here]';
   @override
   String get startPlaying => 'Start fiffling';
   @override

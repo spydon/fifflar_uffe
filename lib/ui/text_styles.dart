@@ -119,6 +119,15 @@ class TextStyles {
     style: const TextStyle(fontSize: 15, color: brown),
   );
 
+  static final infoLink = TextPaint(
+    style: const TextStyle(
+      fontSize: 17,
+      fontWeight: FontWeight.bold,
+      color: Color(0xFF1B6CA8),
+      decoration: TextDecoration.underline,
+    ),
+  );
+
   static final eventLink = TextPaint(
     style: const TextStyle(
       fontSize: 15,

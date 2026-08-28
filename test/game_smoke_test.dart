@@ -8,12 +8,14 @@ import 'package:fifflar_uffe/model/timeline.dart';
 import 'package:fifflar_uffe/routes/main_menu_route.dart';
 import 'package:fifflar_uffe/routes/pause_route.dart';
 import 'package:fifflar_uffe/routes/skill_detail_route.dart';
+import 'package:fifflar_uffe/services/i18n.dart';
 import 'package:fifflar_uffe/ui/game_button.dart';
 import 'package:fifflar_uffe/ui/hud/event_card_component.dart';
 import 'package:fifflar_uffe/ui/hud/event_feed_component.dart';
 import 'package:fifflar_uffe/ui/hud/shop_hint_component.dart';
 import 'package:fifflar_uffe/ui/hud/speed_boost_button.dart';
 import 'package:fifflar_uffe/ui/language_flag_button.dart';
+import 'package:fifflar_uffe/ui/localized_inline_link_component.dart';
 import 'package:fifflar_uffe/ui/switch_button.dart';
 import 'package:flame/components.dart';
 import 'package:flame_test/flame_test.dart';
@@ -95,6 +97,40 @@ void main() {
       await game.ready();
       expect(game.router.currentRoute, game.router.routes['home']);
       expect(game.world.updatePaused, isFalse);
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
+    'the main menu links to the references below the about button',
+    FifflarUffeGame.new,
+    (game) async {
+      game.update(0);
+      await game.ready();
+      game.update(0);
+      await game.ready();
+      final page = game.router.currentRoute.children
+          .whereType<MainMenuPage>()
+          .single;
+      final prompt = page.panel.children
+          .whereType<LocalizedInlineLinkComponent>()
+          .single;
+      final about = page.panel.children.whereType<GameButton>().firstWhere(
+        (button) => button.label(game.i18n.strings) == 'Om',
+      );
+      expect(
+        prompt.text,
+        'Om du bara vill se allt fiffel som Uffe haft för sig, klicka här',
+      );
+      expect(prompt.linkWords, ['här']);
+      expect(prompt.url, 'references.html');
+      expect(prompt.position.y, greaterThan(about.position.y));
+      expect(prompt.size.y, greaterThan(0));
+
+      game.i18n.language.value = AppLanguage.en;
+      game.update(0);
+      await game.ready();
+      expect(prompt.linkWords, ['here']);
+      expect(prompt.text, endsWith('click here'));
     },
   );
 

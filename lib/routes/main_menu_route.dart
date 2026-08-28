@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:fifflar_uffe/game/assets.dart';
 import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/ui/game_button.dart';
+import 'package:fifflar_uffe/ui/localized_inline_link_component.dart';
 import 'package:fifflar_uffe/ui/menu_note_component.dart';
 import 'package:fifflar_uffe/ui/modal_page.dart';
 import 'package:fifflar_uffe/ui/panel_component.dart';
@@ -35,7 +36,9 @@ class MainMenuPage extends ModalPage {
   static const double _noteInset = 40;
   static const double _noteToButtonGap = 66;
   static const double _buttonSpacing = 96;
-  static const double _bottomPadding = 90;
+  static const double _buttonToPromptGap = 18;
+  static const double _promptInset = 40;
+  static const double _bottomPadding = 30;
 
   late final PanelComponent _background;
   late final MenuNoteComponent _note;
@@ -43,6 +46,7 @@ class MainMenuPage extends ModalPage {
   late final GameButton _highscores;
   late final GameButton _settings;
   late final GameButton _about;
+  late final LocalizedInlineLinkComponent _referencesPrompt;
   bool _built = false;
 
   @override
@@ -87,6 +91,18 @@ class MainMenuPage extends ModalPage {
         anchor: Anchor.center,
         onPressed: () => game.router.pushNamed('about'),
       ),
+      _referencesPrompt = LocalizedInlineLinkComponent(
+        selector: (strings) => strings.mainMenuReferencesPrompt,
+        url: 'references.html',
+        textRenderer: isNarrowScreen
+            ? TextStyles.enlarged(TextStyles.info, 1.2)
+            : TextStyles.info,
+        linkRenderer: isNarrowScreen
+            ? TextStyles.enlarged(TextStyles.infoLink, 1.2)
+            : TextStyles.infoLink,
+        maxWidth: designSize.x - 2 * _promptInset,
+        anchor: Anchor.topCenter,
+      ),
     ]);
     _highscores = GameButton(
       label: (strings) => strings.highscores,
@@ -96,6 +112,7 @@ class MainMenuPage extends ModalPage {
     );
     _built = true;
     _note.size.addListener(_layoutButtons);
+    _referencesPrompt.size.addListener(_layoutButtons);
     _layoutButtons();
   }
 
@@ -133,7 +150,10 @@ class MainMenuPage extends ModalPage {
       button.position = Vector2(center, y);
       y += _buttonSpacing;
     }
-    final height = y - _buttonSpacing + _bottomPadding;
+    final promptTop =
+        y - _buttonSpacing + GameButton.defaultSize.y / 2 + _buttonToPromptGap;
+    _referencesPrompt.position = Vector2(center, promptTop);
+    final height = promptTop + _referencesPrompt.size.y + _bottomPadding;
     _background.size = Vector2(designSize.x, height);
     resizePanel(Vector2(designSize.x, height));
   }
