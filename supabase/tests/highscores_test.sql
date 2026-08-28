@@ -120,6 +120,7 @@ select pg_temp.start('too_much');
 select pg_temp.start('missing_requirement');
 select pg_temp.start('balance');
 select pg_temp.start('too_fast');
+select pg_temp.start('boosted');
 select pg_temp.as_admin();
 update public.runs set started_at = now() - interval '60 seconds'
   where user_id = '00000000-0000-0000-0000-000000000002';
@@ -152,7 +153,12 @@ select is(
   public.report_progress(pg_temp.run('too_fast'), 1, 9752, 600, 600, '{}')
     ->> 'hint',
   'time_too_fast',
-  'play time cannot exceed wall time'
+  'play time cannot exceed double the wall time'
+);
+select is(
+  public.report_progress(pg_temp.run('boosted'), 1, 960, 0, 0, '{}'),
+  '{"ok": true, "seq": 1}'::jsonb,
+  'a run at double speed is plausible'
 );
 
 -------------------------------------------------------------------------------
@@ -181,13 +187,13 @@ select is(
   public.submit_score(pg_temp.run('u1'), 'Uffe', 2, 9752, 5600, 5385,
     '{"hire_cleaner": 2}') ->> 'error',
   'too_early',
-  'a run cannot finish in under twenty minutes'
+  'a run cannot finish in under ten minutes'
 );
 
 select pg_temp.as_admin();
 update public.runs
-  set started_at = now() - interval '21 minutes',
-      reported_at = now() - interval '20 minutes'
+  set started_at = now() - interval '11 minutes',
+      reported_at = now() - interval '10 minutes'
   where id = pg_temp.run('u1');
 select pg_temp.act_as('00000000-0000-0000-0000-000000000001');
 
@@ -195,7 +201,7 @@ select is(
   public.submit_score(pg_temp.run('u1'), '  Uffe  K ', 2, 9752, 5600, 5385,
     '{"hire_cleaner": 2}'),
   '{"ok": true, "seq": 2, "rank": 1, "best": 5600, "is_new_best": true}'::jsonb,
-  'a consistent final state is accepted'
+  'a boosted run finishing after ten minutes is accepted'
 );
 select is(
   public.submit_score(pg_temp.run('u1'), 'Uffe', 3, 9752, 5600, 5385,
@@ -280,7 +286,7 @@ select is(
   public.report_broken_capitalism(pg_temp.run('broken'), 1, 2040,
     1000000050, 1000000050, '{}') ->> 'error',
   'too_early',
-  'capitalism cannot break within five minutes'
+  'capitalism cannot break within two and a half minutes'
 );
 select pg_temp.as_admin();
 update public.runs
@@ -314,7 +320,7 @@ select is(
   'the leaderboard counts people who broke capitalism'
 );
 select is(
-  public.leaderboard() ->> 'games_played', '3',
+  public.leaderboard() ->> 'games_played', '4',
   'flagged and idle runs are not counted as played games'
 );
 

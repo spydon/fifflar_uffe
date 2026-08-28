@@ -12,7 +12,8 @@ import 'package:fifflar_uffe/model/skill_id.dart';
 import 'package:flame/components.dart';
 import 'package:flame/experimental.dart';
 
-class PlayWorld extends World with HasGameReference<FifflarUffeGame> {
+class PlayWorld extends World
+    with HasGameReference<FifflarUffeGame>, HasTimeScale {
   static const double topInset = 110;
   static const double edgeInset = 20;
 

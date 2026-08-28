@@ -12,6 +12,7 @@ import 'package:fifflar_uffe/ui/game_button.dart';
 import 'package:fifflar_uffe/ui/hud/event_card_component.dart';
 import 'package:fifflar_uffe/ui/hud/event_feed_component.dart';
 import 'package:fifflar_uffe/ui/hud/shop_hint_component.dart';
+import 'package:fifflar_uffe/ui/hud/speed_boost_button.dart';
 import 'package:fifflar_uffe/ui/language_flag_button.dart';
 import 'package:fifflar_uffe/ui/switch_button.dart';
 import 'package:flame/components.dart';
@@ -403,6 +404,74 @@ void main() {
       await game.ready();
       expect(game.soundEnabled.value, isFalse);
       expect(game.persistence.load().soundEnabled, isFalse);
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
+    'the speed boost button doubles the pace of the world and is persisted',
+    FifflarUffeGame.new,
+    (game) async {
+      await startRun(game);
+      final button = game.camera.viewport.children
+          .whereType<SpeedBoostButton>()
+          .single;
+      final toggle = button.children.whereType<ToggleButtonComponent>().single;
+      expect(button.isActive, isFalse);
+      expect(game.world.timeScale, 1);
+      final normalStart = game.timeline.elapsedDays;
+      game.update(1);
+      expect(
+        game.timeline.elapsedDays - normalStart,
+        closeTo(Timeline.daysPerSecond, 1e-9),
+      );
+
+      toggle.isSelected = true;
+      game.update(0);
+      await game.ready();
+      expect(game.speedBoost.value, isTrue);
+      expect(button.isActive, isTrue);
+      expect(game.world.timeScale, FifflarUffeGame.boostedTimeScale);
+      final boostedStart = game.timeline.elapsedDays;
+      game.update(1);
+      expect(
+        game.timeline.elapsedDays - boostedStart,
+        closeTo(2 * Timeline.daysPerSecond, 1e-9),
+      );
+      expect(game.persistence.load().speedBoost, isTrue);
+
+      game.speedBoost.value = false;
+      game.update(0);
+      await game.ready();
+      expect(button.isActive, isFalse);
+      expect(game.world.timeScale, 1);
+      expect(game.persistence.load().speedBoost, isFalse);
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
+    'a saved speed boost is active when the game loads',
+    () {
+      SharedPreferences.setMockInitialValues({
+        'fifflar_uffe.speed_boost': true,
+        'fifflar_uffe.save.v1': jsonEncode({
+          'balance': 5.0,
+          'elapsedDays': 100.0,
+          'savedAt': '2026-08-19T00:00:00.000',
+        }),
+      });
+      return FifflarUffeGame();
+    },
+    (game) async {
+      game.update(0);
+      await game.ready();
+      game.update(0);
+      await game.ready();
+      expect(game.speedBoost.value, isTrue);
+      expect(game.world.timeScale, FifflarUffeGame.boostedTimeScale);
+      final button = game.camera.viewport.children
+          .whereType<SpeedBoostButton>()
+          .single;
+      expect(button.isActive, isTrue);
     },
   );
 

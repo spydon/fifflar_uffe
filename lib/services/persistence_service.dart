@@ -22,6 +22,7 @@ class SaveData {
     this.highscoreRank,
     this.capitalismReported = false,
     this.soundEnabled = true,
+    this.speedBoost = false,
   });
 
   final double balance;
@@ -39,6 +40,7 @@ class SaveData {
   final int? highscoreRank;
   final bool capitalismReported;
   final bool soundEnabled;
+  final bool speedBoost;
 }
 
 class PersistenceService {
@@ -47,6 +49,7 @@ class PersistenceService {
   static const _saveKey = 'fifflar_uffe.save.v1';
   static const _languageKey = 'fifflar_uffe.language';
   static const _soundKey = 'fifflar_uffe.sound_enabled';
+  static const _speedBoostKey = 'fifflar_uffe.speed_boost';
 
   final SharedPreferences _preferences;
 
@@ -57,11 +60,13 @@ class PersistenceService {
   SaveData load() {
     final language = AppLanguage.fromCode(_preferences.getString(_languageKey));
     final soundEnabled = _preferences.getBool(_soundKey) ?? true;
+    final speedBoost = _preferences.getBool(_speedBoostKey) ?? false;
     final raw = _preferences.getString(_saveKey);
     if (raw == null) {
       return SaveData(
         language: language,
         soundEnabled: soundEnabled,
+        speedBoost: speedBoost,
       );
     }
     try {
@@ -90,16 +95,19 @@ class PersistenceService {
         highscoreRank: json['highscoreRank'] as int?,
         capitalismReported: json['capitalismReported'] as bool? ?? false,
         soundEnabled: soundEnabled,
+        speedBoost: speedBoost,
       );
     } on FormatException {
       return SaveData(
         language: language,
         soundEnabled: soundEnabled,
+        speedBoost: speedBoost,
       );
     } on TypeError {
       return SaveData(
         language: language,
         soundEnabled: soundEnabled,
+        speedBoost: speedBoost,
       );
     }
   }
@@ -148,5 +156,9 @@ class PersistenceService {
 
   Future<void> saveSoundEnabled({required bool enabled}) async {
     await _preferences.setBool(_soundKey, enabled);
+  }
+
+  Future<void> saveSpeedBoost({required bool enabled}) async {
+    await _preferences.setBool(_speedBoostKey, enabled);
   }
 }

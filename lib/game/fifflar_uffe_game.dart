@@ -27,6 +27,7 @@ import 'package:fifflar_uffe/ui/hud/event_feed_component.dart';
 import 'package:fifflar_uffe/ui/hud/hud_icon_button.dart';
 import 'package:fifflar_uffe/ui/hud/sek_counter.dart';
 import 'package:fifflar_uffe/ui/hud/shop_hint_component.dart';
+import 'package:fifflar_uffe/ui/hud/speed_boost_button.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:fifflar_uffe/util/snake_case.dart';
 import 'package:flame/components.dart';
@@ -53,11 +54,13 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
   static const double _maxDeltaTime = 5;
   static const double _progressReportPeriod = 30;
   static const double _freshRunMaxDays = 80;
+  static const double boostedTimeScale = 2;
 
   final HighscoreClient? highscoreClient;
   final Random _random = Random();
   final SoundService? sound;
   final ValueNotifier<bool> soundEnabled = ValueNotifier(true);
+  final ValueNotifier<bool> speedBoost = ValueNotifier(false);
 
   double highScore = 0;
   String? runId;
@@ -146,6 +149,9 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
       SekCounter(),
       DateCounter(),
       eventFeed = EventFeedComponent(),
+      SpeedBoostButton(
+        margin: const EdgeInsets.only(bottom: 184, right: 16),
+      ),
       HudIconButton(
         iconPath: AssetPaths.iconGear,
         margin: const EdgeInsets.only(bottom: 100, right: 16),
@@ -173,6 +179,9 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
     soundEnabled.value = save.soundEnabled;
     sound?.enabled.value = save.soundEnabled;
     soundEnabled.addListener(_onSoundToggled);
+    speedBoost.value = save.speedBoost;
+    _applySpeedBoost();
+    speedBoost.addListener(_onSpeedBoostToggled);
     final soundService = sound;
     if (soundService != null) {
       unawaited(soundService.init());
@@ -185,6 +194,15 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
   void _onSoundToggled() {
     sound?.enabled.value = soundEnabled.value;
     persistence.saveSoundEnabled(enabled: soundEnabled.value);
+  }
+
+  void _onSpeedBoostToggled() {
+    _applySpeedBoost();
+    persistence.saveSpeedBoost(enabled: speedBoost.value);
+  }
+
+  void _applySpeedBoost() {
+    world.timeScale = speedBoost.value ? boostedTimeScale : 1;
   }
 
   bool buyItem(SkillDef skill) {
