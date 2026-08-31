@@ -13,7 +13,7 @@ on:
 
 concurrency:
   group: build-apk
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -24,6 +24,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: main
 
       - uses: actions/setup-java@v5
         with:
@@ -35,6 +37,24 @@ jobs:
           channel: stable
 
       - run: flutter pub get
+
+      - name: Bump version
+        id: version
+        run: |
+          dart run melos version \
+            --all \
+            --yes \
+            --no-changelog \
+            --no-git-tag-version \
+            --no-git-commit-version \
+            --manual-version=fifflar_uffe:patch
+          version=$(grep '^version:' pubspec.yaml | cut -d ' ' -f 2)
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add pubspec.yaml
+          git commit -m "Release v$version"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
       - name: Set up release signing
         if: env.KEYSTORE != ''
@@ -51,19 +71,16 @@ jobs:
 
       - run: flutter build apk --release --build-number=${{ github.run_number }}
 
-      - name: Read version
-        id: version
-        run: |
-          version=$(grep '^version:' pubspec.yaml | cut -d ' ' -f 2 | cut -d '+' -f 1)
-          echo "version=$version" >> "$GITHUB_OUTPUT"
-
       - name: Rename APK
         run: |
           cp build/app/outputs/flutter-apk/app-release.apk \
-            "fifflar-uffe-v${{ steps.version.outputs.version }}-${{ github.run_number }}.apk"
+            "fifflar-uffe-v${{ steps.version.outputs.version }}.apk"
 
       - name: Build app bundle
         run: flutter build appbundle --release --build-number=${{ github.run_number }}
+
+      - name: Push version bump
+        run: git push origin HEAD:main
 
       - name: Upload to Play Console
         if: env.PLAY_JSON != ''
@@ -80,9 +97,8 @@ jobs:
       - name: Create release
         uses: softprops/action-gh-release@v3
         with:
-          tag_name: v${{ steps.version.outputs.version }}-${{ github.run_number }}
-          name: >-
-            Fifflar-Uffe v${{ steps.version.outputs.version }}
-            (build ${{ github.run_number }})
-          files: fifflar-uffe-v${{ steps.version.outputs.version }}-${{ github.run_number }}.apk
+          tag_name: v${{ steps.version.outputs.version }}
+          target_commitish: ${{ steps.version.outputs.sha }}
+          name: Fifflar-Uffe v${{ steps.version.outputs.version }}
+          files: fifflar-uffe-v${{ steps.version.outputs.version }}.apk
           make_latest: true

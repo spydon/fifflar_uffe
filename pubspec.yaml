@@ -1,10 +1,17 @@
 name: fifflar_uffe
 description: "A new Flutter project."
 publish_to: 'none'
-version: 0.1.0+1
+version: 0.1.0
 
 environment:
   sdk: ^3.13.0
+
+melos:
+  useRootAsPackage: true
+  command:
+    version:
+      branch: main
+      fetchTags: false
 
 dependencies:
   archive: ^4.0.0
@@ -40,6 +47,7 @@ dev_dependencies:
       path: packages/flame_test
   flutter_test:
     sdk: flutter
+  melos: ^8.6.0
 
 dependency_overrides:
   flame:

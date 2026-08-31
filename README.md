@@ -53,9 +53,11 @@ flutter test
 ```
 
 Pushes to `main` build the web release and deploy it through the `web`
-branch, build a signed Android app bundle that is uploaded as a draft
-production release to the Play Console, and pull requests run the same
-checks in CI.
+branch, and pull requests run the same checks in CI. Each push that changes
+the app also bumps the patch version with `melos version`, commits the bump
+back to `main`, builds a signed Android app bundle that is uploaded as a
+draft production release to the Play Console, and publishes the APK as a
+GitHub release tagged with the new version.
 
 ### Online highscores
 
