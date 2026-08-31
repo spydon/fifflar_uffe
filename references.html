@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Källorna bakom händelserna i Fifflar-Uffe: varje skandal i spelet med länk till nyhetsrapporteringen.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Fifflar-Uffe">
+  <meta property="og:title" content="Fifflar-Uffe – Referenser">
+  <meta property="og:description" content="Källorna bakom händelserna i Fifflar-Uffe: varje skandal i spelet med länk till nyhetsrapporteringen.">
+  <meta property="og:url" content="https://fifflar-uffe.se/references">
+  <meta property="og:image" content="https://fifflar-uffe.se/og_image.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:alt" content="Fifflar-Uffe, ett satiriskt klickspel">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://fifflar-uffe.se/og_image.jpg">
+  <title>Fifflar-Uffe – Referenser</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem 1rem 4rem;
+      background: #fff6e3;
+      color: #5b4632;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.5;
+    }
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 2rem;
+      margin: 0 0 0.5rem;
+    }
+    .intro {
+      color: #8a7156;
+      margin: 0 0 2rem;
+    }
+    .event {
+      display: grid;
+      grid-template-columns: 84px 28px 1fr;
+      column-gap: 0.75rem;
+    }
+    .event > *, .year > * {
+      min-width: 0;
+    }
+    article {
+      overflow-wrap: break-word;
+    }
+    .gutter {
+      text-align: right;
+      color: #8a7156;
+      font-weight: bold;
+      font-size: 0.9rem;
+      padding-top: 1.1rem;
+      white-space: nowrap;
+    }
+    .node {
+      position: relative;
+    }
+    .node::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      margin-left: -2px;
+      background: #e0cfae;
+    }
+    .node::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 1.15rem;
+      width: 12px;
+      height: 12px;
+      margin-left: -8px;
+      border-radius: 50%;
+      background: #ffd460;
+      border: 2px solid #a05a3c;
+    }
+    .event:first-of-type .node::before {
+      top: 1.15rem;
+    }
+    .event:last-of-type .node::before {
+      bottom: auto;
+      height: 1.15rem;
+    }
+    .year {
+      display: grid;
+      grid-template-columns: 84px 28px 1fr;
+      column-gap: 0.75rem;
+    }
+    .year .node::after {
+      content: none;
+    }
+    .year span {
+      justify-self: start;
+      background: #a05a3c;
+      color: #fff6e3;
+      font-weight: bold;
+      border-radius: 999px;
+      padding: 0.1rem 0.9rem;
+      margin: 0.35rem 0;
+    }
+    article {
+      background: #fffdf6;
+      border: 2px solid #e0cfae;
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1rem;
+    }
+    article h2 {
+      font-size: 1.2rem;
+      margin: 0 0 0.4rem;
+    }
+    article p {
+      margin: 0 0 0.6rem;
+    }
+    article a {
+      color: #1b6ca8;
+      font-weight: bold;
+    }
+    article .sources {
+      margin: 0;
+    }
+    article .date {
+      display: none;
+      color: #a05a3c;
+      font-weight: bold;
+      font-size: 0.85rem;
+      margin: 0 0 0.2rem;
+    }
+    @media (max-width: 600px) {
+      .event, .year {
+        grid-template-columns: 20px 1fr;
+        column-gap: 0.6rem;
+      }
+      .gutter {
+        display: none;
+      }
+      article .date {
+        display: block;
+      }
+    }
+    .back {
+      display: inline-block;
+      margin-top: 2rem;
+      color: #1b6ca8;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Referenser</h1>
+    <p class="intro">
+      Spelet är satir, men händelserna i spelet bygger på verklig
+      nyhetsrapportering.<br>
+      Här är källorna.
+    </p>
+    <main id="events"></main>
+    <a class="back" href="./">Tillbaka till spelet</a>
+  </div>
+  <script>
+    fetch('assets/assets/data/events.json')
+      .then((response) => response.json())
+      .then((data) => {
+        const container = document.getElementById('events');
+        const events = [...data.events].sort(
+          (a, b) => a.real_date.localeCompare(b.real_date),
+        );
+        const months = ['jan', 'feb', 'mar', 'apr', 'maj', 'jun',
+          'jul', 'aug', 'sep', 'okt', 'nov', 'dec'];
+        let currentYear = '';
+        for (const event of events) {
+          const [year, month, day] = event.real_date.split('-');
+          if (year !== currentYear) {
+            currentYear = year;
+            const marker = document.createElement('div');
+            marker.className = 'year';
+            const gutter = document.createElement('div');
+            const node = document.createElement('div');
+            node.className = 'node';
+            const label = document.createElement('span');
+            label.textContent = year;
+            marker.append(gutter, node, label);
+            container.append(marker);
+          }
+          const row = document.createElement('div');
+          row.className = 'event';
+          const gutter = document.createElement('div');
+          gutter.className = 'gutter';
+          const shortDate = day
+            ? `${Number(day)} ${months[Number(month) - 1]}`
+            : month
+              ? months[Number(month) - 1]
+              : '';
+          gutter.textContent = shortDate;
+          const node = document.createElement('div');
+          node.className = 'node';
+          const article = document.createElement('article');
+          const date = document.createElement('p');
+          date.className = 'date';
+          date.textContent = shortDate ? `${shortDate} ${year}` : year;
+          const title = document.createElement('h2');
+          title.textContent = event.title.sv;
+          const body = document.createElement('p');
+          body.textContent = event.body.sv;
+          const links = document.createElement('p');
+          links.className = 'sources';
+          event.sources.forEach((source, index) => {
+            if (index > 0) {
+              links.append(' \u00b7 ');
+            }
+            const link = document.createElement('a');
+            link.href = source.url;
+            link.textContent = source.name;
+            link.target = '_blank';
+            link.rel = 'noopener';
+            links.append(link);
+          });
+          article.append(date, title, body, links);
+          row.append(gutter, node, article);
+          container.append(row);
+        }
+      });
+  </script>
+</body>
+</html>
