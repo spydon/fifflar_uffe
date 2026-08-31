@@ -53,7 +53,9 @@ flutter test
 ```
 
 Pushes to `main` build the web release and deploy it through the `web`
-branch, and pull requests run the same checks in CI.
+branch, build a signed Android app bundle that is uploaded as a draft
+production release to the Play Console, and pull requests run the same
+checks in CI.
 
 ### Online highscores
 

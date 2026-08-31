@@ -69,8 +69,8 @@ jobs:
           serviceAccountJsonPlainText: ${{ secrets.PLAY_SERVICE_ACCOUNT_JSON }}
           packageName: se.spydon.fifflar_uffe
           releaseFiles: build/app/outputs/bundle/release/app-release.aab
-          tracks: internal
-          status: completed
+          tracks: production
+          status: draft
 
       - name: Create release
         uses: softprops/action-gh-release@v3
