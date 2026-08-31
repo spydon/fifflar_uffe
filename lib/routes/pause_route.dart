@@ -9,18 +9,18 @@ import 'package:fifflar_uffe/ui/panel_header.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 
-class PauseRoute extends Route with HasGameReference<FifflarUffeGame> {
+class PauseRoute extends Route with HasGameRef<FifflarUffeGame> {
   PauseRoute() : super(PausePage.new, transparent: true, maintainState: false);
 
   @override
   void onPush(Route? previousRoute) {
-    game.world.updatePaused = true;
-    unawaited(game.highscore.probe());
+    gameRef.world.updatePaused = true;
+    unawaited(gameRef.highscore.probe());
   }
 
   @override
   void onPop(Route nextRoute) {
-    game.world.updatePaused = false;
+    gameRef.world.updatePaused = false;
   }
 }
 
@@ -54,7 +54,7 @@ class PausePage extends ModalPage {
         color: GameButtonColor.blue,
         anchor: Anchor.center,
         position: Vector2(center, 200),
-        onPressed: () => game.router.pushNamed('settings'),
+        onPressed: () => gameRef.router.pushNamed('settings'),
       ),
       GameButton(
         label: (strings) => strings.mainMenu,
@@ -62,8 +62,8 @@ class PausePage extends ModalPage {
         anchor: Anchor.center,
         position: Vector2(center, 296),
         onPressed: () {
-          game.restartRun();
-          game.router.pushNamed('mainMenu', replace: true);
+          gameRef.restartRun();
+          gameRef.router.pushNamed('mainMenu', replace: true);
         },
       ),
     ]);

@@ -7,7 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 /// A centered, word wrapped sentence where the part written inside square
 /// brackets in the localized string is rendered as a tappable link.
 class LocalizedInlineLinkComponent extends PositionComponent
-    with HasGameReference<FifflarUffeGame> {
+    with HasGameRef<FifflarUffeGame> {
   LocalizedInlineLinkComponent({
     required this.selector,
     required this.url,
@@ -44,12 +44,12 @@ class LocalizedInlineLinkComponent extends PositionComponent
   void onMount() {
     super.onMount();
     _rebuild();
-    game.i18n.language.addListener(_rebuild);
+    gameRef.i18n.language.addListener(_rebuild);
   }
 
   @override
   void onRemove() {
-    game.i18n.language.removeListener(_rebuild);
+    gameRef.i18n.language.removeListener(_rebuild);
     super.onRemove();
   }
 
@@ -57,7 +57,7 @@ class LocalizedInlineLinkComponent extends PositionComponent
     for (final child in children.toList()) {
       child.removeFromParent();
     }
-    final words = _words(selector(game.i18n.strings));
+    final words = _words(selector(gameRef.i18n.strings));
     final lines = <List<PositionComponent>>[[]];
     final spaceWidth =
         textRenderer.getLineMetrics('a b').width -

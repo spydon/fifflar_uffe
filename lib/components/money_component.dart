@@ -11,7 +11,7 @@ import 'package:flame/events.dart';
 import 'package:flutter/animation.dart';
 
 class MoneyComponent extends SpriteComponent
-    with TapCallbacks, HasGameReference<FifflarUffeGame>, ParentIsA<PlayWorld> {
+    with TapCallbacks, HasGameRef<FifflarUffeGame>, ParentIsA<PlayWorld> {
   MoneyComponent()
     : super(size: Vector2.all(72), anchor: Anchor.center, priority: 1);
 
@@ -22,7 +22,7 @@ class MoneyComponent extends SpriteComponent
 
   @override
   Future<void> onLoad() async {
-    sprite = Sprite(game.images.fromCache(AssetPaths.iconCoin));
+    sprite = Sprite(gameRef.images.fromCache(AssetPaths.iconCoin));
     final lifetime = 8 + _random.nextDouble() * 4;
     add(
       OpacityEffect.fadeOut(
@@ -58,11 +58,11 @@ class MoneyComponent extends SpriteComponent
       return;
     }
     _collected = true;
-    game.economy.earnClick();
-    game.sound?.playCoin();
+    gameRef.economy.earnClick();
+    gameRef.sound?.playCoin();
     parent.add(
       FloatingTextComponent(
-        text: '+${formatSek(game.economy.clickValue)}',
+        text: '+${formatSek(gameRef.economy.clickValue)}',
         position: position - Vector2(0, size.y / 2),
       ),
     );

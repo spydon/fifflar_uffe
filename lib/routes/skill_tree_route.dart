@@ -15,18 +15,18 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 
-class SkillTreeRoute extends Route with HasGameReference<FifflarUffeGame> {
+class SkillTreeRoute extends Route with HasGameRef<FifflarUffeGame> {
   SkillTreeRoute()
     : super(SkillTreePage.new, transparent: true, maintainState: false);
 
   @override
   void onPush(Route? previousRoute) {
-    game.world.updatePaused = true;
+    gameRef.world.updatePaused = true;
   }
 
   @override
   void onPop(Route nextRoute) {
-    game.world.updatePaused = false;
+    gameRef.world.updatePaused = false;
   }
 }
 
@@ -41,7 +41,7 @@ class SkillTreePage extends ModalPage {
     await super.onLoad();
     panel.addAll([
       SpriteComponent(
-        sprite: Sprite(game.images.fromCache(AssetPaths.panelShop)),
+        sprite: Sprite(gameRef.images.fromCache(AssetPaths.panelShop)),
         size: designSize,
       ),
       _SkillTreeEdges(),
@@ -103,7 +103,7 @@ class SkillNodeComponent extends PositionComponent
         TapCallbacks,
         HoverCallbacks,
         HoverLighten,
-        HasGameReference<FifflarUffeGame> {
+        HasGameRef<FifflarUffeGame> {
   SkillNodeComponent({required this.skill, super.position})
     : super(size: Vector2(110, 124), anchor: Anchor.center, priority: 2);
 
@@ -118,19 +118,19 @@ class SkillNodeComponent extends PositionComponent
   Future<void> onLoad() async {
     addAll([
       SpriteComponent(
-        sprite: Sprite(game.images.fromCache(AssetPaths.itemSlot)),
+        sprite: Sprite(gameRef.images.fromCache(AssetPaths.itemSlot)),
         size: Vector2(96, 104),
         anchor: Anchor.topCenter,
         position: Vector2(size.x / 2, 0),
       ),
       _icon = SpriteComponent(
-        sprite: Sprite(game.images.fromCache(skill.iconPath)),
+        sprite: Sprite(gameRef.images.fromCache(skill.iconPath)),
         size: Vector2.all(72),
         anchor: Anchor.center,
         position: Vector2(size.x / 2, 50),
       ),
       _lock = SpriteComponent(
-        sprite: Sprite(game.images.fromCache(AssetPaths.iconLock)),
+        sprite: Sprite(gameRef.images.fromCache(AssetPaths.iconLock)),
         size: Vector2.all(36),
         anchor: Anchor.center,
         position: Vector2(size.x / 2, 50),
@@ -152,23 +152,23 @@ class SkillNodeComponent extends PositionComponent
   void onMount() {
     super.onMount();
     _refresh();
-    game.economy.addListener(_refresh);
+    gameRef.economy.addListener(_refresh);
   }
 
   @override
   void onRemove() {
-    game.economy.removeListener(_refresh);
+    gameRef.economy.removeListener(_refresh);
     super.onRemove();
   }
 
   @override
   void onTapDown(TapDownEvent event) {
-    game.router.pushRoute(SkillDetailRoute(skill: skill));
+    gameRef.router.pushRoute(SkillDetailRoute(skill: skill));
   }
 
   void _refresh() {
-    final economy = game.economy;
-    final narrow = game.size.x < 560;
+    final economy = gameRef.economy;
+    final narrow = gameRef.size.x < 560;
     final unlocked = economy.isUnlocked(skill);
     _lock.opacity = unlocked ? 0 : 1;
     _icon.opacity = unlocked ? 1 : 0.3;

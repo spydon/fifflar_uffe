@@ -22,7 +22,7 @@ enum GameButtonColor {
 }
 
 class GameButton extends AdvancedButtonComponent
-    with HasGameReference<FifflarUffeGame>, HoverLighten {
+    with HasGameRef<FifflarUffeGame>, HoverLighten {
   GameButton({
     required this.label,
     required void Function() onPressed,
@@ -63,13 +63,13 @@ class GameButton extends AdvancedButtonComponent
   Future<void> onLoad() async {
     await super.onLoad();
     defaultSkin = SpriteComponent(
-      sprite: Sprite(game.images.fromCache(color.upSkinPath)),
+      sprite: Sprite(gameRef.images.fromCache(color.upSkinPath)),
     );
     downSkin = SpriteComponent(
-      sprite: Sprite(game.images.fromCache(color.downSkinPath)),
+      sprite: Sprite(gameRef.images.fromCache(color.downSkinPath)),
     );
     disabledSkin = SpriteComponent(
-      sprite: Sprite(game.images.fromCache(AssetPaths.buttonWideGray)),
+      sprite: Sprite(gameRef.images.fromCache(AssetPaths.buttonWideGray)),
     );
     final icon = iconPath;
     final content = icon == null
@@ -78,7 +78,7 @@ class GameButton extends AdvancedButtonComponent
             textRenderer: TextStyles.button,
           )
         : _IconLabel(
-            sprite: Sprite(game.images.fromCache(icon)),
+            sprite: Sprite(gameRef.images.fromCache(icon)),
             selector: label,
           );
     defaultLabel = content;

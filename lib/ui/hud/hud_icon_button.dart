@@ -7,7 +7,7 @@ import 'package:flame/input.dart';
 import 'package:flutter/widgets.dart' hide Route;
 
 class HudIconButton extends HudMarginComponent
-    with HasGameReference<FifflarUffeGame> {
+    with HasGameRef<FifflarUffeGame> {
   HudIconButton({
     required this.iconPath,
     required EdgeInsets margin,
@@ -27,13 +27,17 @@ class HudIconButton extends HudMarginComponent
       _HudButton(
         size: size,
         defaultSkin: SpriteComponent(
-          sprite: Sprite(game.images.fromCache(AssetPaths.buttonCompactWhite)),
+          sprite: Sprite(
+            gameRef.images.fromCache(AssetPaths.buttonCompactWhite),
+          ),
         ),
         downSkin: SpriteComponent(
-          sprite: Sprite(game.images.fromCache(AssetPaths.buttonCompactGray)),
+          sprite: Sprite(
+            gameRef.images.fromCache(AssetPaths.buttonCompactGray),
+          ),
         ),
         defaultLabel: _OutlinedIcon(
-          sprite: Sprite(game.images.fromCache(iconPath)),
+          sprite: Sprite(gameRef.images.fromCache(iconPath)),
         ),
         onPressed: onPressed,
       ),

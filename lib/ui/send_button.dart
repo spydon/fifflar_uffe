@@ -7,7 +7,7 @@ import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:flame/components.dart';
 
 class SendButton extends AdvancedButtonComponent
-    with HasGameReference<FifflarUffeGame>, HoverLighten {
+    with HasGameRef<FifflarUffeGame>, HoverLighten {
   SendButton({
     required void Function() onPressed,
     super.position,
@@ -19,13 +19,13 @@ class SendButton extends AdvancedButtonComponent
   Future<void> onLoad() async {
     await super.onLoad();
     defaultSkin = SpriteComponent(
-      sprite: Sprite(game.images.fromCache(AssetPaths.buttonCompactWhite)),
+      sprite: Sprite(gameRef.images.fromCache(AssetPaths.buttonCompactWhite)),
     );
     downSkin = SpriteComponent(
-      sprite: Sprite(game.images.fromCache(AssetPaths.buttonCompactGray)),
+      sprite: Sprite(gameRef.images.fromCache(AssetPaths.buttonCompactGray)),
     );
     disabledSkin = SpriteComponent(
-      sprite: Sprite(game.images.fromCache(AssetPaths.buttonCompactGray)),
+      sprite: Sprite(gameRef.images.fromCache(AssetPaths.buttonCompactGray)),
     );
     defaultLabel = _ArrowIcon(size: Vector2.all(30));
   }

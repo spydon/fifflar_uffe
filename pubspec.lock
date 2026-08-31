@@ -253,8 +253,8 @@ packages:
     dependency: "direct main"
     description:
       path: "packages/flame"
-      ref: "perf/component-set-backing"
-      resolved-ref: "27956f0668c1464132a51815171c56d6909bf482"
+      ref: main
+      resolved-ref: fa41947bcc4361bef6a181390ce3f13e05036731
       url: "https://github.com/flame-engine/flame.git"
     source: git
     version: "1.38.0"
@@ -271,8 +271,8 @@ packages:
     dependency: "direct dev"
     description:
       path: "packages/flame_test"
-      ref: "perf/component-set-backing"
-      resolved-ref: "27956f0668c1464132a51815171c56d6909bf482"
+      ref: main
+      resolved-ref: fa41947bcc4361bef6a181390ce3f13e05036731
       url: "https://github.com/flame-engine/flame.git"
     source: git
     version: "2.3.0"

@@ -7,7 +7,7 @@ import 'package:flame/effects.dart';
 import 'package:flutter/animation.dart';
 
 class FlyingUffeComponent extends PositionComponent
-    with HasGameReference<FifflarUffeGame> {
+    with HasGameRef<FifflarUffeGame> {
   FlyingUffeComponent({
     required super.position,
     required this.velocity,
@@ -57,7 +57,7 @@ class FlyingUffeComponent extends PositionComponent
   }
 
   void _bounceOffEdges() {
-    final bounds = game.size;
+    final bounds = gameRef.size;
     final halfWidth = size.x / 2;
     final halfHeight = size.y / 2;
     if ((position.x < halfWidth && velocity.x < 0) ||

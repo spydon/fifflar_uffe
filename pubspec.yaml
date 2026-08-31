@@ -18,7 +18,7 @@ dependencies:
   flame:
     git:
       url: https://github.com/flame-engine/flame.git
-      ref: perf/component-set-backing
+      ref: main
       path: packages/flame
   flutter:
     sdk: flutter
@@ -43,7 +43,7 @@ dev_dependencies:
   flame_test:
     git:
       url: https://github.com/flame-engine/flame.git
-      ref: perf/component-set-backing
+      ref: main
       path: packages/flame_test
   flutter_test:
     sdk: flutter
@@ -53,7 +53,7 @@ dependency_overrides:
   flame:
     git:
       url: https://github.com/flame-engine/flame.git
-      ref: perf/component-set-backing
+      ref: main
       path: packages/flame
   iceberg:
     git:

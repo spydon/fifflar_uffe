@@ -5,14 +5,14 @@ import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:flame/components.dart';
 
 class BackgroundComponent extends SpriteComponent
-    with HasGameReference<FifflarUffeGame> {
+    with HasGameRef<FifflarUffeGame> {
   BackgroundComponent() : super(anchor: Anchor.center, priority: -1);
 
   @override
   Future<void> onLoad() async {
-    sprite = Sprite(game.images.fromCache(AssetPaths.background));
+    sprite = Sprite(gameRef.images.fromCache(AssetPaths.background));
     opacity = 0.35;
-    _cover(game.size);
+    _cover(gameRef.size);
   }
 
   @override

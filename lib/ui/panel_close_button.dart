@@ -4,7 +4,7 @@ import 'package:fifflar_uffe/ui/hover_lighten.dart';
 import 'package:flame/components.dart';
 
 class PanelCloseButton extends AdvancedButtonComponent
-    with HasGameReference<FifflarUffeGame>, HoverLighten {
+    with HasGameRef<FifflarUffeGame>, HoverLighten {
   PanelCloseButton({
     required void Function() onPressed,
     super.position,
@@ -16,13 +16,13 @@ class PanelCloseButton extends AdvancedButtonComponent
   Future<void> onLoad() async {
     await super.onLoad();
     defaultSkin = SpriteComponent(
-      sprite: Sprite(game.images.fromCache(AssetPaths.buttonCompactWhite)),
+      sprite: Sprite(gameRef.images.fromCache(AssetPaths.buttonCompactWhite)),
     );
     downSkin = SpriteComponent(
-      sprite: Sprite(game.images.fromCache(AssetPaths.buttonCompactGray)),
+      sprite: Sprite(gameRef.images.fromCache(AssetPaths.buttonCompactGray)),
     );
     defaultLabel = SpriteComponent(
-      sprite: Sprite(game.images.fromCache(AssetPaths.iconClose)),
+      sprite: Sprite(gameRef.images.fromCache(AssetPaths.iconClose)),
       size: Vector2.all(28),
     );
   }

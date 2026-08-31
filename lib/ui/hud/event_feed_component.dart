@@ -8,7 +8,7 @@ import 'package:flame/input.dart';
 import 'package:flutter/widgets.dart' hide Route;
 
 class EventFeedComponent extends HudMarginComponent
-    with HasGameReference<FifflarUffeGame> {
+    with HasGameRef<FifflarUffeGame> {
   EventFeedComponent()
     : super(margin: const EdgeInsets.only(top: 80, left: 12));
 
@@ -41,15 +41,17 @@ class EventFeedComponent extends HudMarginComponent
   @override
   void onMount() {
     super.onMount();
-    for (final event in game.eventCatalog.upTo(game.timeline.currentDate)) {
+    for (final event in gameRef.eventCatalog.upTo(
+      gameRef.timeline.currentDate,
+    )) {
       _consumed.add(event.id);
     }
-    game.timeline.addListener(_checkEvents);
+    gameRef.timeline.addListener(_checkEvents);
   }
 
   @override
   void onRemove() {
-    game.timeline.removeListener(_checkEvents);
+    gameRef.timeline.removeListener(_checkEvents);
     super.onRemove();
   }
 
@@ -71,7 +73,9 @@ class EventFeedComponent extends HudMarginComponent
   }
 
   void _checkEvents() {
-    for (final event in game.eventCatalog.upTo(game.timeline.currentDate)) {
+    for (final event in gameRef.eventCatalog.upTo(
+      gameRef.timeline.currentDate,
+    )) {
       if (_consumed.add(event.id)) {
         _queue.add(event);
       }

@@ -7,7 +7,7 @@ import 'package:flame/input.dart';
 import 'package:flutter/widgets.dart' hide Route;
 
 class DateCounter extends HudMarginComponent
-    with HasGameReference<FifflarUffeGame>, HudAutoScale {
+    with HasGameRef<FifflarUffeGame>, HudAutoScale {
   DateCounter() : super(margin: const EdgeInsets.only(top: 12, left: 12));
 
   late final TextComponent _text;
@@ -17,7 +17,7 @@ class DateCounter extends HudMarginComponent
     size = Vector2(200, 56);
     add(
       SpriteComponent(
-        sprite: Sprite(game.images.fromCache(AssetPaths.labelPill)),
+        sprite: Sprite(gameRef.images.fromCache(AssetPaths.labelPill)),
         size: size,
       ),
     );
@@ -33,18 +33,18 @@ class DateCounter extends HudMarginComponent
   void onMount() {
     super.onMount();
     _refresh();
-    game.timeline.addListener(_refresh);
-    game.i18n.language.addListener(_refresh);
+    gameRef.timeline.addListener(_refresh);
+    gameRef.i18n.language.addListener(_refresh);
   }
 
   @override
   void onRemove() {
-    game.timeline.removeListener(_refresh);
-    game.i18n.language.removeListener(_refresh);
+    gameRef.timeline.removeListener(_refresh);
+    gameRef.i18n.language.removeListener(_refresh);
     super.onRemove();
   }
 
   void _refresh() {
-    _text.text = game.i18n.strings.formatDate(game.timeline.currentDate);
+    _text.text = gameRef.i18n.strings.formatDate(gameRef.timeline.currentDate);
   }
 }

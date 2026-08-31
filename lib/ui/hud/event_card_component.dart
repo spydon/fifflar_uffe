@@ -11,7 +11,7 @@ import 'package:flutter/animation.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class EventCardComponent extends PositionComponent
-    with HasGameReference<FifflarUffeGame>, TapCallbacks {
+    with HasGameRef<FifflarUffeGame>, TapCallbacks {
   EventCardComponent({required this.event}) : super(size: Vector2(320, 172));
 
   static const double _displayDuration = 15;
@@ -87,17 +87,17 @@ class EventCardComponent extends PositionComponent
   void onMount() {
     super.onMount();
     _refresh();
-    game.i18n.language.addListener(_refresh);
+    gameRef.i18n.language.addListener(_refresh);
   }
 
   @override
   void onRemove() {
-    game.i18n.language.removeListener(_refresh);
+    gameRef.i18n.language.removeListener(_refresh);
     super.onRemove();
   }
 
   void _refresh() {
-    final language = game.i18n.language.value;
+    final language = gameRef.i18n.language.value;
     _title.text = nonBreakingNumbers(event.title(language));
     _body.text = nonBreakingNumbers(event.body(language));
   }

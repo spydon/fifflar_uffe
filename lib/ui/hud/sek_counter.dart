@@ -8,7 +8,7 @@ import 'package:flame/input.dart';
 import 'package:flutter/widgets.dart' hide Route;
 
 class SekCounter extends HudMarginComponent
-    with HasGameReference<FifflarUffeGame>, HudAutoScale {
+    with HasGameRef<FifflarUffeGame>, HudAutoScale {
   SekCounter() : super(margin: const EdgeInsets.only(top: 12, right: 12));
 
   late final TextComponent _text;
@@ -19,7 +19,7 @@ class SekCounter extends HudMarginComponent
     size = Vector2(240, 56);
     add(
       SpriteComponent(
-        sprite: Sprite(game.images.fromCache(AssetPaths.labelPill)),
+        sprite: Sprite(gameRef.images.fromCache(AssetPaths.labelPill)),
         size: size,
       ),
     );
@@ -30,7 +30,7 @@ class SekCounter extends HudMarginComponent
     );
     add(_text);
     final incomePill = SpriteComponent(
-      sprite: Sprite(game.images.fromCache(AssetPaths.labelPill)),
+      sprite: Sprite(gameRef.images.fromCache(AssetPaths.labelPill)),
       size: Vector2(size.x, 36),
       position: Vector2(0, size.y + 4),
     );
@@ -47,17 +47,17 @@ class SekCounter extends HudMarginComponent
   void onMount() {
     super.onMount();
     _refresh();
-    game.economy.addListener(_refresh);
+    gameRef.economy.addListener(_refresh);
   }
 
   @override
   void onRemove() {
-    game.economy.removeListener(_refresh);
+    gameRef.economy.removeListener(_refresh);
     super.onRemove();
   }
 
   void _refresh() {
-    _text.text = formatSek(game.economy.balance);
-    _incomeText.text = '+${formatSek(game.economy.incomePerSecond)}/s';
+    _text.text = formatSek(gameRef.economy.balance);
+    _incomeText.text = '+${formatSek(gameRef.economy.incomePerSecond)}/s';
   }
 }

@@ -4,7 +4,7 @@ import 'package:flame/events.dart';
 import 'package:flutter/painting.dart';
 
 class ScrimComponent extends RectangleComponent
-    with TapCallbacks, HasGameReference<FifflarUffeGame> {
+    with TapCallbacks, HasGameRef<FifflarUffeGame> {
   ScrimComponent({this.onTap})
     : super(paint: Paint()..color = const Color(0x99000000), priority: -1);
 
@@ -12,7 +12,7 @@ class ScrimComponent extends RectangleComponent
 
   @override
   Future<void> onLoad() async {
-    size = game.size;
+    size = gameRef.size;
   }
 
   @override

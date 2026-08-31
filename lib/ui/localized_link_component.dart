@@ -7,7 +7,7 @@ import 'package:flame/events.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LocalizedLinkComponent extends PositionComponent
-    with TapCallbacks, HasGameReference<FifflarUffeGame> {
+    with TapCallbacks, HasGameRef<FifflarUffeGame> {
   LocalizedLinkComponent({
     required this.selector,
     required this.url,

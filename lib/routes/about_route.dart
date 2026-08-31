@@ -32,7 +32,7 @@ class AboutPage extends ModalPage {
     final left = (designSize.x - textWidth) / 2;
     panel.addAll([
       _background = SpriteComponent(
-        sprite: Sprite(game.images.fromCache(AssetPaths.panelShop)),
+        sprite: Sprite(gameRef.images.fromCache(AssetPaths.panelShop)),
         size: designSize.clone(),
       ),
       PanelHeader(

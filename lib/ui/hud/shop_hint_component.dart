@@ -11,7 +11,7 @@ import 'package:flame/input.dart';
 import 'package:flutter/widgets.dart' hide Route;
 
 class ShopHintComponent extends HudMarginComponent
-    with HasGameReference<FifflarUffeGame>, HasVisibility {
+    with HasGameRef<FifflarUffeGame>, HasVisibility {
   ShopHintComponent()
     : super(margin: const EdgeInsets.only(bottom: 37, right: 92));
 
@@ -52,7 +52,7 @@ class ShopHintComponent extends HudMarginComponent
       _arrow = _ArrowComponent(position: Vector2(size.x - 34, 4)),
     ]);
     add(_content);
-    _updateScale(game.size);
+    _updateScale(gameRef.size);
   }
 
   void resetRun() {
@@ -65,12 +65,12 @@ class ShopHintComponent extends HudMarginComponent
     if (_showing) {
       if (isVisible &&
           !_dismissing &&
-          game.router.currentRoute == game.router.routes['shop']) {
+          gameRef.router.currentRoute == gameRef.router.routes['shop']) {
         _dismiss();
       }
       return;
     }
-    final economy = game.economy;
+    final economy = gameRef.economy;
     for (final skill in skillCatalog) {
       if (_announced.contains(skill.id) ||
           economy.ownedCount(skill) > 0 ||
@@ -85,15 +85,15 @@ class ShopHintComponent extends HudMarginComponent
   }
 
   void _show(SkillDef skill) {
-    final strings = game.i18n.strings;
-    _text.text = game.economy.owned.isEmpty
+    final strings = gameRef.i18n.strings;
+    _text.text = gameRef.economy.owned.isEmpty
         ? strings.shopHint
         : strings.affordHint(skill.name(strings));
     _layout();
     _showing = true;
     _dismissing = false;
     isVisible = true;
-    priority = game.router.priority + 2;
+    priority = gameRef.router.priority + 2;
     _content.scale = Vector2.zero();
     _content.addAll([
       ScaleEffect.to(
@@ -120,7 +120,7 @@ class ShopHintComponent extends HudMarginComponent
     _content.position = size / 2;
     _text.position = Vector2(size.x - _arrowReserve, size.y / 2);
     _arrow.position = Vector2(size.x - 34, 4);
-    onGameResize(game.size);
+    onGameResize(gameRef.size);
   }
 
   void _updateScale(Vector2 gameSize) {

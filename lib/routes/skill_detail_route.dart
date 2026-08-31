@@ -86,12 +86,12 @@ class SkillDetailPage extends ModalPage {
         onPressed: close,
       ),
       SpriteComponent(
-        sprite: Sprite(game.images.fromCache(AssetPaths.itemSlot)),
+        sprite: Sprite(gameRef.images.fromCache(AssetPaths.itemSlot)),
         size: Vector2(86, 94),
         position: Vector2(50, 56),
       ),
       SpriteComponent(
-        sprite: Sprite(game.images.fromCache(skill.iconPath)),
+        sprite: Sprite(gameRef.images.fromCache(skill.iconPath)),
         size: Vector2.all(66),
         anchor: Anchor.center,
         position: Vector2(93, 103),
@@ -139,26 +139,26 @@ class SkillDetailPage extends ModalPage {
   void onMount() {
     super.onMount();
     _refresh();
-    game.economy.addListener(_refresh);
-    game.i18n.language.addListener(_refresh);
+    gameRef.economy.addListener(_refresh);
+    gameRef.i18n.language.addListener(_refresh);
   }
 
   @override
   void onRemove() {
-    game.economy.removeListener(_refresh);
-    game.i18n.language.removeListener(_refresh);
+    gameRef.economy.removeListener(_refresh);
+    gameRef.i18n.language.removeListener(_refresh);
     super.onRemove();
   }
 
   void _buy() {
-    if (game.buyItem(skill)) {
+    if (gameRef.buyItem(skill)) {
       close();
     }
   }
 
   void _refresh() {
-    final strings = game.i18n.strings;
-    final economy = game.economy;
+    final strings = gameRef.i18n.strings;
+    final economy = gameRef.economy;
     final unlocked = economy.isUnlocked(skill);
     final requirement = skill.requires;
     final effect = skill.isClickMultiplier

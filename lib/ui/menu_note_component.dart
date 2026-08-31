@@ -6,7 +6,7 @@ import 'package:fifflar_uffe/ui/localized_text_box_component.dart';
 import 'package:flame/components.dart';
 
 class MenuNoteComponent extends PositionComponent
-    with HasGameReference<FifflarUffeGame> {
+    with HasGameRef<FifflarUffeGame> {
   MenuNoteComponent({
     required this.selector,
     required this.textRenderer,

@@ -12,7 +12,7 @@ class LanguageFlagButton extends PositionComponent
         TapCallbacks,
         HoverCallbacks,
         HoverLighten,
-        HasGameReference<FifflarUffeGame> {
+        HasGameRef<FifflarUffeGame> {
   LanguageFlagButton({required this.language, super.position, super.anchor})
     : super(size: Vector2(96, 60));
 
@@ -37,7 +37,7 @@ class LanguageFlagButton extends PositionComponent
           ..strokeWidth = 5,
       ),
       _flag = SpriteComponent(
-        sprite: Sprite(game.images.fromCache(flagPath)),
+        sprite: Sprite(gameRef.images.fromCache(flagPath)),
         size: size,
       ),
     ]);
@@ -47,12 +47,12 @@ class LanguageFlagButton extends PositionComponent
   void onMount() {
     super.onMount();
     _refresh();
-    game.i18n.language.addListener(_refresh);
+    gameRef.i18n.language.addListener(_refresh);
   }
 
   @override
   void onRemove() {
-    game.i18n.language.removeListener(_refresh);
+    gameRef.i18n.language.removeListener(_refresh);
     super.onRemove();
   }
 
@@ -67,11 +67,11 @@ class LanguageFlagButton extends PositionComponent
 
   @override
   void onTapDown(TapDownEvent event) {
-    game.i18n.language.value = language;
+    gameRef.i18n.language.value = language;
   }
 
   void _refresh() {
-    final selected = game.i18n.language.value == language;
+    final selected = gameRef.i18n.language.value == language;
     _border.setOpacity(selected ? 1 : 0);
     _flag.opacity = selected ? 1 : 0.4;
   }

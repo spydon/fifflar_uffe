@@ -12,19 +12,19 @@ import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 
-class MainMenuRoute extends Route with HasGameReference<FifflarUffeGame> {
+class MainMenuRoute extends Route with HasGameRef<FifflarUffeGame> {
   MainMenuRoute()
     : super(MainMenuPage.new, transparent: true, maintainState: false);
 
   @override
   void onPush(Route? previousRoute) {
-    game.world.updatePaused = true;
-    unawaited(game.highscore.probe());
+    gameRef.world.updatePaused = true;
+    unawaited(gameRef.highscore.probe());
   }
 
   @override
   void onPop(Route nextRoute) {
-    game.world.updatePaused = false;
+    gameRef.world.updatePaused = false;
   }
 }
 
@@ -83,13 +83,13 @@ class MainMenuPage extends ModalPage {
         iconPath: AssetPaths.iconGear,
         color: GameButtonColor.blue,
         anchor: Anchor.center,
-        onPressed: () => game.router.pushNamed('settings'),
+        onPressed: () => gameRef.router.pushNamed('settings'),
       ),
       _about = GameButton(
         label: (strings) => strings.about,
         color: GameButtonColor.blue,
         anchor: Anchor.center,
-        onPressed: () => game.router.pushNamed('about'),
+        onPressed: () => gameRef.router.pushNamed('about'),
       ),
       _referencesPrompt = LocalizedInlineLinkComponent(
         selector: (strings) => strings.mainMenuReferencesPrompt,
@@ -108,7 +108,7 @@ class MainMenuPage extends ModalPage {
       label: (strings) => strings.highscores,
       color: GameButtonColor.yellow,
       anchor: Anchor.center,
-      onPressed: () => game.router.pushNamed('highscore'),
+      onPressed: () => gameRef.router.pushNamed('highscore'),
     );
     _built = true;
     _note.size.addListener(_layoutButtons);
@@ -119,12 +119,12 @@ class MainMenuPage extends ModalPage {
   @override
   void onMount() {
     super.onMount();
-    game.highscore.available.addListener(_layoutButtons);
+    gameRef.highscore.available.addListener(_layoutButtons);
   }
 
   @override
   void onRemove() {
-    game.highscore.available.removeListener(_layoutButtons);
+    gameRef.highscore.available.removeListener(_layoutButtons);
     super.onRemove();
   }
 
@@ -132,7 +132,7 @@ class MainMenuPage extends ModalPage {
     if (!_built) {
       return;
     }
-    final showHighscores = game.highscore.available.value;
+    final showHighscores = gameRef.highscore.available.value;
     if (showHighscores && _highscores.parent == null) {
       panel.add(_highscores);
     } else if (!showHighscores && _highscores.parent != null) {

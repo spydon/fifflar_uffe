@@ -13,7 +13,7 @@ import 'package:flame/components.dart';
 import 'package:flame/experimental.dart';
 
 class PlayWorld extends World
-    with HasGameReference<FifflarUffeGame>, HasTimeScale {
+    with HasGameRef<FifflarUffeGame>, CustomTraversal, HasTimeScale {
   static const double topInset = 110;
   static const double edgeInset = 20;
 
@@ -23,7 +23,7 @@ class PlayWorld extends World
   bool updatePaused = false;
 
   Rect get playRect {
-    final size = game.size;
+    final size = gameRef.size;
     return Rect.fromLTWH(
       edgeInset,
       topInset,
@@ -65,18 +65,18 @@ class PlayWorld extends World
   @override
   void onMount() {
     super.onMount();
-    game.economy.addListener(_syncBuildings);
+    gameRef.economy.addListener(_syncBuildings);
   }
 
   @override
   void onRemove() {
-    game.economy.removeListener(_syncBuildings);
+    gameRef.economy.removeListener(_syncBuildings);
     super.onRemove();
   }
 
   void _syncBuildings() {
     for (final skill in skillCatalog) {
-      final owned = game.economy.ownedCount(skill) > 0;
+      final owned = gameRef.economy.ownedCount(skill) > 0;
       if (owned && !_buildings.containsKey(skill.id)) {
         final building = BuildingComponent(skill: skill);
         _buildings[skill.id] = building;

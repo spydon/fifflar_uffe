@@ -10,8 +10,7 @@ import 'package:fifflar_uffe/util/sek_format.dart';
 import 'package:flame/components.dart';
 import 'package:flame/game.dart';
 
-class BrokenCapitalismRoute extends Route
-    with HasGameReference<FifflarUffeGame> {
+class BrokenCapitalismRoute extends Route with HasGameRef<FifflarUffeGame> {
   BrokenCapitalismRoute()
     : super(
         BrokenCapitalismPage.new,
@@ -21,12 +20,12 @@ class BrokenCapitalismRoute extends Route
 
   @override
   void onPush(Route? previousRoute) {
-    game.world.updatePaused = true;
+    gameRef.world.updatePaused = true;
   }
 
   @override
   void onPop(Route nextRoute) {
-    game.world.updatePaused = false;
+    gameRef.world.updatePaused = false;
   }
 }
 
@@ -74,7 +73,7 @@ class BrokenCapitalismPage extends ModalPage {
         label: (strings) => strings.playAgain,
         anchor: Anchor.center,
         onPressed: () {
-          game.restartRun();
+          gameRef.restartRun();
           close();
         },
       ),

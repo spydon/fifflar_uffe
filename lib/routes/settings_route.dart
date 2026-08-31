@@ -61,7 +61,7 @@ class SettingsPage extends ModalPage {
         position: Vector2(center - 20, 222),
       ),
       SwitchButton(
-        value: game.soundEnabled,
+        value: gameRef.soundEnabled,
         position: Vector2(center + 56, 222),
         anchor: Anchor.center,
       ),

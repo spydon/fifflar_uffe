@@ -22,19 +22,19 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 
-class GameOverRoute extends Route with HasGameReference<FifflarUffeGame> {
+class GameOverRoute extends Route with HasGameRef<FifflarUffeGame> {
   GameOverRoute()
     : super(GameOverPage.new, transparent: true, maintainState: false);
 
   @override
   void onPush(Route? previousRoute) {
-    game.world.updatePaused = true;
-    unawaited(game.highscore.probe());
+    gameRef.world.updatePaused = true;
+    unawaited(gameRef.highscore.probe());
   }
 
   @override
   void onPop(Route nextRoute) {
-    game.world.updatePaused = false;
+    gameRef.world.updatePaused = false;
   }
 }
 
@@ -110,7 +110,7 @@ class GameOverPage extends ModalPage {
       ),
       _finalScore = LocalizedTextComponent(
         selector: (strings) =>
-            '${strings.finalScore}: ${formatSek(game.economy.totalEarned)}',
+            '${strings.finalScore}: ${formatSek(gameRef.economy.totalEarned)}',
         textRenderer: narrow
             ? TextStyles.enlarged(TextStyles.body, 1.15)
             : TextStyles.body,
@@ -140,7 +140,7 @@ class GameOverPage extends ModalPage {
         label: (strings) => strings.playAgain,
         anchor: Anchor.center,
         onPressed: () {
-          game.restartRun();
+          gameRef.restartRun();
           close();
         },
       ),
@@ -149,7 +149,7 @@ class GameOverPage extends ModalPage {
         color: GameButtonColor.blue,
         anchor: Anchor.center,
         onPressed: () {
-          game.continueRun();
+          gameRef.continueRun();
           close();
         },
       ),
@@ -162,7 +162,7 @@ class GameOverPage extends ModalPage {
     ]);
     _nameInput = NameInputComponent(
       maxLength: maxNameLength,
-      initialText: game.highscoreName ?? '',
+      initialText: gameRef.highscoreName ?? '',
       anchor: Anchor.center,
       onSubmitted: () => unawaited(_submitScore()),
     );
@@ -174,7 +174,7 @@ class GameOverPage extends ModalPage {
       label: (strings) => strings.openHighscores,
       color: GameButtonColor.yellow,
       anchor: Anchor.center,
-      onPressed: () => game.router.pushNamed('highscore'),
+      onPressed: () => gameRef.router.pushNamed('highscore'),
     );
     _submitHint = LocalizedTextBoxComponent(
       selector: (strings) => strings.submitExplanation,
@@ -195,14 +195,14 @@ class GameOverPage extends ModalPage {
   @override
   void onMount() {
     super.onMount();
-    _seenAvailable = game.highscore.available.value;
-    game.highscore.available.addListener(_onAvailabilityChanged);
+    _seenAvailable = gameRef.highscore.available.value;
+    gameRef.highscore.available.addListener(_onAvailabilityChanged);
     unawaited(_probe());
   }
 
   @override
   void onRemove() {
-    game.highscore.available.removeListener(_onAvailabilityChanged);
+    gameRef.highscore.available.removeListener(_onAvailabilityChanged);
     _retry = null;
     super.onRemove();
   }
@@ -214,7 +214,7 @@ class GameOverPage extends ModalPage {
   }
 
   void _onAvailabilityChanged() {
-    if (game.highscore.available.value) {
+    if (gameRef.highscore.available.value) {
       _seenAvailable = true;
       _retryDelay = firstRetryDelay;
       _retry = null;
@@ -228,14 +228,14 @@ class GameOverPage extends ModalPage {
     _retry = null;
     _probing = true;
     try {
-      await game.highscore.probe();
+      await gameRef.highscore.probe();
     } finally {
       _probing = false;
     }
     if (!isMounted) {
       return;
     }
-    if (!game.highscore.available.value) {
+    if (!gameRef.highscore.available.value) {
       _scheduleRetry();
     }
     _refresh();
@@ -250,14 +250,14 @@ class GameOverPage extends ModalPage {
   }
 
   bool get _showSubmitSection =>
-      game.hasUnsubmittedScore &&
-      (game.highscore.available.value || _seenAvailable);
+      gameRef.hasUnsubmittedScore &&
+      (gameRef.highscore.available.value || _seenAvailable);
 
   bool get _showHighscoresButton =>
-      game.highscore.available.value && !_showSubmitSection;
+      gameRef.highscore.available.value && !_showSubmitSection;
 
   String _statusText(Strings strings) {
-    if (game.highscoreSubmitted) {
+    if (gameRef.highscoreSubmitted) {
       return '';
     }
     if (_invalidName) {
@@ -288,7 +288,7 @@ class GameOverPage extends ModalPage {
     _setVisible(_send, show);
     _setVisible(_toHighscores, _showHighscoresButton);
     _send.isDisabled = _submitting;
-    _status.text = _statusText(game.i18n.strings);
+    _status.text = _statusText(gameRef.i18n.strings);
     _layoutContent();
   }
 
@@ -373,7 +373,7 @@ class GameOverPage extends ModalPage {
     _submitting = true;
     _refresh();
     try {
-      await game.submitHighscore(name);
+      await gameRef.submitHighscore(name);
     } on HighscoreException catch (exception) {
       _error = exception.error;
     } on TimeoutException {
@@ -393,7 +393,7 @@ class GameOverPage extends ModalPage {
     _share.isBusy = true;
     final RenderedCard card;
     try {
-      card = await ShareService.renderCard(game);
+      card = await ShareService.renderCard(gameRef);
     } finally {
       if (isMounted) {
         _share.isBusy = false;
@@ -403,21 +403,21 @@ class GameOverPage extends ModalPage {
       card.image.dispose();
       return;
     }
-    game.router.pushRoute(
+    gameRef.router.pushRoute(
       SharePreviewRoute(png: card.png, image: card.image),
     );
   }
 }
 
 class _FocusCatcher extends PositionComponent
-    with TapCallbacks, HasGameReference<FifflarUffeGame> {
+    with TapCallbacks, HasGameRef<FifflarUffeGame> {
   _FocusCatcher({required this.onTap}) : super(priority: -1);
 
   final void Function() onTap;
 
   @override
   Future<void> onLoad() async {
-    size = game.size;
+    size = gameRef.size;
   }
 
   @override

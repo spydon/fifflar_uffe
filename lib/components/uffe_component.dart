@@ -8,7 +8,7 @@ import 'package:flame/input.dart';
 import 'package:flutter/widgets.dart' hide Route;
 
 class UffeComponent extends HudMarginComponent
-    with HasGameReference<FifflarUffeGame>, HudAutoScale {
+    with HasGameRef<FifflarUffeGame>, HudAutoScale {
   UffeComponent()
     : super(margin: const EdgeInsets.only(left: 12), priority: restPriority);
 
@@ -46,10 +46,10 @@ class UffeComponent extends HudMarginComponent
     _pokeCount++;
     if (_pokeCount >= _pokesBeforeWarning) {
       _pokeCount = 0;
-      say(game.i18n.strings.pokeWarning);
+      say(gameRef.i18n.strings.pokeWarning);
       return;
     }
-    game.sound?.playLaugh();
+    gameRef.sound?.playLaugh();
   }
 
   void _setTalking({required bool talking}) {
@@ -81,7 +81,7 @@ class UffeComponent extends HudMarginComponent
       if (!wasLeaning) {
         _restPosition = position.clone();
       }
-      priority = game.router.priority + 1;
+      priority = gameRef.router.priority + 1;
       final lean = MoveToEffect(
         _restPosition! - Vector2(0, _leanDistance),
         EffectController(duration: 0.25, curve: Curves.easeOutBack),

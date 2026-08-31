@@ -5,8 +5,7 @@ import 'package:fifflar_uffe/game/fifflar_uffe_game.dart';
 import 'package:fifflar_uffe/ui/hud/hud_auto_scale.dart';
 import 'package:flame/components.dart';
 
-class UffeSwarmComponent extends Component
-    with HasGameReference<FifflarUffeGame> {
+class UffeSwarmComponent extends Component with HasGameRef<FifflarUffeGame> {
   UffeSwarmComponent({this.count = 48, super.priority});
 
   static const double _spawnInterval = 0.05;
@@ -36,7 +35,7 @@ class UffeSwarmComponent extends Component
   }
 
   void _spawn() {
-    final screen = game.size;
+    final screen = gameRef.size;
     final hudScale = HudAutoScale.factorFor(screen);
     final direction = _random.nextDouble() * 2 * pi;
     final speed = _minSpeed + _random.nextDouble() * (_maxSpeed - _minSpeed);

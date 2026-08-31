@@ -7,7 +7,7 @@ import 'package:flame/input.dart';
 import 'package:flutter/widgets.dart' hide Route;
 
 class SpeedBoostButton extends HudMarginComponent
-    with HasGameReference<FifflarUffeGame> {
+    with HasGameRef<FifflarUffeGame> {
   SpeedBoostButton({required EdgeInsets margin}) : super(margin: margin);
 
   static const Color idleColor = Color(0xFFFFF6E3);
@@ -23,20 +23,20 @@ class SpeedBoostButton extends HudMarginComponent
     _toggle = _SpeedBoostToggle(
       size: size,
       defaultSkin: SpriteComponent(
-        sprite: Sprite(game.images.fromCache(AssetPaths.buttonCompactWhite)),
+        sprite: Sprite(gameRef.images.fromCache(AssetPaths.buttonCompactWhite)),
       ),
       downSkin: SpriteComponent(
-        sprite: Sprite(game.images.fromCache(AssetPaths.buttonCompactGray)),
+        sprite: Sprite(gameRef.images.fromCache(AssetPaths.buttonCompactGray)),
       ),
       defaultSelectedSkin: SpriteComponent(
-        sprite: Sprite(game.images.fromCache(AssetPaths.buttonCompactGray)),
+        sprite: Sprite(gameRef.images.fromCache(AssetPaths.buttonCompactGray)),
       ),
       downAndSelectedSkin: SpriteComponent(
-        sprite: Sprite(game.images.fromCache(AssetPaths.buttonCompactWhite)),
+        sprite: Sprite(gameRef.images.fromCache(AssetPaths.buttonCompactWhite)),
       ),
       defaultLabel: FastForwardIcon(color: idleColor),
       defaultSelectedLabel: FastForwardIcon(color: activeColor, pressed: true),
-      onSelectedChanged: (selected) => game.speedBoost.value = selected,
+      onSelectedChanged: (selected) => gameRef.speedBoost.value = selected,
     );
     add(_toggle);
   }
@@ -44,18 +44,18 @@ class SpeedBoostButton extends HudMarginComponent
   @override
   void onMount() {
     super.onMount();
-    game.speedBoost.addListener(_sync);
+    gameRef.speedBoost.addListener(_sync);
     _sync();
   }
 
   @override
   void onRemove() {
-    game.speedBoost.removeListener(_sync);
+    gameRef.speedBoost.removeListener(_sync);
     super.onRemove();
   }
 
   void _sync() {
-    _toggle.isSelected = game.speedBoost.value;
+    _toggle.isSelected = gameRef.speedBoost.value;
   }
 }
 

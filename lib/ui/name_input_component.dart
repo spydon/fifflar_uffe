@@ -9,7 +9,7 @@ import 'package:flame/events.dart';
 import 'package:flutter/services.dart';
 
 class NameInputComponent extends PositionComponent
-    with HasGameReference<FifflarUffeGame>, TapCallbacks, TextInputClient {
+    with HasGameRef<FifflarUffeGame>, TapCallbacks, TextInputClient {
   NameInputComponent({
     required this.maxLength,
     required this.onSubmitted,
@@ -46,7 +46,7 @@ class NameInputComponent extends PositionComponent
   Future<void> onLoad() async {
     addAll([
       SpriteComponent(
-        sprite: Sprite(game.images.fromCache(AssetPaths.labelPill)),
+        sprite: Sprite(gameRef.images.fromCache(AssetPaths.labelPill)),
         size: size.clone(),
       ),
       _text = TextComponent(

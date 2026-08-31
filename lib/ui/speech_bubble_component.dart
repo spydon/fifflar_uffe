@@ -6,7 +6,7 @@ import 'package:flame/effects.dart';
 import 'package:flutter/animation.dart';
 
 class SpeechBubbleComponent extends PositionComponent
-    with HasGameReference<FifflarUffeGame>, HasVisibility {
+    with HasGameRef<FifflarUffeGame>, HasVisibility {
   SpeechBubbleComponent({
     this.onTalkingChanged,
     super.position,
@@ -26,7 +26,7 @@ class SpeechBubbleComponent extends PositionComponent
     isVisible = false;
     addAll([
       SpriteComponent(
-        sprite: Sprite(game.images.fromCache(AssetPaths.speechBubble)),
+        sprite: Sprite(gameRef.images.fromCache(AssetPaths.speechBubble)),
         size: size,
       )..opacity = 0.7,
       _text = TextBoxComponent(

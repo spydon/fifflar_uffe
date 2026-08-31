@@ -19,7 +19,7 @@ class BuildingComponent extends PositionComponent
         TapCallbacks,
         HoverCallbacks,
         HoverLighten,
-        HasGameReference<FifflarUffeGame> {
+        HasGameRef<FifflarUffeGame> {
   BuildingComponent({required this.skill})
     : super(size: Vector2(104, 130), anchor: Anchor.center);
 
@@ -39,13 +39,13 @@ class BuildingComponent extends PositionComponent
   Future<void> onLoad() async {
     addAll([
       SpriteComponent(
-        sprite: Sprite(game.images.fromCache(AssetPaths.itemSlot)),
+        sprite: Sprite(gameRef.images.fromCache(AssetPaths.itemSlot)),
         size: Vector2(96, 104),
         anchor: Anchor.topCenter,
         position: Vector2(size.x / 2, 0),
       ),
       SpriteComponent(
-        sprite: Sprite(game.images.fromCache(skill.iconPath)),
+        sprite: Sprite(gameRef.images.fromCache(skill.iconPath)),
         size: Vector2.all(56),
         anchor: Anchor.center,
         position: Vector2(size.x / 2, 50),
@@ -61,11 +61,11 @@ class BuildingComponent extends PositionComponent
         position: Vector2(size.x / 2, 108),
       ),
     ]);
-    _updatePosition(game.size);
+    _updatePosition(gameRef.size);
     scale = Vector2.zero();
     add(
       ScaleEffect.to(
-        Vector2.all(layoutFactor(game.size)),
+        Vector2.all(layoutFactor(gameRef.size)),
         EffectController(duration: 0.3, curve: Curves.easeOutBack),
       ),
     );
@@ -90,12 +90,12 @@ class BuildingComponent extends PositionComponent
   void onMount() {
     super.onMount();
     _refresh();
-    game.economy.addListener(_refresh);
+    gameRef.economy.addListener(_refresh);
   }
 
   @override
   void onRemove() {
-    game.economy.removeListener(_refresh);
+    gameRef.economy.removeListener(_refresh);
     super.onRemove();
   }
 
@@ -109,7 +109,7 @@ class BuildingComponent extends PositionComponent
 
   @override
   void onTapDown(TapDownEvent event) {
-    if (game.buyItem(skill)) {
+    if (gameRef.buyItem(skill)) {
       add(
         ScaleEffect.by(
           Vector2.all(1.15),
@@ -141,7 +141,7 @@ class BuildingComponent extends PositionComponent
   }
 
   void _refresh() {
-    final economy = game.economy;
+    final economy = gameRef.economy;
     _count.text = '${economy.ownedCount(skill)}';
     _price.text = formatSek(economy.priceOf(skill));
     _price.textRenderer = economy.canAfford(skill)
@@ -151,7 +151,7 @@ class BuildingComponent extends PositionComponent
   }
 
   void _updateParticles() {
-    final level = game.economy.ownedCount(skill);
+    final level = gameRef.economy.ownedCount(skill);
     if (level == _particleLevel && _coinParticles != null) {
       return;
     }
@@ -177,7 +177,7 @@ class BuildingComponent extends PositionComponent
         scaleOverLife: ParticleCurve(1, 0.6),
       ),
       renderer: SpriteParticleRenderer(
-        Sprite(game.images.fromCache(AssetPaths.iconCoin)),
+        Sprite(gameRef.images.fromCache(AssetPaths.iconCoin)),
       ),
     );
     add(_coinParticles!);

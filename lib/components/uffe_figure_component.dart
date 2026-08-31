@@ -7,7 +7,7 @@ import 'package:flame/events.dart';
 import 'package:flutter/foundation.dart';
 
 class UffeFigureComponent extends PositionComponent
-    with TapCallbacks, HasGameReference<FifflarUffeGame> {
+    with TapCallbacks, HasGameRef<FifflarUffeGame> {
   UffeFigureComponent({required double height, this.onPoked})
     : super(size: Vector2(sourceWidth / sourceHeight * height, height));
 
@@ -53,7 +53,7 @@ class UffeFigureComponent extends PositionComponent
     headRestPosition = Vector2(sourceWidth * scaleFactor / 2, bodyTop);
     _headSpriteRestPosition = Vector2(headSize.x / 2, headSize.y);
     _headSprite = SpriteComponent(
-      sprite: Sprite(game.images.fromCache(AssetPaths.uffeHead)),
+      sprite: Sprite(gameRef.images.fromCache(AssetPaths.uffeHead)),
       size: headSize,
       anchor: Anchor.bottomCenter,
       position: _headSpriteRestPosition.clone(),
@@ -66,7 +66,7 @@ class UffeFigureComponent extends PositionComponent
     );
     addAll([
       SpriteComponent(
-        sprite: Sprite(game.images.fromCache(AssetPaths.uffeBody)),
+        sprite: Sprite(gameRef.images.fromCache(AssetPaths.uffeBody)),
         size: Vector2(
           sourceWidth * scaleFactor,
           _bodySourceHeight * scaleFactor,

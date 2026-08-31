@@ -8,7 +8,7 @@ import 'package:flutter/animation.dart';
 import 'package:flutter/foundation.dart';
 
 abstract class ModalPage extends PositionComponent
-    with HasGameReference<FifflarUffeGame> {
+    with HasGameRef<FifflarUffeGame> {
   ModalPage({required this.designSize, this.dismissOnScrimTap = true});
 
   static const double _scrimOpacity = 0.6;
@@ -30,7 +30,7 @@ abstract class ModalPage extends PositionComponent
     add(scrim);
     panel = PositionComponent(size: designSize, anchor: Anchor.center);
     add(panel);
-    _layout(game.size);
+    _layout(gameRef.size);
     scrim.opacity = 0;
     scrim.add(
       OpacityEffect.to(
@@ -55,12 +55,12 @@ abstract class ModalPage extends PositionComponent
     }
   }
 
-  bool get isNarrowScreen => game.size.x < 560;
+  bool get isNarrowScreen => gameRef.size.x < 560;
 
   void resizePanel(Vector2 newSize) {
     designSize.setFrom(newSize);
     panel.size = designSize;
-    _layout(game.size);
+    _layout(gameRef.size);
   }
 
   void close() {
@@ -75,7 +75,7 @@ abstract class ModalPage extends PositionComponent
       ScaleEffect.to(
         Vector2.zero(),
         EffectController(duration: _closeDuration, curve: Curves.easeIn),
-        onComplete: game.router.pop,
+        onComplete: gameRef.router.pop,
       ),
     );
   }

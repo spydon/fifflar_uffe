@@ -7,8 +7,7 @@ import 'package:fifflar_uffe/ui/localized_text_component.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
 import 'package:flame/components.dart';
 
-class PanelHeader extends PositionComponent
-    with HasGameReference<FifflarUffeGame> {
+class PanelHeader extends PositionComponent with HasGameRef<FifflarUffeGame> {
   PanelHeader({
     required this.title,
     required Vector2 size,
@@ -27,7 +26,7 @@ class PanelHeader extends PositionComponent
   Future<void> onLoad() async {
     add(
       SpriteComponent(
-        sprite: Sprite(game.images.fromCache(AssetPaths.headerRibbon)),
+        sprite: Sprite(gameRef.images.fromCache(AssetPaths.headerRibbon)),
         size: size,
       ),
     );

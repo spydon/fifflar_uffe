@@ -159,7 +159,7 @@ class HighscorePage extends ModalPage {
       anchor: Anchor.center,
       onPressed: () => unawaited(_load()),
     );
-    _leaderboard = game.highscore.cachedLeaderboard(_period);
+    _leaderboard = gameRef.highscore.cachedLeaderboard(_period);
     _built = true;
     _buildTabs();
     unawaited(_load());
@@ -197,7 +197,7 @@ class HighscorePage extends ModalPage {
       return;
     }
     _period = period;
-    _leaderboard = game.highscore.cachedLeaderboard(period);
+    _leaderboard = gameRef.highscore.cachedLeaderboard(period);
     _failed = false;
     _buildTabs();
     _refresh();
@@ -208,12 +208,12 @@ class HighscorePage extends ModalPage {
   void onMount() {
     super.onMount();
     _refresh();
-    game.i18n.language.addListener(_refresh);
+    gameRef.i18n.language.addListener(_refresh);
   }
 
   @override
   void onRemove() {
-    game.i18n.language.removeListener(_refresh);
+    gameRef.i18n.language.removeListener(_refresh);
     super.onRemove();
   }
 
@@ -226,7 +226,7 @@ class HighscorePage extends ModalPage {
     _failed = false;
     _refresh();
     try {
-      final leaderboard = await game.highscore.fetchLeaderboard(
+      final leaderboard = await gameRef.highscore.fetchLeaderboard(
         period: period,
       );
       if (period == _period) {
@@ -251,7 +251,7 @@ class HighscorePage extends ModalPage {
     if (!_built) {
       return;
     }
-    final strings = game.i18n.strings;
+    final strings = gameRef.i18n.strings;
     final leaderboard = _leaderboard;
     _nameHeader.text = strings.highscoreNameHeader;
     _scoreHeader.text = strings.highscoreScoreHeader;
