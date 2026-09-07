@@ -813,9 +813,11 @@ void main() {
       expect(
         texts,
         contains(
-          'Den som får ihop mer än $limit har haft sönder kapitalismen och '
-          'får inte skicka in något resultat. Försök komma så nära $limit '
-          'som möjligt utan att passera det!',
+          'Du kan inte ha mer än $limit i plånboken samtidigt. Köp saker '
+          'för pengarna så håller du dig under gränsen, den som passerar '
+          'den har haft sönder kapitalismen och får inte skicka in något '
+          'resultat. Försök komma så nära $limit som möjligt utan att '
+          'passera det!',
         ),
       );
     },

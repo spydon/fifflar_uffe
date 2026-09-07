@@ -357,9 +357,10 @@ class SvStrings extends Strings {
   String get brokeCapitalism => 'Du hade sönder kapitalismen :(';
   @override
   String capitalismLimitNote(String limit) =>
-      'Den som får ihop mer än $limit har haft sönder kapitalismen och får '
-      'inte skicka in något resultat. Försök komma så nära $limit som '
-      'möjligt utan att passera det!';
+      'Du kan inte ha mer än $limit i plånboken samtidigt. Köp saker för '
+      'pengarna så håller du dig under gränsen, den som passerar den har '
+      'haft sönder kapitalismen och får inte skicka in något resultat. '
+      'Försök komma så nära $limit som möjligt utan att passera det!';
   @override
   String get share => 'Dela';
   @override
@@ -728,9 +729,10 @@ class EnStrings extends Strings {
   String get brokeCapitalism => 'You broke capitalism :(';
   @override
   String capitalismLimitNote(String limit) =>
-      'Anyone who gets past $limit has broken capitalism and is not allowed '
-      'to submit a score. Try to get as close to $limit as possible without '
-      'passing it!';
+      'You cannot have more than $limit in your wallet at once. Buy things '
+      'with the money to stay under the limit, anyone who passes it has '
+      'broken capitalism and is not allowed to submit a score. Try to get '
+      'as close to $limit as possible without passing it!';
   @override
   String get share => 'Share';
   @override
