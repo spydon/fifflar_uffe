@@ -816,8 +816,7 @@ void main() {
           'Du kan inte ha mer än $limit i plånboken samtidigt. Köp saker '
           'för pengarna så håller du dig under gränsen, den som passerar '
           'den har haft sönder kapitalismen och får inte skicka in något '
-          'resultat. Försök komma så nära $limit som möjligt utan att '
-          'passera det!',
+          'resultat. Så se till att hålla dig under $limit i plånboken!',
         ),
       );
     },
