@@ -9,6 +9,7 @@ import 'package:fifflar_uffe/model/timeline.dart';
 import 'package:fifflar_uffe/routes/broken_capitalism_route.dart';
 import 'package:fifflar_uffe/routes/main_menu_route.dart';
 import 'package:fifflar_uffe/routes/pause_route.dart';
+import 'package:fifflar_uffe/routes/play_store_route.dart';
 import 'package:fifflar_uffe/routes/skill_detail_route.dart';
 import 'package:fifflar_uffe/services/i18n.dart';
 import 'package:fifflar_uffe/ui/game_button.dart';
@@ -73,6 +74,66 @@ void main() {
           .map((button) => button.label(game.i18n.strings))
           .toList();
       expect(labels, ['Börja fiffla', 'Inställningar', 'Om']);
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
+    'an android browser player is pointed at the play store',
+    () => FifflarUffeGame(androidBrowser: true),
+    (game) async {
+      game.update(0);
+      await game.ready();
+      game.update(0);
+      await game.ready();
+      expect(game.router.currentRoute, game.router.routes['playStore']);
+      final page = game.router.currentRoute.children
+          .whereType<PlayStorePage>()
+          .single;
+      final labels = page.panel.children
+          .whereType<GameButton>()
+          .map((button) => button.label(game.i18n.strings))
+          .toList();
+      expect(labels, ['Öppna Google Play']);
+      page.close();
+      game.update(1);
+      await game.ready();
+      game.update(0);
+      await game.ready();
+      expect(game.router.currentRoute, game.router.routes['mainMenu']);
+      final preferences = await SharedPreferences.getInstance();
+      expect(
+        preferences.getBool('fifflar_uffe.play_store_prompt_seen'),
+        isTrue,
+      );
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
+    'the play store popup is only shown once',
+    () {
+      SharedPreferences.setMockInitialValues({
+        'fifflar_uffe.play_store_prompt_seen': true,
+      });
+      return FifflarUffeGame(androidBrowser: true);
+    },
+    (game) async {
+      game.update(0);
+      await game.ready();
+      game.update(0);
+      await game.ready();
+      expect(game.router.currentRoute, game.router.routes['mainMenu']);
+    },
+  );
+
+  testWithGame<FifflarUffeGame>(
+    'a player outside an android browser is not shown the play store popup',
+    () => FifflarUffeGame(androidBrowser: false),
+    (game) async {
+      game.update(0);
+      await game.ready();
+      game.update(0);
+      await game.ready();
+      expect(game.router.currentRoute, game.router.routes['mainMenu']);
     },
   );
 

@@ -26,6 +26,9 @@ abstract class Strings {
   String get aboutAttributions;
   String get aboutOpenSource;
   String get aboutGithub;
+  String get playStoreTitle;
+  String get playStoreNote;
+  String get playStoreOpen;
   String get itemHireCleaner;
   String get itemCheatApartment;
   String get itemTaxiRides;
@@ -170,6 +173,14 @@ class SvStrings extends Strings {
       'Spelet är öppen källkod och PRs/issues är varmt välkomna.';
   @override
   String get aboutGithub => 'Källkoden på GitHub';
+  @override
+  String get playStoreTitle => 'Finns på Google Play';
+  @override
+  String get playStoreNote =>
+      'Fifflar-Uffe finns även som app för Android. Hämta den på Google '
+      'Play om du hellre fifflar där.';
+  @override
+  String get playStoreOpen => 'Öppna Google Play';
   @override
   String get itemHireCleaner => 'Anlita städhjälp (svart)';
   @override
@@ -538,6 +549,14 @@ class EnStrings extends Strings {
       'The game is open source and PRs/issues are very welcome.';
   @override
   String get aboutGithub => 'Source code on GitHub';
+  @override
+  String get playStoreTitle => 'Also on Google Play';
+  @override
+  String get playStoreNote =>
+      'Fifflar-Uffe is an Android app as well. Get it on Google Play if '
+      'you would rather fiffle there.';
+  @override
+  String get playStoreOpen => 'Open Google Play';
   @override
   String get itemHireCleaner => 'Hire cleaning help (off the books)';
   @override

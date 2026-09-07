@@ -23,6 +23,7 @@ class SaveData {
     this.capitalismReported = false,
     this.soundEnabled = true,
     this.speedBoost = false,
+    this.playStorePromptSeen = false,
   });
 
   final double balance;
@@ -41,6 +42,7 @@ class SaveData {
   final bool capitalismReported;
   final bool soundEnabled;
   final bool speedBoost;
+  final bool playStorePromptSeen;
 }
 
 class PersistenceService {
@@ -50,6 +52,7 @@ class PersistenceService {
   static const _languageKey = 'fifflar_uffe.language';
   static const _soundKey = 'fifflar_uffe.sound_enabled';
   static const _speedBoostKey = 'fifflar_uffe.speed_boost';
+  static const _playStorePromptKey = 'fifflar_uffe.play_store_prompt_seen';
 
   final SharedPreferences _preferences;
 
@@ -61,12 +64,15 @@ class PersistenceService {
     final language = AppLanguage.fromCode(_preferences.getString(_languageKey));
     final soundEnabled = _preferences.getBool(_soundKey) ?? true;
     final speedBoost = _preferences.getBool(_speedBoostKey) ?? false;
+    final playStorePromptSeen =
+        _preferences.getBool(_playStorePromptKey) ?? false;
     final raw = _preferences.getString(_saveKey);
     if (raw == null) {
       return SaveData(
         language: language,
         soundEnabled: soundEnabled,
         speedBoost: speedBoost,
+        playStorePromptSeen: playStorePromptSeen,
       );
     }
     try {
@@ -96,18 +102,21 @@ class PersistenceService {
         capitalismReported: json['capitalismReported'] as bool? ?? false,
         soundEnabled: soundEnabled,
         speedBoost: speedBoost,
+        playStorePromptSeen: playStorePromptSeen,
       );
     } on FormatException {
       return SaveData(
         language: language,
         soundEnabled: soundEnabled,
         speedBoost: speedBoost,
+        playStorePromptSeen: playStorePromptSeen,
       );
     } on TypeError {
       return SaveData(
         language: language,
         soundEnabled: soundEnabled,
         speedBoost: speedBoost,
+        playStorePromptSeen: playStorePromptSeen,
       );
     }
   }
@@ -160,5 +169,9 @@ class PersistenceService {
 
   Future<void> saveSpeedBoost({required bool enabled}) async {
     await _preferences.setBool(_speedBoostKey, enabled);
+  }
+
+  Future<void> savePlayStorePromptSeen() async {
+    await _preferences.setBool(_playStorePromptKey, true);
   }
 }

@@ -15,6 +15,7 @@ import 'package:fifflar_uffe/routes/game_over_route.dart';
 import 'package:fifflar_uffe/routes/highscore_route.dart';
 import 'package:fifflar_uffe/routes/main_menu_route.dart';
 import 'package:fifflar_uffe/routes/pause_route.dart';
+import 'package:fifflar_uffe/routes/play_store_route.dart';
 import 'package:fifflar_uffe/routes/settings_route.dart';
 import 'package:fifflar_uffe/routes/skill_tree_route.dart';
 import 'package:fifflar_uffe/services/highscore_client.dart';
@@ -29,6 +30,7 @@ import 'package:fifflar_uffe/ui/hud/sek_counter.dart';
 import 'package:fifflar_uffe/ui/hud/shop_hint_component.dart';
 import 'package:fifflar_uffe/ui/hud/speed_boost_button.dart';
 import 'package:fifflar_uffe/ui/text_styles.dart';
+import 'package:fifflar_uffe/util/android_browser.dart';
 import 'package:fifflar_uffe/util/snake_case.dart';
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
@@ -37,8 +39,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart' hide Route;
 
 class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
-  FifflarUffeGame({this.highscoreClient, this.sound})
-    : super(world: PlayWorld());
+  FifflarUffeGame({this.highscoreClient, this.sound, bool? androidBrowser})
+    : androidBrowser = androidBrowser ?? isAndroidBrowser,
+      super(world: PlayWorld());
 
   late final Economy economy;
   late final Timeline timeline;
@@ -59,6 +62,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
   final HighscoreClient? highscoreClient;
   final Random _random = Random();
   final SoundService? sound;
+  final bool androidBrowser;
   final ValueNotifier<bool> soundEnabled = ValueNotifier(true);
   final ValueNotifier<bool> speedBoost = ValueNotifier(false);
 
@@ -144,6 +148,7 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
         'highscore': HighscoreRoute(),
         'gameOver': GameOverRoute(),
         'brokenCapitalism': BrokenCapitalismRoute(),
+        'playStore': PlayStoreRoute(),
       },
     );
     camera.viewport.addAll([
@@ -189,6 +194,10 @@ class FifflarUffeGame extends FlameGame<PlayWorld> with KeyboardEvents {
     }
     if (isFreshRun) {
       unawaited(router.mounted.then((_) => router.pushNamed('mainMenu')));
+    }
+    if (androidBrowser && !save.playStorePromptSeen) {
+      unawaited(persistence.savePlayStorePromptSeen());
+      unawaited(router.mounted.then((_) => router.pushNamed('playStore')));
     }
   }
 
