@@ -289,27 +289,31 @@ void main() {
     );
 
     testWithGame<FifflarUffeGame>(
-      'a score below the submitted best only offers the highscore list',
+      'a score below the submitted best can still be sent to the period lists',
       () {
         SharedPreferences.setMockInitialValues({
           'fifflar_uffe.save.v1': jsonEncode(finishedSave(runId: 'run-9')),
         });
         client.leaderboard = const Leaderboard(
-          top: [HighscoreEntry(rank: 1, name: 'Uffe', score: 1000, isMe: true)],
-          me: HighscoreEntry(rank: 1, name: 'Uffe', score: 1000, isMe: true),
+          top: [HighscoreEntry(rank: 1, name: 'Uffe', score: 1e12, isMe: true)],
+          me: HighscoreEntry(rank: 1, name: 'Uffe', score: 1e12, isMe: true),
         );
         return FifflarUffeGame(highscoreClient: client);
       },
       (game) async {
         final page = await reachGameOver(game);
-        expect(game.beatsSubmittedBest, isFalse);
-        expect(game.canSubmitHighscore, isFalse);
+        expect(game.economy.totalEarned, lessThan(1e12));
+        expect(game.canSubmitHighscore, isTrue);
+        final input = page.panel.children
+            .whereType<NameInputComponent>()
+            .single;
+        input.updateEditingValue(const TextEditingValue(text: 'Uffe'));
+        pressSubmit(game, page);
+        await settle(game);
+        expect(client.submissions, hasLength(1));
+        expect(client.submissions.single.runId, 'run-9');
+        expect(game.highscoreSubmitted, isTrue);
         expect(page.panel.children.whereType<NameInputComponent>(), isEmpty);
-        expect(page.panel.children.whereType<SendButton>(), isEmpty);
-        final toHighscores = page.panel.children.whereType<GameButton>().where(
-          (button) => button.label(game.i18n.strings) == 'Till topplistan',
-        );
-        expect(toHighscores, hasLength(1));
       },
     );
 
