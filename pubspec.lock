@@ -372,14 +372,13 @@ packages:
     source: hosted
     version: "4.1.2"
   iceberg:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: "packages/iceberg"
-      ref: main
-      resolved-ref: "7942c37770c5a12b18b27afc66b8595e67fdd22d"
-      url: "https://github.com/supabase/supabase-flutter.git"
-    source: git
-    version: "0.1.0"
+      name: iceberg
+      sha256: c4c6d11a37e32e90136d8cfc6a0a5fdf5e7256877f922656c07b6ba94c566a4e
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.2"
   io:
     dependency: transitive
     description:
@@ -536,10 +535,10 @@ packages:
     dependency: transitive
     description:
       name: passkeys_platform_interface
-      sha256: e810520c7b79dca629fdc266958564eedd77dc85a955f5e94430dfccb92eef68
+      sha256: "5fca044a6f1a3c5abff645ca5a5417b613c130d1c4e08513ba9182c7f4834619"
       url: "https://pub.dev"
     source: hosted
-    version: "2.9.0"
+    version: "2.10.0"
   path:
     dependency: transitive
     description:
@@ -645,14 +644,13 @@ packages:
     source: hosted
     version: "6.5.2"
   postgrest:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: "packages/postgrest"
-      ref: main
-      resolved-ref: "7942c37770c5a12b18b27afc66b8595e67fdd22d"
-      url: "https://github.com/supabase/supabase-flutter.git"
-    source: git
-    version: "2.9.1"
+      name: postgrest
+      sha256: "2dd85d32b0c2b244f88fb948e58200c1c894b29a2d3715acbaa640a17f34ca80"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0-dev.4"
   process:
     dependency: transitive
     description:
@@ -859,68 +857,61 @@ packages:
     source: hosted
     version: "1.4.1"
   supabase:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: "packages/supabase"
-      ref: main
-      resolved-ref: "7942c37770c5a12b18b27afc66b8595e67fdd22d"
-      url: "https://github.com/supabase/supabase-flutter.git"
-    source: git
-    version: "2.16.0"
+      name: supabase
+      sha256: f733a6a16818e956243bd368799e7fa7a85f51794d54a11d59bc9f0ae5e0012b
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0-dev.4"
   supabase_auth:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: "packages/supabase_auth"
-      ref: main
-      resolved-ref: "7942c37770c5a12b18b27afc66b8595e67fdd22d"
-      url: "https://github.com/supabase/supabase-flutter.git"
-    source: git
-    version: "3.0.0-dev.1"
+      name: supabase_auth
+      sha256: e8b9b507006ae0974cd46d056a5ce98eb5a7f53c25ef93a3865068bccfc049a7
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0-dev.4"
   supabase_common:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: "packages/supabase_common"
-      ref: main
-      resolved-ref: "7942c37770c5a12b18b27afc66b8595e67fdd22d"
-      url: "https://github.com/supabase/supabase-flutter.git"
-    source: git
-    version: "0.1.2"
+      name: supabase_common
+      sha256: "4d183c86a3cf4f350180950d4ccd348d13ba874addf5ab06d684aa233b28f7c9"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0-dev.3"
   supabase_flutter:
     dependency: "direct main"
     description:
-      path: "packages/supabase_flutter"
-      ref: main
-      resolved-ref: "7942c37770c5a12b18b27afc66b8595e67fdd22d"
-      url: "https://github.com/supabase/supabase-flutter.git"
-    source: git
-    version: "2.17.1"
+      name: supabase_flutter
+      sha256: "1953d5454a1a4b08461c0985228f4b009eae2e4454fdd5a89ab09927a0575a76"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0-dev.4"
   supabase_functions:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: "packages/supabase_functions"
-      ref: main
-      resolved-ref: "7942c37770c5a12b18b27afc66b8595e67fdd22d"
-      url: "https://github.com/supabase/supabase-flutter.git"
-    source: git
-    version: "3.0.0-dev.1"
+      name: supabase_functions
+      sha256: "27d3c1097151dff44fe13ec466e45486c60b569812915bed880a84ce5dd16f86"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0-dev.4"
   supabase_realtime:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: "packages/supabase_realtime"
-      ref: main
-      resolved-ref: "7942c37770c5a12b18b27afc66b8595e67fdd22d"
-      url: "https://github.com/supabase/supabase-flutter.git"
-    source: git
-    version: "3.0.0-dev.1"
+      name: supabase_realtime
+      sha256: "96cfb3717120cd1890d09b98e96de894e815cbdb29467b321109842e6312f7f0"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0-dev.4"
   supabase_storage:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: "packages/supabase_storage"
-      ref: main
-      resolved-ref: "7942c37770c5a12b18b27afc66b8595e67fdd22d"
-      url: "https://github.com/supabase/supabase-flutter.git"
-    source: git
-    version: "3.0.0-dev.1"
+      name: supabase_storage
+      sha256: "1d31f25b1fc548d232f74695fd3b713c060e84c835824f613f1bf3a36bf6a1f0"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0-dev.4"
   term_glyph:
     dependency: transitive
     description:
@@ -1130,14 +1121,13 @@ packages:
     source: hosted
     version: "2.2.4"
   yet_another_json_isolate:
-    dependency: "direct overridden"
+    dependency: transitive
     description:
-      path: "packages/yet_another_json_isolate"
-      ref: main
-      resolved-ref: "7942c37770c5a12b18b27afc66b8595e67fdd22d"
-      url: "https://github.com/supabase/supabase-flutter.git"
-    source: git
-    version: "2.1.1"
+      name: yet_another_json_isolate
+      sha256: "5f3812a1b0950408f199e62101db86fe852db08122b4eba4739569fb09c9d7e6"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.0-dev.2"
 sdks:
   dart: ">=3.13.0 <4.0.0"
   flutter: ">=3.44.0"
