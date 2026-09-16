@@ -1,0 +1,1072 @@
+{
+  "events": [
+    {
+      "id": "muf_ordforande",
+      "real_date": "1988-11-26",
+      "title": {
+        "sv": "Uffe tar över MUF",
+        "en": "Uffe takes over the youth wing"
+      },
+      "body": {
+        "sv": "25-åringen Uffe väljs till ordförande för Moderata ungdomsförbundet. Nu börjar karriären.",
+        "en": "At 25 Uffe is elected chairman of the Moderate youth wing. The career begins."
+      },
+      "sources": [
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Ulf_Kristersson"
+        },
+        {
+          "name": "Regeringskansliet",
+          "url": "https://www.regeringen.se/sveriges-regering/statsradsberedningen/ulf-kristersson/cv-ulf-kristersson/"
+        }
+      ]
+    },
+    {
+      "id": "valfardsstaten",
+      "real_date": "1990-12-31",
+      "game_date": "2000-01-02",
+      "title": {
+        "sv": "Uppdraget: avveckla välfärdsstaten",
+        "en": "The mission: dismantle the welfare state"
+      },
+      "body": {
+        "sv": "1990 skriver MUF-ordföranden Uffe: \"Som moderater och förkämpar för individuell frihet och marknadsekonomi har vi ett uppdrag att bekämpa och avveckla välfärdsstaten.\" Han har aldrig tagit avstånd från det.",
+        "en": "In 1990 youth wing chairman Uffe writes: \"As Moderates and champions of individual freedom and market economy we have a mission to fight and dismantle the welfare state.\" He has never retracted it."
+      },
+      "sources": [
+        {
+          "name": "Svensk Tidskrift",
+          "url": "https://www.svensktidskrift.se/ulf-kristersson-thomas-idergard-for-en-individuell-valfardspolitik/"
+        },
+        {
+          "name": "AiP",
+          "url": "https://aip.nu/kristersson-ville-skrota-valfardsstaten/"
+        }
+      ]
+    },
+    {
+      "id": "riksdagsdebuten",
+      "real_date": "1991-10-04",
+      "title": {
+        "sv": "In i riksdagen",
+        "en": "Into parliament"
+      },
+      "body": {
+        "sv": "Uffe tar plats i riksdagen när regeringen Bildt tillträder. Systemskiftet kan börja.",
+        "en": "Uffe takes his seat in parliament as the Bildt government comes to power. The system shift can begin."
+      },
+      "sources": [
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Ulf_Kristersson"
+        },
+        {
+          "name": "Regeringskansliet",
+          "url": "https://www.regeringen.se/sveriges-regering/statsradsberedningen/ulf-kristersson/cv-ulf-kristersson/"
+        }
+      ]
+    },
+    {
+      "id": "slaget_i_lycksele",
+      "real_date": "1992-10-24",
+      "title": {
+        "sv": "Slaget i Lycksele",
+        "en": "The battle of Lycksele"
+      },
+      "body": {
+        "sv": "Uffe förlorar omvalet till MUF-ordförande mot Fredrik Reinfeldt, 55 röster mot 58, på Hotell Lappland i Lycksele. Splittringen i förbundet sitter i länge.",
+        "en": "Uffe loses the youth wing chairmanship to Fredrik Reinfeldt, 55 votes to 58, at Hotell Lappland in Lycksele. The rift in the organisation lingers for years."
+      },
+      "sources": [
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Slaget_i_Lycksele"
+        },
+        {
+          "name": "Wikipedia (Ulf Kristersson)",
+          "url": "https://sv.wikipedia.org/wiki/Ulf_Kristersson"
+        }
+      ]
+    },
+    {
+      "id": "non_working_generation",
+      "real_date": "1994",
+      "game_date": "2000-03-01",
+      "title": {
+        "sv": "Boken om den sovande generationen",
+        "en": "The book about the non-working generation"
+      },
+      "body": {
+        "sv": "I boken Non-working generation (1994) argumenterar Uffe mot den svenska modellen och välfärdsstaten, som han jämför med apartheid och anser trycker ner människor i passivitet.",
+        "en": "In his 1994 book Non-working generation Uffe argues against the Swedish model and the welfare state, which he compares to apartheid and considers to press people into passivity."
+      },
+      "sources": [
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Ulf_Kristersson"
+        }
+      ]
+    },
+    {
+      "id": "timbro_marknadschef",
+      "real_date": "1995",
+      "title": {
+        "sv": "Marknadschef på Timbro",
+        "en": "Marketing chief at Timbro"
+      },
+      "body": {
+        "sv": "Uffe blir marknadschef på näringslivets tankesmedja Timbro, samtidigt som han sitter i riksdagen. Två arbetsgivare, samma uppdrag.",
+        "en": "Uffe becomes head of marketing at the business think tank Timbro while sitting in parliament. Two employers, one mission."
+      },
+      "sources": [
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Ulf_Kristersson"
+        },
+        {
+          "name": "Regeringskansliet",
+          "url": "https://www.regeringen.se/sveriges-regering/statsradsberedningen/ulf-kristersson/cv-ulf-kristersson/"
+        }
+      ]
+    },
+    {
+      "id": "st_goran",
+      "real_date": "1999-12",
+      "game_date": "2000-09-01",
+      "title": {
+        "sv": "S:t Göran privatiseras",
+        "en": "S:t Göran is privatized"
+      },
+      "body": {
+        "sv": "S:t Görans sjukhus säljs 1999 till Bure, senare Capio, för 250 miljoner, prutat till 225. Landstingets egna revisorer: konstruktionen kringgick upphandlingslagen, och miljardkontraktet på vården följde med utan konkurrens.",
+        "en": "S:t Göran hospital is sold in 1999 to Bure, later Capio, for 250 million, haggled down to 225. The county council's own auditors: the construction circumvented the procurement law, and the billion kronor care contract came along without competition."
+      },
+      "sources": [
+        {
+          "name": "Stockholms Fria",
+          "url": "https://www.stockholmsfria.se/artikel/8503"
+        },
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Sankt_G%C3%B6rans_sjukhus"
+        }
+      ]
+    },
+    {
+      "id": "ut_ur_riksdagen",
+      "real_date": "2000",
+      "title": {
+        "sv": "Ut ur riksdagen",
+        "en": "Out of parliament"
+      },
+      "body": {
+        "sv": "Våren 2000 lämnar Uffe riksdagen för att bli kommunikationsdirektör på IT-bolaget Connecta, mitt i dotcom-kraschen. Comebacken får planeras från Strängnäs.",
+        "en": "In the spring of 2000 Uffe leaves parliament to become communications director at the IT company Connecta, in the middle of the dotcom crash. The comeback will have to be planned from Strängnäs."
+      },
+      "sources": [
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Ulf_Kristersson"
+        },
+        {
+          "name": "Regeringskansliet",
+          "url": "https://www.regeringen.se/sveriges-regering/statsradsberedningen/ulf-kristersson/cv-ulf-kristersson/"
+        }
+      ]
+    },
+    {
+      "id": "svart_stadhjalp",
+      "real_date": "2001",
+      "game_date": "2001-06-01",
+      "title": {
+        "sv": "Svart städhjälp",
+        "en": "Undeclared cleaning help"
+      },
+      "body": {
+        "sv": "Uffe betalar städhjälpen svart.",
+        "en": "Uffe pays his cleaner under the table."
+      },
+      "sources": [
+        {
+          "name": "Svenska Dagbladet",
+          "url": "https://www.svd.se/a/ad7062d4-c07b-3fea-a65a-88c9e07274af/kristersson-kopte-svart-stadhjalp"
+        },
+        {
+          "name": "SVT Nyheter",
+          "url": "https://www.svt.se/nyheter/inrikes/det-har-kanske-du-inte-visste-om-ulf-kristersson"
+        }
+      ]
+    },
+    {
+      "id": "valstugereportaget",
+      "real_date": "2002-09-05",
+      "game_date": "2002-09-05",
+      "title": {
+        "sv": "Valstugereportaget",
+        "en": "The election booth exposé"
+      },
+      "body": {
+        "sv": "Moderata valarbetare fångas på film med rasistiska uttalanden i valstugorna, dagar före valet.",
+        "en": "Moderate campaign workers are caught on film making racist remarks in the party's election booths, days before the election."
+      },
+      "sources": [
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Valstugereportaget"
+        },
+        {
+          "name": "SVT Nyheter",
+          "url": "https://www.svt.se/nyheter/inrikes/janne-josefsson-om-valstugereportaget-fran-2002-det-var-forodande"
+        }
+      ]
+    },
+    {
+      "id": "strangnas",
+      "real_date": "2003",
+      "game_date": "2000-05-01",
+      "title": {
+        "sv": "Arvet från Strängnäs",
+        "en": "The Strängnäs legacy"
+      },
+      "body": {
+        "sv": "Som finanskommunalråd i Strängnäs (2003 till 2006) vänder Uffe ett överskott till underskott på ett år. Anställningsstopp, nedskärningar i skola och omsorg, höjd färdtjänst, och kommunens fastigheter säljs till bolag som hyr ut dem tillbaka. Resultat: 18 miljoner i förlust.",
+        "en": "As finance commissioner in Strängnäs (2003 to 2006) Uffe turns a surplus into a deficit within a year. A hiring freeze, cuts to schools and care, higher transport fees, and the municipal buildings are sold to companies that rent them back. Result: a loss of 18 million."
+      },
+      "sources": [
+        {
+          "name": "Svenska Dagbladet",
+          "url": "https://www.svd.se/a/Kvm027/kristerssons-arv-ideologiskt-drivet-jatteforluster"
+        },
+        {
+          "name": "Aftonbladet",
+          "url": "https://www.aftonbladet.se/ledare/a/a7XQBO/vi-maste-prata-om-ulf-kristerssons-forflutna"
+        }
+      ]
+    },
+    {
+      "id": "adoptionscentrum",
+      "real_date": "2003",
+      "game_date": "2004-06-01",
+      "title": {
+        "sv": "Ordförande för Adoptionscentrum",
+        "en": "Chairman of Adoptionscentrum"
+      },
+      "body": {
+        "sv": "Uffe är ordförande för Adoptionscentrum 2003 till 2005. Det avslöjas att kidnappade barn från Kina sålts för adoption, och att Adoptionscentrum förmedlat barn via ett barnhem som köpt dem. Ledningen kände till det. Uffe mörkade.",
+        "en": "Uffe chairs Adoptionscentrum from 2003 to 2005. It emerges that kidnapped Chinese children were sold for adoption, and that Adoptionscentrum placed children through an orphanage that bought them. The management knew. Uffe covered it up."
+      },
+      "sources": [
+        {
+          "name": "SVT Nyheter",
+          "url": "https://www.svt.se/nyheter/inrikes/kristersson-kande-till-de-kopta-barnen"
+        },
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Ulf_Kristersson"
+        }
+      ]
+    },
+    {
+      "id": "minister_avgangar",
+      "real_date": "2006-10-14",
+      "game_date": "2006-10-14",
+      "title": {
+        "sv": "Ministrarna faller",
+        "en": "The ministers fall"
+      },
+      "body": {
+        "sv": "Nytillträdda moderata ministrar avgår efter avslöjanden om svart hemhjälp och obetald tv-licens.",
+        "en": "Newly appointed Moderate ministers resign after revelations of undeclared domestic help and unpaid TV licences."
+      },
+      "sources": [
+        {
+          "name": "SVT Nyheter",
+          "url": "https://www.svt.se/nyheter/inrikes/ministrarna-som-avgick"
+        },
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Ministeraff%C3%A4ren_vid_tills%C3%A4ttandet_av_regeringen_Reinfeldt_2006"
+        }
+      ]
+    },
+    {
+      "id": "centrumkompaniet",
+      "real_date": "2007-05-15",
+      "game_date": "2007-05-15",
+      "title": {
+        "sv": "Förortscentrumen säljs",
+        "en": "The suburb centers are sold"
+      },
+      "body": {
+        "sv": "Stockholm säljer tio centrum, bland dem Skärholmen och Tensta, till brittiska Boultbee trots varningar. Hyrorna chockhöjs och servicen faller.",
+        "en": "Stockholm sells ten shopping centers, among them Skärholmen and Tensta, to British Boultbee despite warnings. Rents soar and service crumbles."
+      },
+      "sources": [
+        {
+          "name": "SVT Nyheter",
+          "url": "https://www.svt.se/nyheter/lokalt/stockholm/boultbee-kollades-inte-trots-varningar"
+        },
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Boultbee"
+        }
+      ]
+    },
+    {
+      "id": "kinaresorna",
+      "real_date": "2007-08-01",
+      "game_date": "2007-08-01",
+      "title": {
+        "sv": "Kinaresorna",
+        "en": "The China trips"
+      },
+      "body": {
+        "sv": "Socialborgarrådet Uffe flyger tre gånger till Kina för 128 000 skattekronor. Resorna har inget med Stockholm att göra, men hans fru jobbar samtidigt för Sweden China Trade Council.",
+        "en": "Social affairs commissioner Uffe flies to China three times for 128 000 taxpayer kronor. The trips have nothing to do with Stockholm, but his wife works for the Sweden China Trade Council at the time."
+      },
+      "sources": [
+        {
+          "name": "Aftonbladet",
+          "url": "https://www.aftonbladet.se/nyheter/a/VRggad/politikern-flog-for-128-000--till-kina"
+        },
+        {
+          "name": "Dagens Arena",
+          "url": "https://www.dagensarena.se/innehall/ulf-kristersson-kritiserad-forr/"
+        }
+      ]
+    },
+    {
+      "id": "krogkvallen",
+      "real_date": "2007-10-29",
+      "game_date": "2007-10-29",
+      "title": {
+        "sv": "Krogkvällen",
+        "en": "The bar night"
+      },
+      "body": {
+        "sv": "Statsministerns statssekreterare avgår efter en våt krogkväll, mitt under sin beredskap för regeringens krishantering.",
+        "en": "The prime minister's state secretary resigns after a boozy bar night, while on duty for the government's crisis readiness."
+      },
+      "sources": [
+        {
+          "name": "SVT Nyheter",
+          "url": "https://www.svt.se/nyheter/inrikes/ministrarna-som-avgick"
+        },
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Ulrica_Schenstr%C3%B6m"
+        }
+      ]
+    },
+    {
+      "id": "serafen",
+      "real_date": "2007-12-10",
+      "game_date": "2007-12-10",
+      "title": {
+        "sv": "Vårdcentralen till vrakpris",
+        "en": "The health center at scrap price"
+      },
+      "body": {
+        "sv": "Serafens vårdcentral säljs till sex läkare för 694 500 kronor (säljs vidare några år senare för runt 20 miljoner).",
+        "en": "The Serafen health center is sold to six doctors for 694 500 kronor (resold a few years later for around 20 million)."
+      },
+      "sources": [
+        {
+          "name": "Sveriges Radio",
+          "url": "https://www.sverigesradio.se/artikel/5079436"
+        },
+        {
+          "name": "Dagens Arena",
+          "url": "https://www.dagensarena.se/innehall/sa-gick-det-till-nar-serafen-reades-ut/"
+        }
+      ]
+    },
+    {
+      "id": "allmannyttan_reas",
+      "real_date": "2008-03-18",
+      "game_date": "2008-03-18",
+      "title": {
+        "sv": "Allmännyttan reas ut",
+        "en": "Public housing on sale"
+      },
+      "body": {
+        "sv": "1 200 hyreslägenheter säljs till Einar Mattsson för 630 miljoner, 6 600 kronor per kvadratmeter när snittet i Stockholm är 39 005. Marknadsvärde: 3,7 miljarder. Medborgarnas förlust: över 3 miljarder.",
+        "en": "1 200 rental flats are sold to Einar Mattsson for 630 million, 6 600 kronor per square metre when the Stockholm average is 39 005. Market value: 3.7 billion. The citizens' loss: over 3 billion."
+      },
+      "sources": [
+        {
+          "name": "Sveriges Radio",
+          "url": "https://www.sverigesradio.se/artikel/1960541"
+        },
+        {
+          "name": "Aftonbladet",
+          "url": "https://www.aftonbladet.se/nyheter/a/rLz7n3/brot-mot-reglerna"
+        }
+      ]
+    },
+    {
+      "id": "vin_och_sprit",
+      "real_date": "2008-03-31",
+      "game_date": "2008-03-31",
+      "title": {
+        "sv": "Familjesilvret säljs",
+        "en": "Selling the family silver"
+      },
+      "body": {
+        "sv": "Regeringen Reinfeldt säljer statliga Vin & Sprit med Absolut Vodka till franska Pernod Ricard.",
+        "en": "The Reinfeldt government sells state-owned Vin & Sprit with Absolut Vodka to French Pernod Ricard."
+      },
+      "sources": [
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Vin_%26_Sprit"
+        },
+        {
+          "name": "Svenska Yle",
+          "url": "https://svenska.yle.fi/a/7-257140"
+        }
+      ]
+    },
+    {
+      "id": "avknoppningarna",
+      "real_date": "2008-04-15",
+      "game_date": "2008-04-15",
+      "title": {
+        "sv": "Avknoppningarna",
+        "en": "The spin-offs"
+      },
+      "body": {
+        "sv": "Under 2008 slumpar Uffe bort kommunala verksamheter värda minst 81,7 miljoner för 3,4 miljoner. Statskontoret och Regeringsrätten: olagligt. Justitieminister Beatrice Ask i riksdagen: det är inte olagligt att vara korkad eller göra dåliga affärer.",
+        "en": "During 2008 Uffe gives away municipal operations worth at least 81.7 million for 3.4 million. The Agency for Public Management and the Supreme Administrative Court: unlawful. Justice minister Beatrice Ask in parliament: it is not illegal to be stupid or to make bad deals."
+      },
+      "sources": [
+        {
+          "name": "AiP",
+          "url": "https://aip.nu/kristerssons-olagliga-affarer/"
+        },
+        {
+          "name": "Sveriges Radio",
+          "url": "https://sverigesradio.se/artikel/4063990"
+        }
+      ]
+    },
+    {
+      "id": "ersta_vaningen",
+      "real_date": "2009-03-01",
+      "game_date": "2009-03-01",
+      "title": {
+        "sv": "Våningen från Ersta",
+        "en": "The flat from Ersta"
+      },
+      "body": {
+        "sv": "Socialborgarrådet Uffe bor i en stor våning på Folkungagatan som Ersta diakonisällskap egentligen avsett för svårt sjuka och hemlösa. Ersta har samtidigt mångmiljonkontrakt med staden inom Uffes ansvarsområde. Bostadskö? Nej.",
+        "en": "Social affairs commissioner Uffe lives in a large flat on Folkungagatan that the Ersta deaconry meant for the seriously ill and homeless. Ersta simultaneously holds multi-million contracts with the city inside Uffe's portfolio. Housing queue? No."
+      },
+      "sources": [
+        {
+          "name": "Svenska Dagbladet",
+          "url": "https://www.svd.se/a/d3a13664-fb59-3a3e-953e-26f0df4d2876/m-topp-fick-bostad-av-ersta"
+        },
+        {
+          "name": "Dagens ETC",
+          "url": "https://www.etc.se/inrikes/praesten-som-gav-ulf-kristersson-laegenhet-faar-ordfoerandepost"
+        }
+      ]
+    },
+    {
+      "id": "nuonaffaren",
+      "real_date": "2009-06-01",
+      "game_date": "2009-06-01",
+      "title": {
+        "sv": "Nuonaffären",
+        "en": "The Nuon deal"
+      },
+      "body": {
+        "sv": "Statliga Vattenfall köper holländska Nuon för 97 miljarder kronor, trots tjänstemännens varningar om att priset är runt 30 miljarder för högt (skrivs senare ned med över 30 miljarder).",
+        "en": "State-owned Vattenfall buys Dutch Nuon for 97 billion kronor, despite officials warning the price is around 30 billion too high (later written down by over 30 billion)."
+      },
+      "sources": [
+        {
+          "name": "SVT Nyheter",
+          "url": "https://www.svt.se/nyheter/inrikes/olofsson-varandes-for-nej-till-nuon"
+        },
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Nuon-aff%C3%A4ren"
+        }
+      ]
+    },
+    {
+      "id": "apoteken",
+      "real_date": "2009-07-01",
+      "game_date": "2009-07-01",
+      "title": {
+        "sv": "Apoteken säljs ut",
+        "en": "The pharmacies are sold off"
+      },
+      "body": {
+        "sv": "Apoteksmonopolet avskaffas och över 600 statliga apotek säljs ut till privata kedjor och riskkapital.",
+        "en": "The pharmacy monopoly is abolished and over 600 state pharmacies are sold off to private chains and venture capital."
+      },
+      "sources": [
+        {
+          "name": "Sveriges Radio",
+          "url": "https://sverigesradio.se/artikel/1092913"
+        }
+      ]
+    },
+    {
+      "id": "stupstocken",
+      "real_date": "2010-10-05",
+      "game_date": "2010-10-05",
+      "title": {
+        "sv": "Stupstocken",
+        "en": "The sick leave cliff"
+      },
+      "body": {
+        "sv": "Långtidssjuka börjar utförsäkras vid sjukförsäkringens bortre tidsgräns. Socialförsäkringsminister Uffe försvarar stupstocken.",
+        "en": "Long-term sick people start being cut off at the sickness insurance time limit. Social insurance minister Uffe defends the cliff."
+      },
+      "sources": [
+        {
+          "name": "SVT Nyheter",
+          "url": "https://www.svt.se/nyheter/inrikes/ministern-gransen-for-utforsakring-ska-bort"
+        },
+        {
+          "name": "Inspektionen för socialförsäkringen",
+          "url": "https://isf.se/publikationer/rapporter/2022/2022-06-29-avskaffandet-av-den-bortre-tidsgransen"
+        }
+      ]
+    },
+    {
+      "id": "graddfilslagenheten",
+      "real_date": "2010-10-06",
+      "game_date": "2010-10-06",
+      "title": {
+        "sv": "Lägenhet i gräddfilen",
+        "en": "An apartment past the queue"
+      },
+      "body": {
+        "sv": "Nyblivne ministern Uffe får ett hyreskontrakt på Kungsholms torg utan bostadskö, av vd:n för Einar Mattsson, bolaget han sålde 1 200 lägenheter till två år tidigare. Paret bor periodvis annorstädes men behåller kontraktet. Grannar som gör samma sak vräks.",
+        "en": "Newly minted minister Uffe gets a lease at Kungsholms torg without queueing, from the CEO of Einar Mattsson, the company he sold 1 200 flats to two years earlier. The couple lives elsewhere at times but keeps the contract. Neighbours who do the same are evicted."
+      },
+      "sources": [
+        {
+          "name": "Aftonbladet",
+          "url": "https://www.aftonbladet.se/nyheter/a/rLz7n3/brot-mot-reglerna"
+        },
+        {
+          "name": "SVT Nyheter",
+          "url": "https://www.svt.se/nyheter/inrikes/nya-ministern-fick-hyresratt-genom-kontakter"
+        }
+      ]
+    },
+    {
+      "id": "caremaskandalen",
+      "real_date": "2011-10-11",
+      "game_date": "2011-10-11",
+      "title": {
+        "sv": "Caremaskandalen",
+        "en": "The Carema scandal"
+      },
+      "body": {
+        "sv": "Vanvård avslöjas på privatdrivna äldreboenden: undernärda boende och nedskuren personal, medan vinsterna går till skatteparadis.",
+        "en": "Neglect is exposed at privately run elderly homes: malnourished residents and slashed staffing, while the profits go to tax havens."
+      },
+      "sources": [
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Caremaskandalen"
+        },
+        {
+          "name": "SVT Nyheter",
+          "url": "https://www.svt.se/nyheter/lokalt/stockholm/ny-bild-av-koppargarden-skandalen"
+        }
+      ]
+    },
+    {
+      "id": "saab_konkurs",
+      "real_date": "2011-12-19",
+      "game_date": "2011-12-19",
+      "title": {
+        "sv": "Saab går i konkurs",
+        "en": "Saab goes bankrupt"
+      },
+      "body": {
+        "sv": "Saab Automobile i Trollhättan försätts i konkurs och 3 500 anställda förlorar jobben, efter att regeringen vägrat statligt övertagande.",
+        "en": "Saab Automobile in Trollhättan is declared bankrupt and 3 500 employees lose their jobs, after the government refused a state takeover."
+      },
+      "sources": [
+        {
+          "name": "SVT Nyheter",
+          "url": "https://www.svt.se/nyheter/granskning/ug/spelet-bakom-saabs-konkurs"
+        },
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Saab_Automobile"
+        }
+      ]
+    },
+    {
+      "id": "saudiaffaren",
+      "real_date": "2012-03-29",
+      "game_date": "2012-03-29",
+      "title": {
+        "sv": "Saudiaffären",
+        "en": "The Saudi affair"
+      },
+      "body": {
+        "sv": "Försvarsminister Tolgfors avgår efter Ekots avslöjande att Sverige i hemlighet planerat en vapenfabrik åt Saudiarabien.",
+        "en": "Defence minister Tolgfors resigns after Ekot reveals that Sweden secretly planned a weapons factory for Saudi Arabia."
+      },
+      "sources": [
+        {
+          "name": "SVT Nyheter",
+          "url": "https://www.svt.se/nyheter/inrikes/forsvarsminister-sten-tolgfors-avgar-detta-har-hant-efter-ekots-avslojande"
+        },
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Saudiaff%C3%A4ren"
+        }
+      ]
+    },
+    {
+      "id": "bilprovningen",
+      "real_date": "2012-11-05",
+      "game_date": "2012-11-05",
+      "title": {
+        "sv": "Bilprovningen styckas",
+        "en": "Bilprovningen is carved up"
+      },
+      "body": {
+        "sv": "Sjuttio av Bilprovningens stationer säljs till Opus för 375 miljoner kronor när besiktningsmonopolet styckas.",
+        "en": "Seventy of Bilprovningen's inspection stations are sold to Opus for 375 million kronor as the inspection monopoly is carved up."
+      },
+      "sources": [
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Bilprovningen"
+        },
+        {
+          "name": "Sveriges riksdag",
+          "url": "https://www.riksdagen.se/sv/dokument-och-lagar/dokument/interpellation/resultat-av-utforsaljningen-av-bilprovningen_H110535/"
+        }
+      ]
+    },
+    {
+      "id": "nuon_nedskrivning",
+      "real_date": "2013-07-23",
+      "game_date": "2013-07-23",
+      "title": {
+        "sv": "Nuonnotan",
+        "en": "The Nuon bill"
+      },
+      "body": {
+        "sv": "Vattenfall skriver ner tillgångarnas värde med 29,7 miljarder kronor, främst på grund av Nuonköpet.",
+        "en": "Vattenfall writes down its asset values by 29.7 billion kronor, mainly because of the Nuon purchase."
+      },
+      "sources": [
+        {
+          "name": "SVT Nyheter",
+          "url": "https://www.svt.se/nyheter/ekonomi/foretaget-vattenfall-gor-miljardforlust"
+        },
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Nuon-aff%C3%A4ren"
+        }
+      ]
+    },
+    {
+      "id": "taxinotan",
+      "real_date": "2017-09-29",
+      "game_date": "2017-09-29",
+      "title": {
+        "sv": "Taxinotan",
+        "en": "The taxi bill"
+      },
+      "body": {
+        "sv": "Som ekonomisk-politisk talesperson åker Uffe taxi för 113 000 skattekronor, till jobbet, restauranger och privata adresser. Riksdagsledamöter ska åka kollektivt när de kan. I 3 av 668 fall kunde han inte.",
+        "en": "As economic policy spokesperson Uffe takes taxis for 113 000 taxpayer kronor, to work, restaurants and private addresses. Members of parliament must use public transport when they can. In 3 of 668 cases he could not."
+      },
+      "sources": [
+        {
+          "name": "Svenska Dagbladet",
+          "url": "https://www.svd.se/a/VWXy1/ulf-kristerssons-taxinota-113000-kronor"
+        },
+        {
+          "name": "SVT Nyheter",
+          "url": "https://www.svt.se/nyheter/lokalt/sormland/manga-taxiresor-for-kristersson"
+        }
+      ]
+    },
+    {
+      "id": "sommarstugan",
+      "real_date": "2018-01-20",
+      "game_date": "2018-01-20",
+      "title": {
+        "sv": "Sommarstugan med lobbyisten",
+        "en": "The summer cottage with the lobbyist"
+      },
+      "body": {
+        "sv": "Uffe kämpar mot varje stopp för vinstutdelning i skolan. Sommarstugan äger han tillsammans med en skolbolagslobbyist.",
+        "en": "Uffe fights every attempt to stop profit payouts in schools. He co-owns his summer cottage with a school company lobbyist."
+      },
+      "sources": [
+        {
+          "name": "Expressen",
+          "url": "https://www.expressen.se/kultur/bocker/vi-maste-prata-om-ulf--kristerssons-sommarstuga/"
+        },
+        {
+          "name": "Vi Lärare",
+          "url": "https://www.vilarare.se/nyheter/politik/personerna-som-kopplas-mellan-politik-och-skolforetag/"
+        }
+      ]
+    },
+    {
+      "id": "mammaboendet",
+      "real_date": "2019-04-25",
+      "game_date": "2019-04-25",
+      "title": {
+        "sv": "Skriven hos mamma",
+        "en": "Registered at mom's"
+      },
+      "body": {
+        "sv": "Moderattoppen Erik Bengtzboe har skrivit sig hos sin mamma och fått 158 000 kronor i ersättning. Han lämnar riksdagen.",
+        "en": "Moderate top name Erik Bengtzboe registered at his mother's address and collected 158 000 kronor in allowances. He leaves parliament."
+      },
+      "sources": [
+        {
+          "name": "SVT Nyheter",
+          "url": "https://www.svt.se/nyheter/inrikes/m-topp-skrev-sig-hos-sin-mamma-fick-158-000-i-ersattning"
+        },
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Erik_Bengtzboe"
+        }
+      ]
+    },
+    {
+      "id": "tidoavtalet",
+      "real_date": "2022-10-14",
+      "game_date": "2022-10-14",
+      "title": {
+        "sv": "Löftet bryts",
+        "en": "The promise is broken"
+      },
+      "body": {
+        "sv": "Uffe bildar regering på Tidöavtalet med SD, trots löftet till förintelseöverlevaren Hédi Fried.",
+        "en": "Uffe forms a government on the Tidö Agreement with SD, despite his promise to Holocaust survivor Hédi Fried."
+      },
+      "sources": [
+        {
+          "name": "SVT Nyheter",
+          "url": "https://www.svt.se/nyheter/inrikes/avgaende-c-partiledaren-om-kristerssons-m-lofte-stort-svek"
+        },
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Tid%C3%B6avtalet"
+        }
+      ]
+    },
+    {
+      "id": "landerholm_utnamning",
+      "real_date": "2022-11-10",
+      "game_date": "2022-11-10",
+      "title": {
+        "sv": "Barndomsvännen får jobbet",
+        "en": "The childhood friend gets the job"
+      },
+      "body": {
+        "sv": "Uffe handplockar barndomsvännen Henrik Landerholm till Sveriges första nationella säkerhetsrådgivare, med 110 000 kronor i månadslön.",
+        "en": "Uffe handpicks his childhood friend Henrik Landerholm as Sweden's first national security advisor, at 110 000 kronor a month."
+      },
+      "sources": [
+        {
+          "name": "Göteborgs-Posten",
+          "url": "https://www.gp.se/politik/turerna-kring-henrik-landerholm-detta-har-hant.ed7b0eeb-e955-4685-85bb-9a35c879170c"
+        },
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Henrik_Landerholm"
+        }
+      ]
+    },
+    {
+      "id": "alfisket",
+      "real_date": "2023-01-26",
+      "game_date": "2023-01-26",
+      "title": {
+        "sv": "Ålfisket",
+        "en": "The eel fishing"
+      },
+      "body": {
+        "sv": "Uffes närmaste statssekreterare avgår efter att ha dömts för olagligt ålfiske i Blekinge skärgård.",
+        "en": "Uffe's closest state secretary resigns after being convicted of illegal eel fishing in the Blekinge archipelago."
+      },
+      "sources": [
+        {
+          "name": "Sveriges Radio",
+          "url": "https://www.sverigesradio.se/artikel/pm-nilsson-avgar-som-statssekreterare-efter-olagliga-alfisket"
+        },
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/PM_Nilsson"
+        }
+      ]
+    },
+    {
+      "id": "lofving_utredningen",
+      "real_date": "2023-02-22",
+      "game_date": "2023-02-22",
+      "title": {
+        "sv": "Jäv i polistoppen",
+        "en": "Conflict of interest at the police top"
+      },
+      "body": {
+        "sv": "En oberoende utredning finner att vice rikspolischefen Mats Löfving var jävig i flera beslut som gynnade underrättelsechefen Linda Staaf, bland annat om hennes lön.",
+        "en": "An independent inquiry finds that Deputy National Police Commissioner Mats Löfving acted under conflict of interest in several decisions favoring intelligence chief Linda Staaf, including her salary."
+      },
+      "sources": [
+        {
+          "name": "SVT Nyheter",
+          "url": "https://www.svt.se/nyheter/inrikes/harvan-skakade-polisledningen-nu-presenteras-utredningen"
+        },
+        {
+          "name": "Wikipedia",
+          "url": "https://sv.wikipedia.org/wiki/Mats_L%C3%B6fving"
+        }
+      ]
+    },
+    {
+      "id": "sagerska_notan",
+      "real_date": "2023-06-01",
+      "game_date": "2023-06-01",
+      "title": {
+        "sv": "Lyxnotan på Sagerska",
+        "en": "The Sager House bill"
+      },
+      "body": {
+        "sv": "Inköp till Sagerska och Harpsund fördyras av externa inredningskonsulter vars arbetstid ibland kostar mer än varan. En brödspade för 675 kronor landar på 2 363 kronor.",
+        "en": "Purchases for Sagerska and Harpsund are inflated by external interior consultants whose hours sometimes cost more than the item. A 675 kronor bread peel ends up at 2 363 kronor."
+      },
+      "sources": [
+        {
+          "name": "Expressen",
+          "url": "https://www.expressen.se/nyheter/sverige/har-ar-overpriserna-for-statsministerparets-inkop/"
+        },
+        {
+          "name": "Eskilstuna-Kuriren",
+          "url": "https://www.ekuriren.se/nyheter/strangnas/artikel/granskning-av-dyra-konsultinkop-till-sagerska-palatset/r24qw4vj"
+        }
+      ]
+    },
+    {
+      "id": "europaskolan_middagen",
+      "real_date": "2024-04-10",
+      "game_date": "2024-04-10",
+      "title": {
+        "sv": "Friskolemiddag på Sagerska",
+        "en": "Free school dinner at Sagerska"
+      },
+      "body": {
+        "sv": "Friskolan Europaskolan bjuder in ett 50-tal tidigare elever till middag i statsministerns tjänstebostad. Birgitta Ed är vice ordförande i stiftelsen som driver skolan. Korruptionsforskaren Olle Lundin: uppenbar lobbyverksamhet ända in i statsministerns hem.",
+        "en": "The free school Europaskolan invites some 50 alumni to dinner in the prime minister's residence. Birgitta Ed is vice chair of the foundation that runs the school. Corruption researcher Olle Lundin: blatant lobbying all the way into the prime minister's home."
+      },
+      "sources": [
+        {
+          "name": "Dagens Nyheter",
+          "url": "https://www.dn.se/sverige/avslojar-friskola-arrangerar-evenemang-i-statsministerns-hem/"
+        },
+        {
+          "name": "Sveriges Radio",
+          "url": "https://www.sverigesradio.se/artikel/bjuder-friskoleelever-pa-middag-statsministerns-fru-kritiseras"
+        }
+      ]
+    },
+    {
+      "id": "honsgarden",
+      "real_date": "2024-08-15",
+      "game_date": "2024-08-15",
+      "title": {
+        "sv": "Hönsgården på Harpsund",
+        "en": "The hen house at Harpsund"
+      },
+      "body": {
+        "sv": "Birgitta Ed önskar sig en hönsgård på Harpsund. Paret betalar hönshuset och hönsen, men monteringen för 16 691 kronor hamnar på Regeringskansliet, alltså skattebetalarna.",
+        "en": "Birgitta Ed wants a hen house at Harpsund. The couple pays for the house and the hens, but the 16 691 kronor assembly bill lands on the Government Offices, that is the taxpayers."
+      },
+      "sources": [
+        {
+          "name": "Expressen",
+          "url": "https://www.expressen.se/nyheter/sverige/ordern-bygg-en-honsgard-till-birgitta-ed-pa-harpsund/"
+        },
+        {
+          "name": "Sveriges Radio",
+          "url": "https://www.sverigesradio.se/artikel/statsministerparet-byggde-honsgard-ska-betala-tillbaka"
+        }
+      ]
+    },
+    {
+      "id": "landerholm_avgang",
+      "real_date": "2025-01-27",
+      "game_date": "2025-01-27",
+      "title": {
+        "sv": "Säkerhetsrådgivaren avgår",
+        "en": "The security advisor resigns"
+      },
+      "body": {
+        "sv": "Barndomsvännen Landerholm glömmer sekretessbelagda dokument på en kursgård. En städare med kopplingar till våldsbejakande islamism hittar dem, och det dröjer två dagar innan Regeringskansliet kontaktas. Han avgår när en förundersökning inleds.",
+        "en": "Childhood friend Landerholm forgets classified documents at a conference venue. A cleaner with links to violent Islamism finds them, and it takes two days before the Government Offices are told. He resigns once a preliminary investigation opens."
+      },
+      "sources": [
+        {
+          "name": "SVT Nyheter",
+          "url": "https://www.svt.se/nyheter/inrikes/m-kritiken-mot-landerholm-jattefrustrerande"
+        },
+        {
+          "name": "TV4 Nyheterna",
+          "url": "https://www.tv4.se/artikel/tt-250228-landerholm-bc0ebe97/landerholms-glomda-dokument-rorde-rikets-sakerhet"
+        }
+      ]
+    },
+    {
+      "id": "ministeraktier",
+      "real_date": "2025-03-07",
+      "game_date": "2025-03-07",
+      "title": {
+        "sv": "Ministerns aktieklipp",
+        "en": "The minister's stock move"
+      },
+      "body": {
+        "sv": "Ekot avslöjar att minister Maria Malmer Stenergard köpt aktier i försvarsbolaget Mildef och sedan deltagit i regeringsbeslut om stridsfordon, mitt under en affär värd 25 miljarder. Aktien tredubblas.",
+        "en": "Ekot reveals that minister Maria Malmer Stenergard bought shares in defense company Mildef and then took part in a government decision on combat vehicles, amid a 25 billion kronor deal. The stock triples."
+      },
+      "sources": [
+        {
+          "name": "Sveriges Radio",
+          "url": "https://www.sverigesradio.se/artikel/ministern-kopte-forsvarsaktier-nar-sverige-forhandlade-om-miljardaffar"
+        },
+        {
+          "name": "SVT Nyheter",
+          "url": "https://www.svt.se/nyheter/inrikes/maria-malmer-stenergard-kopte-aktier-nar-forsvarsaffar-forhandlades"
+        }
+      ]
+    },
+    {
+      "id": "aktieriktlinjer",
+      "real_date": "2025-12-09",
+      "game_date": "2025-12-09",
+      "title": {
+        "sv": "Nya aktieregler för ministrar",
+        "en": "New stock rules for ministers"
+      },
+      "body": {
+        "sv": "Efter ett år där fyra ministrar kritiserats och tre KU-anmälts för sina aktieaffärer skärper regeringen riktlinjerna. Experter: fortfarande inte tillräckligt.",
+        "en": "After a year in which four ministers were criticized and three reported to the Constitution Committee over their stock trades, the government tightens its guidelines. Experts: still not enough."
+      },
+      "sources": [
+        {
+          "name": "Sveriges Radio",
+          "url": "https://www.sverigesradio.se/artikel/efter-ekots-avslojanden-om-aktieaffarer-nya-riktlinjer-for-ministrar"
+        },
+        {
+          "name": "Göteborgs-Posten",
+          "url": "https://www.gp.se/nyheter/sverige/nya-riktlinjer-for-ministrars-aktieinnehav.b2333d45-3e5d-5c0f-947c-40603d44dea1"
+        }
+      ]
+    },
+    {
+      "id": "teach_for_sweden",
+      "real_date": "2026-04-09",
+      "game_date": "2026-04-09",
+      "title": {
+        "sv": "Svägerskans stiftelse",
+        "en": "The sister-in-law's foundation"
+      },
+      "body": {
+        "sv": "Svägerskan Marita Bildt sitter i styrelsen för Teach for Sweden. På ett regeringsmöte där Uffe deltar får stiftelsen 12 miljoner extra utöver 15 redan beviljade, tagna från anslaget för integration och jämställdhet. Sedan hon tog plats har bidragen mer än fördubblats.",
+        "en": "Sister-in-law Marita Bildt sits on the board of Teach for Sweden. At a cabinet meeting Uffe attends, the foundation gets an extra 12 million on top of 15 already granted, taken from the integration and equality budget. Since she joined, the grants have more than doubled."
+      },
+      "sources": [
+        {
+          "name": "Aftonbladet",
+          "url": "https://www.aftonbladet.se/nyheter/a/wrRg9A/kristerssons-svagerskas-stiftelse-fick-miljoner-togs-fran-integration"
+        },
+        {
+          "name": "SVT Nyheter",
+          "url": "https://www.svt.se/nyheter/inrikes/miljoner-till-kristerssons-svagerskas-stiftelse-delikatessjav"
+        }
+      ]
+    },
+    {
+      "id": "fallokna",
+      "real_date": "2026-06-09",
+      "game_date": "2026-06-09",
+      "title": {
+        "sv": "Gratisjobbarna på Fållökna",
+        "en": "The free labor at Fållökna"
+      },
+      "body": {
+        "sv": "Volontärer rustar upp Birgitta Eds gård Fållökna mot ett bra nätverk och träffar på Sagerska. Ed fakturerar 22 000 i månaden och är den enda som får betalt. Styrelsen består nästan helt av lobbyister, och ordförande är Thorbjörn Larsson från Ersta, han med våningen.",
+        "en": "Volunteers renovate Birgitta Ed's estate Fållökna in exchange for a good network and gatherings at Sagerska. Ed invoices 22 000 a month and is the only one paid. The board is almost entirely lobbyists, chaired by Thorbjörn Larsson from Ersta, the man with the flat."
+      },
+      "sources": [
+        {
+          "name": "Aftonbladet",
+          "url": "https://www.aftonbladet.se/nyheter/a/3p5npq/volontarerna-pa-fallokna-lobbyister-och-naringslivstoppar"
+        },
+        {
+          "name": "SVT Nyheter",
+          "url": "https://www.svt.se/nyheter/inrikes/fallokna-haller-pa-att-bli-en-belastning-for-kristersson"
+        }
+      ]
+    },
+    {
+      "id": "fallokna_toppjobben",
+      "real_date": "2026-06-20",
+      "game_date": "2026-06-20",
+      "title": {
+        "sv": "Gratisjobb ger toppjobb",
+        "en": "Free labour pays off"
+      },
+      "body": {
+        "sv": "Två av volontärerna som rustat Fållökna gratis är ett par som Birgitta Ed kallar vänner. Månaderna efteråt blir den ene kanslisekreterare i Regeringskansliet och den andre generaldirektör.",
+        "en": "Two of the volunteers who renovated Fållökna for free are a couple Birgitta Ed calls friends. In the months that follow one becomes a secretary in the Government Offices and the other a director general."
+      },
+      "sources": [
+        {
+          "name": "Aftonbladet",
+          "url": "https://www.aftonbladet.se/nyheter/a/ExR8RG/birgitta-eds-fallokna-volontarer-fick-toppjobb"
+        },
+        {
+          "name": "Göteborgs-Posten",
+          "url": "https://www.gp.se/kultur/kommentar/kristerssons-och-eds-herrgardsmys-platsar-i-kulturkanon.fe79a087-44f1-4762-a865-d1fdf5b05b76"
+        }
+      ]
+    },
+    {
+      "id": "prastjobbet",
+      "real_date": "2026-07-06",
+      "game_date": "2026-07-06",
+      "title": {
+        "sv": "Skräddarsydd prästtjänst",
+        "en": "A tailor-made priest job"
+      },
+      "body": {
+        "sv": "Birgitta Ed får en prästtjänst i Strängnäs domkyrkoförsamling som skapats utan utannonsering. Antal sökande: en.",
+        "en": "Birgitta Ed gets a priest position at Strängnäs cathedral parish created without being advertised. Number of applicants: one."
+      },
+      "sources": [
+        {
+          "name": "SVT Nyheter",
+          "url": "https://www.svt.se/nyheter/inrikes/birgitta-ed-fick-prastjobb-utan-oppen-rekrytering"
+        },
+        {
+          "name": "Kyrkans Tidning",
+          "url": "https://www.kyrkanstidning.se/nyhet/birgitta-ed-anstaelldes-utan-annons-behoever-inte-vara-fel/438907"
+        }
+      ]
+    }
+  ]
+}
